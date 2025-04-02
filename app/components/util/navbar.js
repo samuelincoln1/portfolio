@@ -10,8 +10,8 @@ export default function Navbar() {
 
   const links = [
     { href: '/', label: 'Home' },
-    { href: '/infra-as-code', label: 'Infra as Code' },
-    { href: '/serverless-logs-analyzer', label: 'Serverless Logs Analyzer' },
+    { href: '/iac', label: 'Infra as Code' },
+    { href: '/serverless-logs-analyzer', label: 'Log Analyzer' },
     { href: '/codeflow', label: 'CodeFlow' },
     { href: '/about', label: 'Sobre' },
   ]
@@ -48,7 +48,7 @@ export default function Navbar() {
           <li key={link.href}>
             <Link
               href={link.href}
-              className={`text-xl font-medium transition-colors hover:text-[#77B2E9] ${
+              className={`text-lg font-medium transition-colors hover:text-[#77B2E9] ${
                 pathname === link.href
                   ? 'text-[#77B2E9]'
                   : 'text-black'
