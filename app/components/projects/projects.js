@@ -31,7 +31,7 @@ const Projects = () => {
   return (
     <div className="flex flex-col">
       {projects.map((project, index) => (
-        <>
+        <div key={`project-container-${index}`}>
           <ProjectCard
             key={`project-${index}`}
             imageUrl={project.imageUrl}
@@ -52,7 +52,7 @@ const Projects = () => {
               <path d="M0 1L100 1" stroke="#E0E0E0" strokeWidth="1" />
             </svg>
           )}
-        </>
+        </div>
       ))}
     </div>
   );
