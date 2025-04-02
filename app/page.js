@@ -9,8 +9,8 @@ export default function Index() {
         <div className="flex justify-center">
           <Introduction />
         </div>
-        <div className="flex flex-col gap-8 bg-[#EDF7FA] py-6 md:py-13 mt-3 mb-1 px-4 md:px-0">
-          <p className="text-center text-[18px] md:text-[20px]">
+        <div className="flex flex-col gap-8 bg-[#EDF7FA] py-6 md:py-13 md:mt-12  mb-2 px-4 md:px-0">
+          <p className="text-center text-[12px] md:text-[20px]">
             Uma nuvem bem projetada escala, reduz custos e melhora a
             confiabilidade. Boas práticas de arquitetura e automação fazem a
             diferença. Confira abaixo meus projetos:
@@ -19,7 +19,7 @@ export default function Index() {
         <div className="flex px-4 md:ml-20 ml-110-3xl mt-5" id="projetos">
           <Projects />
         </div>
-        <div className="flex flex-col items-center justify-center py-10 gap-2">
+        <div className="flex flex-col items-center justify-center py-10 gap-2 md:mt-10">
           <div className="flex flex-row gap-7 items-center">
             <a href="https://www.linkedin.com/in/samuel-gomes-213429209/" target="_blank" rel="noopener noreferrer">
             <svg

@@ -37,12 +37,14 @@ export default function Navbar() {
         flex flex-col md:flex-row
         md:space-x-6 space-y-4 md:space-y-0
         md:relative absolute right-0 top-0
-        md:bg-transparent bg-white
+        md:bg-transparent bg-white/95
         md:p-0 p-8 pt-16
         md:w-auto w-64
         md:flex ${isMenuOpen ? 'flex' : 'hidden'}
         transition-all duration-300
         md:justify-end
+        shadow-lg md:shadow-none
+        backdrop-blur-sm
       `}>
         {links.map((link) => (
           <li key={link.href}>

@@ -32,10 +32,10 @@ export default function About() {
       <div className="container mx-auto px-4 py-16 max-w-8xl">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-[106px] items-center lg:items-start mb-20">
           <div className="flex flex-col gap-[20px]">
-            <h1 className="text-[32px] md:text-[55px] md:w-[700px] max-w-[450px] font-bold text-[#21243D] text-center md:text-left">
+            <h1 className="text-[24px] md:text-[55px] md:w-[700px] max-w-[450px] font-bold text-[#21243D] md:text-left">
               Meu nome é Samuel Lincoln e minha paixão é a nuvem.
             </h1>
-            <div className="text-[20px] max-w-[400px] md:max-w-[750px] text-center md:text-left space-y-6">
+            <div className="text-[18px] max-w-[400px] md:max-w-[750px] md:text-left space-y-6">
               <p>
                 Sou engenheiro de cloud especializado em AWS, automação e
                 infraestrutura como código. Gosto de transformar desafios
@@ -70,12 +70,12 @@ export default function About() {
         <div className="bg-[#EDF7FA] p-8 rounded-lg mb-12">
           <div className="grid md:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-[35px] font-bold text-[#21243D] mb-6">
+              <h2 className="text-[24px] md:text-[35px] font-bold text-[#21243D] mb-6">
                 Competências Técnicas
               </h2>
               <ul className="space-y-4">
                 {technicalSkills.map((skill, index) => (
-                  <li key={index} className="flex items-center text-[20px]">
+                  <li key={index} className="flex items-center text-[14px] md:text-[20px]">
                     <span className="w-2 h-2 bg-[#77B2E9] rounded-full mr-3"></span>
                     {skill}
                   </li>
@@ -83,12 +83,12 @@ export default function About() {
               </ul>
             </div>
             <div>
-              <h2 className="text-[35px] font-bold text-[#21243D] mb-6">
+              <h2 className="text-[24px] md:text-[35px] font-bold text-[#21243D] mb-6">
                 Competências Interpessoais
               </h2>
               <ul className="space-y-4">
                 {softSkills.map((skill, index) => (
-                  <li key={index} className="flex items-center text-[20px]">
+                  <li key={index} className="flex items-center text-[14px] md:text-[20px]">
                     <span className="w-2 h-2 bg-[#77B2E9] rounded-full mr-3"></span>
                     {skill}
                   </li>
@@ -99,12 +99,12 @@ export default function About() {
         </div>
 
         <div className="mb-12">
-          <h2 className="text-[35px] font-bold text-[#21243D] mb-6">
+          <h2 className="text-[24px] md:text-[35px] font-bold text-[#21243D] mb-6">
             Cursos e Certificações
           </h2>
           <div className="bg-white border-2 border-[#77B2E9] p-8 rounded-lg">
             <div className="flex flex-row gap-4">
-              <div className="flex flex-col gap-6 text-[20px]">
+              <div className="flex flex-col gap-6 text-[14px] md:text-[20px]">
                 <p>
                   Atualmente, sou estudante de Engenharia de Software na PUC
                   Minas, com previsão de conclusão em 2026. Minha formação me
@@ -142,11 +142,11 @@ export default function About() {
         </div>
 
         <div>
-          <h2 className="text-[35px] font-bold text-[#21243D] mb-6">Idiomas</h2>
+          <h2 className="text-[24px] md:text-[35px] font-bold text-[#21243D] mb-6">Idiomas</h2>
           <div className="bg-[#EDF7FA] p-8 rounded-lg">
             <ul className="space-y-4">
               {languages.map((lang, index) => (
-                <li key={index} className="flex items-center text-[20px]">
+                <li key={index} className="flex items-center text-[14px] md:text-[20px]">
                   <span className="text-[#77B2E9] mr-3">•</span>
                   <span className="font-medium">{lang.language}</span>
                   <span className="mx-2">–</span>
@@ -157,14 +157,14 @@ export default function About() {
           </div>
         </div>
 
-        <div className="mt-12">
+        <div className="md:mt-12">
           <div className=" p-8 rounded-lg">
-            <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
+            <div className="flex flex-col md:flex-row gap-6 md:items-center justify-center">
               <a
                 href="https://github.com/samuelincoln1"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-[20px] hover:underline"
+                className="flex items-center gap-2 text-[14px] md:text-[20px] hover:underline"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -182,7 +182,7 @@ export default function About() {
                 href="https://www.linkedin.com/in/samuel-gomes-213429209/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-[20px] hover:underline"
+                className="flex items-center gap-2 text-[14px] md:text-[20px] hover:underline"
               >
                 <svg
                   width="35"
@@ -199,7 +199,7 @@ export default function About() {
               <a
                 href="/curriculo.pdf"
                 download
-                className="flex items-center gap-2 text-[20px] hover:underline"
+                className="flex items-center gap-2 text-[14px] md:text-[20px] hover:underline"
               >
                 <svg
                   width="35"
@@ -217,7 +217,7 @@ export default function About() {
         </div>
 
         <div className="flex justify-center">
-          <p className="text-sm">
+          <p className="text-xs md:text-sm">
             Copyright ©2025 Todos os direitos reservados
           </p>
         </div>
