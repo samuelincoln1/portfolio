@@ -48,7 +48,7 @@ body {
 }
 
 /* Classe personalizada para margem esquerda em telas grandes */
-@media (min-width: 1919px) {
+@media (min-width: 1925px) {
   .ml-110-3xl {
     margin-left: 25rem;
   }

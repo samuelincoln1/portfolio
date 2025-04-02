@@ -21,7 +21,7 @@ const ProjectCard = ({ imageUrl, title, description, projectUrl, stack }) => {
           {title}
         </Link>
         
-        <p className="mt-[10px] text-[14px] md:text-[20px] md:max-w-[700px]">
+        <p className="mt-[10px] text-[14px] md:text-[18px] md:max-w-[1000px]">
           {description}
         </p>
         <div className="flex flex-wrap gap-2 mt-4">
