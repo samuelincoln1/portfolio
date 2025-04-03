@@ -10,7 +10,7 @@ const Projects = () => {
       description:
         t('projects.descriptionTerraform'),
       projectUrl: "/infra-as-code",
-      stack: ["Terraform", "AWS ", "Docker", "Kubernetes"],
+      stack: ["Terraform", "AWS ", "Ansible"],
     },
     {
       imageUrl: "/images/lambda.png",
@@ -38,14 +38,13 @@ const Projects = () => {
 
   return (
     <div className="md:px-30 px-6 relative flex flex-col bg-gradient-to-b from-black to-purple-950">
-    
       <div className="flex flex-col gap-8 py-6 md:py-13 px-4 md:px-0">
-        <p className="text-center text-white text-sm md:text-lg max-w-[300px] md:max-w-[1400px] mx-auto">
+        <p className="text-center text-white text-sm md:text-xl max-w-[300px] md:my-30 mt-20 md:max-w-[1500px] mx-auto">
           {t('projects.subtitle')}
         </p>
         <div>
           {projects.map((project, index) => (
-            <div key={`project-container-${index}`}>
+            <div key={`project-container-${index}`} className="py-4">
               <ProjectCard
                 key={`project-${index}`}
                 imageUrl={project.imageUrl}

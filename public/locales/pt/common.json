@@ -5,15 +5,15 @@
     "projects": "Projetos"
   },
   "hero": {
-    "title": "Engenheiro de cloud",
-    "description": "Sou um engenheiro de cloud apaixonado por criar soluções escaláveis e eficientes. Trabalho com AWS, infraestrutura como código e automação para otimizar aplicações e reduzir custos. Meu foco é construir ambientes seguros, resilientes e preparados para alto desempenho e operação contínua.",
+    "title": "Engenheiro de nuvem",
+    "description": "Sou um engenheiro de nuvem apaixonado por criar soluções escaláveis e eficientes. Trabalho com AWS, infraestrutura como código e automação para otimizar aplicações e reduzir custos. Meu foco é construir e manter ambientes seguros, resilientes e preparados para alto desempenho e operação contínua. Aqui você pode encontrar alguns de meus projetos, meu currículo e mais sobre mim.",
     "downloadPt": "Baixar currículo (pt-br)",
     "downloadEn": "Baixar currículo (en-us)"
   },
   "projects": {
     "title": "Projetos",
-    "subtitle": "Uma nuvem bem projetada escala, reduz custos e melhora a confiabilidade. Boas práticas de arquitetura e automação fazem a diferença. Confira abaixo meus projetos:",
-    "descriptionTerraform": "Implementação de uma infraestrutura completa e automatizada na AWS usando Terraform. O projeto inclui VPC, ALB, EC2, banco de dados, segurança e outros componentes essenciais para um ambiente escalável e seguro.",
+    "subtitle": "Uma nuvem bem projetada escala, reduz custos e melhora a confiabilidade. Boas práticas de arquitetura e automação fazem a diferença.",
+    "descriptionTerraform": "Implementação de uma infraestrutura completa e automatizada na AWS usando Terraform e Ansible. O Terraform é utilizado para provisionamento da infraestrutura, incluindo VPC, ALB, EC2, banco de dados e segurança, enquanto o Ansible gerencia a configuração e automação das instâncias. O projeto garante um ambiente escalável, seguro e facilmente reproduzível, integrando infraestrutura como código (IaC) e automação para maior eficiência.",
     "descriptionLambda": "Aplicação serverless para análise de métricas e logs em tempo real, utilizando AWS Lambda, CloudWatch e QuickSight. Automatiza a coleta, processamento e visualização de dados, permitindo insights rápidos e eficientes sobre eventos e performance da infraestrutura.",
     "descriptionCodeFlow": "Pipeline de CI/CD automatizado utilizando AWS CodePipeline e GitHub Actions para integrar, testar e implantar aplicações de forma eficiente. O projeto garante entregas contínuas, automação de builds e deploys seguros na AWS.",
     "copyright": "Copyright ©2025 Todos os direitos reservados"
@@ -29,8 +29,8 @@
     "technicalSkills": {
       "aws": "Amazon Web Services (AWS)",
       "serverless": "Desenvolvimento Serverless",
-      "security": "Segurança na nuvem",
       "distributedArchitectures": "Arquiteturas Distribuídas",
+      "security": "Segurança na nuvem",
       "databases": "Bancos de Dados",
       "terraform": "Terraform",
       "cicd": "CI/CD",

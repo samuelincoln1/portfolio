@@ -6,14 +6,14 @@
   },
   "hero": {
     "title": "Cloud Engineer",
-    "description": "I'm a cloud engineer passionate about creating scalable and efficient solutions. I work with AWS, infrastructure as code, and automation to optimize applications and reduce costs. My focus is on building secure, resilient environments prepared for high performance and continuous operation.",
+    "description": "I'm a cloud engineer passionate about creating scalable and efficient solutions. I work with AWS, infrastructure as code, and automation to optimize applications and reduce costs. My focus is on building and maintaining secure, resilient environments prepared for high performance and continuous operation. Here you can find some of my projects, my resume and more about me.",
     "downloadPt": "Download Resume (pt-br)",
     "downloadEn": "Download Resume (en-us)"
   },
   "projects": {
     "title": "Projects",
-    "subtitle": "A well-designed cloud scales, reduces costs, and improves reliability. Good architecture practices and automation make the difference. Check out my projects below:",
-    "descriptionTerraform": "Implementation of a complete and automated infrastructure in AWS using Terraform. The project includes VPC, ALB, EC2, database, security, and other essential components for a scalable and secure environment.",
+    "subtitle": "A well-designed cloud scales, reduces costs, and improves reliability. Good architecture practices and automation make the difference.",
+    "descriptionTerraform": "Implementation of a fully automated infrastructure on AWS using Terraform and Ansible. Terraform is used for infrastructure provisioning, including VPC, ALB, EC2, database, and security, while Ansible handles configuration management and automation of instances. The project ensures a scalable, secure, and easily reproducible environment by integrating Infrastructure as Code (IaC) and automation for greater efficiency.",
     "descriptionLambda": "Serverless application for real-time analysis of metrics and logs, using AWS Lambda, CloudWatch, and QuickSight. Automates data collection, processing, and visualization, allowing quick insights into events and infrastructure performance.",
     "descriptionCodeFlow": "Automated CI/CD pipeline using AWS CodePipeline and GitHub Actions to integrate, test, and deploy applications efficiently. The project ensures continuous deliveries, automated builds, and secure deployments in AWS.",
     "copyright": "Copyright ©2025 All rights reserved"
@@ -29,8 +29,8 @@
     "technicalSkills": {
       "aws": "Amazon Web Services (AWS)",
       "serverless": "Serverless Development",
-      "security": "Cloud Security",
       "distributedArchitectures": "Distributed Architectures",
+      "security": "Cloud Security",
       "databases": "Databases",
       "terraform": "Terraform",
       "cicd": "CI/CD",
