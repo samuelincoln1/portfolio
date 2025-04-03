@@ -94,12 +94,12 @@ export default function Resume() {
               </div>
             </div>
           </div>
-          <div className="flex flex-row items-center mt-12 text-white md:text-4xl gap-4">
+          <div className="flex flex-row items-center mt-12 text-white md:text-2xl gap-4">
             <a
               href="https://www.credly.com/badges/5d8faef4-05ba-48e6-85a9-070ff8e3f201/public_url"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-4"
+              className="flex items-center gap-4 z-100"
             >
               <Image
                 src="/images/aws-certified-solutions-architect-associate.png"
