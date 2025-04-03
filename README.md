@@ -8,6 +8,9 @@
 
 ## 🚀 About the Project
 
+### 🌐 Acesse o Portfolio
+**[samuellincoln.com](https://samuellincoln.com)**
+
 This is my professional portfolio as a Cloud Engineer, highlighting my experience with AWS, infrastructure as code, and serverless architectures. The website was developed with Next.js and React, and its infrastructure was fully automated using modern DevOps practices.
 
 ### ☁️ Cloud Infrastructure
