@@ -24,9 +24,9 @@ export default function Resume() {
 
   return (
     <>
-    <div className="bg-gradient-to-b from-black to-purple-950 py-16">
-      <div className="container mx-auto px-4">
-        <div className="border border-white/20 shadow-lg backdrop-blur-sm p-8 rounded-lg mb-12">
+    <div className="bg-gradient-to-b from-black to-purple-950 py-16 relative">
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="border border-white/20 shadow-lg backdrop-blur-[3px] p-8 rounded-lg mb-12">
           <div className="grid md:grid-cols-2 gap-12">
             <div>
               <h2 className="text-[24px] md:text-[35px] font-bold text-white mb-6">
@@ -68,7 +68,7 @@ export default function Resume() {
           <h2 className="text-[24px] md:text-[35px] font-bold text-white mb-6">
             Cursos e Certificações
           </h2>
-          <div className="border border-white/20 shadow-lg backdrop-blur-sm p-8 rounded-lg">
+          <div className="border border-white/20 shadow-lg backdrop-blur-[3px] p-8 rounded-lg">
             <div className="flex flex-row gap-4">
               <div className="flex flex-col gap-6 text-[14px] md:text-[20px] text-white">
                 <p>
@@ -118,7 +118,7 @@ export default function Resume() {
           <h2 className="text-[24px] md:text-[35px] font-bold text-white mb-6">
             Idiomas
           </h2>
-          <div className="border border-white/20 shadow-lg backdrop-blur-sm p-8 rounded-lg">
+          <div className="border border-white/20 shadow-lg backdrop-blur-[3px] p-8 rounded-lg">
             <ul className="space-y-4">
               {languages.map((lang, index) => (
                 <li

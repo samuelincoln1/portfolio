@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function AboutHero() {
   return (
     <>
-      <div className="container mx-auto my:auto px-4 py-16 relative z-10 md:mt-20 min-h-screen flex items-center justify-center md:items-start md:justify-start">
+      <div className="container mx-auto 2xl:my-10 px-4 py-16 relative z-10 md:mt-20 min-h-screen flex items-center justify-center">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-[106px] items-center justify-center lg:items-start mb-20">
           <div className="flex flex-col gap-[20px] mx-auto md:mx-0 text-center lg:text-left">
             <h1 className="text-[40px] md:text-[80px] font-extrabold text-white">

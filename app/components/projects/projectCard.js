@@ -3,23 +3,25 @@ import Image from 'next/image';
 
 const ProjectCard = ({ imageUrl, title, description, projectUrl, stack }) => {
   return (
-    <div className="flex flex-col md:flex-row gap-6 py-10">
+    <div className="flex flex-col md:flex-row gap-6 py-10 ">
       <div className="w-full md:w-[400px] h-[225px] relative">
         <Image
           src={imageUrl}
           alt={title}
           fill
-          className="object-cover rounded-lg"
+          className="object-cover rounded-lg z-10"
         />
       </div>
       
       <div className="flex flex-col">
-        <Link 
-          href={projectUrl}
-          className="text-[22px] md:text-[38px] font-bold hover:underline text-white"
-        >
-          {title}
-        </Link>
+        <div className="text-[22px] md:text-[38px] font-bold text-white z-100">
+          <Link 
+            href={projectUrl}
+            className="hover:underline"
+          >
+            {title}
+          </Link>
+        </div>
         
         <p className="mt-[10px] text-sm md:text-[18px] md:max-w-[1000px] text-white">
           {description}
