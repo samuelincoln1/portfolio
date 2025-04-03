@@ -1,25 +1,29 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
+import { useTranslation } from "next-i18next";
 
 export default function Resume() {
+  const { t } = useTranslation("common");
   const technicalSkills = [
-    "Amazon Web Services (AWS)",
-    "Desenvolvimento Serverless",
-    "Segurança na nuvem",
-    "Arquiteturas distribuídas",
-    "Bancos de Dados SQL e NoSQL",
-    "Terraform",
-    "CI/CD",
-    "Linux",
-    "Python",
-    "Java",
-    "Node",
-    "React",
+    t("resume.technicalSkills.aws"),
+    t("resume.technicalSkills.serverless"),
+    t("resume.technicalSkills.security"),
+    t("resume.technicalSkills.distributedArchitectures"),
+    t("resume.technicalSkills.databases"),
+    t("resume.technicalSkills.terraform"),
+    t("resume.technicalSkills.cicd"),
+    t("resume.technicalSkills.linux"),
+    t("resume.technicalSkills.python"),
+    t("resume.technicalSkills.java"),
+    t("resume.technicalSkills.node"),
+    t("resume.technicalSkills.react"),
   ];
 
   const languages = [
-    { language: "Português", level: "Fluente" },
-    { language: "Inglês", level: "Avançado (leitura, escrita e comunicação)" },
+    { language: t("resume.languages.portuguese"), level: t("resume.languages.fluent") },
+    { language: t("resume.languages.english"), level: t("resume.languages.advanced") },
   ];
 
   return (
@@ -30,7 +34,7 @@ export default function Resume() {
           <div className="grid md:grid-cols-2 gap-12">
             <div>
               <h2 className="text-[24px] md:text-[35px] font-bold text-white mb-6">
-                Competências
+                {t("resume.title")}
               </h2>
               <ul className="space-y-4">
                 {technicalSkills
@@ -66,30 +70,20 @@ export default function Resume() {
 
         <div className="mb-12">
           <h2 className="text-[24px] md:text-[35px] font-bold text-white mb-6">
-            Cursos e Certificações
+            {t("resume.coursesAndCertifications.title")}
           </h2>
           <div className="border border-white/20 shadow-lg backdrop-blur-[3px] p-8 rounded-lg">
             <div className="flex flex-row gap-4">
               <div className="flex flex-col gap-6 text-[14px] md:text-[20px] text-white">
                 <p>
-                  Atualmente, sou estudante de Engenharia de Software na PUC
-                  Minas, com previsão de conclusão em 2026. Minha formação me
-                  proporciona uma base sólida em arquitetura de sistemas,
-                  desenvolvimento de software e práticas de engenharia
-                  voltadas para a nuvem.
+                  {t("resume.coursesAndCertifications.description")}
                 </p>
 
                 <p>
-                  Também sou certificado como AWS Certified Solutions
-                  Architect – Associate (SAA-C03), certificação que valida meu
-                  conhecimento em design de arquiteturas escaláveis, seguras e
-                  de alto desempenho na AWS.
+                  {t("resume.coursesAndCertifications.description2")}
                 </p>
                 <p>
-                  Estou sempre em busca de aprimoramento e meu objetivo é
-                  continuar expandindo minha expertise, obtendo novas
-                  certificações e aprimorando minha capacidade de projetar
-                  soluções eficientes, seguras e escaláveis na nuvem.
+                  {t("resume.coursesAndCertifications.description3")}
                 </p>
               </div>
             </div>
@@ -116,7 +110,7 @@ export default function Resume() {
 
         <div>
           <h2 className="text-[24px] md:text-[35px] font-bold text-white mb-6">
-            Idiomas
+            {t("resume.languages.title")}
           </h2>
           <div className="border border-white/20 shadow-lg backdrop-blur-[3px] p-8 rounded-lg">
             <ul className="space-y-4">
@@ -188,7 +182,23 @@ export default function Resume() {
                 >
                   <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M12,12.5L8,16.5H11V20H13V16.5H16L12,12.5Z" />
                 </svg>
-                Baixar Currículo
+                {t("resume.downloadResumePT")}
+              </a>
+              <a
+                href="/curriculo-en.pdf"
+                download
+                className="flex items-center gap-2 text-[14px] md:text-[20px] hover:underline text-white"
+              >
+                <svg
+                  width="35"
+                  height="35"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M12,12.5L8,16.5H11V20H13V16.5H16L12,12.5Z" />
+                </svg>
+                {t("resume.downloadResumeEN")}  
               </a>
             </div>
           </div>
@@ -196,7 +206,7 @@ export default function Resume() {
 
         <div className="flex justify-center">
           <p className="text-sm text-white">
-            Copyright ©2025 Todos os direitos reservados
+            {t("resume.copyright")}
           </p>
         </div>
       </div>

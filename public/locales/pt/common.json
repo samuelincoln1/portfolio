@@ -1,0 +1,62 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "Sobre",
+    "projects": "Projetos"
+  },
+  "hero": {
+    "title": "Engenheiro de cloud",
+    "description": "Sou um engenheiro de cloud apaixonado por criar soluções escaláveis e eficientes. Trabalho com AWS, infraestrutura como código e automação para otimizar aplicações e reduzir custos. Meu foco é construir ambientes seguros, resilientes e preparados para alto desempenho e operação contínua.",
+    "downloadPt": "Baixar currículo (pt-br)",
+    "downloadEn": "Baixar currículo (en-us)"
+  },
+  "projects": {
+    "title": "Projetos",
+    "subtitle": "Uma nuvem bem projetada escala, reduz custos e melhora a confiabilidade. Boas práticas de arquitetura e automação fazem a diferença. Confira abaixo meus projetos:",
+    "descriptionTerraform": "Implementação de uma infraestrutura completa e automatizada na AWS usando Terraform. O projeto inclui VPC, ALB, EC2, banco de dados, segurança e outros componentes essenciais para um ambiente escalável e seguro.",
+    "descriptionLambda": "Aplicação serverless para análise de métricas e logs em tempo real, utilizando AWS Lambda, CloudWatch e QuickSight. Automatiza a coleta, processamento e visualização de dados, permitindo insights rápidos e eficientes sobre eventos e performance da infraestrutura.",
+    "descriptionCodeFlow": "Pipeline de CI/CD automatizado utilizando AWS CodePipeline e GitHub Actions para integrar, testar e implantar aplicações de forma eficiente. O projeto garante entregas contínuas, automação de builds e deploys seguros na AWS.",
+    "copyright": "Copyright ©2025 Todos os direitos reservados"
+  },
+  "about": {
+    "title": "Sobre Mim",
+    "description": "Sou um engenheiro de cloud especializado em AWS, automação e infraestrutura como código. Gosto de transformar desafios complexos em soluções eficientes, utilizando boas práticas para garantir performance, segurança e confiabilidade.",
+    "description2": "Estou sempre disposto a aprender e acredito que, independentemente da tecnologia, é possível dominar qualquer ferramenta ou conceito com dedicação e prática. Para mim, a capacidade de adaptação e o aprendizado contínuo são essenciais na área de tecnologia.",
+    "description3": "Além da tecnologia, sou fascinado por viagens e por explorar lugares menos conhecidos, adoro ler e sou fã de gatinhos."
+  },
+  "resume": {
+    "title": "Competências",
+    "technicalSkills": {
+      "aws": "Amazon Web Services (AWS)",
+      "serverless": "Serverless",
+      "security": "Segurança",
+      "distributedArchitectures": "Arquiteturas Distribuídas",
+      "databases": "Bancos de Dados",
+      "terraform": "Terraform",
+      "cicd": "CI/CD",
+      "linux": "Linux",
+      "python": "Python",
+      "java": "Java",
+      "node": "Node",
+      "react": "React"
+    },
+    "coursesAndCertifications": {
+      "title": "Cursos e Certificações",
+      "description": "Atualmente, sou estudante de Engenharia de Software na PUC Minas, com previsão de conclusão em 2026. Minha formação me proporciona uma base sólida em arquitetura de sistemas, desenvolvimento de software e práticas de engenharia voltadas para a nuvem.",
+      "description2": "Também sou certificado como AWS Certified Solutions Architect – Associate (SAA-C03), certificação que valida meu conhecimento em design de arquiteturas escaláveis, seguras e de alto desempenho na AWS.",
+      "description3": "Estou sempre em busca de aprimoramento e meu objetivo é continuar expandindo minha expertise, obtendo novas certificações e aprimorando minha capacidade de projetar soluções eficientes, seguras e escaláveis na nuvem."
+    },
+    "languages": {
+      "title": "Idiomas",
+      "portuguese": "Português",
+      "english": "Inglês",
+      "fluent": "Fluente",
+      "advanced": "Avançado"
+    },
+    "downloadResumePT": "Baixar currículo (pt-br)",
+    "downloadResumeEN": "Baixar currículo (en-us)",
+    "copyright": "Copyright ©2025 Todos os direitos reservados"
+  }
+  
+
+}

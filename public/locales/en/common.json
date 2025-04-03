@@ -1,0 +1,60 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects"
+  },
+  "hero": {
+    "title": "Cloud Engineer",
+    "description": "I'm a cloud engineer passionate about creating scalable and efficient solutions. I work with AWS, infrastructure as code, and automation to optimize applications and reduce costs. My focus is on building secure, resilient environments prepared for high performance and continuous operation.",
+    "downloadPt": "Download Resume (pt-br)",
+    "downloadEn": "Download Resume (en-us)"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "A well-designed cloud scales, reduces costs, and improves reliability. Good architecture practices and automation make the difference. Check out my projects below:",
+    "descriptionTerraform": "Implementation of a complete and automated infrastructure in AWS using Terraform. The project includes VPC, ALB, EC2, database, security, and other essential components for a scalable and secure environment.",
+    "descriptionLambda": "Serverless application for real-time analysis of metrics and logs, using AWS Lambda, CloudWatch, and QuickSight. Automates data collection, processing, and visualization, allowing quick insights into events and infrastructure performance.",
+    "descriptionCodeFlow": "Automated CI/CD pipeline using AWS CodePipeline and GitHub Actions to integrate, test, and deploy applications efficiently. The project ensures continuous deliveries, automated builds, and secure deployments in AWS.",
+    "copyright": "Copyright ©2025 All rights reserved"
+  },
+  "about": {
+    "title": "About Me",
+    "description": "I'm a cloud engineer passionate about creating scalable and efficient solutions. I work with AWS, infrastructure as code, and automation to optimize applications and reduce costs. My focus is on building secure, resilient environments prepared for high performance and continuous operation.",
+    "description2": "I am always willing to learn and believe that, regardless of the technology, it is possible to master any tool or concept with dedication and practice. For me, adaptability and continuous learning are essential in the technology field.",
+    "description3": "Beyond technology, I'm fascinated by traveling and exploring off-the-beaten-path places, I love reading and I love cats."
+  },
+  "resume": {
+    "title": "Competencies",
+    "technicalSkills": {
+      "aws": "Amazon Web Services (AWS)",
+      "serverless": "Serverless",
+      "security": "Security",
+      "distributedArchitectures": "Distributed Architectures",
+      "databases": "Databases",
+      "terraform": "Terraform",
+      "cicd": "CI/CD",
+      "linux": "Linux",
+      "python": "Python",
+      "java": "Java",
+      "node": "Node",
+      "react": "React"
+    },
+    "coursesAndCertifications": {
+      "title": "Courses and Certifications",
+      "description": "Currently, I am a student of Software Engineering at PUC Minas, with a graduation date in 2026. My education provides a solid foundation in system architecture, software development, and engineering practices focused on cloud computing.",
+      "description2": "I am also certified as AWS Certified Solutions Architect – Associate (SAA-C03), a certification that validates my knowledge in scalable, secure, and high-performance architecture in AWS.",
+      "description3": "I am always seeking improvement and my goal is to continue expanding my expertise, obtaining new certifications, and improving my ability to design efficient, secure, and scalable solutions in the cloud."
+    },
+    "languages": {
+      "title": "Languages",
+      "portuguese": "Portuguese",
+      "english": "English",
+      "fluent": "Fluent",
+      "advanced": "Advanced"
+    },
+    "downloadResumePT": "Download resume (pt-br)",
+    "downloadResumeEN": "Download resume (en-us)",
+    "copyright": "Copyright ©2025 All rights reserved"
+  }
+}

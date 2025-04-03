@@ -1,12 +1,14 @@
+'use client'
 import ProjectCard from "./projectCard";
-import ParticlesBackground2 from "../effects/ParticlesBackground2";
+import { useTranslation } from 'next-i18next'
 const Projects = () => {
+  const { t } = useTranslation('common')
   const projects = [
     {
       imageUrl: "/images/terraform.jpg",
       title: "Infra as Code",
       description:
-        "Implementação de uma infraestrutura completa e automatizada na AWS usando Terraform. O projeto inclui VPC, ALB, EC2, banco de dados, segurança e outros componentes essenciais para um ambiente escalável e seguro.",
+        t('projects.descriptionTerraform'),
       projectUrl: "/infra-as-code",
       stack: ["Terraform", "AWS ", "Docker", "Kubernetes"],
     },
@@ -14,7 +16,7 @@ const Projects = () => {
       imageUrl: "/images/lambda.png",
       title: "Serverless Logs Analyzer",
       description:
-        "Aplicação serverless para análise de métricas e logs em tempo real, utilizando AWS Lambda, CloudWatch e QuickSight. Automatiza a coleta, processamento e visualização de dados, permitindo insights rápidos e eficientes sobre eventos e performance da infraestrutura.",
+        t('projects.descriptionLambda'),
       projectUrl: "/serverless-logs-analyzer",
       stack: [
         "AWS Lambda",
@@ -28,7 +30,7 @@ const Projects = () => {
       imageUrl: "/images/cicd.png",
       title: "CodeFlow",
       description:
-        "Pipeline de CI/CD automatizado utilizando AWS CodePipeline e GitHub Actions para integrar, testar e implantar aplicações de forma eficiente. O projeto garante entregas contínuas, automação de builds e deploys seguros na AWS.",
+        t('projects.descriptionCodeFlow'),
       projectUrl: "/codeflow",
       stack: ["AWS CodePipeline", "GitHub Actions"],
     },
@@ -39,9 +41,7 @@ const Projects = () => {
     
       <div className="flex flex-col gap-8 py-6 md:py-13 px-4 md:px-0">
         <p className="text-center text-white text-sm md:text-lg max-w-[300px] md:max-w-[1400px] mx-auto">
-          Uma nuvem bem projetada escala, reduz custos e melhora a
-          confiabilidade. Boas práticas de arquitetura e automação fazem a
-          diferença. Confira abaixo meus projetos:
+          {t('projects.subtitle')}
         </p>
         <div>
           {projects.map((project, index) => (
@@ -98,7 +98,7 @@ const Projects = () => {
           </a>
         </div>
         <p className="text-sm text-white text-center">
-          Copyright ©2025 Todos os direitos reservados
+          {t('projects.copyright')}
         </p>
       </div>
     </div>

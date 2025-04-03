@@ -1,26 +1,24 @@
-import { Heebo } from "next/font/google";
-import "./globals.css";
-import Navbar from "./components/util/navbar";
+'use client'
+import { Heebo } from "next/font/google"
+import "./globals.css"
+import "./i18n"
+import Navbar from "./components/util/navbar"
 
 const heebo = Heebo({
   variable: "--font-heebo",
   subsets: ["latin"],
-});
-
-export const metadata = {
-  title: "Samuel Lincoln - Portifolio",
-  description: "Portifolio de Samuel Lincoln, Engenheiro de Nuvem",
-};
+})
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="pt">
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+        <title>Samuel Lincoln - Portifolio</title>
+        <meta name="description" content="Portifolio de Samuel Lincoln, Engenheiro de Nuvem" />
       </head>
       <body className={`${heebo.variable} antialiased`}>
         {children}
       </body>
     </html>
-  );
+  )
 }
