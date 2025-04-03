@@ -47,7 +47,7 @@ This is my professional portfolio as a Cloud Engineer, highlighting my experienc
 
 ## 📱 Sections
 
-- **Home**: Initial presentation focusing on cloud engineering
+- **Home**: Initial presentation
 - **About**: Detailed experience with AWS and cloud architectures
 - **Projects**: Portfolio of cloud and DevOps implementations
 - **Resume**: Available for download in PT-BR and EN-US
