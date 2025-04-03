@@ -28,8 +28,8 @@
     "title": "Competências",
     "technicalSkills": {
       "aws": "Amazon Web Services (AWS)",
-      "serverless": "Serverless",
-      "security": "Segurança",
+      "serverless": "Desenvolvimento Serverless",
+      "security": "Segurança na nuvem",
       "distributedArchitectures": "Arquiteturas Distribuídas",
       "databases": "Bancos de Dados",
       "terraform": "Terraform",
