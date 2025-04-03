@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Samuel Lincoln - Cloud Engineering Portfolio
 
-## Getting Started
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![i18n](https://img.shields.io/badge/i18n-26A69A?style=for-the-badge&logo=i18next&logoColor=white)
 
-First, run the development server:
+## 🚀 About the Project
+
+This is my professional portfolio as a Cloud Engineer, highlighting my experience with AWS, infrastructure as code, and serverless architectures. The website was developed with Next.js and React, and its infrastructure was fully automated using modern DevOps practices.
+
+### ☁️ Cloud Infrastructure
+
+- **Hosting**: AWS S3 for static content
+- **CDN**: CloudFront for global content distribution
+- **DNS**: Route 53 for domain management
+- **SSL/TLS**: Certificates managed by AWS Certificate Manager
+- **IaC**: Infrastructure defined and versioned with Terraform
+- **CI/CD**: Automated pipeline for continuous deployment
+
+### ✨ Features
+
+- Modern and responsive design
+- Multilingual support (PT/EN)
+- Global distribution via CloudFront
+- Detailed sections about cloud projects
+- High performance and low latency
+- SEO optimized
+
+### 🛠️ Technical Stack
+
+#### Frontend
+- Next.js 15.2
+- React 19.0
+- TailwindCSS
+- i18next for internationalization
+- Particles.js for visual effects
+
+#### Cloud & DevOps
+- AWS (S3, CloudFront, Route 53, ACM)
+- Terraform for IaC
+- GitHub Actions for CI/CD
+- Monitoring with CloudWatch
+
+## 🚀 How to Run
+
+To run the project locally:
 
 ```bash
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Access [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 📱 Sections
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Home**: Initial presentation focusing on cloud engineering
+- **About**: Detailed experience with AWS and cloud architectures
+- **Projects**: Portfolio of cloud and DevOps implementations
+- **Resume**: Available for download in PT-BR and EN-US
 
-## Learn More
+## 🌐 Deploy
 
-To learn more about Next.js, take a look at the following resources:
+The site is in production on AWS, using a modern and scalable architecture:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Storage**: S3 for static hosting
+- **CDN**: CloudFront for global distribution
+- **Security**: SSL/TLS with AWS Certificate Manager
+- **Performance**: Global low latency through edge locations
+- **Monitoring**: CloudWatch for metrics and logs
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📫 Contact
 
-## Deploy on Vercel
+- LinkedIn: [Samuel Lincoln](https://www.linkedin.com/in/samuel-gomes-213429209/)
+- GitHub: [@samuelincoln1](https://github.com/samuelincoln1)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📝 License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Copyright © 2025 Samuel Lincoln. All rights reserved.
