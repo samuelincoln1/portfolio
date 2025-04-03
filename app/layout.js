@@ -9,7 +9,7 @@ const heebo = Heebo({
 
 export const metadata = {
   title: "Samuel Lincoln - Portifolio",
-  description: "Portifolio de Samuel Lincoln, engenheiro de nuvem",
+  description: "Portifolio de Samuel Lincoln, Engenheiro de Nuvem",
 };
 
 export default function RootLayout({ children }) {

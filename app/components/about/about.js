@@ -9,6 +9,7 @@ export default function About() {
     "Bancos de Dados SQL e NoSQL",
     "Python",
     "Java",
+    "Linux",
     "CI/CD",
     "Terraform",
   ];

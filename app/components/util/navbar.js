@@ -16,11 +16,15 @@ export default function Navbar() {
     { href: '/about', label: 'Sobre' },
   ]
 
+  const textColor = pathname === '/about' 
+    ? 'text-black' 
+    : 'text-white'
+
   return (
     <nav className="p-4 z-50">
       {/* Menu Hambúrguer - visível apenas em telas pequenas */}
       <button 
-        className="md:hidden absolute right-4 top-4 z-50"
+        className={`md:hidden absolute right-4 top-4 z-[101] ${textColor}`}
         onClick={() => setIsMenuOpen(!isMenuOpen)}
       >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -37,7 +41,7 @@ export default function Navbar() {
         flex flex-col md:flex-row
         md:space-x-6 space-y-4 md:space-y-0
         md:relative absolute right-0 top-0
-        md:bg-transparent bg-white/95
+        md:bg-transparent
         md:p-0 p-8 pt-16
         md:w-auto w-64
         md:flex ${isMenuOpen ? 'flex' : 'hidden'}
@@ -45,16 +49,13 @@ export default function Navbar() {
         md:justify-end
         shadow-lg md:shadow-none
         backdrop-blur-sm
+        z-[100]
       `}>
         {links.map((link) => (
           <li key={link.href}>
             <Link
               href={link.href}
-              className={`text-xl font-medium transition-colors hover:text-[#77B2E9] ${
-                pathname === link.href
-                  ? 'text-[#77B2E9]'
-                  : 'text-black'
-              }`}
+              className={`text-xl font-medium transition-colors hover:underline ${textColor}`}
               onClick={() => setIsMenuOpen(false)}
             >
               {link.label}

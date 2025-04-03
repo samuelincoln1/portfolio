@@ -6,7 +6,7 @@ const Projects = () => {
       imageUrl: "/images/terraform.jpg",
       title: "Infra as Code",
       description:
-       "Implementação de uma infraestrutura completa e automatizada na AWS usando Terraform. O projeto inclui VPC, ALB, EC2, banco de dados, segurança e outros componentes essenciais para um ambiente escalável e seguro.",
+        "Implementação de uma infraestrutura completa e automatizada na AWS usando Terraform. O projeto inclui VPC, ALB, EC2, banco de dados, segurança e outros componentes essenciais para um ambiente escalável e seguro.",
       projectUrl: "/infra-as-code",
       stack: ["Terraform", "AWS ", "Docker", "Kubernetes"],
     },
@@ -16,7 +16,13 @@ const Projects = () => {
       description:
         "Aplicação serverless para análise de métricas e logs em tempo real, utilizando AWS Lambda, CloudWatch e QuickSight. Automatiza a coleta, processamento e visualização de dados, permitindo insights rápidos e eficientes sobre eventos e performance da infraestrutura.",
       projectUrl: "/serverless-logs-analyzer",
-      stack: ["AWS Lambda", "Amazon CloudWatch", "Amazon QuickSight", "API Gateway", "S3"],
+      stack: [
+        "AWS Lambda",
+        "Amazon CloudWatch",
+        "Amazon QuickSight",
+        "API Gateway",
+        "S3",
+      ],
     },
     {
       imageUrl: "/images/cicd.png",
@@ -29,7 +35,7 @@ const Projects = () => {
   ];
 
   return (
-    <div className="flex flex-col">
+    <div>
       {projects.map((project, index) => (
         <div key={`project-container-${index}`}>
           <ProjectCard
@@ -40,18 +46,7 @@ const Projects = () => {
             projectUrl={project.projectUrl}
             stack={project.stack}
           />
-          {index !== projects.length - 1 && (
-            <svg 
-              className="w-full"
-              height="2" 
-              viewBox="0 0 100 2" 
-              fill="none" 
-              xmlns="http://www.w3.org/2000/svg"
-              preserveAspectRatio="none"
-            >
-              <path d="M0 1L100 1" stroke="#E0E0E0" strokeWidth="1" />
-            </svg>
-          )}
+         
         </div>
       ))}
     </div>
