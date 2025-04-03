@@ -1,8 +1,7 @@
-import Hero from "./components/intro/Hero";
+import Hero from "./components/Hero";
 import Navbar from "./components/util/navbar";
 import Projects from "./components/projects/projects";
 import ParticlesBackground from "./components/effects/ParticlesBackground";
-import ParticlesBackground2 from "./components/effects/ParticlesBackground2";
 export default function Index() {
   return (
     <div className="relative">
@@ -11,7 +10,6 @@ export default function Index() {
         <div className="absolute inset-0 bg-black/45"></div>
         <Navbar />
         <Hero />
-     
       </div>
       <Projects />
       <ParticlesBackground/>
