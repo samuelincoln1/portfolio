@@ -35,7 +35,6 @@ This is my professional portfolio as a Cloud Engineer, highlighting my experienc
 - React 19.0
 - TailwindCSS
 - i18next for internationalization
-- Particles.js for visual effects
 
 #### Cloud & DevOps
 - AWS (S3, CloudFront, Route 53, ACM)
