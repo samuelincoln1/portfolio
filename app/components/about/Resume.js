@@ -169,22 +169,6 @@ export default function Resume() {
               </a>
 
               <a
-                href="/curriculo.pdf"
-                download
-                className="flex items-center gap-2 text-[14px] md:text-[20px] hover:underline text-white"
-              >
-                <svg
-                  width="35"
-                  height="35"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M12,12.5L8,16.5H11V20H13V16.5H16L12,12.5Z" />
-                </svg>
-                {t("resume.downloadResumePT")}
-              </a>
-              <a
                 href="/curriculo-en.pdf"
                 download
                 className="flex items-center gap-2 text-[14px] md:text-[20px] hover:underline text-white"
@@ -199,6 +183,22 @@ export default function Resume() {
                   <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M12,12.5L8,16.5H11V20H13V16.5H16L12,12.5Z" />
                 </svg>
                 {t("resume.downloadResumeEN")}  
+              </a>
+              <a
+                href="/curriculo.pdf"
+                download
+                className="flex items-center gap-2 text-[14px] md:text-[20px] hover:underline text-white"
+              >
+                <svg
+                  width="35"
+                  height="35"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M12,12.5L8,16.5H11V20H13V16.5H16L12,12.5Z" />
+                </svg>
+                {t("resume.downloadResumePT")}
               </a>
             </div>
           </div>
