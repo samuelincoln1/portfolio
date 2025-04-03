@@ -45,20 +45,6 @@ This is my professional portfolio as a Cloud Engineer, highlighting my experienc
 - GitHub Actions for CI/CD
 - Monitoring with CloudWatch
 
-## 🚀 How to Run
-
-To run the project locally:
-
-```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-```
-
-Access [http://localhost:3000](http://localhost:3000) in your browser.
-
 ## 📱 Sections
 
 - **Home**: Initial presentation focusing on cloud engineering
