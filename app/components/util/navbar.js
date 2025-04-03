@@ -1,11 +1,9 @@
 'use client'
 
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 
 export default function Navbar() {
-  const pathname = usePathname()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const links = [
@@ -16,15 +14,11 @@ export default function Navbar() {
     { href: '/about', label: 'Sobre' },
   ]
 
-  const textColor = pathname === '/about' 
-    ? 'text-black' 
-    : 'text-white'
-
   return (
     <nav className="p-4 z-50">
       {/* Menu Hambúrguer - visível apenas em telas pequenas */}
       <button 
-        className={`md:hidden absolute right-4 top-4 z-[101] ${textColor}`}
+        className={`md:hidden absolute right-4 top-4 z-[101] text-white`}
         onClick={() => setIsMenuOpen(!isMenuOpen)}
       >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -55,7 +49,7 @@ export default function Navbar() {
           <li key={link.href}>
             <Link
               href={link.href}
-              className={`text-xl font-medium transition-colors hover:underline ${textColor}`}
+              className={`text-xl font-medium transition-colors hover:underline text-white`}
               onClick={() => setIsMenuOpen(false)}
             >
               {link.label}
