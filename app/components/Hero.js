@@ -15,10 +15,10 @@ export default function Hero() {
           {t("hero.description")}
         </p>
         <div className="flex flex-col md:flex-row md:gap-4">
-          <button className="bg-white text-black px-4 py-2 rounded-md mt-4 hover:bg-gray-200 transition-colors md:text-2xl text-sm">
+          <button className="bg-white text-black px-4 py-2 rounded-md mt-4 hover:bg-gray-200 transition-colors md:text-xl text-sm">
             <a href="/curriculo-en.pdf">{t("hero.downloadEn")}</a>
           </button>
-          <button className="bg-white text-black px-4 py-2 rounded-md mt-4 hover:bg-gray-200 transition-colors md:text-2xl text-sm">
+          <button className="bg-white text-black px-4 py-2 rounded-md mt-4 hover:bg-gray-200 transition-colors md:text-xl text-sm">
             <a href="/curriculo-pt.pdf">{t("hero.downloadPt")}</a>
           </button>
         </div>
