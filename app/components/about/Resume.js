@@ -57,7 +57,7 @@ export default function Resume() {
                       ))}
                   </ul>
                 </div>
-                <div className="mt-0">
+                <div className=" mt-8 md:mt-0">
                   <ul className="space-y-4">
                     {technicalSkills
                       .slice(Math.ceil(technicalSkills.length / 2))
