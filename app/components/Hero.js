@@ -5,7 +5,7 @@ export default function Hero() {
   const { t } = useTranslation("common");
 
   return (
-    <div className="container mx-auto md:mt-auto xl:mt-20 relative flex flex-col md:min-h-[calc(100vh-44px)] min-h-screen lg:flex-row gap-8 lg:gap-[106px] px-4 lg:px-0 items-center justify-center md:items-start md:justify-start">
+    <div className="container mx-auto md:mt-auto relative flex flex-col md:min-h-[calc(100vh-44px)] min-h-screen lg:flex-row gap-8 lg:gap-[106px] px-4 lg:px-0 items-center justify-center md:items-start md:justify-start">
       <div className="flex flex-col text-center mx-auto justify-center items-center mb-auto mt-40 md:mt-56 z-50">
         <p className="text-white text-2xl">{t("hero.title")}</p>
         <h1 className="text-[40px] md:text-[80px] font-extrabold text-white">
