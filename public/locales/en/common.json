@@ -13,8 +13,8 @@
   "projects": {
     "title": "Projects",
     "subtitle": "A well-designed cloud scales, reduces costs, and improves reliability. Good architecture practices and automation make the difference.",
-    "descriptionTerraform": "Implementation of a fully automated infrastructure on AWS using Terraform and Ansible. Terraform is used for infrastructure provisioning, including VPC, ALB, EC2, database, and security, while Ansible handles configuration management and automation of instances. The project ensures a scalable, secure, and easily reproducible environment by integrating Infrastructure as Code (IaC) and automation for greater efficiency.",
-    "descriptionLambda": "Serverless application for real-time analysis of metrics and logs, using AWS Lambda, CloudWatch, and QuickSight. Automates data collection, processing, and visualization, allowing quick insights into events and infrastructure performance.",
+    "descriptionTerraform":"Implementation of a complete and automated infrastructure on AWS using Terraform and Ansible. Terraform is used for provisioning resources such as VPC, ALB, EC2, database, and security, while Ansible handles instance configuration and automation. The Terraform state is stored in S3 and DynamoDB, enabling versioning, encryption, state locking, and high availability of the backend. The project ensures a scalable, secure, and easily reproducible environment by integrating Infrastructure as Code (IaC) and automation for greater efficiency." ,
+    "descriptionLambda": "Serverless application for real-time analysis of metrics and logs using AWS Lambda, CloudWatch, and QuickSight. Automates data collection, processing, and visualization, allowing for quick insights into events and infrastructure performance.",
     "descriptionCodeFlow": "Automated CI/CD pipeline using AWS CodePipeline and GitHub Actions to integrate, test, and deploy applications efficiently. The project ensures continuous deliveries, automated builds, and secure deployments in AWS.",
     "copyright": "Copyright ©2025 All rights reserved"
   },
