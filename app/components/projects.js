@@ -9,15 +9,15 @@ const Projects = () => {
       title: "Infra as Code",
       description:
         t('projects.descriptionTerraform'),
-      projectUrl: "/infra-as-code",
-      stack: ["Terraform", "AWS ", "Ansible", "S3", "DynamoDB"],
+      projectUrl: "/projects/infra-as-code",
+      stack: ["Terraform", "AWS ", "S3", "DynamoDB"],
     },
     {
       imageUrl: "/images/lambda.png",
       title: "Serverless Logs Analyzer",
       description:
         t('projects.descriptionLambda'),
-      projectUrl: "/serverless-logs-analyzer",
+      projectUrl: "/projects/serverless-logs-analyzer",
       stack: [
         "AWS Lambda",
         "Amazon CloudWatch",
@@ -31,14 +31,14 @@ const Projects = () => {
       title: "CodeFlow",
       description:
         t('projects.descriptionCodeFlow'),
-      projectUrl: "/codeflow",
+      projectUrl: "/projects/codeflow",
       stack: ["AWS CodePipeline", "GitHub Actions"],
     },
   ];
 
   return (
     <div className="md:px-30 px-6 relative flex flex-col bg-gradient-to-b from-black to-purple-950">
-      <div className="flex flex-col gap-8 py-6 md:py-13 px-4 md:px-0">
+      <div className="flex flex-col gap-8 py-6 md:py-10 px-4 md:px-0">
         <p className="text-center text-white text-sm md:text-xl max-w-[300px] md:my-30 mt-20 md:max-w-[1500px] mx-auto">
           {t('projects.subtitle')}
         </p>

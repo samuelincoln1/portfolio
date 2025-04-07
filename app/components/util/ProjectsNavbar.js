@@ -18,7 +18,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="p-4 z-50 fixed md:static top-0 right-0 left-0 w-full bg-transparent z-[100]">
+    <nav className="p-6 z-50 fixed top-0 right-0 left-0 w-full bg-[#15181e] z-[101]">
     
      
       <button

@@ -6,21 +6,21 @@
   },
   "hero": {
     "title": "Engenheiro de nuvem",
-    "description": "Sou um engenheiro de nuvem apaixonado por criar soluções escaláveis e eficientes. Trabalho com AWS, infraestrutura como código e automação para otimizar aplicações e reduzir custos. Meu foco é construir e manter ambientes seguros, resilientes e preparados para alto desempenho e operação contínua. Aqui você pode encontrar alguns de meus projetos, meu currículo e mais sobre mim.",
+    "description": "Sou um engenheiro de nuvem com experiência em engenharia de software, apaixonado por criar soluções escaláveis e eficientes. Trabalho com AWS, infraestrutura como código e automação para otimizar aplicações e reduzir custos. Meu foco é construir e manter ambientes seguros, resilientes e preparados para alto desempenho e operação contínua. Aqui você pode encontrar alguns de meus projetos, meu currículo e mais sobre mim.",
     "downloadPt": "Baixar currículo (pt-br)",
     "downloadEn": "Baixar currículo (en-us)"
   },
   "projects": {
     "title": "Projetos",
     "subtitle": "Uma nuvem bem projetada escala, reduz custos e melhora a confiabilidade. Boas práticas de arquitetura e automação fazem a diferença.",
-    "descriptionTerraform": "Implementação de uma infraestrutura completa e automatizada na AWS usando Terraform e Ansible. O Terraform é utilizado para provisionamento da infraestrutura, incluindo VPC, ALB, EC2, banco de dados e segurança, enquanto o Ansible gerencia a configuração e automação das instâncias. O estado do Terraform é armazenado em S3 e DynamoDB, permitindo versionamento, criptografia, bloqueio de concorrência e alta disponibilidade do backend. O projeto garante um ambiente escalável, seguro e facilmente reproduzível, integrando infraestrutura como código (IaC) e automação para maior eficiência.",
+    "descriptionTerraform": "Implementação de uma infraestrutura completa e automatizada na AWS usando Terraform para provisionamento, que inclui VPC, ALB, EC2, Auto Scaling, banco de dados e configurações de segurança. O estado do Terraform é armazenado em S3 e DynamoDB, permitindo versionamento, criptografia, bloqueio de concorrência e alta disponibilidade do backend. O projeto garante um ambiente escalável, seguro e facilmente reproduzível, integrando infraestrutura como código (IaC) e automação para maior eficiência.",
     "descriptionLambda": "Aplicação serverless para análise de métricas e logs em tempo real, utilizando AWS Lambda, CloudWatch e QuickSight. Automatiza a coleta, processamento e visualização de dados, permitindo insights rápidos e eficientes sobre eventos e performance da infraestrutura.",
     "descriptionCodeFlow": "Pipeline de CI/CD automatizado utilizando AWS CodePipeline e GitHub Actions para integrar, testar e implantar aplicações de forma eficiente. O projeto garante entregas contínuas, automação de builds e deploys seguros na AWS.",
     "copyright": "Copyright ©2025 Todos os direitos reservados"
   },
   "about": {
     "title": "Sobre Mim",
-    "description": "Sou um engenheiro de cloud especializado em AWS, automação e infraestrutura como código. Gosto de transformar desafios complexos em soluções eficientes, utilizando boas práticas para garantir performance, segurança e confiabilidade.",
+    "description": "Sou um engenheiro de cloud com background em engenharia de software, especializado em AWS, automação e infraestrutura como código. Gosto de transformar desafios complexos em soluções eficientes, utilizando boas práticas para garantir performance, segurança e confiabilidade.",
     "description2": "Estou sempre disposto a aprender e acredito que, independentemente da tecnologia, é possível dominar qualquer ferramenta ou conceito com dedicação e prática. Para mim, a capacidade de adaptação e o aprendizado contínuo são essenciais na área de tecnologia.",
     "description3": "Além da tecnologia, sou fascinado por viagens e por explorar lugares menos conhecidos, adoro ler e sou fã de gatinhos."
   },

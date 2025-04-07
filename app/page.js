@@ -1,6 +1,6 @@
 import Hero from "./components/Hero";
 import Navbar from "./components/util/navbar";
-import Projects from "./components/projects/projects";
+import Projects from "./components/projects";
 import ParticlesBackground from "./components/effects/ParticlesBackground";
 export default function Index() {
   return (

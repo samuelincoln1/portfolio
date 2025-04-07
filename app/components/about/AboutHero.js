@@ -16,7 +16,7 @@ export default function AboutHero() {
             </h1>
             <div className="text-[14px] md:text-[18px] max-w-[300px] md:max-w-[750px] text-white space-y-6">
               <p>
-                {t("about.description")}
+                {t("about.description")} asdasdasd
               </p>
               <p>
                 {t("about.description2")}
