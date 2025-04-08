@@ -364,11 +364,23 @@ hash_key = "LockID"`;
                   <li className="mb-2">
                     <strong>Tags: </strong> The VPC is tagged with{" "}
                     <span className="text-[#6183BB]">
-                      Name = "iac-project-vpc"
+                      <span className="text-purple-500">Name</span> <span className="text-yellow-500">=</span> <span className="text-green-400">"iac-project-vpc"</span>
                     </span>{" "}
                     for easy identification.
                   </li>
                 </ul>
+                <CodeContainer fileName="vpc/main.tf">
+                  {`
+resource "aws_vpc" "main" {
+  cidr_block           = var.cidr_block
+  enable_dns_hostnames = var.enable_dns_hostnames
+  enable_dns_support   = var.enable_dns_support
+  tags = {
+    Name = "iac-project-vpc"
+  }
+}
+                `}
+                </CodeContainer>
                 <p>2. Internet Gateway</p>
                 <ul className="list-disc pl-5">
                   <li className="mb-2">
@@ -384,11 +396,21 @@ hash_key = "LockID"`;
                   <li className="mb-2">
                     <strong>Tags: </strong> Tagged with{" "}
                     <span className="text-[#6183BB]">
-                      Name = "iac-project-igw"
+                    <span className="text-purple-500">Name</span> <span className="text-yellow-500">=</span> <span className="text-green-400">"iac-project-igw"</span>
                     </span>
                     .
                   </li>
                 </ul>
+                <CodeContainer fileName="vpc/main.tf">
+                  {`
+resource "aws_internet_gateway" "main" {
+  vpc_id = aws_vpc.main.id
+  tags = {
+    Name = "iac-project-igw"
+  }
+}
+                `}
+                </CodeContainer>
                 <p>3. Subnets</p>
                 <p>
                   <strong>Public Subnets</strong>
@@ -417,7 +439,7 @@ hash_key = "LockID"`;
                   <li className="mb-2">
                     <strong>Public IP Mapping: </strong> Enabled with{" "}
                     <span className="text-[#6183BB]">
-                      var.map_public_ip_on_launch = true
+                      var.map_public_ip_on_launch <span className="text-yellow-500">=</span> <span className="text-green-500">true</span>
                     </span>
                   </li>
                   <li className="mb-2">
@@ -434,7 +456,7 @@ hash_key = "LockID"`;
                     <strong>Tags: </strong> Each subnet is tagged for
                     identification, e.g,{" "}
                     <span className="text-[#6183BB]">
-                      Name = "iac-project-public-subnet-1"
+                    <span className="text-purple-500">Name</span> <span className="text-yellow-500">=</span> <span className="text-green-400">"iac-project-public-subnet-1"</span>
                     </span>
                   </li>
                 </ul>
@@ -450,7 +472,7 @@ hash_key = "LockID"`;
                     ,{" "}
                     <span className="text-[#6183BB]">
                       aws_subnet.private-subnet-2
-                    </span> {" "}
+                    </span>{" "}
                     and{" "}
                     <span className="text-[#6183BB]">
                       aws_subnet.private-subnet-3
@@ -473,7 +495,7 @@ hash_key = "LockID"`;
                   <li className="mb-2">
                     <strong>Public IP Mapping: </strong> Disabled with{" "}
                     <span className="text-[#6183BB]">
-                      var.map_public_ip_on_launch = false
+                      var.map_public_ip_on_launch <span className="text-yellow-500">=</span> <span className="text-red-500">false</span>
                     </span>
                   </li>
                   <li className="mb-2">
@@ -490,10 +512,187 @@ hash_key = "LockID"`;
                     <strong>Tags: </strong> Each subnet is tagged for
                     identification, e.g,{" "}
                     <span className="text-[#6183BB]">
-                      Name = "iac-project-private-subnet-1"
+                    <span className="text-purple-500">Name</span> <span className="text-yellow-500">=</span> <span className="text-green-400">"iac-project-private-subnet-1"</span>
                     </span>
                   </li>
                 </ul>
+                <CodeContainer fileName="vpc/main.tf">
+                  {`
+resource "aws_subnet" "public-subnet-1" {
+    vpc_id                  = aws_vpc.main.id
+    cidr_block              = var.public_subnet_cidr_block_1
+    map_public_ip_on_launch = var.map_public_ip_on_launch
+    availability_zone       = var.availability_zone_1
+    tags = {
+      Name = "iac-project-public-subnet-1"
+    }
+  }
+  
+  resource "aws_subnet" "public-subnet-2" {
+    vpc_id                  = aws_vpc.main.id
+    cidr_block              = var.public_subnet_cidr_block_2
+    map_public_ip_on_launch = var.map_public_ip_on_launch
+    availability_zone       = var.availability_zone_2
+    tags = {
+      Name = "iac-project-public-subnet-2"
+    }
+  }
+  
+  
+  resource "aws_subnet" "private-subnet-1" {
+    vpc_id                  = aws_vpc.main.id
+    cidr_block              = var.private_subnet_cidr_block_1
+    map_public_ip_on_launch = false
+    availability_zone       = var.availability_zone_1
+    tags = {
+      Name = "iac-project-private-subnet-1"
+    }
+  }
+  resource "aws_subnet" "private-subnet-2" {
+    vpc_id                  = aws_vpc.main.id
+    cidr_block              = var.private_subnet_cidr_block_2
+    map_public_ip_on_launch = false
+    availability_zone       = var.availability_zone_2
+    tags = {
+      Name = "iac-project-private-subnet-2"
+    }
+  }
+  
+  resource "aws_subnet" "private-subnet-3" {
+    vpc_id                  = aws_vpc.main.id
+    cidr_block              = var.private_subnet_cidr_block_3
+    map_public_ip_on_launch = false
+    availability_zone       = var.availability_zone_2
+    tags = {
+      Name = "iac-project-private-subnet-3"
+    }
+  }
+                `}
+                </CodeContainer>
+                <p>4. Route Tables</p>
+                <p>
+                  <strong>Public Route Table</strong>
+                </p>
+                <ul className="list-disc pl-5">
+                  <li className="mb-2">
+                    <strong>Resource name: </strong>{" "}
+                    <span className="text-[#6183BB]">
+                      aws_route_table.public-route-table
+                    </span>
+                  </li>
+                  <li className="mb-2">
+                    <strong>Routes: </strong> Includes a route for{" "}
+                    <span className="text-[#6183BB]">0.0.0.0/0</span> thhrough
+                    the internet gateway (
+                    <span className="text-[#6183BB]">
+                      aws_internet_gateway.main.id
+                    </span>
+                    )
+                  </li>
+                  <li className="mb-2">
+                    <strong>Tags: </strong> Tagged with{" "}
+                    <span className="text-[#6183BB]">
+                      <span className="text-purple-500">Name</span> <span className="text-yellow-500">=</span> <span className="text-green-400">"iac-project-public-route-table"</span>
+                    </span>
+                  </li>
+                </ul>
+                <p>
+                  <strong>Private Route Table</strong>
+                </p>
+                <ul className="list-disc pl-5">
+                  <li className="mb-2">
+                    <strong>Resource name: </strong>{" "}
+                    <span className="text-[#6183BB]">
+                      aws_route_table.private-route-table
+                    </span>
+                  </li>
+                  <li className="mb-2">
+                    <strong>Tags: </strong> Tagged with{" "}
+                    <span className="text-[#6183BB]">
+                    <span className="text-purple-500">Name</span> <span className="text-yellow-500">=</span> <span className="text-green-400">"iac-project-private-route-table"</span>
+                    </span>
+                  </li>
+                </ul>
+                <CodeContainer fileName="vpc/main.tf">
+                  {`
+resource "aws_route_table" "public-route-table" {
+  vpc_id = aws_vpc.main.id
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.main.id
+  }
+  tags = {
+    Name = "iac-project-public-route-table"
+  }
+}
+
+resource "aws_route_table" "private-route-table" {
+  vpc_id = aws_vpc.main.id
+  tags = {
+    Name = "iac-project-private-route-table"
+  }
+}
+                `}
+                </CodeContainer>
+                <p>5. Route Table Associations</p>
+                <ul className="list-disc pl-5">
+                  <li className="mb-2">
+                    <strong>Public Subnets: </strong>Associated with the public
+                    route table.
+                  </li>
+                  <li className="mb-2">
+                    <strong>Private Subnets: </strong>Associated with the
+                    private route table.
+                  </li>
+                </ul>
+                <CodeContainer fileName="vpc/main.tf">
+                  {`
+resource "aws_route_table_association" "public-route-table-association" {
+  subnet_id      = aws_subnet.public-subnet-1.id
+  route_table_id = aws_route_table.public-route-table.id
+}
+
+resource "aws_route_table_association" "public-route-table-association-2" {
+  subnet_id      = aws_subnet.public-subnet-2.id
+  route_table_id = aws_route_table.public-route-table.id
+}
+
+
+resource "aws_route_table_association" "private-route-table-association" {
+  subnet_id      = aws_subnet.private-subnet-1.id
+  route_table_id = aws_route_table.private-route-table.id
+}
+
+resource "aws_route_table_association" "private-route-table-association-2" {
+  subnet_id      = aws_subnet.private-subnet-2.id
+  route_table_id = aws_route_table.private-route-table.id
+}
+
+resource "aws_route_table_association" "private-route-table-association-3" {
+  subnet_id      = aws_subnet.private-subnet-3.id
+  route_table_id = aws_route_table.private-route-table.id
+}
+
+                `}
+                </CodeContainer>
+                <h2 className="text-[22px] md:text-[26px] font-semibold">
+                  Variables and Outputs
+                </h2>
+                <p>
+                  All variables are defined in the{" "}
+                  <span className="text-[#6183BB]">vpc/variables.tf</span> file
+                  and the outputs that we need to retrieve for future use are
+                  defined in the{" "}
+                  <span className="text-[#6183BB]">vpc/outputs.tf</span> file.
+                </p>
+              </div>,
+              <div
+                id="alb-module"
+                className="flex flex-col gap-4 text-white text-sm md:text-xl max-w-[300px] md:max-w-full"
+              >
+                <h2 className="text-[22px] md:text-[26px] font-semibold">
+                  ALB Module
+                </h2>
               </div>
             </div>
           </div>

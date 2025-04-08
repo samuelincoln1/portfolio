@@ -10,7 +10,7 @@ const Projects = () => {
       description:
         t('projects.descriptionTerraform'),
       projectUrl: "/projects/infra-as-code",
-      stack: ["Terraform", "AWS ", "S3", "DynamoDB"],
+      stack: ["Terraform","DynamoDB", "AWS ", "EC2", "RDS","S3" ],
     },
     {
       imageUrl: "/images/lambda.png",
