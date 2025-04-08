@@ -26,6 +26,7 @@ export default function Sidebar() {
         "backend-configuration",
         "vpc-module",
         "alb-module",
+        "asg-module",
       ];
       let currentSection = "";
       for (let section of sections) {
@@ -105,6 +106,15 @@ export default function Sidebar() {
             onClick={(e) => handleLinkClick(e, "alb-module")}
           >
             ALB Module
+          </a>
+        </li>
+        <li>
+          <a
+            href="#asg-module"
+            className={`hover:underline ${activeSection === "asg-module" ? "font-bold underline" : ""}`}
+            onClick={(e) => handleLinkClick(e, "asg-module")}
+          >
+            ASG Module
           </a>
         </li>
       </ul>

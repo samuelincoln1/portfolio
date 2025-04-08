@@ -997,6 +997,297 @@ resource "aws_security_group" "iac-project-alb-security-group" {
                   the infrastructure.
                 </p>
               </div>
+              <div
+                id="asg-module"
+                className="flex flex-col gap-4 text-white text-sm md:text-xl max-w-[300px] md:max-w-full"
+              >
+                <h2 className="text-[22px] md:text-[26px] font-semibold">
+                  ASG Module
+                </h2>
+                <p>
+                  The ASG (Auto Scaling Group) module is designed to
+                  automatically manage the scaling of EC2 instances based on
+                  demand. This module ensures that the application remains
+                  available and can handle varying levels of traffic by
+                  dynamically adjusting the number of instances in response to
+                  load.
+                </p>
+                <h2 className="text-[22px] md:text-[26px] font-semibold">
+                  Features
+                </h2>
+                <ul className="list-disc pl-5">
+                  <li className="mb-2">
+                    <strong>Lauching template: </strong>Configures a launch
+                    template to define the instance configuration.
+                  </li>
+                  <li className="mb-2">
+                    <strong>Auto Scaling Group: </strong>Manages the scaling of
+                    instances to maintain desired performance.
+                  </li>
+                  <li className="mb-2">
+                    <strong>Security Groups: </strong>Establishes security
+                    groups to control inbound and outbound traffic for the
+                    instances.
+                  </li>
+                </ul>
+                <h2 className="text-[22px] md:text-[26px] font-semibold">
+                  Resources
+                </h2>
+                <p>1. Launch Template</p>
+                <ul className="list-disc pl-5">
+                  <li>
+                    <strong>Resource: </strong>
+                    <span className="text-[#6183BB]">aws_launch_template</span>
+                  </li>
+                  <ul className="list-disc pl-5">
+                    <li>
+                      <span className="text-[#6183BB]">name</span>: The name of
+                      the launch template.
+                    </li>
+                    <li>
+                      <span className="text-[#6183BB]">image_id</span>: The ID
+                      of the AMI to use for the instances.
+                    </li>
+                    <li>
+                      <span className="text-[#6183BB]">instance_type</span>: The
+                      type of instance to use.
+                    </li>
+                    <li>
+                      <span className="text-[#6183BB]">key_name</span>: The name
+                      of the key for SSH access.
+                    </li>
+                    <li>
+                      <span className="text-[#6183BB]">network_interface</span>:
+                      <ul className="list-disc pl-5 ml-5">
+                        <li>
+                          <span className="text-[#6183BB]">
+                            associate_public_ip_address
+                          </span>
+                          : Whether to associate a public IP address with the
+                          instanc, set to false.
+                        </li>
+                        <li>
+                          <span className="text-[#6183BB]">
+                            security_groups
+                          </span>
+                          : List of security group IDs to associate with the
+                          instance.
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <span className="text-[#6183BB]">user_data</span>:
+                      Base64-encoded script to initialize the instance.
+                    </li>
+                  </ul>
+                </ul>
+
+                <CodeContainer fileName="asg/main.tf">
+                  {" "}
+                  {`
+resource "aws_launch_template" "web-server-launch-template" {
+  name          = var.launch_template_name
+  image_id      = var.image_id
+  instance_type = var.instance_type
+  key_name      = var.key_name
+
+  network_interfaces {
+    associate_public_ip_address = false
+    security_groups             = [aws_security_group.web-server-security-group.id]
+  }
+
+  user_data = base64encode(<<-EOF
+              #!/bin/bash
+              echo "Hello, World" > index.html
+              nohup python3 -m http.server 8080 &
+              EOF
+  )
+}
+                `}
+                </CodeContainer>
+                <p>2. Auto Scaling Group</p>
+                <ul className="list-disc pl-5">
+                  <li>
+                    <strong>Resource: </strong>
+                    <span className="text-[#6183BB]">
+                      aws_autoscaling_group
+                    </span>
+                  </li>
+                  <ul className="list-disc pl-5">
+                    <li>
+                      <span className="text-[#6183BB]">name</span>: The name of
+                      the auto scaling group.
+                    </li>
+                    <li>
+                      <span className="text-[#6183BB]">max_size</span>: Maximum
+                      number of instances.
+                    </li>
+                    <li>
+                      <span className="text-[#6183BB]">min_size</span>: Minimum
+                      number of instances.
+                    </li>
+                    <li>
+                      <span className="text-[#6183BB]">desired_capacity</span>:
+                      Desired number of instances.
+                    </li>
+                    <li>
+                      <span className="text-[#6183BB]">
+                        vpc_zone_identifier
+                      </span>
+                      : List of subnet IDs to associate with the auto scaling
+                      group.
+                    </li>
+                    <li>
+                      <span className="text-[#6183BB]">target_group_arns</span>:
+                      List of target group ARNs for load balancing.
+                    </li>
+                  </ul>
+                </ul>
+                <CodeContainer fileName="asg/main.tf">
+                  {`
+resource "aws_autoscaling_group" "web-server-autoscaling-group" {
+  name                = var.autoscaling_group_name
+  max_size            = var.max_size
+  min_size            = var.min_size
+  desired_capacity    = var.desired_capacity
+  vpc_zone_identifier = var.vpc_zone_identifier
+  launch_template {
+    id = aws_launch_template.web-server-launch-template.id
+  }
+  target_group_arns = [var.target_group_arn]
+}
+                  `}
+                </CodeContainer>
+                <p>3. Security Group</p>
+                <ul className="list-disc pl-5">
+                  <li>
+                    <strong>Web Server Security Group</strong>
+                    <ul>
+                      <li>
+                        <strong>Resource: </strong>
+                        <span className="text-[#6183BB]">
+                          aws_security_group
+                        </span>
+                        <ul className="list-disc pl-5 ml-5">
+                          <li>
+                            <span className="text-[#6183BB]">name</span>: The
+                            name of the security group.
+                          </li>
+
+                          <li>
+                            <span className="text-[#6183BB]">vpc_id</span>: The
+                            ID of the VPC where the security group is deployed.
+                          </li>
+                          <li>
+                            <span className="text-[#6183BB]">ingress</span>:
+                            Allows HTTP on port 8080 from the ALB.
+                          </li>
+                          <li>
+                            <span className="text-[#6183BB]">egress</span>:
+                            Allows egress to RDS.
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+
+                    <ul>
+                      <li>
+                        <strong>RDS Security Group</strong>
+                      </li>
+                      <li>
+                        <strong>Resource: </strong>
+                        <span className="text-[#6183BB]">
+                          aws_security_group
+                        </span>
+                        <ul className="list-disc pl-5 ml-5">
+                          <li>
+                            <span className="text-[#6183BB]">name</span>: The
+                            name of the security group.
+                          </li>
+                          <li>
+                            <span className="text-[#6183BB]">vpc_id</span>: The
+                            ID of the VPC where the security group is deployed.
+                          </li>
+                          <li>
+                            <span className="text-[#6183BB]">ingress</span>:
+                            Allows traffic from the web server security group.
+                          </li>
+                          <li>
+                            <span className="text-[#6183BB]">egress</span>:
+                            Allows outbound traffic to any destination.
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+                <CodeContainer fileName="asg/main.tf">
+                  {`
+resource "aws_security_group" "web-server-security-group" {
+  name   = "iac-project-web-server-security-group"
+  vpc_id = var.vpc_id
+  ingress {
+    from_port       = 8080
+    to_port         = 8080
+    protocol        = "tcp"
+    security_groups = [var.alb_security_group_id]
+  }
+
+  egress {
+    from_port   = 3306
+    to_port     = 3306
+    protocol    = "tcp"
+    cidr_blocks = [var.rds_cidr_block]
+  }
+
+  tags = {
+    Name = "instances-security-group"
+  }
+}
+
+resource "aws_security_group" "rds-security-group" {
+  name   = "iac-project-rds-security-group"
+  vpc_id = var.vpc_id
+  ingress {
+    from_port       = 3306
+    to_port         = 3306
+    protocol        = "tcp"
+    security_groups = [aws_security_group.web-server-security-group.id]
+  }
+
+  egress {
+    from_port       = 0
+    to_port         = 0
+    protocol        = "-1"
+    security_groups = [aws_security_group.web-server-security-group.id]
+  }
+}
+
+                  `}
+                </CodeContainer>
+                <h2 className="text-[22px] md:text-[26px] font-semibold">
+                  Variables and Outputs
+                </h2>
+                <p>
+                  The module uses several input variables to customize the
+                  deployment, such as{" "}
+                  <span className="text-[#6183BB]">launch_template_name</span>,{" "}
+                  <span className="text-[#6183BB]">image_id</span>,{" "}
+                  <span className="text-[#6183BB]">instance_type</span>, and
+                  others. These variables are defined in the{" "}
+                  <code className="bg-gray-800 text-white px-2 rounded">
+                    variables.tf
+                  </code>{" "}
+                  file and allow for flexible configuration of the ASG and its
+                  components. The module also provides outputs for the auto
+                  scaling group name and RDS security group ID in the{" "}
+                  <code className="bg-gray-800 text-white px-2 rounded">
+                    outputs.tf
+                  </code>{" "}
+                  file, which can be used by other modules or resources within
+                  the infrastructure.
+                </p>
+              </div>
             </div>
           </div>
         </div>
