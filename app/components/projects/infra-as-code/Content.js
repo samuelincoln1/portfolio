@@ -139,8 +139,8 @@ hash_key = "LockID"`;
                   public ALB DNS, which efficiently distributes traffic across
                   instances within the Auto Scaling Group. This group is
                   configured to dynamically adjust the number of instances based
-                  on demand. The RDS serves as the application's data storage
-                  solution. All EC2 instances reside in private subnets,
+                  on demand. The RDS serves as the application&apos;s data
+                  storage solution. All EC2 instances reside in private subnets,
                   ensuring they are not directly accessible from the internet,
                   similar to the RDS.
                 </p>
@@ -284,16 +284,16 @@ hash_key = "LockID"`;
                   className="border-2 border-white rounded-lg shadow-lg"
                 />
                 <p>
-                  The process of creating the backend configuration envolves
+                  The process of creating the backend configuration involves
                   creating the necessary resources using Terraform instead of
                   manually setting them up in the AWS console. This approach
                   ensures that all resources are managed as code, providing
                   consistency and version control.
                 </p>
                 <p>
-                  Once the resources are created, the backend is defined as "s3"
-                  to store the Terraform state file. After defining the backend,
-                  the{" "}
+                  Once the resources are created, the backend is defined as
+                  &quot;s3&quot; to store the Terraform state file. After
+                  defining the backend, the{" "}
                   <code className="bg-gray-800 text-white px-2 rounded">
                     terraform init
                   </code>{" "}
@@ -751,7 +751,8 @@ resource "aws_route_table_association" "private-route-table-association-3" {
                         <span className="text-[#6183BB]">
                           load_balancer_type
                         </span>
-                        : Type of the load balancer, set to "application".
+                        : Type of the load balancer, set to
+                        &quot;application&quot;.
                       </li>
                       <li>
                         <span className="text-[#6183BB]">security_groups</span>:
@@ -799,7 +800,7 @@ resource "aws_route_table_association" "private-route-table-association-3" {
                     <li>
                       <span className="text-[#6183BB]">protocol</span>: The
                       protocol to use for routing traffic to the targets, set to
-                      "HTTP".
+                      &quot;HTTP&quot;.
                     </li>
                     <li>
                       <span className="text-[#6183BB]">vpc_id</span>: The ID of
@@ -882,7 +883,7 @@ resource "aws_lb_target_group" "iac-project-alb-target-group" {
                       <li>
                         <span className="text-[#6183BB]">protocol</span>:
                         Protocol to use for routing traffic to the targets, set
-                        to "HTTP".
+                        to &quot;HTTP&quot;.
                       </li>
                       <li>
                         <span className="text-[#6183BB]">default_action</span>:
@@ -890,7 +891,7 @@ resource "aws_lb_target_group" "iac-project-alb-target-group" {
                         <ul className="list-disc pl-5 ml-5">
                           <li>
                             <span className="text-[#6183BB]">type</span>: Type
-                            of the default action, set to "forward".
+                            of the default action, set to &quot;forward&quot;.
                           </li>
                           <li>
                             <span className="text-[#6183BB]">
