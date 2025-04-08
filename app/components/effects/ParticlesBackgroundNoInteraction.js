@@ -27,7 +27,7 @@ export default function ParticlesBackgroundNoInteraction() {
           move: {
             direction: "top",
             enable: true,
-            speed: 1.5,
+            speed: 1.0,
             random: true,
             straight: false,
           },

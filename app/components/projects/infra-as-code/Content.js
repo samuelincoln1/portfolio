@@ -337,37 +337,59 @@ hash_key = "LockID"`;
                   host the RDS and the EC2 instances.
                 </p>
                 <h2 className="text-[22px] md:text-[26px] font-semibold">
-                  Resources
+                  Features
                 </h2>
-                <p>1. VPC</p>
                 <ul className="list-disc pl-5">
                   <li className="mb-2">
-                    <strong>Resource name: </strong>{" "}
+                    <strong>VPC: </strong>Creates a VPC with DNS and hostname
+                    support.
+                  </li>
+                  <li className="mb-2">
+                    <strong>Internet Gateway: </strong>Provisions an internet
+                    gateway to allow inbound and outbound traffic.
+                  </li>
+                  <li className="mb-2">
+                    <strong>Subnets: </strong>Configures public and private
+                    subnets across multiple availability zones.
+                  </li>
+                  <li className="mb-2">
+                    <strong>Route Tables: </strong>Configures route tables to
+                    manage network traffic.
+                  </li>
+                  <li className="mb-2">
+                    <strong>Route Table Associations: </strong>Associates
+                    subnets with the appropriate route tables.
+                  </li>
+                </ul>
+                <h2 className="text-[22px] md:text-[26px] font-semibold">
+                  Resources
+                </h2>
+                <p>1. Virtual Private Cloud (VPC)</p>
+                <ul className="list-disc pl-5">
+                  <li className="mb-2">
+                    <strong>Resource: </strong>{" "}
                     <span className="text-[#6183BB]">aws_vpc.main</span>
                   </li>
-                  <li className="mb-2">
-                    <strong>CIDR block: </strong> Configurable via{" "}
-                    <span className="text-[#6183BB]">var.cidr_block</span>
-                  </li>
-                  <li className="mb-2">
-                    <strong>DNS Hostnames: </strong> Configurable via{" "}
-                    <span className="text-[#6183BB]">
-                      var.enable_dns_hostnames
-                    </span>
-                  </li>
-                  <li className="mb-2">
-                    <strong>DNS Support: </strong> Configurable via{" "}
-                    <span className="text-[#6183BB]">
-                      var.enable_dns_support
-                    </span>
-                  </li>
-                  <li className="mb-2">
-                    <strong>Tags: </strong> The VPC is tagged with{" "}
-                    <span className="text-[#6183BB]">
-                      <span className="text-purple-500">Name</span> <span className="text-yellow-500">=</span> <span className="text-green-400">"iac-project-vpc"</span>
-                    </span>{" "}
-                    for easy identification.
-                  </li>
+                  <ul className="list-disc pl-5 ml-5">
+                    <li>
+                      <span className="text-[#6183BB]">cidr_block</span>: The
+                      CIDR block for the VPC.
+                    </li>
+                    <li>
+                      <span className="text-[#6183BB]">
+                        enable_dns_hostnames
+                      </span>
+                      : Whether to enable DNS hostnames in the VPC.
+                    </li>
+                    <li>
+                      <span className="text-[#6183BB]">enable_dns_support</span>
+                      : Whether to enable DNS support in the VPC.
+                    </li>
+                    <li>
+                      <span className="text-[#6183BB]">tags</span>: Assigns a
+                      name tag to the VPC for identification.
+                    </li>
+                  </ul>
                 </ul>
                 <CodeContainer fileName="vpc/main.tf">
                   {`
@@ -384,22 +406,19 @@ resource "aws_vpc" "main" {
                 <p>2. Internet Gateway</p>
                 <ul className="list-disc pl-5">
                   <li className="mb-2">
-                    <strong>Resource name: </strong>{" "}
-                    <span className="text-[#6183BB]">
-                      aws_internet_gateway.main
-                    </span>
+                    <strong>Resource: </strong>{" "}
+                    <span className="text-[#6183BB]">aws_internet_gateway</span>
                   </li>
-                  <li className="mb-2">
-                    <strong>VPC Association: </strong>Attached to the main VPC (
-                    <span className="text-[#6183BB]">aws_vpc.main.id</span>)
-                  </li>
-                  <li className="mb-2">
-                    <strong>Tags: </strong> Tagged with{" "}
-                    <span className="text-[#6183BB]">
-                    <span className="text-purple-500">Name</span> <span className="text-yellow-500">=</span> <span className="text-green-400">"iac-project-igw"</span>
-                    </span>
-                    .
-                  </li>
+                  <ul className="list-disc pl-5 ml-5">
+                    <li>
+                      <span className="text-[#6183BB]">vpc_id</span>: The ID of
+                      the VPC to which the internet gateway is attached.
+                    </li>
+                    <li>
+                      <span className="text-[#6183BB]">tags</span>: Assigns a
+                      name tag to the internet gateway.
+                    </li>
+                  </ul>
                 </ul>
                 <CodeContainer fileName="vpc/main.tf">
                   {`
@@ -417,47 +436,35 @@ resource "aws_internet_gateway" "main" {
                 </p>
                 <ul className="list-disc pl-5">
                   <li className="mb-2">
-                    <strong>Resource names: </strong>{" "}
-                    <span className="text-[#6183BB]">
-                      aws_subnet.public-subnet-1
-                    </span>{" "}
-                    and{" "}
-                    <span className="text-[#6183BB]">
-                      aws_subnet.public-subnet-2
-                    </span>
-                  </li>
-                  <li className="mb-2">
-                    <strong>CIDR Block: </strong> Configurable via{" "}
-                    <span className="text-[#6183BB]">
-                      var.public_subnet_cidr_block_1
-                    </span>{" "}
-                    and{" "}
-                    <span className="text-[#6183BB]">
-                      var.public_subnet_cidr_block_2
-                    </span>
-                  </li>
-                  <li className="mb-2">
-                    <strong>Public IP Mapping: </strong> Enabled with{" "}
-                    <span className="text-[#6183BB]">
-                      var.map_public_ip_on_launch <span className="text-yellow-500">=</span> <span className="text-green-500">true</span>
-                    </span>
-                  </li>
-                  <li className="mb-2">
-                    <strong>Availability Zones: </strong> Configurable via{" "}
-                    <span className="text-[#6183BB]">
-                      var.availability_zone_1
-                    </span>{" "}
-                    and{" "}
-                    <span className="text-[#6183BB]">
-                      var.availability_zone_2
-                    </span>
-                  </li>
-                  <li className="mb-2">
-                    <strong>Tags: </strong> Each subnet is tagged for
-                    identification, e.g,{" "}
-                    <span className="text-[#6183BB]">
-                    <span className="text-purple-500">Name</span> <span className="text-yellow-500">=</span> <span className="text-green-400">"iac-project-public-subnet-1"</span>
-                    </span>
+                    <strong>Resource: </strong>{" "}
+                    <span className="text-[#6183BB]">aws_subnet</span>
+                    <ul className="list-disc pl-5 ml-5">
+                      <li>
+                        <span className="text-[#6183BB]">vpc_id</span>: The ID
+                        of the VPC to which the subnet is associated.
+                      </li>
+                      <li>
+                        <span className="text-[#6183BB]">cidr_block</span>: The
+                        CIDR block for the subnet.
+                      </li>
+                      <li>
+                        <span className="text-[#6183BB]">
+                          map_public_ip_on_launch
+                        </span>
+                        : Enable to assign a public IP to instances launched in
+                        this subnet.
+                      </li>
+                      <li>
+                        <span className="text-[#6183BB]">
+                          availability_zone
+                        </span>
+                        : The availability zone for the subnet.
+                      </li>
+                      <li>
+                        <span className="text-[#6183BB]">tags</span>: Assigns a
+                        name tag to the subnet.
+                      </li>
+                    </ul>
                   </li>
                 </ul>
                 <p>
@@ -465,55 +472,35 @@ resource "aws_internet_gateway" "main" {
                 </p>
                 <ul className="list-disc pl-5">
                   <li className="mb-2">
-                    <strong>Resource names: </strong>{" "}
-                    <span className="text-[#6183BB]">
-                      aws_subnet.private-subnet-1
-                    </span>
-                    ,{" "}
-                    <span className="text-[#6183BB]">
-                      aws_subnet.private-subnet-2
-                    </span>{" "}
-                    and{" "}
-                    <span className="text-[#6183BB]">
-                      aws_subnet.private-subnet-3
-                    </span>
-                  </li>
-                  <li className="mb-2">
-                    <strong>CIDR Block: </strong> Configurable via{" "}
-                    <span className="text-[#6183BB]">
-                      var.private_subnet_cidr_block_1
-                    </span>
-                    ,{" "}
-                    <span className="text-[#6183BB]">
-                      var.private_subnet_cidr_block_2
-                    </span>{" "}
-                    and{" "}
-                    <span className="text-[#6183BB]">
-                      var.private_subnet_cidr_block_3
-                    </span>
-                  </li>
-                  <li className="mb-2">
-                    <strong>Public IP Mapping: </strong> Disabled with{" "}
-                    <span className="text-[#6183BB]">
-                      var.map_public_ip_on_launch <span className="text-yellow-500">=</span> <span className="text-red-500">false</span>
-                    </span>
-                  </li>
-                  <li className="mb-2">
-                    <strong>Availability Zones: </strong> Configurable via{" "}
-                    <span className="text-[#6183BB]">
-                      var.availability_zone_1
-                    </span>{" "}
-                    and{" "}
-                    <span className="text-[#6183BB]">
-                      var.availability_zone_2
-                    </span>
-                  </li>
-                  <li className="mb-2">
-                    <strong>Tags: </strong> Each subnet is tagged for
-                    identification, e.g,{" "}
-                    <span className="text-[#6183BB]">
-                    <span className="text-purple-500">Name</span> <span className="text-yellow-500">=</span> <span className="text-green-400">"iac-project-private-subnet-1"</span>
-                    </span>
+                    <strong>Resource: </strong>{" "}
+                    <span className="text-[#6183BB]">aws_subnet</span>
+                    <ul className="list-disc pl-5 ml-5">
+                      <li>
+                        <span className="text-[#6183BB]">vpc_id</span>: The ID
+                        of the VPC to which the subnet is associated.
+                      </li>
+                      <li>
+                        <span className="text-[#6183BB]">cidr_block</span>: The
+                        CIDR block for the subnet.
+                      </li>
+                      <li>
+                        <span className="text-[#6183BB]">
+                          map_public_ip_on_launch
+                        </span>
+                        : Disable to block automatic public IP assignment to
+                        instances launched in this subnet.
+                      </li>
+                      <li>
+                        <span className="text-[#6183BB]">
+                          availability_zone
+                        </span>
+                        : The availability zone for the subnet.
+                      </li>
+                      <li>
+                        <span className="text-[#6183BB]">tags</span>: Assigns a
+                        name tag to the subnet.
+                      </li>
+                    </ul>
                   </li>
                 </ul>
                 <CodeContainer fileName="vpc/main.tf">
@@ -575,43 +562,48 @@ resource "aws_subnet" "public-subnet-1" {
                 </p>
                 <ul className="list-disc pl-5">
                   <li className="mb-2">
-                    <strong>Resource name: </strong>{" "}
-                    <span className="text-[#6183BB]">
-                      aws_route_table.public-route-table
-                    </span>
+                    <strong>Resource: </strong>{" "}
+                    <span className="text-[#6183BB]">aws_route_table</span>
                   </li>
-                  <li className="mb-2">
-                    <strong>Routes: </strong> Includes a route for{" "}
-                    <span className="text-[#6183BB]">0.0.0.0/0</span> thhrough
-                    the internet gateway (
-                    <span className="text-[#6183BB]">
-                      aws_internet_gateway.main.id
-                    </span>
-                    )
-                  </li>
-                  <li className="mb-2">
-                    <strong>Tags: </strong> Tagged with{" "}
-                    <span className="text-[#6183BB]">
-                      <span className="text-purple-500">Name</span> <span className="text-yellow-500">=</span> <span className="text-green-400">"iac-project-public-route-table"</span>
-                    </span>
-                  </li>
+                  <ul className="list-disc pl-5 ml-5">
+                    <li>
+                      <span className="text-[#6183BB]">vpc_id</span>: The ID of
+                      the VPC to which the route table is associated.
+                    </li>
+                    <li>
+                      <span className="text-[#6183BB]">route</span>: includes a
+                      route for{" "}
+                      <span className="text-[#6183BB]">0.0.0.0/0</span> through
+                      the internet gateway. (
+                      <span className="text-[#6183BB]">
+                        aws_internet_gateway.main.id
+                      </span>
+                      )
+                    </li>
+                    <li>
+                      <span className="text-[#6183BB]">tags</span>: Assigns a
+                      name tag to the route table.
+                    </li>
+                  </ul>
                 </ul>
                 <p>
                   <strong>Private Route Table</strong>
                 </p>
                 <ul className="list-disc pl-5">
                   <li className="mb-2">
-                    <strong>Resource name: </strong>{" "}
-                    <span className="text-[#6183BB]">
-                      aws_route_table.private-route-table
-                    </span>
+                    <strong>Resource: </strong>{" "}
+                    <span className="text-[#6183BB]">aws_route_table</span>
                   </li>
-                  <li className="mb-2">
-                    <strong>Tags: </strong> Tagged with{" "}
-                    <span className="text-[#6183BB]">
-                    <span className="text-purple-500">Name</span> <span className="text-yellow-500">=</span> <span className="text-green-400">"iac-project-private-route-table"</span>
-                    </span>
-                  </li>
+                  <ul className="list-disc pl-5 ml-5">
+                    <li>
+                      <span className="text-[#6183BB]">vpc_id</span>: The ID of
+                      the VPC to which the route table is associated.
+                    </li>
+                    <li>
+                      <span className="text-[#6183BB]">tags</span>: Assigns a
+                      name tag to the route table.
+                    </li>
+                  </ul>
                 </ul>
                 <CodeContainer fileName="vpc/main.tf">
                   {`
@@ -679,13 +671,27 @@ resource "aws_route_table_association" "private-route-table-association-3" {
                   Variables and Outputs
                 </h2>
                 <p>
-                  All variables are defined in the{" "}
-                  <span className="text-[#6183BB]">vpc/variables.tf</span> file
-                  and the outputs that we need to retrieve for future use are
-                  defined in the{" "}
-                  <span className="text-[#6183BB]">vpc/outputs.tf</span> file.
+                  The module uses several input variables to customize the
+                  deployment, such as{" "}
+                  <span className="text-[#6183BB]">cidr_block</span>,{" "}
+                  <span className="text-[#6183BB]">enable_dns_hostnames</span>,{" "}
+                  <span className="text-[#6183BB]">
+                    public_subnet_cidr_block_1
+                  </span>
+                  , and others. These variables are defined in the{" "}
+                  <code className="bg-gray-800 text-white px-2 rounded">
+                    variables.tf
+                  </code>{" "}
+                  file and allow for flexible configuration of the VPC and its
+                  components. The module also provides outputs for the VPC ID,
+                  subnet IDs, and CIDR blocks in the{" "}
+                  <code className="bg-gray-800 text-white px-2 rounded">
+                    outputs.tf
+                  </code>{" "}
+                  file, which can be used by other modules or resources within
+                  the infrastructure.
                 </p>
-              </div>,
+              </div>
               <div
                 id="alb-module"
                 className="flex flex-col gap-4 text-white text-sm md:text-xl max-w-[300px] md:max-w-full"
@@ -693,6 +699,303 @@ resource "aws_route_table_association" "private-route-table-association-3" {
                 <h2 className="text-[22px] md:text-[26px] font-semibold">
                   ALB Module
                 </h2>
+                <p>
+                  The ALB (Application Load Balancer) module is a key component
+                  of the infrastructure, designed to manage and distribute
+                  incoming application traffic across multiple targets, such as
+                  EC2 instances, in a single or multiple Availability Zones.
+                  This module ensures high availability, automatic scaling, and
+                  robust security for your applications.
+                </p>
+                <h2 className="text-[22px] md:text-[26px] font-semibold">
+                  Features
+                </h2>
+                <ul className="list-disc pl-5">
+                  <li className="mb-2">
+                    <strong>Application Load Balancer: </strong>Configures an
+                    ALB to distribute incoming HTTP and HTTPS traffic.
+                  </li>
+                  <li className="mb-2">
+                    <strong>Target Group: </strong>Manages a target group for
+                    routing requests to one or more registered targets.
+                  </li>
+                  <li className="mb-2">
+                    <strong>Listener:</strong>Sets up a listener to check for
+                    connection requests from clients and forwards them to the
+                    target group
+                  </li>
+                  <li className="mb-2">
+                    <strong>Security Group: </strong>Establishes a security
+                    group to control inbound and outbound traffic to the ALB.
+                  </li>
+                </ul>
+                <h2 className="text-[22px] md:text-[26px] font-semibold">
+                  Resources
+                </h2>
+                <p>1. Application Load Balancer (ALB)</p>
+                <ul className="list-disc pl-5">
+                  <li className="mb-2">
+                    <strong>Resource: </strong>{" "}
+                    <span className="text-[#6183BB]">aws_lb</span>
+                    <ul className="list-disc pl-5 ml-5">
+                      <li>
+                        <span className="text-[#6183BB]">name</span>: The name
+                        of the ALB.
+                      </li>
+                      <li>
+                        <span className="text-[#6183BB]">internal</span>:
+                        Specifies whether the ALB is internet-facing or
+                        internal, set to false.
+                      </li>
+                      <li>
+                        <span className="text-[#6183BB]">
+                          load_balancer_type
+                        </span>
+                        : Type of the load balancer, set to "application".
+                      </li>
+                      <li>
+                        <span className="text-[#6183BB]">security_groups</span>:
+                        List of security group IDs associated with the ALB.
+                      </li>
+                      <li>
+                        <span className="text-[#6183BB]">subnets</span>: List of
+                        subnet IDs where the ALB is deployed.
+                      </li>
+                      <li>
+                        <span className="text-[#6183BB]">
+                          enable_deletion_protection
+                        </span>
+                        : Boolean to enable/disable deletion protection.
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+                <CodeContainer fileName="alb/main.tf">
+                  {`
+  resource "aws_lb" "iac-project-alb" {
+  name                       = var.alb_name
+  internal                   = false
+  load_balancer_type         = "application"
+  security_groups            = [aws_security_group.iac-project-alb-security-group.id]
+  subnets                    = [var.public_subnet_id, var.public_subnet_id_2]
+  enable_deletion_protection = false
+}`}
+                </CodeContainer>
+                <p>2. Target Group</p>
+                <ul className="list-disc pl-5">
+                  <li className="mb-2">
+                    <strong>Resource: </strong>{" "}
+                    <span className="text-[#6183BB]">aws_lb_target_group</span>
+                  </li>
+                  <ul className="list-disc pl-5 ml-5">
+                    <li>
+                      <span className="text-[#6183BB]">name</span>: The name of
+                      the target group.
+                    </li>
+                    <li>
+                      <span className="text-[#6183BB]">port</span>: The port on
+                      which the ALB receives traffic, set to 80.
+                    </li>
+                    <li>
+                      <span className="text-[#6183BB]">protocol</span>: The
+                      protocol to use for routing traffic to the targets, set to
+                      "HTTP".
+                    </li>
+                    <li>
+                      <span className="text-[#6183BB]">vpc_id</span>: The ID of
+                      the VPC where the target group is deployed.
+                    </li>
+                    <li>
+                      <span className="text-[#6183BB]">
+                        Health Check Configuration:
+                      </span>
+                      <ul className="list-disc pl-5 ml-5">
+                        <li>
+                          <span className="text-[#6183BB]">path</span>: The
+                          destination for the health check request.
+                        </li>
+                        <li>
+                          <span className="text-[#6183BB]">interval</span>: Time
+                          between health checks.
+                        </li>
+                        <li>
+                          <span className="text-[#6183BB]">timeout</span>: Time
+                          to wait for a health check response.
+                        </li>
+                        <li>
+                          <span className="text-[#6183BB]">
+                            healthy_threshold
+                          </span>
+                          : Number of consecutive successful health checks
+                          required before considering a target healthy.
+                        </li>
+                        <li>
+                          <span className="text-[#6183BB]">
+                            unhealthy_threshold
+                          </span>
+                          : Number of consecutive failed health checks required
+                          before considering a target unhealthy.
+                        </li>
+                        <li>
+                          <span className="text-[#6183BB]">matcher</span>: HTTP
+                          codes to use when checking for a successful response.
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </ul>
+                <CodeContainer fileName="alb/main.tf">
+                  {`
+resource "aws_lb_target_group" "iac-project-alb-target-group" {
+  name     = var.alb_target_group_name
+  port     = var.alb_target_group_port
+  protocol = var.alb_target_group_protocol
+  vpc_id   = var.vpc_id
+
+  health_check {
+    path                = var.alb_target_group_health_check_path
+    interval            = var.alb_target_group_health_check_interval
+    timeout             = var.alb_target_group_health_check_timeout
+    healthy_threshold   = var.alb_target_group_health_check_healthy_threshold
+    unhealthy_threshold = var.alb_target_group_health_check_unhealthy_threshold
+    matcher             = var.alb_target_group_health_check_matcher
+  }
+}
+`}
+                </CodeContainer>
+                <p>3. Listener</p>
+                <ul className="list-disc pl-5">
+                  <li className="mb-2">
+                    <strong>Resource: </strong>{" "}
+                    <span className="text-[#6183BB]">aws_lb_listener</span>
+                    <ul className="list-disc pl-5 ml-5">
+                      <li>
+                        <span className="text-[#6183BB]">
+                          load_balancer_arn
+                        </span>
+                        : ARN of the load balancer.
+                      </li>
+                      <li>
+                        <span className="text-[#6183BB]">port</span>: Port on
+                        which the ALB receives traffic, set to 80.
+                      </li>
+                      <li>
+                        <span className="text-[#6183BB]">protocol</span>:
+                        Protocol to use for routing traffic to the targets, set
+                        to "HTTP".
+                      </li>
+                      <li>
+                        <span className="text-[#6183BB]">default_action</span>:
+                        Default action to take when a request is received.
+                        <ul className="list-disc pl-5 ml-5">
+                          <li>
+                            <span className="text-[#6183BB]">type</span>: Type
+                            of the default action, set to "forward".
+                          </li>
+                          <li>
+                            <span className="text-[#6183BB]">
+                              target_group_arn
+                            </span>
+                            : ARN of the target group to forward the traffic to.
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+                <CodeContainer fileName="alb/main.tf">
+                  {`
+resource "aws_lb_listener" "http" {
+  load_balancer_arn = aws_lb.iac-project-alb.arn
+  port              = 80
+  protocol          = "HTTP"
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.iac-project-alb-target-group.arn
+  }
+}
+                `}
+                </CodeContainer>
+                <p>4. Security Group</p>
+                <ul className="list-disc pl-5">
+                  <li className="mb-2">
+                    <strong>Resource: </strong>{" "}
+                    <span className="text-[#6183BB]">aws_security_group</span>
+                    <ul className="list-disc pl-5 ml-5">
+                      <li>
+                        <span className="text-[#6183BB]">name</span>: Name of
+                        the security group.
+                      </li>
+                      <li>
+                        <span className="text-[#6183BB]">description</span>:
+                        Description of the security group.
+                      </li>
+                      <li>
+                        <span className="text-[#6183BB]">vpc_id</span>: ID of
+                        the VPC where the security group is deployed.
+                      </li>
+                      <li>
+                        <span className="text-[#6183BB]">ingress</span>: Allows
+                        HTTP (port 80) and HTTPS (port 443) from any IP.
+                      </li>
+                      <li>
+                        <span className="text-[#6183BB]">egress</span>: Allows
+                        traffic only to specified CIDR blocks, in port 8080.
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+                <CodeContainer fileName="alb/main.tf">
+                  {`
+resource "aws_security_group" "iac-project-alb-security-group" {
+  name        = "iac-project-alb-security-group"
+  description = "Security group for the ALB"
+  vpc_id      = var.vpc_id
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 8080
+    to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = var.ec2_cidr_blocks
+  }
+}
+                `}
+                </CodeContainer>
+                <h2 className="text-[22px] md:text-[26px] font-semibold">
+                  Variables and Outputs
+                </h2>
+                <p>
+                  The module uses several input variables to customize the
+                  deployment, such as{" "}
+                  <span className="text-[#6183BB]">alb_name</span>,{" "}
+                  <span className="text-[#6183BB]">public_subnet_id</span>,{" "}
+                  <span className="text-[#6183BB]">alb_target_group_name</span>,
+                  and others. These variables are defined in the{" "}
+                  <code className="bg-gray-800 text-white px-2 rounded">
+                    variables.tf
+                  </code>{" "}
+                  file and allow for flexible configuration of the ALB and its
+                  components. The module also provides outputs for the security
+                  group ID and target group ARN in the{" "}
+                  <code className="bg-gray-800 text-white px-2 rounded">
+                    outputs.tf
+                  </code>{" "}
+                  file, which can be used by other modules or resources within
+                  the infrastructure.
+                </p>
               </div>
             </div>
           </div>
