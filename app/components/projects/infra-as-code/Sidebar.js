@@ -1,9 +1,12 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { useMenu } from '../../../context/MenuContext';
 
 export default function Sidebar() {
+  const { isMenuOpen } = useMenu();
   const [activeSection, setActiveSection] = useState("");
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const handleLinkClick = (event, targetId) => {
     event.preventDefault();
@@ -16,6 +19,7 @@ export default function Sidebar() {
       });
     }
   };
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,74 +54,147 @@ export default function Sidebar() {
     };
   }, []);
 
+  useEffect(() => {
+    const handleTouchStart = (e) => {
+      const touch = e.touches[0];
+      startX = touch.clientX;
+    };
+
+    const handleTouchMove = (e) => {
+      if (!isSidebarOpen) return;
+
+      const touch = e.touches[0];
+      const deltaX = touch.clientX - startX;
+
+      if (deltaX < -90) { 
+        setIsSidebarOpen(false);
+      }
+    };
+
+    let startX = 0;
+
+    window.addEventListener("touchstart", handleTouchStart);
+    window.addEventListener("touchmove", handleTouchMove);
+
+    return () => {
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
+    };
+  }, [isSidebarOpen]);
+
   return (
-    <div className="w-64 bg-[#0d0e12] border-r border-white text-white p-4 fixed h-full z-100 mt-[76px]">
-      <h2 className="text-2xl font-bold mb-4">Index</h2>
-      <ul className="space-y-2">
-        <li>
-          <a
-            href="#overview"
-            className={`hover:underline ${activeSection === "overview" ? "font-bold underline" : ""}`}
-            onClick={(e) => handleLinkClick(e, "overview")}
+    <>
+      <button
+        className={`fixed top-0 left-0 ${
+          isMenuOpen ? "z-0" : "z-110"
+        } text-white rounded-md xl:hidden px-4 py-3 flex items-center justify-center`}
+        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+      >
+        {isSidebarOpen ? (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
           >
-            Overview
-          </a>
-        </li>
-        <li>
-          <a
-            href="#architecture-diagram"
-            className={`hover:underline ${activeSection === "architecture-diagram" ? "font-bold underline" : ""}`}
-            onClick={(e) => handleLinkClick(e, "architecture-diagram")}
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+        ) : (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
           >
-            Architecture Diagram
-          </a>
-        </li>
-        <li>
-          <a
-            href="#code-structure"
-            className={`hover:underline ${activeSection === "code-structure" ? "font-bold underline" : ""}`}
-            onClick={(e) => handleLinkClick(e, "code-structure")}
-          >
-            Code Structure
-          </a>
-        </li>
-        <li>
-          <a
-            href="#backend-configuration"
-            className={`hover:underline ${activeSection === "backend-configuration" ? "font-bold underline" : ""}`}
-            onClick={(e) => handleLinkClick(e, "backend-configuration")}
-          >
-            Backend Configuration
-          </a>
-        </li>
-        <li>
-          <a
-            href="#vpc-module"
-            className={`hover:underline ${activeSection === "vpc-module" ? "font-bold underline" : ""}`}
-            onClick={(e) => handleLinkClick(e, "vpc-module")}
-          >
-            VPC Module
-          </a>
-        </li>
-        <li>
-          <a
-            href="#alb-module"
-            className={`hover:underline ${activeSection === "alb-module" ? "font-bold underline" : ""}`}
-            onClick={(e) => handleLinkClick(e, "alb-module")}
-          >
-            ALB Module
-          </a>
-        </li>
-        <li>
-          <a
-            href="#asg-module"
-            className={`hover:underline ${activeSection === "asg-module" ? "font-bold underline" : ""}`}
-            onClick={(e) => handleLinkClick(e, "asg-module")}
-          >
-            ASG Module
-          </a>
-        </li>
-      </ul>
-    </div>
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        )}
+      </button>
+      <div
+        className={`fixed h-full z-100 xl:mt-[76px] ${
+          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } transition-transform duration-300 ease-in-out xl:translate-x-0 xl:w-80 bg-[#0d0e12] border-r border-gray-700 text-white p-4`}
+       
+      >
+        <h2 className="text-2xl font-bold mb-4">Index</h2>
+        <ul className="space-y-1">
+          <li className="w-full">
+            <a
+              href="#overview"
+              className={`hover:bg-[#2b303c] p-2 rounded-md block ${activeSection === "overview" ? "bg-[#2b303c]" : ""}`}
+              onClick={(e) => handleLinkClick(e, "overview")}
+            >
+              Overview
+            </a>
+          </li>
+          <li className="w-full">
+            <a
+              href="#architecture-diagram"
+              className={`hover:bg-[#2b303c] p-2 rounded-md block ${activeSection === "architecture-diagram" ? "bg-[#2b303c]" : ""}`}
+              onClick={(e) => handleLinkClick(e, "architecture-diagram")}
+            >
+              Architecture Diagram
+            </a>
+          </li>
+          <li className="w-full">
+            <a
+              href="#code-structure"
+              className={`hover:bg-[#2b303c] p-2 rounded-md block ${activeSection === "code-structure" ? "bg-[#2b303c]" : ""}`}
+              onClick={(e) => handleLinkClick(e, "code-structure")}
+            >
+              Code Structure
+            </a>
+          </li>
+          <li className="w-full">
+            <a
+              href="#backend-configuration"
+              className={`hover:bg-[#2b303c] p-2 rounded-md block ${activeSection === "backend-configuration" ? "bg-[#2b303c]" : ""}`}
+              onClick={(e) => handleLinkClick(e, "backend-configuration")}
+            >
+              Backend Configuration
+            </a>
+          </li>
+          <li className="w-full">
+            <a
+              href="#vpc-module"
+              className={`hover:bg-[#2b303c] p-2 rounded-md block ${activeSection === "vpc-module" ? "bg-[#2b303c]" : ""}`}
+              onClick={(e) => handleLinkClick(e, "vpc-module")}
+            >
+              VPC Module
+            </a>
+          </li>
+          <li className="w-full">
+            <a
+              href="#alb-module"
+              className={`hover:bg-[#2b303c] p-2 rounded-md block ${activeSection === "alb-module" ? "bg-[#2b303c]" : ""}`}
+              onClick={(e) => handleLinkClick(e, "alb-module")}
+            >
+              ALB Module
+            </a>
+          </li>
+          <li className="w-full">
+            <a
+              href="#asg-module"
+              className={`hover:bg-[#2b303c] p-2 rounded-md block ${activeSection === "asg-module" ? "bg-[#2b303c]" : ""}`}
+              onClick={(e) => handleLinkClick(e, "asg-module")}
+            >
+              ASG Module
+            </a>
+          </li>
+        </ul>
+      </div>
+    </>
   );
 }

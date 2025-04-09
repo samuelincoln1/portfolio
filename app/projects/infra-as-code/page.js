@@ -5,19 +5,21 @@ import Sidebar from "../../components/projects/infra-as-code/Sidebar";
 // import ParticlesBackground2 from "../../components/effects/ParticlesBackground2";
 import ParticlesBackgroundNoInteraction from "../../components/effects/ParticlesBackgroundNoInteraction";
 import Footer from "../../components/projects/infra-as-code/Footer";
+import { MenuProvider } from "../../context/MenuContext";
 
 export default function AboutPage() {
   return (
-    <div className="relative">
-      <Navbar />
-      <div className="flex">
-        <Sidebar />
-        <div className="ml-64">
-          <Content />
-          <Footer />
-          <ParticlesBackgroundNoInteraction />
+    <MenuProvider>
+      <div className="relative">
+        <Navbar />
+        <div className="bg-[#0d0e12] min-h-screen w-full">
+          <Sidebar />
+          <div className="xl:ml-64">
+            <Content />
+            <Footer />
+          </div>
         </div>
       </div>
-    </div>
+    </MenuProvider>
   );
 }

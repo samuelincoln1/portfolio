@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useMenu } from '../../context/MenuContext';
 import LanguageSwitcher from "./LanguageSwitcher";
 import { useTranslation } from "next-i18next";
 
 export default function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isMenuOpen, setIsMenuOpen } = useMenu();
   const { t } = useTranslation("common");
 
   const links = [
@@ -18,11 +18,11 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="p-6 z-50 fixed top-0 right-0 left-0 w-full bg-[#15181e] z-[101]">
+    <nav className="p-6 z-50 fixed top-0 right-0 left-0 w-full bg-[#15181e] z-[103]">
     
      
       <button
-        className={`md:hidden absolute right-4 top-4 z-[101] text-white`}
+        className={`xl:hidden absolute right-4 top-4 z-[203] text-white`}
         onClick={() => setIsMenuOpen(!isMenuOpen)}
       >
         <svg
@@ -50,24 +50,24 @@ export default function Navbar() {
       </button>
       <ul
         className={`
-        flex flex-col md:flex-row
-        md:space-x-6 space-y-4 md:space-y-0
-        md:relative absolute right-0 top-0
-        md:bg-transparent
-        md:p-0 p-8 pt-16
-        md:w-auto w-full
+        flex flex-col xl:flex-row
+        xl:space-x-6 space-y-4 xl:space-y-0
+        xl:relative absolute right-0 top-0
+        xl:bg-transparent
+        xl:p-0 p-8 pt-16
+        xl:w-auto w-full
         h-screen justify-center items-center
-        md:h-auto 
-        md:flex ${isMenuOpen ? "flex" : "hidden"}
+        xl:h-auto 
+        xl:flex ${isMenuOpen ? "flex" : "hidden"}
         transition-all duration-300
-        md:justify-end
-        shadow-2xl md:shadow-none
-        bg-black/20 md:bg-transparent
-         backdrop-blur-sm md:backdrop-blur-none z-50
-       
+        xl:justify-end
+        shadow-2xl xl:shadow-none
+        bg-black/20 xl:bg-transparent
+        backdrop-blur-sm xl:backdrop-blur-none
+        z-[102]
       `}
       >
-        <div className="md:absolute md:left-0 z-50">
+        <div className="xl:absolute xl:left-0 z-50">
           <LanguageSwitcher />
         </div>
         {links.map((link) => (

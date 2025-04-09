@@ -4,7 +4,7 @@ function Footer() {
   return (
     <footer className="bg-[#0d0e12] text-white pt-10 pb-4">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
-        <div className="flex gap-4 z-100">
+        <div className="flex gap-4 z-100 md:flex-row flex-col">
           <a
             href="https://github.com/samuelincoln1"
             target="_blank"

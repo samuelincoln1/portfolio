@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
         <meta name="description" content="Samuel Lincoln's portifolio" />
         <link rel="icon" href={favicon} />
       </head>
-      <body className={`${heebo.variable} antialiased`}>
+      <body className={`${heebo.variable} antialiased `}>
         {children}
       </body>
     </html>

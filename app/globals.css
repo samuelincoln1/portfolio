@@ -53,3 +53,8 @@ body {
     margin-left: 25rem;
   }
 }
+
+span, li, p{
+  white-space: normal;
+  word-break: break-word;
+}	

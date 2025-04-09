@@ -73,15 +73,15 @@ hash_key = "LockID"`;
 
   return (
     <>
-      <div className="md:px-20 px-6 relative flex flex-col bg-[#0d0e12] min-h-screen">
-        <div className="container mx-auto px-4 relative mt-8 z-10 max-w-full">
+      <div className="mx-auto relative flex flex-col max-w-[1000px] w-full text-[#d5d7db]" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
+        <div className="container mx-auto xl:px-4 px-8 relative mt-8 z-10">
           <div className="flex flex-col">
-            <div className="flex flex-col gap-10 mt-[72px] text-white">
+            <div className="flex flex-col gap-10 mt-[72px] ">
               <div id="overview">
-                <h1 className="text-[22px] md:text-[40px] font-bold">
+                <h1 className="text-[22px] lg:text-[40px] font-bold text-white">
                   Infra as Code - Overview
                 </h1>
-                <div className="flex flex-col gap-4 text-white text-sm md:text-xl max-w-[300px] md:max-w-full">
+                <div className="flex flex-col gap-4 ">
                   <p>
                     This project demonstrates the use of Terraform to manage and
                     provision cloud infrastructure on AWS. It was designed to
@@ -109,9 +109,9 @@ hash_key = "LockID"`;
               </div>
               <div
                 id="architecture-diagram"
-                className="flex flex-col gap-4 text-white text-sm md:text-xl max-w-[300px] md:max-w-full"
+                className="flex flex-col gap-4  lg:max-w-full"
               >
-                <h1 className="text-[22px] md:text-[40px] font-bold">
+                <h1 className="text-[22px] lg:text-[40px] font-bold text-white">
                   Architecture Diagram
                 </h1>
                 The architecture diagram below shows the infrastructure, which
@@ -152,7 +152,8 @@ hash_key = "LockID"`;
                     height={1000}
                     className="border-2 border-black rounded-lg shadow-lg"
                   />
-                  <figcaption className="text-white text-sm mt-2">
+                  <figcaption className=" mt-2">
+                    <p>
                     Diagram created with Lucidchart:{" "}
                     <a
                       href="https://www.lucidchart.com/pages/landing"
@@ -161,14 +162,15 @@ hash_key = "LockID"`;
                     >
                       https://www.lucidchart.com/pages/landing
                     </a>
+                    </p>
                   </figcaption>
                 </figure>
               </div>
               <div
                 id="code-structure"
-                className="flex flex-col gap-4 text-white text-sm md:text-xl max-w-[300px] md:max-w-full"
+                className="flex flex-col gap-4   lg:max-w-full"
               >
-                <h1 className="text-[22px] md:text-[40px] font-bold">
+                <h1 className="text-[22px] lg:text-[40px] font-bold text-white">
                   Code Structure
                 </h1>
                 <p>
@@ -176,7 +178,7 @@ hash_key = "LockID"`;
                   modules and backend configuration. Each part plays a crucial
                   role in managing and deploying infrastructure efficiently
                 </p>
-                <h2 className="text-[22px] md:text-[26px] font-semibold">
+                <h2 className="text-[22px] lg:text-[26px] font-semibold text-white">
                   Modules
                 </h2>
                 <p>
@@ -217,15 +219,15 @@ hash_key = "LockID"`;
                 </ul>
                 <p>
                   Inside each module, there is a{" "}
-                  <code className="bg-gray-800 text-white px-2 rounded">
+                  <code className="bg-gray-800  px-2 rounded">
                     main.tf
                   </code>{" "}
                   file that defines the resources, a{" "}
-                  <code className="bg-gray-800 text-white px-2 rounded">
+                  <code className="bg-gray-800  px-2 rounded">
                     variables.tf
                   </code>{" "}
                   file that defines the variables and a{" "}
-                  <code className="bg-gray-800 text-white px-2 rounded">
+                  <code className="bg-gray-800  px-2 rounded">
                     outputs.tf
                   </code>{" "}
                   file that defines the outputs, when needed.
@@ -240,9 +242,9 @@ hash_key = "LockID"`;
               </div>
               <div
                 id="backend-configuration"
-                className="flex flex-col gap-4 text-white text-sm md:text-xl max-w-[300px] md:max-w-full"
+                className="flex flex-col gap-4     lg:max-w-full"
               >
-                <h1 className="text-[22px] md:text-[40px] font-semibold">
+                <h1 className="text-[22px] lg:text-[40px] font-semibold text-white">
                   Backend Configuration
                 </h1>
                 <p>
@@ -294,7 +296,7 @@ hash_key = "LockID"`;
                   Once the resources are created, the backend is defined as
                   &quot;s3&quot; to store the Terraform state file. After
                   defining the backend, the{" "}
-                  <code className="bg-gray-800 text-white px-2 rounded">
+                  <code className="bg-gray-800  px-2 rounded">
                     terraform init
                   </code>{" "}
                   command is used to migrate the state to S3. This command
@@ -306,11 +308,11 @@ hash_key = "LockID"`;
                 </CodeContainer>
                 <p>
                   The variables are defined in the{" "}
-                  <code className="bg-gray-800 text-white px-2 rounded">
+                  <code className="bg-gray-800  px-2 rounded">
                     variables.tf
                   </code>{" "}
                   file. and initialized in the{" "}
-                  <code className="bg-gray-800 text-white px-2 rounded">
+                  <code className="bg-gray-800  px-2 rounded">
                     backend.tfvars
                   </code>{" "}
                   file.
@@ -321,9 +323,9 @@ hash_key = "LockID"`;
               </div>
               <div
                 id="vpc-module"
-                className="flex flex-col gap-4 text-white text-sm md:text-xl max-w-[300px] md:max-w-full"
+                className="flex flex-col gap-4     lg:max-w-full"
               >
-                <h1 className="text-[22px] md:text-[40px] font-semibold">
+                <h1 className="text-[22px] lg:text-[40px] font-semibold text-white">
                   VPC Module
                 </h1>
                 <p>
@@ -336,7 +338,7 @@ hash_key = "LockID"`;
                   used to host the ALB and the three private subnets are used to
                   host the RDS and the EC2 instances.
                 </p>
-                <h2 className="text-[22px] md:text-[26px] font-semibold">
+                <h2 className="text-[22px] lg:text-[26px] font-semibold text-white">
                   Features
                 </h2>
                 <ul className="list-disc pl-5">
@@ -361,7 +363,7 @@ hash_key = "LockID"`;
                     subnets with the appropriate route tables.
                   </li>
                 </ul>
-                <h2 className="text-[22px] md:text-[26px] font-semibold">
+                <h2 className="text-[22px] lg:text-[26px] font-semibold text-white">
                   Resources
                 </h2>
                 <p>1. Virtual Private Cloud (VPC)</p>
@@ -667,7 +669,7 @@ resource "aws_route_table_association" "private-route-table-association-3" {
 
                 `}
                 </CodeContainer>
-                <h2 className="text-[22px] md:text-[26px] font-semibold">
+                <h2 className="text-[22px] lg:text-[26px] font-semibold text-white">
                   Variables and Outputs
                 </h2>
                 <p>
@@ -679,13 +681,13 @@ resource "aws_route_table_association" "private-route-table-association-3" {
                     public_subnet_cidr_block_1
                   </span>
                   , and others. These variables are defined in the{" "}
-                  <code className="bg-gray-800 text-white px-2 rounded">
+                  <code className="bg-gray-800  px-2 rounded">
                     variables.tf
                   </code>{" "}
                   file and allow for flexible configuration of the VPC and its
                   components. The module also provides outputs for the VPC ID,
                   subnet IDs, and CIDR blocks in the{" "}
-                  <code className="bg-gray-800 text-white px-2 rounded">
+                  <code className="bg-gray-800  px-2 rounded">
                     outputs.tf
                   </code>{" "}
                   file, which can be used by other modules or resources within
@@ -694,9 +696,9 @@ resource "aws_route_table_association" "private-route-table-association-3" {
               </div>
               <div
                 id="alb-module"
-                className="flex flex-col gap-4 text-white text-sm md:text-xl max-w-[300px] md:max-w-full"
+                className="flex flex-col gap-4     lg:max-w-full"
               >
-                <h2 className="text-[22px] md:text-[26px] font-semibold">
+                <h2 className="text-[22px] lg:text-[26px] font-semibold text-white">
                   ALB Module
                 </h2>
                 <p>
@@ -707,7 +709,7 @@ resource "aws_route_table_association" "private-route-table-association-3" {
                   This module ensures high availability, automatic scaling, and
                   robust security for your applications.
                 </p>
-                <h2 className="text-[22px] md:text-[26px] font-semibold">
+                <h2 className="text-[22px] lg:text-[26px] font-semibold text-white">
                   Features
                 </h2>
                 <ul className="list-disc pl-5">
@@ -729,7 +731,7 @@ resource "aws_route_table_association" "private-route-table-association-3" {
                     group to control inbound and outbound traffic to the ALB.
                   </li>
                 </ul>
-                <h2 className="text-[22px] md:text-[26px] font-semibold">
+                <h2 className="text-[22px] lg:text-[26px] font-semibold text-white">
                   Resources
                 </h2>
                 <p>1. Application Load Balancer (ALB)</p>
@@ -975,7 +977,7 @@ resource "aws_security_group" "iac-project-alb-security-group" {
 }
                 `}
                 </CodeContainer>
-                <h2 className="text-[22px] md:text-[26px] font-semibold">
+                <h2 className="text-[22px] lg:text-[26px] font-semibold text-white">
                   Variables and Outputs
                 </h2>
                 <p>
@@ -985,13 +987,13 @@ resource "aws_security_group" "iac-project-alb-security-group" {
                   <span className="text-[#6183BB]">public_subnet_id</span>,{" "}
                   <span className="text-[#6183BB]">alb_target_group_name</span>,
                   and others. These variables are defined in the{" "}
-                  <code className="bg-gray-800 text-white px-2 rounded">
+                  <code className="bg-gray-800  px-2 rounded">
                     variables.tf
                   </code>{" "}
                   file and allow for flexible configuration of the ALB and its
                   components. The module also provides outputs for the security
                   group ID and target group ARN in the{" "}
-                  <code className="bg-gray-800 text-white px-2 rounded">
+                  <code className="bg-gray-800  px-2 rounded">
                     outputs.tf
                   </code>{" "}
                   file, which can be used by other modules or resources within
@@ -1000,9 +1002,9 @@ resource "aws_security_group" "iac-project-alb-security-group" {
               </div>
               <div
                 id="asg-module"
-                className="flex flex-col gap-4 text-white text-sm md:text-xl max-w-[300px] md:max-w-full"
+                className="flex flex-col gap-4     lg:max-w-full"
               >
-                <h2 className="text-[22px] md:text-[26px] font-semibold">
+                <h2 className="text-[22px] lg:text-[26px] font-semibold text-white">
                   ASG Module
                 </h2>
                 <p>
@@ -1013,7 +1015,7 @@ resource "aws_security_group" "iac-project-alb-security-group" {
                   dynamically adjusting the number of instances in response to
                   load.
                 </p>
-                <h2 className="text-[22px] md:text-[26px] font-semibold">
+                <h2 className="text-[22px] lg:text-[26px] font-semibold text-white">
                   Features
                 </h2>
                 <ul className="list-disc pl-5">
@@ -1031,7 +1033,7 @@ resource "aws_security_group" "iac-project-alb-security-group" {
                     instances.
                   </li>
                 </ul>
-                <h2 className="text-[22px] md:text-[26px] font-semibold">
+                <h2 className="text-[22px] lg:text-[26px] font-semibold text-white">
                   Resources
                 </h2>
                 <p>1. Launch Template</p>
@@ -1266,7 +1268,7 @@ resource "aws_security_group" "rds-security-group" {
 
                   `}
                 </CodeContainer>
-                <h2 className="text-[22px] md:text-[26px] font-semibold">
+                <h2 className="text-[22px] lg:text-[26px] font-semibold text-white">
                   Variables and Outputs
                 </h2>
                 <p>
@@ -1276,13 +1278,13 @@ resource "aws_security_group" "rds-security-group" {
                   <span className="text-[#6183BB]">image_id</span>,{" "}
                   <span className="text-[#6183BB]">instance_type</span>, and
                   others. These variables are defined in the{" "}
-                  <code className="bg-gray-800 text-white px-2 rounded">
+                  <code className="bg-gray-800  px-2 rounded">
                     variables.tf
                   </code>{" "}
                   file and allow for flexible configuration of the ASG and its
                   components. The module also provides outputs for the auto
                   scaling group name and RDS security group ID in the{" "}
-                  <code className="bg-gray-800 text-white px-2 rounded">
+                  <code className="bg-gray-800  px-2 rounded">
                     outputs.tf
                   </code>{" "}
                   file, which can be used by other modules or resources within
