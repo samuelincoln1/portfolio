@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { useMenu } from '../../../context/MenuContext';
+import { useMenu } from '../../context/MenuContext';
 
 export default function Sidebar() {
   const { isMenuOpen } = useMenu();
