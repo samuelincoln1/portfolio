@@ -50,32 +50,33 @@ export default function ALBModule() {
       <ul className="list-disc pl-5">
         <li className="mb-2">
           <strong>Resource: </strong>{" "}
-          <span className="text-[#6183BB]">aws_lb</span>
+          <span className="text-[#7B42BC]">aws_lb</span>
           <ul className="list-disc pl-5 ml-5">
             <li>
-              <span className="text-[#6183BB]">name</span>: The name
+              <span className="text-[#7B42BC]">name</span>: The name
               of the ALB.
             </li>
             <li>
-              <span className="text-[#6183BB]">internal</span>:
+              <span className="text-[#7B42BC]">internal</span>:
               Specifies whether the ALB is internet-facing or
-              internal, set to false.
+              internal, set to code
+              <code className="text-[#EC585D]"> false</code>.
             </li>
             <li>
-              <span className="text-[#6183BB]">load_balancer_type</span>
-              : Type of the load balancer, set to
-              &quot;application&quot;.
+              <span className="text-[#7B42BC]">load_balancer_type</span>
+              : Type of the load balancer, set to 
+              <code className="text-[#526d4e]"> &quot;application&quot;</code>.
             </li>
             <li>
-              <span className="text-[#6183BB]">security_groups</span>:
+              <span className="text-[#7B42BC]">security_groups</span>:
               List of security group IDs associated with the ALB.
             </li>
             <li>
-              <span className="text-[#6183BB]">subnets</span>: List of
+              <span className="text-[#7B42BC]">subnets</span>: List of
               subnet IDs where the ALB is deployed.
             </li>
             <li>
-              <span className="text-[#6183BB]">
+              <span className="text-[#7B42BC]">
                 enable_deletion_protection
               </span>
               : Boolean to enable/disable deletion protection.
@@ -88,55 +89,55 @@ export default function ALBModule() {
       <ul className="list-disc pl-5">
         <li className="mb-2">
           <strong>Resource: </strong>{" "}
-          <span className="text-[#6183BB]">aws_lb_target_group</span>
+          <span className="text-[#7B42BC]">aws_lb_target_group</span>
         </li>
         <ul className="list-disc pl-5 ml-5">
           <li>
-            <span className="text-[#6183BB]">name</span>: The name of
+            <span className="text-[#7B42BC]">name</span>: The name of
             the target group.
           </li>
           <li>
-            <span className="text-[#6183BB]">port</span>: The port on
-            which the ALB receives traffic, set to 80.
+            <span className="text-[#7B42BC]">port</span>: The port on
+            which the ALB receives traffic, set to code
+            <code className="text-[##02A8EF]">80</code>.
           </li>
           <li>
-            <span className="text-[#6183BB]">protocol</span>: The
-            protocol to use for routing traffic to the targets, set to
-            &quot;HTTP&quot;.
+            <span className="text-[#7B42BC]">protocol</span>: The
+            protocol to use for routing traffic to the targets.
           </li>
           <li>
-            <span className="text-[#6183BB]">vpc_id</span>: The ID of
+            <span className="text-[#7B42BC]">vpc_id</span>: The ID of
             the VPC where the target group is deployed.
           </li>
           <li>
-            <span className="text-[#6183BB]">
+            <span className="text-[#7B42BC]">
               Health Check Configuration:
             </span>
             <ul className="list-disc pl-5 ml-5">
               <li>
-                <span className="text-[#6183BB]">path</span>: The
+                <span className="text-[#7B42BC]">path</span>: The
                 destination for the health check request.
               </li>
               <li>
-                <span className="text-[#6183BB]">interval</span>: Time
+                <span className="text-[#7B42BC]">interval</span>: Time
                 between health checks.
               </li>
               <li>
-                <span className="text-[#6183BB]">timeout</span>: Time
+                <span className="text-[#7B42BC]">timeout</span>: Time
                 to wait for a health check response.
               </li>
               <li>
-                <span className="text-[#6183BB]">healthy_threshold</span>
+                <span className="text-[#7B42BC]">healthy_threshold</span>
                 : Number of consecutive successful health checks
                 required before considering a target healthy.
               </li>
               <li>
-                <span className="text-[#6183BB]">unhealthy_threshold</span>
+                <span className="text-[#7B42BC]">unhealthy_threshold</span>
                 : Number of consecutive failed health checks required
                 before considering a target unhealthy.
               </li>
               <li>
-                <span className="text-[#6183BB]">matcher</span>: HTTP
+                <span className="text-[#7B42BC]">matcher</span>: HTTP
                 codes to use when checking for a successful response.
               </li>
             </ul>
@@ -148,31 +149,34 @@ export default function ALBModule() {
       <ul className="list-disc pl-5">
         <li className="mb-2">
           <strong>Resource: </strong>{" "}
-          <span className="text-[#6183BB]">aws_lb_listener</span>
+          <span className="text-[#7B42BC]">aws_lb_listener</span>
           <ul className="list-disc pl-5 ml-5">
             <li>
-              <span className="text-[#6183BB]">load_balancer_arn</span>
+              <span className="text-[#7B42BC]">load_balancer_arn</span>
               : ARN of the load balancer.
             </li>
             <li>
-              <span className="text-[#6183BB]">port</span>: Port on
-              which the ALB receives traffic, set to 80.
+              <span className="text-[#7B42BC]">port</span>: Port on
+              which the ALB receives traffic, set to code
+              <code className="text-[#02A8EF]"> 80</code>.
             </li>
             <li>
-              <span className="text-[#6183BB]">protocol</span>:
+              <span className="text-[#7B42BC]">protocol</span>:
               Protocol to use for routing traffic to the targets, set
-              to &quot;HTTP&quot;.
+              to code
+              <code className="text-[#526d4e]"> &quot;HTTP&quot;</code>.
             </li>
             <li>
-              <span className="text-[#6183BB]">default_action</span>:
+              <span className="text-[#7B42BC]">default_action</span>:
               Default action to take when a request is received.
               <ul className="list-disc pl-5 ml-5">
                 <li>
-                  <span className="text-[#6183BB]">type</span>: Type
-                  of the default action, set to &quot;forward&quot;.
+                  <span className="text-[#7B42BC]">type</span>: Type
+                  of the default action, set to
+                  <code className="text-[#526d4e]"> &quot;forward&quot;</code>.
                 </li>
                 <li>
-                  <span className="text-[#6183BB]">target_group_arn</span>
+                  <span className="text-[#7B42BC]">target_group_arn</span>
                   : ARN of the target group to forward the traffic to.
                 </li>
               </ul>
@@ -185,27 +189,28 @@ export default function ALBModule() {
       <ul className="list-disc pl-5">
         <li className="mb-2">
           <strong>Resource: </strong>{" "}
-          <span className="text-[#6183BB]">aws_security_group</span>
+          <span className="text-[#7B42BC]">aws_security_group</span>
           <ul className="list-disc pl-5 ml-5">
             <li>
-              <span className="text-[#6183BB]">name</span>: Name of
+              <span className="text-[#7B42BC]">name</span>: Name of
               the security group.
             </li>
             <li>
-              <span className="text-[#6183BB]">description</span>:
+              <span className="text-[#7B42BC]">description</span>:
               Description of the security group.
             </li>
             <li>
-              <span className="text-[#6183BB]">vpc_id</span>: ID of
+              <span className="text-[#7B42BC]">vpc_id</span>: ID of
               the VPC where the security group is deployed.
             </li>
             <li>
-              <span className="text-[#6183BB]">ingress</span>: Allows
+              <span className="text-[#7B42BC]">ingress</span>: Allows
               HTTP (port 80) and HTTPS (port 443) from any IP.
             </li>
             <li>
-              <span className="text-[#6183BB]">egress</span>: Allows
-              traffic only to specified CIDR blocks, in port 8080.
+              <span className="text-[#7B42BC]">egress</span>: Allows
+              traffic only to specified CIDR blocks, in port code
+              <code className="text-[#02A8EF]"> 8080</code>.
             </li>
           </ul>
         </li>
@@ -217,17 +222,17 @@ export default function ALBModule() {
       <p>
         The module uses several input variables to customize the
         deployment, such as{" "}
-        <span className="text-[#6183BB]">alb_name</span>,{" "}
-        <span className="text-[#6183BB]">public_subnet_id</span>,{" "}
-        <span className="text-[#6183BB]">alb_target_group_name</span>,
+        <span className="text-[#7B42BC]">alb_name</span>,{" "}
+        <span className="text-[#7B42BC]">public_subnet_id</span>,{" "}
+        <span className="text-[#7B42BC]">alb_target_group_name</span>,
         and others. These variables are defined in the{" "}
-        <code className="bg-gray-800 px-2 rounded">
+        <code className="text-[#EC585D]">
           variables.tf
         </code>{" "}
         file and allow for flexible configuration of the ALB and its
         components. The module also provides outputs for the security
         group ID and target group ARN in the{" "}
-        <code className="bg-gray-800 px-2 rounded">outputs.tf</code>{" "}
+        <code className="text-[#EC585D]">outputs.tf</code>{" "}
         file, which can be used by other modules or resources within
         the infrastructure.
       </p>

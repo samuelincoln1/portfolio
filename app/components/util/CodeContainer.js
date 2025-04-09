@@ -13,7 +13,6 @@ const customTheme = {
     ...darcula['code[class*="language-"]'],
     fontFamily: 'Fira Code, monospace',
     textShadow: '0 0 2px rgba(0, 68, 255, 1)',
-    fontStyle: 'italic',
   },
 };
 

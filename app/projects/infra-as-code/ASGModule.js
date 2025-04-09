@@ -45,44 +45,45 @@ export default function ASGModule() {
       <ul className="list-disc pl-5">
         <li>
           <strong>Resource: </strong>
-          <span className="text-[#6183BB]">aws_launch_template</span>
+          <span className="text-[#7B42BC]">aws_launch_template</span>
         </li>
         <ul className="list-disc pl-5">
           <li>
-            <span className="text-[#6183BB]">name</span>: The name of
+            <span className="text-[#7B42BC]">name</span>: The name of
             the launch template.
           </li>
           <li>
-            <span className="text-[#6183BB]">image_id</span>: The ID
+            <span className="text-[#7B42BC]">image_id</span>: The ID
             of the AMI to use for the instances.
           </li>
           <li>
-            <span className="text-[#6183BB]">instance_type</span>: The
+            <span className="text-[#7B42BC]">instance_type</span>: The
             type of instance to use.
           </li>
           <li>
-            <span className="text-[#6183BB]">key_name</span>: The name
+            <span className="text-[#7B42BC]">key_name</span>: The name
             of the key for SSH access.
           </li>
           <li>
-            <span className="text-[#6183BB]">network_interface</span>:
+            <span className="text-[#7B42BC]">network_interface</span>:
             <ul className="list-disc pl-5 ml-5">
               <li>
-                <span className="text-[#6183BB]">
+                <span className="text-[#7B42BC]">
                   associate_public_ip_address
                 </span>
                 : Whether to associate a public IP address with the
-                instanc, set to false.
+                instanc, set to code
+                <code className="text-[#EC585D]"> false</code>.
               </li>
               <li>
-                <span className="text-[#6183BB]">security_groups</span>
+                <span className="text-[#7B42BC]">security_groups</span>
                 : List of security group IDs to associate with the
                 instance.
               </li>
             </ul>
           </li>
           <li>
-            <span className="text-[#6183BB]">user_data</span>:
+            <span className="text-[#7B42BC]">user_data</span>:
             Base64-encoded script to initialize the instance.
           </li>
         </ul>
@@ -92,32 +93,32 @@ export default function ASGModule() {
       <ul className="list-disc pl-5">
         <li>
           <strong>Resource: </strong>
-          <span className="text-[#6183BB]">aws_autoscaling_group</span>
+          <span className="text-[#7B42BC]">aws_autoscaling_group</span>
         </li>
         <ul className="list-disc pl-5">
           <li>
-            <span className="text-[#6183BB]">name</span>: The name of
+            <span className="text-[#7B42BC]">name</span>: The name of
             the auto scaling group.
           </li>
           <li>
-            <span className="text-[#6183BB]">max_size</span>: Maximum
+            <span className="text-[#7B42BC]">max_size</span>: Maximum
             number of instances.
           </li>
           <li>
-            <span className="text-[#6183BB]">min_size</span>: Minimum
+            <span className="text-[#7B42BC]">min_size</span>: Minimum
             number of instances.
           </li>
           <li>
-            <span className="text-[#6183BB]">desired_capacity</span>:
+            <span className="text-[#7B42BC]">desired_capacity</span>:
             Desired number of instances.
           </li>
           <li>
-            <span className="text-[#6183BB]">vpc_zone_identifier</span>
+            <span className="text-[#7B42BC]">vpc_zone_identifier</span>
             : List of subnet IDs to associate with the auto scaling
             group.
           </li>
           <li>
-            <span className="text-[#6183BB]">target_group_arns</span>:
+            <span className="text-[#7B42BC]">target_group_arns</span>:
             List of target group ARNs for load balancing.
           </li>
         </ul>
@@ -130,23 +131,24 @@ export default function ASGModule() {
           <ul>
             <li>
               <strong>Resource: </strong>
-              <span className="text-[#6183BB]">aws_security_group</span>
+              <span className="text-[#7B42BC]">aws_security_group</span>
               <ul className="list-disc pl-5 ml-5">
                 <li>
-                  <span className="text-[#6183BB]">name</span>: The
+                  <span className="text-[#7B42BC]">name</span>: The
                   name of the security group.
                 </li>
 
                 <li>
-                  <span className="text-[#6183BB]">vpc_id</span>: The
+                  <span className="text-[#7B42BC]">vpc_id</span>: The
                   ID of the VPC where the security group is deployed.
                 </li>
                 <li>
-                  <span className="text-[#6183BB]">ingress</span>:
-                  Allows HTTP on port 8080 from the ALB.
+                  <span className="text-[#7B42BC]">ingress</span>:
+                  Allows HTTP on port code
+                  <code className="text-[#02A8EF]"> 8080</code> from the ALB.
                 </li>
                 <li>
-                  <span className="text-[#6183BB]">egress</span>:
+                  <span className="text-[#7B42BC]">egress</span>:
                   Allows egress to RDS.
                 </li>
               </ul>
@@ -159,22 +161,22 @@ export default function ASGModule() {
             </li>
             <li>
               <strong>Resource: </strong>
-              <span className="text-[#6183BB]">aws_security_group</span>
+              <span className="text-[#7B42BC]">aws_security_group</span>
               <ul className="list-disc pl-5 ml-5">
                 <li>
-                  <span className="text-[#6183BB]">name</span>: The
+                  <span className="text-[#7B42BC]">name</span>: The
                   name of the security group.
                 </li>
                 <li>
-                  <span className="text-[#6183BB]">vpc_id</span>: The
+                  <span className="text-[#7B42BC]">vpc_id</span>: The
                   ID of the VPC where the security group is deployed.
                 </li>
                 <li>
-                  <span className="text-[#6183BB]">ingress</span>:
+                  <span className="text-[#7B42BC]">ingress</span>:
                   Allows traffic from the web server security group.
                 </li>
                 <li>
-                  <span className="text-[#6183BB]">egress</span>:
+                  <span className="text-[#7B42BC]">egress</span>:
                   Allows outbound traffic to any destination.
                 </li>
               </ul>
@@ -189,17 +191,17 @@ export default function ASGModule() {
       <p>
         The module uses several input variables to customize the
         deployment, such as{" "}
-        <span className="text-[#6183BB]">launch_template_name</span>,{" "}
-        <span className="text-[#6183BB]">image_id</span>,{" "}
-        <span className="text-[#6183BB]">instance_type</span>, and
+        <span className="text-[#7B42BC]">launch_template_name</span>,{" "}
+        <span className="text-[#7B42BC]">image_id</span>,{" "}
+        <span className="text-[#7B42BC]">instance_type</span>, and
         others. These variables are defined in the{" "}
-        <code className="bg-gray-800 px-2 rounded">
+        <code className="text-[#EC585D]">
           variables.tf
         </code>{" "}
         file and allow for flexible configuration of the ASG and its
         components. The module also provides outputs for the auto
         scaling group name and RDS security group ID in the{" "}
-        <code className="bg-gray-800 px-2 rounded">outputs.tf</code>{" "}
+        <code className="text-[#EC585D]">outputs.tf</code>{" "}
         file, which can be used by other modules or resources within
         the infrastructure.
       </p>

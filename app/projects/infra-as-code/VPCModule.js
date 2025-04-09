@@ -56,23 +56,23 @@ export default function VPCModule() {
       <ul className="list-disc pl-5">
         <li className="mb-2">
           <strong>Resource: </strong>{" "}
-          <span className="text-[#6183BB]">aws_vpc.main</span>
+          <span className="text-[#7B42BC]">aws_vpc.main</span>
         </li>
         <ul className="list-disc pl-5 ml-5">
           <li>
-            <span className="text-[#6183BB]">cidr_block</span>: The
+            <span className="text-[#7B42BC]">cidr_block</span>: The
             CIDR block for the VPC.
           </li>
           <li>
-            <span className="text-[#6183BB]">enable_dns_hostnames</span>
+            <span className="text-[#7B42BC]">enable_dns_hostnames</span>
             : Whether to enable DNS hostnames in the VPC.
           </li>
           <li>
-            <span className="text-[#6183BB]">enable_dns_support</span>
+            <span className="text-[#7B42BC]">enable_dns_support</span>
             : Whether to enable DNS support in the VPC.
           </li>
           <li>
-            <span className="text-[#6183BB]">tags</span>: Assigns a
+            <span className="text-[#7B42BC]">tags</span>: Assigns a
             name tag to the VPC for identification.
           </li>
         </ul>
@@ -82,15 +82,15 @@ export default function VPCModule() {
       <ul className="list-disc pl-5">
         <li className="mb-2">
           <strong>Resource: </strong>{" "}
-          <span className="text-[#6183BB]">aws_internet_gateway</span>
+          <span className="text-[#7B42BC]">aws_internet_gateway</span>
         </li>
         <ul className="list-disc pl-5 ml-5">
           <li>
-            <span className="text-[#6183BB]">vpc_id</span>: The ID of
+            <span className="text-[#7B42BC]">vpc_id</span>: The ID of
             the VPC to which the internet gateway is attached.
           </li>
           <li>
-            <span className="text-[#6183BB]">tags</span>: Assigns a
+            <span className="text-[#7B42BC]">tags</span>: Assigns a
             name tag to the internet gateway.
           </li>
         </ul>
@@ -103,29 +103,29 @@ export default function VPCModule() {
       <ul className="list-disc pl-5">
         <li className="mb-2">
           <strong>Resource: </strong>{" "}
-          <span className="text-[#6183BB]">aws_subnet</span>
+          <span className="text-[#7B42BC]">aws_subnet</span>
           <ul className="list-disc pl-5 ml-5">
             <li>
-              <span className="text-[#6183BB]">vpc_id</span>: The ID
+              <span className="text-[#7B42BC]">vpc_id</span>: The ID
               of the VPC to which the subnet is associated.
             </li>
             <li>
-              <span className="text-[#6183BB]">cidr_block</span>: The
+              <span className="text-[#7B42BC]">cidr_block</span>: The
               CIDR block for the subnet.
             </li>
             <li>
-              <span className="text-[#6183BB]">
+              <span className="text-[#7B42BC]">
                 map_public_ip_on_launch
               </span>
               : Enable to assign a public IP to instances launched in
               this subnet.
             </li>
             <li>
-              <span className="text-[#6183BB]">availability_zone</span>
+              <span className="text-[#7B42BC]">availability_zone</span>
               : The availability zone for the subnet.
             </li>
             <li>
-              <span className="text-[#6183BB]">tags</span>: Assigns a
+              <span className="text-[#7B42BC]">tags</span>: Assigns a
               name tag to the subnet.
             </li>
           </ul>
@@ -137,29 +137,29 @@ export default function VPCModule() {
       <ul className="list-disc pl-5">
         <li className="mb-2">
           <strong>Resource: </strong>{" "}
-          <span className="text-[#6183BB]">aws_subnet</span>
+          <span className="text-[#7B42BC]">aws_subnet</span>
           <ul className="list-disc pl-5 ml-5">
             <li>
-              <span className="text-[#6183BB]">vpc_id</span>: The ID
+              <span className="text-[#7B42BC]">vpc_id</span>: The ID
               of the VPC to which the subnet is associated.
             </li>
             <li>
-              <span className="text-[#6183BB]">cidr_block</span>: The
+              <span className="text-[#7B42BC]">cidr_block</span>: The
               CIDR block for the subnet.
             </li>
             <li>
-              <span className="text-[#6183BB]">
+              <span className="text-[#7B42BC]">
                 map_public_ip_on_launch
               </span>
               : Disable to block automatic public IP assignment to
               instances launched in this subnet.
             </li>
             <li>
-              <span className="text-[#6183BB]">availability_zone</span>
+              <span className="text-[#7B42BC]">availability_zone</span>
               : The availability zone for the subnet.
             </li>
             <li>
-              <span className="text-[#6183BB]">tags</span>: Assigns a
+              <span className="text-[#7B42BC]">tags</span>: Assigns a
               name tag to the subnet.
             </li>
           </ul>
@@ -173,25 +173,25 @@ export default function VPCModule() {
       <ul className="list-disc pl-5">
         <li className="mb-2">
           <strong>Resource: </strong>{" "}
-          <span className="text-[#6183BB]">aws_route_table</span>
+          <span className="text-[#7B42BC]">aws_route_table</span>
         </li>
         <ul className="list-disc pl-5 ml-5">
           <li>
-            <span className="text-[#6183BB]">vpc_id</span>: The ID of
+            <span className="text-[#7B42BC]">vpc_id</span>: The ID of
             the VPC to which the route table is associated.
           </li>
           <li>
-            <span className="text-[#6183BB]">route</span>: includes a
+            <span className="text-[#7B42BC]">route</span>: includes a
             route for{" "}
-            <span className="text-[#6183BB]">0.0.0.0/0</span> through
+            <span className="text-[#6a7c80]">0.0.0.0/0</span> through
             the internet gateway. (
-            <span className="text-[#6183BB]">
+            <span className="text-[#7B42BC]">
               aws_internet_gateway.main.id
             </span>
             )
           </li>
           <li>
-            <span className="text-[#6183BB]">tags</span>: Assigns a
+            <span className="text-[#7B42BC]">tags</span>: Assigns a
             name tag to the route table.
           </li>
         </ul>
@@ -202,15 +202,15 @@ export default function VPCModule() {
       <ul className="list-disc pl-5">
         <li className="mb-2">
           <strong>Resource: </strong>{" "}
-          <span className="text-[#6183BB]">aws_route_table</span>
+          <span className="text-[#7B42BC]">aws_route_table</span>
         </li>
         <ul className="list-disc pl-5 ml-5">
           <li>
-            <span className="text-[#6183BB]">vpc_id</span>: The ID of
+            <span className="text-[#7B42BC]">vpc_id</span>: The ID of
             the VPC to which the route table is associated.
           </li>
           <li>
-            <span className="text-[#6183BB]">tags</span>: Assigns a
+            <span className="text-[#7B42BC]">tags</span>: Assigns a
             name tag to the route table.
           </li>
         </ul>
@@ -234,19 +234,19 @@ export default function VPCModule() {
       <p>
         The module uses several input variables to customize the
         deployment, such as{" "}
-        <span className="text-[#6183BB]">cidr_block</span>,{" "}
-        <span className="text-[#6183BB]">enable_dns_hostnames</span>,{" "}
-        <span className="text-[#6183BB]">
+        <span className="text-[#7B42BC]">cidr_block</span>,{" "}
+        <span className="text-[#7B42BC]">enable_dns_hostnames</span>,{" "}
+        <span className="text-[#7B42BC]">
           public_subnet_cidr_block_1
         </span>
         , and others. These variables are defined in the{" "}
-        <code className="bg-gray-800 px-2 rounded">
+        <code className="text-[#EC585D]">
           variables.tf
         </code>{" "}
         file and allow for flexible configuration of the VPC and its
         components. The module also provides outputs for the VPC ID,
         subnet IDs, and CIDR blocks in the{" "}
-        <code className="bg-gray-800 px-2 rounded">outputs.tf</code>{" "}
+        <code className="text-[#EC585D]">outputs.tf</code>{" "}
         file, which can be used by other modules or resources within
         the infrastructure.
       </p>

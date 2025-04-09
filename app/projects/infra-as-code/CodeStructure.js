@@ -53,21 +53,21 @@ export default function CodeStructure() {
       </ul>
       <p>
         Inside each module, there is a{" "}
-        <code className="bg-gray-800 px-2 rounded">main.tf</code>{" "}
+        <code className="text-[#EC585D]">main.tf</code>{" "}
         file that defines the resources, a{" "}
-        <code className="bg-gray-800 px-2 rounded">
+        <code className="text-[#EC585D]">
           variables.tf
         </code>{" "}
         file that defines the variables and a{" "}
-        <code className="bg-gray-800 px-2 rounded">outputs.tf</code>{" "}
+        <code className="text-[#EC585D]">outputs.tf</code>{" "}
         file that defines the outputs, when needed.
       </p>
       <Image
         src="../images/projects/infra-as-code/modules-structure.png"
         alt="Code Structure"
-        width={300}
-        height={300}
-        className="border-1 border-[#4f5157] rounded-lg shadow-lg"
+        width={200}
+        height={200}
+        className="border-1 border-[#4f5157] rounded-lg "
       />
     </div>
   );

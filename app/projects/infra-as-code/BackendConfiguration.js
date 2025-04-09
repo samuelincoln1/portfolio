@@ -59,7 +59,7 @@ export default function BackendConfiguration() {
         Once the resources are created, the backend is defined as
         &quot;s3&quot; to store the Terraform state file. After
         defining the backend, the{" "}
-        <code className="bg-gray-800 px-2 rounded">
+        <code className="text-[#FFCF25]">
           terraform init
         </code>{" "}
         command is used to migrate the state to S3. This command
@@ -69,11 +69,11 @@ export default function BackendConfiguration() {
       <CodeContainer>{backendCode}</CodeContainer>
       <p>
         The variables are defined in the{" "}
-        <code className="bg-gray-800 px-2 rounded">
+        <code className="text-[#EC585D]">
           variables.tf
         </code>{" "}
         file. and initialized in the{" "}
-        <code className="bg-gray-800 px-2 rounded">
+        <code className="text-[#EC585D]">
           backend.tfvars
         </code>{" "}
         file.
