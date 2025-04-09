@@ -7,7 +7,7 @@ export default function Deployment() {
         Deployment
       </h1>
       <p>
-        After testing and validating your configuration, you can deploy the
+        After testing and validating the configuration, you can deploy the
         infrastructure using the{" "}
         <code className="text-[#FFCF25]">terraform apply</code> command. This
         command executes the changes defined in the Terraform configuration

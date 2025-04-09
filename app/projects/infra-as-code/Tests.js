@@ -7,9 +7,9 @@ export default function Tests() {
         Tests
       </h1>
       <p>
-        Ensuring the integrity and correctness of your infrastructure code is
+        Ensuring the integrity and correctness of the infrastructure code is
         crucial for successful deployments. Terraform provides several commands
-        to help test and validate your configurations before applying them to
+        to help test and validate the configurations before applying them to
         your environment.
       </p>
       <h2 className="text-[22px] lg:text-[26px] font-semibold text-white">
@@ -17,7 +17,7 @@ export default function Tests() {
       </h2>
       <p>
         The <code className="text-[#FFCF25]">terraform fmt</code> command is
-        used to format your Terraform configuration files consistently. It
+        used to format the Terraform configuration files consistently. It
         automatically updates the files to follow the standard Terraform style
         conventions, making the code more readable and maintainable.
       </p>
@@ -26,14 +26,14 @@ export default function Tests() {
       </h2>
       <p>
         The <code className="text-[#FFCF25]">terraform validate</code> command
-        checks the syntax and internal consistency of your Terraform
+        checks the syntax and internal consistency of the Terraform
         configuration files. It ensures that the configuration is syntactically
         valid and that all required arguments are provided.
       </p>
       <h2 className="text-[22px] lg:text-[26px] font-semibold text-white">
         Terraform plan
       </h2>
-      <p>
+      <p> 
         The <code className="text-[#FFCF25]">terraform plan</code> command is a
         critical step in the Terraform workflow. It creates an execution plan,
         showing what actions Terraform will take to achieve the desired state of
