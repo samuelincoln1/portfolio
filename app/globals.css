@@ -58,3 +58,10 @@ span, li, p{
   white-space: normal;
   word-break: break-word;
 }	
+
+.code-container span, 
+.code-container li, 
+.code-container p {
+  white-space: pre; 
+  word-break: normal; 
+}
