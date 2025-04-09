@@ -1,5 +1,4 @@
-export const backendCode = `
-terraform {
+export const backendCode = `terraform {
     backend "s3" {
         # bucket = "samuellincoln-terraform-state"
         # key = "tf-infra/terraform.tfstate"  
@@ -51,8 +50,7 @@ resource "aws_dynamodb_table" "terraform_locks" {
     }
 }`;
 
-export const backendVarsCode = `
-bucket_name = "samuellincoln-iac-project-state"
+export const backendVarsCode = `bucket_name = "samuellincoln-iac-project-state"
 sse_algorithm = "AES256"
 dynamodb_table_name = "iac-project-state-locking"
 billing_mode = "PAY_PER_REQUEST"
@@ -60,8 +58,7 @@ attribute_name = "LockID"
 attribute_type = "S"
 hash_key = "LockID"`;
 
-export const vpcCode = `
-resource "aws_vpc" "main" {
+export const vpcCode = `resource "aws_vpc" "main" {
   cidr_block           = var.cidr_block
   enable_dns_hostnames = var.enable_dns_hostnames
   enable_dns_support   = var.enable_dns_support
@@ -70,16 +67,14 @@ resource "aws_vpc" "main" {
   }
 }`;
 
-export const internetGatewayCode = `
-resource "aws_internet_gateway" "main" {
+export const internetGatewayCode = `resource "aws_internet_gateway" "main" {
   vpc_id = aws_vpc.main.id
   tags = {
     Name = "iac-project-igw"
   }
 }`;
 
-export const subnetsCode = `
-resource "aws_subnet" "public-subnet-1" {
+export const subnetsCode = `resource "aws_subnet" "public-subnet-1" {
     vpc_id                  = aws_vpc.main.id
     cidr_block              = var.public_subnet_cidr_block_1
     map_public_ip_on_launch = var.map_public_ip_on_launch
@@ -129,8 +124,7 @@ resource "aws_subnet" "public-subnet-1" {
     }
   }`;
 
-export const routeTablesCode = `
-resource "aws_route_table" "public-route-table" {
+export const routeTablesCode = `resource "aws_route_table" "public-route-table" {
   vpc_id = aws_vpc.main.id
   route {
     cidr_block = "0.0.0.0/0"
@@ -148,8 +142,7 @@ resource "aws_route_table" "private-route-table" {
   }
 }`;
 
-export const routeTableAssociationsCode = `
-resource "aws_route_table_association" "public-route-table-association" {
+export const routeTableAssociationsCode = `resource "aws_route_table_association" "public-route-table-association" {
   subnet_id      = aws_subnet.public-subnet-1.id
   route_table_id = aws_route_table.public-route-table.id
 }
@@ -177,8 +170,7 @@ resource "aws_route_table_association" "private-route-table-association-3" {
 
 `;
 
-export const albCode = `
-  resource "aws_lb" "iac-project-alb" {
+export const albCode = `resource "aws_lb" "iac-project-alb" {
   name                       = var.alb_name
   internal                   = false
   load_balancer_type         = "application"
@@ -188,8 +180,7 @@ export const albCode = `
 }
 `;
 
-export const albTargetGroupCode = `
-resource "aws_lb_target_group" "iac-project-alb-target-group" {
+export const albTargetGroupCode = `resource "aws_lb_target_group" "iac-project-alb-target-group" {
   name     = var.alb_target_group_name
   port     = var.alb_target_group_port
   protocol = var.alb_target_group_protocol
@@ -206,8 +197,7 @@ resource "aws_lb_target_group" "iac-project-alb-target-group" {
 }
 `;
 
-export const albListenerCode = `
-resource "aws_lb_listener" "http" {
+export const albListenerCode = `resource "aws_lb_listener" "http" {
   load_balancer_arn = aws_lb.iac-project-alb.arn
   port              = 80
   protocol          = "HTTP"
@@ -218,8 +208,7 @@ resource "aws_lb_listener" "http" {
 }
 `;
 
-export const albSecurityGroupCode = `
-resource "aws_security_group" "iac-project-alb-security-group" {
+export const albSecurityGroupCode = `resource "aws_security_group" "iac-project-alb-security-group" {
   name        = "iac-project-alb-security-group"
   description = "Security group for the ALB"
   vpc_id      = var.vpc_id
@@ -246,8 +235,7 @@ resource "aws_security_group" "iac-project-alb-security-group" {
 }
 `;
 
-export const webServerLaunchTemplateCode = `
-resource "aws_launch_template" "web-server-launch-template" {
+export const webServerLaunchTemplateCode = `resource "aws_launch_template" "web-server-launch-template" {
   name          = var.launch_template_name
   image_id      = var.image_id
   instance_type = var.instance_type
@@ -267,8 +255,7 @@ resource "aws_launch_template" "web-server-launch-template" {
 }
 `;
 
-export const webServerAutoscalingGroupCode = `
-resource "aws_autoscaling_group" "web-server-autoscaling-group" {
+export const webServerAutoscalingGroupCode = `resource "aws_autoscaling_group" "web-server-autoscaling-group" {
   name                = var.autoscaling_group_name
   max_size            = var.max_size
   min_size            = var.min_size
@@ -282,8 +269,7 @@ resource "aws_autoscaling_group" "web-server-autoscaling-group" {
 `;
 
 
-export const webServerSecurityGroupCode = `
-resource "aws_security_group" "web-server-security-group" {
+export const webServerSecurityGroupCode = `resource "aws_security_group" "web-server-security-group" {
   name   = "iac-project-web-server-security-group"
   vpc_id = var.vpc_id
   ingress {

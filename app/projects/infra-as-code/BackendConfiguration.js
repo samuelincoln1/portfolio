@@ -78,9 +78,7 @@ export default function BackendConfiguration() {
         </code>{" "}
         file.
       </p>
-      <pre>
-        <code className="language-hcl">{backendVarsCode}</code>
-      </pre>
+      <CodeContainer>{backendVarsCode}</CodeContainer>
     </div>
   );
 }

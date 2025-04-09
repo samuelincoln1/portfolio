@@ -7,14 +7,13 @@ const customTheme = {
   'pre[class*="language-"]': {
     ...darcula['pre[class*="language-"]'],
     background: '#0d0e12',
-    padding: '0px 16px 16px 16px',
+    padding: '0px 16px 0px 16px',
   },
   'code[class*="language-"]': {
     ...darcula['code[class*="language-"]'],
     fontFamily: 'Fira Code, monospace',
     textShadow: '0 0 2px rgba(0, 68, 255, 1)',
-    // textShadow: '0 30px 2px #fff, 0 60px 2px rgba(255, 0, 255, 0.2)',
-
+    fontStyle: 'italic',
   },
 };
 
@@ -27,6 +26,7 @@ const CodeContainer = ({ children }) => {
       language="hcl"
       style={customTheme}
       className="code-container"
+      
     >
       {codeString}
     </SyntaxHighlighter>
