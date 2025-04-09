@@ -69,8 +69,8 @@ export default function ASGModule() {
                 <span className="text-[#6e5da9]">
                   associate_public_ip_address
                 </span>
-                : Whether to associate a public IP address with the instanc, set
-                to code
+                : Whether to associate a public IP address with the instance, set
+                to
                 <code className="text-[#EC585D]"> false</code>.
               </li>
               <li>
