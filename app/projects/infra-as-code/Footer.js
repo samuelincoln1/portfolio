@@ -2,14 +2,14 @@ import React from 'react';
 
 function Footer() {
   return (
-    <footer className="bg-[#0d0e12] text-white pt-10 pb-4">
-      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
-        <div className="flex gap-4 z-100 md:flex-row flex-col">
+    <footer className="bg-[#0d0e12] text-white py-4 md:py-10 border-t border-[#4f5157] absolute bottom-0 left-0 w-full z-100">
+      <div className="px-10 flex flex-col md:flex-row justify-center">
+        <div className="flex flex-row gap-4 z-100 items-center justify-center  md:text-left text-sm md:text-base">
           <a
             href="https://github.com/samuelincoln1"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 hover:underline"
+            className="flex items-center gap-2 hover:underline text-center md:text-left"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -26,7 +26,7 @@ function Footer() {
             href="https://www.linkedin.com/in/samuel-gomes-213429209/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 hover:underline"
+            className="flex items-center gap-2 hover:underline text-center md:text-left"
           >
             <svg
               width="24"
@@ -42,7 +42,7 @@ function Footer() {
           <a
             href="/curriculo-en.pdf"
             download
-            className="flex items-center gap-2 hover:underline"
+            className="flex items-center gap-2 hover:underline hidden md:inline-flex"
           >
             <svg
               width="24"
@@ -58,7 +58,7 @@ function Footer() {
           <a
             href="/curriculo.pdf"
             download
-            className="flex items-center gap-2 hover:underline"
+            className="flex items-center gap-2 hover:underline hidden md:inline-flex"
           >
             <svg
               width="24"
@@ -72,7 +72,7 @@ function Footer() {
             Download CV PT
           </a>
         </div>
-        <p className="text-sm mt-2 md:mt-0">
+        <p className="text-sm mt-6 md:mt-0 w-full md:w-auto ml-auto text-center ">
           &copy; {new Date().getFullYear()} Samuel Gomes. All rights reserved.
         </p>
       </div>

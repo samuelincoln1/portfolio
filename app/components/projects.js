@@ -43,7 +43,7 @@ const Projects = () => {
           <em>{t('projects.subtitle')}</em>
         </p>
         <div>
-          <h2 className="text-white md:text-[48px] text-[20px] font-bold  ">
+          <h2 className="text-white md:text-[48px] text-[36px] font-bold  ">
             {t('nav.projects')}
           </h2>
           {projects.map((project, index) => (

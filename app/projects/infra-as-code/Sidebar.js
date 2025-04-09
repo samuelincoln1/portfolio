@@ -31,6 +31,9 @@ export default function Sidebar() {
         "vpc-module",
         "alb-module",
         "asg-module",
+        "rds-module",
+        "main-file",
+        "tests",
       ];
       let currentSection = "";
       for (let section of sections) {
@@ -81,6 +84,19 @@ export default function Sidebar() {
       window.removeEventListener("touchmove", handleTouchMove);
     };
   }, [isSidebarOpen]);
+
+  const sections = [
+    { id: "overview", label: "Overview" },
+    { id: "architecture-diagram", label: "Architecture Diagram" },
+    { id: "code-structure", label: "Code Structure" },
+    { id: "backend-configuration", label: "Backend Configuration" },
+    { id: "vpc-module", label: "VPC Module" },
+    { id: "alb-module", label: "ALB Module" },
+    { id: "asg-module", label: "ASG Module" },
+    { id: "rds-module", label: "RDS Module" },
+    { id: "main-file", label: "Main file" },
+    { id: "tests", label: "Tests" },
+  ];
 
   return (
     <>
@@ -149,69 +165,19 @@ export default function Sidebar() {
        
         <h2 className="text-2xl font-bold mb-4">Index</h2>
         <ul className="space-y-1">
-          <li className="w-full">
-            <a
-              href="#overview"
-              className={`hover:bg-[#2b303c] p-2 rounded-md block ${activeSection === "overview" ? "bg-[#2b303c]" : ""}`}
-              onClick={(e) => handleLinkClick(e, "overview")}
-            >
-              Overview
-            </a>
-          </li>
-          <li className="w-full">
-            <a
-              href="#architecture-diagram"
-              className={`hover:bg-[#2b303c] p-2 rounded-md block ${activeSection === "architecture-diagram" ? "bg-[#2b303c]" : ""}`}
-              onClick={(e) => handleLinkClick(e, "architecture-diagram")}
-            >
-              Architecture Diagram
-            </a>
-          </li>
-          <li className="w-full">
-            <a
-              href="#code-structure"
-              className={`hover:bg-[#2b303c] p-2 rounded-md block ${activeSection === "code-structure" ? "bg-[#2b303c]" : ""}`}
-              onClick={(e) => handleLinkClick(e, "code-structure")}
-            >
-              Code Structure
-            </a>
-          </li>
-          <li className="w-full">
-            <a
-              href="#backend-configuration"
-              className={`hover:bg-[#2b303c] p-2 rounded-md block ${activeSection === "backend-configuration" ? "bg-[#2b303c]" : ""}`}
-              onClick={(e) => handleLinkClick(e, "backend-configuration")}
-            >
-              Backend Configuration
-            </a>
-          </li>
-          <li className="w-full">
-            <a
-              href="#vpc-module"
-              className={`hover:bg-[#2b303c] p-2 rounded-md block ${activeSection === "vpc-module" ? "bg-[#2b303c]" : ""}`}
-              onClick={(e) => handleLinkClick(e, "vpc-module")}
-            >
-              VPC Module
-            </a>
-          </li>
-          <li className="w-full">
-            <a
-              href="#alb-module"
-              className={`hover:bg-[#2b303c] p-2 rounded-md block ${activeSection === "alb-module" ? "bg-[#2b303c]" : ""}`}
-              onClick={(e) => handleLinkClick(e, "alb-module")}
-            >
-              ALB Module
-            </a>
-          </li>
-          <li className="w-full">
-            <a
-              href="#asg-module"
-              className={`hover:bg-[#2b303c] p-2 rounded-md block ${activeSection === "asg-module" ? "bg-[#2b303c]" : ""}`}
-              onClick={(e) => handleLinkClick(e, "asg-module")}
-            >
-              ASG Module
-            </a>
-          </li>
+          {sections.map((section) => (
+            <li key={section.id} className="w-full">
+              <a
+                href={`#${section.id}`}
+                className={`hover:bg-[#2b303c] p-2 rounded-md block ${
+                  activeSection === section.id ? "bg-[#2b303c]" : ""
+                }`}
+                onClick={(e) => handleLinkClick(e, section.id)}
+              >
+                {section.label}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
     </>

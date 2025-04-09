@@ -77,7 +77,7 @@ export default function VPCModule() {
           </li>
         </ul>
       </ul>
-      <CodeContainer>{vpcCode}</CodeContainer>
+      <CodeContainer fileName="vpc/main.tf">{vpcCode}</CodeContainer>
       <p>2. Internet Gateway</p>
       <ul className="list-disc pl-5">
         <li className="mb-2">
@@ -95,7 +95,7 @@ export default function VPCModule() {
           </li>
         </ul>
       </ul>
-      <CodeContainer>{internetGatewayCode}</CodeContainer>
+      <CodeContainer fileName="vpc/main.tf">{internetGatewayCode}</CodeContainer>
       <p>3. Subnets</p>
       <p>
         <strong>Public Subnets</strong>
@@ -165,7 +165,7 @@ export default function VPCModule() {
           </ul>
         </li>
       </ul>
-      <CodeContainer>{subnetsCode}</CodeContainer>
+      <CodeContainer fileName="vpc/main.tf">{subnetsCode}</CodeContainer>
       <p>4. Route Tables</p>
       <p>
         <strong>Public Route Table</strong>
@@ -184,11 +184,11 @@ export default function VPCModule() {
             <span className="text-[#6e5da9]">route</span>: includes a
             route for{" "}
             <span className="text-[#6a7c80]">0.0.0.0/0</span> through
-            the internet gateway. (
+            the internet gateway (
             <span className="text-[#6e5da9]">
               aws_internet_gateway.main.id
             </span>
-            )
+            ).
           </li>
           <li>
             <span className="text-[#6e5da9]">tags</span>: Assigns a
@@ -215,7 +215,7 @@ export default function VPCModule() {
           </li>
         </ul>
       </ul>
-      <CodeContainer>{routeTablesCode}</CodeContainer>
+      <CodeContainer fileName="vpc/main.tf">{routeTablesCode}</CodeContainer>
       <p>5. Route Table Associations</p>
       <ul className="list-disc pl-5">
         <li className="mb-2">
@@ -227,7 +227,7 @@ export default function VPCModule() {
           private route table.
         </li>
       </ul>
-      <CodeContainer>{routeTableAssociationsCode}</CodeContainer>
+      <CodeContainer fileName="vpc/main.tf">{routeTableAssociationsCode}</CodeContainer>
       <h2 className="text-[22px] lg:text-[26px] font-semibold text-white">
         Variables and Outputs
       </h2>

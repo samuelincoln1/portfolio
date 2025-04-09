@@ -10,7 +10,10 @@ import BackendConfiguration from "./BackendConfiguration";
 import VPCModule from "./VPCModule";
 import ALBModule from "./ALBModule";
 import ASGModule from "./ASGModule";
-
+import RDSModule from "./RDSModule";
+import Main from "./MainFile";
+import Tests from "./Tests";
+import Deployment from "./Deployment";
 export default function AboutPage() {
   return (
     <MenuProvider>
@@ -26,7 +29,7 @@ export default function AboutPage() {
                   '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
               }}
             >
-              <div className="container mx-auto xl:px-4 px-8 relative mt-8 z-10">
+              <div className="container mx-auto xl:px-4 px-8 relative mt-8 z-10 mb-[154px]">
                 <div className="flex flex-col">
                   <div className="flex flex-col gap-10 mt-[72px] ">
                     <Overview />
@@ -36,13 +39,17 @@ export default function AboutPage() {
                     <VPCModule />
                     <ALBModule />
                     <ASGModule />
+                    <RDSModule />
+                    <Main />
+                    <Tests />
+                    <Deployment />
                   </div>
                 </div>
               </div>
             </div>
-            <Footer />
           </div>
         </div>
+        <Footer />
       </div>
     </MenuProvider>
   );

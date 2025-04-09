@@ -66,7 +66,7 @@ export default function BackendConfiguration() {
         initializes the backend configuration, ensuring that the state
         is managed remotely and securely.
       </p>
-      <CodeContainer>{backendCode}</CodeContainer>
+      <CodeContainer fileName="backend/main.tf">{backendCode}</CodeContainer>
       <p>
         The variables are defined in the{" "}
         <code className="text-[#EC585D]">
@@ -78,7 +78,7 @@ export default function BackendConfiguration() {
         </code>{" "}
         file.
       </p>
-      <CodeContainer>{backendVarsCode}</CodeContainer>
+      <CodeContainer fileName="backend/variables.tf">{backendVarsCode}</CodeContainer>
     </div>
   );
 }
