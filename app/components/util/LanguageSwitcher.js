@@ -15,7 +15,7 @@ export default function LanguageSwitcher() {
         className={`text-xl px-4 py-2 rounded-lg transition-colors ${
           i18n.language === 'en'
             ? 'bg-white text-black'
-            : 'text-white hover:text-gray-200'
+            : 'text-white hover:cursor-pointer'
         }`}
       >
         EN
@@ -26,7 +26,7 @@ export default function LanguageSwitcher() {
         className={`text-xl px-4 py-2 rounded-lg transition-colors ${
           i18n.language === 'pt'
             ? 'bg-white text-black'
-            : 'text-white hover:text-gray-200'
+            : 'text-white hover:cursor-pointer'
         }`}
       >
         PT

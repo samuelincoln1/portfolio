@@ -25,7 +25,7 @@ export default function Overview() {
           <a
             href="https://github.com/samuelincoln1/infra-as-code"
             target="_blank"
-            className="hover:underline text-blue-500"
+            className="underline text-blue-500 hover:text-blue-400"
           >
             https://github.com/samuelincoln1/infra-as-code
           </a>

@@ -14,7 +14,7 @@ const ProjectCard = ({ imageUrl, title, description, projectUrl, stack }) => {
       </div>
       
       <div className="flex flex-col">
-        <div className="text-[22px] md:text-[38px] font-bold text-white z-100">
+        <div className="text-[22px] md:text-[38px] font-bold text-white z-50">
           <Link 
             href={projectUrl}
             className="hover:underline"
@@ -23,7 +23,7 @@ const ProjectCard = ({ imageUrl, title, description, projectUrl, stack }) => {
           </Link>
         </div>
         
-        <p className="mt-[10px] text-sm md:text-[18px] md:max-w-[1000px] text-white">
+        <p className="mt-[10px] text-sm md:text-[18px] md:max-w-[900px] text-white">
           {description}
         </p>
         <div className="flex flex-wrap gap-2 mt-4">

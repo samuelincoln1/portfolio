@@ -11,9 +11,7 @@ export default function Navbar() {
 
   const links = [
     { href: "/", label: "Home" },
-    { href: "/projects/infra-as-code", label: "Infra as Code" },
-    { href: "/projects/serverless-logs-analyzer", label: "Log Analyzer" },
-    { href: "/projects/codeflow", label: "CodeFlow" },
+    { href: "/#projects", label: t("nav.projects") },
     { href: "/about", label: t("nav.about") },
   ];
 

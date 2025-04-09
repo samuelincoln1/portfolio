@@ -50,7 +50,7 @@ export default function ArchitectureDiagram() {
             <a
               href="https://www.lucidchart.com/pages/landing"
               target="_blank"
-              className="hover:underline text-blue-500"
+              className="underline text-blue-500 hover:text-blue-400"
             >
               https://www.lucidchart.com/pages/landing
             </a>

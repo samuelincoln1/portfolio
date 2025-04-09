@@ -5,13 +5,13 @@ import { useState } from "react";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { useTranslation } from "next-i18next";
 
-export default function Navbar() {
+export default function AboutNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { t } = useTranslation("common");
 
   const links = [
     { href: "/", label: "Home" },
-    { href: "#projects", label: t("nav.projects") },
+    { href: "/#projects", label: t("nav.projects") },
     { href: "/about", label: t("nav.about") },
   ];
 
