@@ -39,8 +39,8 @@ const Projects = () => {
   return (
     <div className="md:px-30 px-6 relative flex flex-col bg-gradient-to-b from-black to-purple-950" >
       <div className="flex flex-col gap-8 py-6 md:pt-8 md:pb-4 px-4 md:px-0" id="projects">
-        <p className="text-center text-white text-sm md:text-xl max-w-[300px] md:mt-30 md:mb-10 mt-20 md:max-w-[1500px] mx-auto">
-          {t('projects.subtitle')}
+        <p className="text-center text-white text-sm md:text-xl max-w-[300px] md:mt-30 md:mb-10 mt-20 md:max-w-[1500px] mx-auto ">
+          <em>{t('projects.subtitle')}</em>
         </p>
         <div>
           <h2 className="text-white md:text-[48px] text-[20px] font-bold  ">
