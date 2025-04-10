@@ -17,27 +17,30 @@ export default function VPCModule() {
       <h1 className="text-[22px] lg:text-[40px] font-semibold text-white">
         {t("iac.vpcModule.title")}
       </h1>
-      <p>
-        {t("iac.vpcModule.description")}
-      </p>
+      <p>{t("iac.vpcModule.description")}</p>
       <h2 className="text-[22px] lg:text-[26px] font-semibold text-white">
         {t("iac.vpcModule.featuresTitle")}
       </h2>
       <ul className="list-disc pl-5">
         <li className="mb-2">
-          <strong>VPC: </strong>{t("iac.vpcModule.vpcDescription")}
+          <strong>VPC: </strong>
+          {t("iac.vpcModule.vpcDescription")}
         </li>
         <li className="mb-2">
-          <strong>Internet Gateway: </strong>{t("iac.vpcModule.igwDescription")}
+          <strong>Internet Gateway: </strong>
+          {t("iac.vpcModule.igwDescription")}
         </li>
         <li className="mb-2">
-          <strong>Subnets: </strong>{t("iac.vpcModule.subnetsDescription")}
+          <strong>Subnets: </strong>
+          {t("iac.vpcModule.subnetsDescription")}
         </li>
         <li className="mb-2">
-          <strong>Route Tables: </strong>{t("iac.vpcModule.routeTablesDescription")}
+          <strong>Route Tables: </strong>
+          {t("iac.vpcModule.routeTablesDescription")}
         </li>
         <li className="mb-2">
-          <strong>Route Table Associations: </strong>{t("iac.vpcModule.routeTableAssociationsDescription")}
+          <strong>Route Table Associations: </strong>
+          {t("iac.vpcModule.routeTableAssociationsDescription")}
         </li>
       </ul>
       <h2 className="text-[22px] lg:text-[26px] font-semibold text-white">
@@ -51,18 +54,20 @@ export default function VPCModule() {
         </li>
         <ul className="list-disc pl-5 ml-5">
           <li>
-            <span className="text-[#6e5da9]">cidr_block</span>: {t("iac.vpcModule.vpc.cidrBlockDescription")}
+            <span className="text-[#6e5da9]">cidr_block</span>:{" "}
+            {t("iac.vpcModule.vpc.cidrBlockDescription")}
           </li>
           <li>
-            <span className="text-[#6e5da9]">enable_dns_hostnames</span>
-            : {t("iac.vpcModule.vpc.enableDnsHostnamesDescription")}
+            <span className="text-[#6e5da9]">enable_dns_hostnames</span>:{" "}
+            {t("iac.vpcModule.vpc.enableDnsHostnamesDescription")}
           </li>
           <li>
-            <span className="text-[#6e5da9]">enable_dns_support</span>
-            : {t("iac.vpcModule.vpc.enableDnsSupportDescription")}
+            <span className="text-[#6e5da9]">enable_dns_support</span>:{" "}
+            {t("iac.vpcModule.vpc.enableDnsSupportDescription")}
           </li>
           <li>
-            <span className="text-[#6e5da9]">tags</span>: {t("iac.vpcModule.vpc.tagsDescription")}
+            <span className="text-[#6e5da9]">tags</span>:{" "}
+            {t("iac.vpcModule.vpc.tagsDescription")}
           </li>
         </ul>
       </ul>
@@ -75,14 +80,18 @@ export default function VPCModule() {
         </li>
         <ul className="list-disc pl-5 ml-5">
           <li>
-            <span className="text-[#6e5da9]">vpc_id</span>: {t("iac.vpcModule.igw.vpcIdDescription")}
+            <span className="text-[#6e5da9]">vpc_id</span>:{" "}
+            {t("iac.vpcModule.igw.vpcIdDescription")}
           </li>
           <li>
-            <span className="text-[#6e5da9]">tags</span>: {t("iac.vpcModule.igw.tagsDescription")}
+            <span className="text-[#6e5da9]">tags</span>:{" "}
+            {t("iac.vpcModule.igw.tagsDescription")}
           </li>
         </ul>
       </ul>
-      <CodeContainer fileName="vpc/main.tf">{internetGatewayCode}</CodeContainer>
+      <CodeContainer fileName="vpc/main.tf">
+        {internetGatewayCode}
+      </CodeContainer>
       <p>3. Subnets</p>
       <p>
         <strong>Public Subnets</strong>
@@ -93,23 +102,24 @@ export default function VPCModule() {
           <span className="text-[#6e5da9]">aws_subnet</span>
           <ul className="list-disc pl-5 ml-5">
             <li>
-              <span className="text-[#6e5da9]">vpc_id</span>: {t("iac.vpcModule.subnets.vpcIdDescription")}
+              <span className="text-[#6e5da9]">vpc_id</span>:{" "}
+              {t("iac.vpcModule.subnets.vpcIdDescription")}
             </li>
             <li>
-              <span className="text-[#6e5da9]">cidr_block</span>: {t("iac.vpcModule.subnets.cidrBlockDescription")}
+              <span className="text-[#6e5da9]">cidr_block</span>:{" "}
+              {t("iac.vpcModule.subnets.cidrBlockDescription")}
             </li>
             <li>
-              <span className="text-[#6e5da9]">
-                map_public_ip_on_launch
-              </span>
-              : {t("iac.vpcModule.subnets.mapPublicIpOnLaunchDescription")}
+              <span className="text-[#6e5da9]">map_public_ip_on_launch</span>:{" "}
+              {t("iac.vpcModule.subnets.mapPublicIpOnLaunchDescription")}
             </li>
             <li>
-              <span className="text-[#6e5da9]">availability_zone</span>
-              : {t("iac.vpcModule.subnets.availabilityZoneDescription")}
+              <span className="text-[#6e5da9]">availability_zone</span>:{" "}
+              {t("iac.vpcModule.subnets.availabilityZoneDescription")}
             </li>
             <li>
-              <span className="text-[#6e5da9]">tags</span>: {t("iac.vpcModule.subnets.tagsDescription")}
+              <span className="text-[#6e5da9]">tags</span>:{" "}
+              {t("iac.vpcModule.subnets.tagsDescription")}
             </li>
           </ul>
         </li>
@@ -123,23 +133,24 @@ export default function VPCModule() {
           <span className="text-[#6e5da9]">aws_subnet</span>
           <ul className="list-disc pl-5 ml-5">
             <li>
-              <span className="text-[#6e5da9]">vpc_id</span>: {t("iac.vpcModule.subnets.vpcIdDescription")}
+              <span className="text-[#6e5da9]">vpc_id</span>:{" "}
+              {t("iac.vpcModule.subnets.vpcIdDescription")}
             </li>
             <li>
-              <span className="text-[#6e5da9]">cidr_block</span>: {t("iac.vpcModule.subnets.cidrBlockDescription")}
+              <span className="text-[#6e5da9]">cidr_block</span>:{" "}
+              {t("iac.vpcModule.subnets.cidrBlockDescription")}
             </li>
             <li>
-              <span className="text-[#6e5da9]">
-                map_public_ip_on_launch
-              </span>
-              : {t("iac.vpcModule.subnets.mapPublicIpOnLaunchDescription2")}
+              <span className="text-[#6e5da9]">map_public_ip_on_launch</span>:{" "}
+              {t("iac.vpcModule.subnets.mapPublicIpOnLaunchDescription2")}
             </li>
             <li>
-              <span className="text-[#6e5da9]">availability_zone</span>
-              : {t("iac.vpcModule.subnets.availabilityZoneDescription")}
+              <span className="text-[#6e5da9]">availability_zone</span>:{" "}
+              {t("iac.vpcModule.subnets.availabilityZoneDescription")}
             </li>
             <li>
-              <span className="text-[#6e5da9]">tags</span>: {t("iac.vpcModule.subnets.tagsDescription")}
+              <span className="text-[#6e5da9]">tags</span>:{" "}
+              {t("iac.vpcModule.subnets.tagsDescription")}
             </li>
           </ul>
         </li>
@@ -156,18 +167,18 @@ export default function VPCModule() {
         </li>
         <ul className="list-disc pl-5 ml-5">
           <li>
-            <span className="text-[#6e5da9]">vpc_id</span>: {t("iac.vpcModule.routeTables.vpcIdDescription")}
+            <span className="text-[#6e5da9]">vpc_id</span>:{" "}
+            {t("iac.vpcModule.routeTables.vpcIdDescription")}
           </li>
           <li>
-              <span className="text-[#6e5da9]">route</span>: {t("iac.vpcModule.routeTables.routeDescription1")}
-              <span className="text-[#6a7c80]">0.0.0.0/0</span> {t("iac.vpcModule.routeTables.routeDescription2")}
-            <span className="text-[#6e5da9]">
-              aws_internet_gateway.main.id {" "}
-            </span>
-            .
+            <span className="text-[#6e5da9]">route</span>:{" "}
+            {t("iac.vpcModule.routeTables.routeDescription1")}
+            <span className="text-[#6a7c80]">0.0.0.0/0</span>{" "}
+            {t("iac.vpcModule.routeTables.routeDescription2")}
           </li>
           <li>
-            <span className="text-[#6e5da9]">tags</span>: {t("iac.vpcModule.routeTables.tagsDescription")}
+            <span className="text-[#6e5da9]">tags</span>:{" "}
+            {t("iac.vpcModule.routeTables.tagsDescription")}
           </li>
         </ul>
       </ul>
@@ -181,10 +192,12 @@ export default function VPCModule() {
         </li>
         <ul className="list-disc pl-5 ml-5">
           <li>
-            <span className="text-[#6e5da9]">vpc_id</span>: {t("iac.vpcModule.routeTables.vpcIdDescription")}
+            <span className="text-[#6e5da9]">vpc_id</span>:{" "}
+            {t("iac.vpcModule.routeTables.vpcIdDescription")}
           </li>
           <li>
-            <span className="text-[#6e5da9]">tags</span>: {t("iac.vpcModule.routeTables.tagsDescription")}
+            <span className="text-[#6e5da9]">tags</span>:{" "}
+            {t("iac.vpcModule.routeTables.tagsDescription")}
           </li>
         </ul>
       </ul>
@@ -192,13 +205,17 @@ export default function VPCModule() {
       <p>5. Route Table Associations</p>
       <ul className="list-disc pl-5">
         <li className="mb-2">
-          <strong>Public Subnets: </strong>{t("iac.vpcModule.routeTableAssociations.publicSubnets")}
+          <strong>Public Subnets: </strong>
+          {t("iac.vpcModule.routeTableAssociations.publicSubnets")}
         </li>
         <li className="mb-2">
-          <strong>Private Subnets: </strong>{t("iac.vpcModule.routeTableAssociations.privateSubnets")}
+          <strong>Private Subnets: </strong>
+          {t("iac.vpcModule.routeTableAssociations.privateSubnets")}
         </li>
       </ul>
-      <CodeContainer fileName="vpc/main.tf">{routeTableAssociationsCode}</CodeContainer>
+      <CodeContainer fileName="vpc/main.tf">
+        {routeTableAssociationsCode}
+      </CodeContainer>
       <h2 className="text-[22px] lg:text-[26px] font-semibold text-white">
         {t("iac.vpcModule.variablesAndOutputs.title")}
       </h2>
@@ -206,13 +223,9 @@ export default function VPCModule() {
         {t("iac.vpcModule.variablesAndOutputs.description")}
         <span className="text-[#6e5da9]">cidr_block</span>,{" "}
         <span className="text-[#6e5da9]">enable_dns_hostnames</span>,{" "}
-        <span className="text-[#6e5da9]">
-          public_subnet_cidr_block_1
-        </span>
-        , {t("iac.vpcModule.variablesAndOutputs.description2")}
-        <code className="text-[#EC585D]">
-          {" "}variables.tf
-        </code>{" "}
+        <span className="text-[#6e5da9]">public_subnet_cidr_block_1</span>,{" "}
+        {t("iac.vpcModule.variablesAndOutputs.description2")}
+        <code className="text-[#EC585D]"> variables.tf</code>{" "}
         {t("iac.vpcModule.variablesAndOutputs.description3")}
         <code className="text-[#EC585D]">outputs.tf</code>{" "}
         {t("iac.vpcModule.variablesAndOutputs.description4")}

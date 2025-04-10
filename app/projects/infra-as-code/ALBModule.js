@@ -83,7 +83,7 @@ export default function ALBModule() {
           </li>
           <li>
             <span className="text-[#6e5da9]">port</span>: {t("iac.albModule.targetGroup.port")}
-            <code className="text-[#02A8EF]">80</code>.
+            <code className="text-[#02A8EF]">8080</code>.
           </li>
           <li>
             <span className="text-[#6e5da9]">protocol</span>: {t("iac.albModule.targetGroup.protocol")}

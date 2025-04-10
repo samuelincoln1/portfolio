@@ -1,6 +1,7 @@
 {
     "iac": {
         "sidebar": {
+            "goBack": "Voltar",
             "overview": "Visão Geral",
             "architectureDiagram": "Diagrama de Arquitetura",
             "codeStructure": "Estrutura do Código",
@@ -25,12 +26,12 @@
             "alb": "Um Application Load Balancer para distribuir o tráfego de entrada entre várias instâncias.",
             "asg": "Um Auto Scaling Group para garantir que a aplicação seja escalável com base na demanda.",
             "rds": "Uma instância de banco de dados MySQL gerenciada para armazenamento de dados persistentes.",
-            "accessDescription": "Os usuários acessam a aplicação via internet através do DNS do ALB público, que distribui eficientemente o tráfego entre as instâncias dentro do Auto Scaling Group. Este grupo é configurado para ajustar dinamicamente o número de instâncias com base na demanda. O RDS serve como a solução de armazenamento de dados da aplicação. Todas as instâncias EC2 residem em subnets privadas, garantindo que não sejam diretamente acessíveis pela internet, similar ao RDS.",
+            "accessDescription": "Os usuários acessam a aplicação via internet através do DNS do ALB público, que distribui eficientemente o tráfego entre as instâncias dentro do Auto Scaling Group. Este grupo é configurado para ajustar dinamicamente o número de instâncias com base na demanda. O RDS serve como a solução de armazenamento de dados da aplicação. Todas as instâncias EC2 residem em subnets privadas, garantindo que não sejam diretamente acessíveis pela internet, assim como o RDS.",
             "figcaption": "Diagrama criado com Lucidchart: "
         },
         "codeStructure": {
             "title": "Estrutura do Código",
-            "description": "Esta configuração do Terraform é organizada em duas partes principais: módulos e configuração de backend. Cada parte desempenha um papel crucial na gerenciamento e implantação de infraestrutura de forma eficiente.",
+            "description": "Esta configuração do Terraform é organizada em duas partes principais: módulos e configuração do backend. Cada parte desempenha um papel crucial na gerenciamento e implantação de infraestrutura de forma eficiente.",
             "modulesTitle": "Módulos",
             "modulesDescription": "Os módulos são os blocos de construção desta configuração do Terraform. Eles encapsulam partes específicas de infraestrutura, tornando o código reutilizável e mais fácil de gerenciar. Neste projeto, temos vários módulos:",
             "vpcModule1": "Módulo VPC: ",
@@ -47,8 +48,8 @@
             "moduleFilesDescription4": "arquivo que define as saídas, quando necessário."
         },
         "backendConfiguration": {
-            "title": "Configuração de Backend",
-            "description": "A configuração de backend é crucial para gerenciar o estado da infraestrutura. Podemos armazenar o estado localmente ou remotamente, mas armazenar remotamente é mais seguro e mais fácil de gerenciar, especialmente quando trabalhando em um time. Neste projeto, o backend é configurado para usar o Amazon S3, que armazena o arquivo de estado do Terraform. Esta configuração inclui:",
+            "title": "Configuração do Backend",
+            "description": "A configuração do backend é crucial para gerenciar o estado da infraestrutura. Podemos armazenar o estado localmente ou remotamente, mas armazenar remotamente é mais seguro e mais fácil de gerenciar, especialmente quando trabalhando em time. Neste projeto, o backend é configurado para usar o Amazon S3, que armazena o arquivo de estado do Terraform. Esta configuração inclui:",
             "s3Bucket": "Bucket S3: ",
             "s3BucketDescription": "O bucket onde o arquivo de estado do Terraform é armazenado.",
             "key": "Chave: ",
@@ -58,45 +59,45 @@
             "dynamodbTable": "Tabela DynamoDB: ",
             "dynamodbTableDescription": "A tabela DynamoDB usada para bloquear o estado do arquivo, garantindo que apenas um usuário possa modificar o arquivo de estado em um determinado momento.",
             "encryption": "Criptografia: ",
-            "encryptionDescription": "Garante que o arquivo de estado seja armazenado de forma segura",
-            "processDescription1": "O processo de criação da configuração de backend envolve a criação dos recursos necessários usando Terraform em vez de configurá-los manualmente na console da AWS. Este método garante que todos os recursos sejam gerenciados como código, fornecendo consistência e controle de versão.",
+            "encryptionDescription": "Garante que o arquivo de estado seja armazenado de forma segura.",
+            "processDescription1": "O processo de criação da configuração do backend envolve a criação dos recursos necessários usando Terraform em vez de configurá-los manualmente na console da AWS. Este método garante que todos os recursos sejam gerenciados como código, fornecendo consistência e controle de versão.",
             "processDescription2": "Depois de criar os recursos, o backend é definido como \"s3\" para armazenar o arquivo de estado do Terraform. Após definir o backend, o comando ",
-            "processDescription3": "é usado para migrar o estado para o S3. Este comando inicializa a configuração de backend, garantindo que o estado seja gerenciado remotamente e de forma segura.",
+            "processDescription3": "é usado para migrar o estado para o S3. Este comando inicializa a configuração do backend, garantindo que o estado seja gerenciado remotamente e de forma segura.",
             "variablesDescription1": "As variáveis são definidas no arquivo ",
             "variablesDescription2": "e inicializadas no arquivo "
         },
         "vpcModule": {
             "title": "Módulo VPC",
-            "description": "Este módulo é projetado para criar um Virtual Private Cloud (VPC) na AWS, junto com recursos associados como subnets, gateways de internet e tabelas de roteamento. A arquitetura é estruturada para suportar duas subnets públicas e três subnets privadas em várias zonas de disponibilidade, fornecendo uma infraestrutura de rede robusta e escalável. As duas subnets públicas são usadas para hospedar o ALB e as três subnets privadas são usadas para hospedar o RDS e as instâncias EC2.",
+            "description": "Este módulo é projetado para criar um Virtual Private Cloud (VPC) na AWS, junto com recursos associados como subnets, gateways de internet e tabelas de roteamento. A arquitetura é estruturada para suportar duas subnets públicas e três subnets privadas em zonas de disponibilidade diferentes, fornecendo uma infraestrutura de rede robusta e escalável. As duas subnets públicas são usadas para hospedar o ALB e as três subnets privadas são usadas para hospedar o RDS e as instâncias EC2.",
             "featuresTitle": "Funcionalidades",
-            "vpcDescription": "Cria um VPC com suporte a DNS e hostnames.",
+            "vpcDescription": "Cria uma VPC com suporte a DNS e hostnames.",
             "igwDescription": "Provisiona um gateway de internet para permitir o tráfego de entrada e saída.",
             "subnetsDescription": "Configura subnets públicas e privadas em várias zonas de disponibilidade.",
             "routeTablesDescription": "Configura tabelas de roteamento para gerenciar o tráfego de rede.",
             "routeTableAssociationsDescription": "Associa subnets com as tabelas de roteamento apropriadas.",
             "resourcesTitle": "Recursos",
             "vpc": {
-                "cidrBlockDescription": "O bloco CIDR para o VPC.",
-                "enableDnsHostnamesDescription": "Se deve habilitar hostnames de DNS no VPC.",
-                "enableDnsSupportDescription": "Se deve habilitar suporte a DNS no VPC.",
-                "tagsDescription": "Atribui um nome para o VPC para identificação."
+                "cidrBlockDescription": "O bloco CIDR para a VPC.",
+                "enableDnsHostnamesDescription": "Se deve habilitar ou não hostnames de DNS no VPC.",
+                "enableDnsSupportDescription": "Se deve habilitar ou não suporte a DNS no VPC.",
+                "tagsDescription": "Atribui um nome para a VPC para identificação."
             },
             "igw": {
-                "vpcIdDescription": "O ID do VPC ao qual o gateway de internet está anexado.",
+                "vpcIdDescription": "O ID da VPC a qual o gateway de internet está anexado.",
                 "tagsDescription": "Atribui um nome para o gateway de internet para identificação."
             },
             "subnets": {
-                "vpcIdDescription": "O ID do VPC ao qual a subnet está associada.",
+                "vpcIdDescription": "O ID da VPC a qual a subnet está associada.",
                 "cidrBlockDescription": "O bloco CIDR para a subnet.",
-                "mapPublicIpOnLaunchDescription": "Habilita para atribuir um IP público às instâncias lançadas nesta subnet.",
-                "mapPublicIpOnLaunchDescription2": "Desabilita para atribuir um IP privado às instâncias lançadas nesta subnet.",
+                "mapPublicIpOnLaunchDescription": "Habilita atribuir um IP público às instâncias lançadas nesta subnet.",
+                "mapPublicIpOnLaunchDescription2": "Desabilita atribuir um IP privado às instâncias lançadas nesta subnet.",
                 "availabilityZoneDescription": "A zona de disponibilidade para a subnet.",
-                "tagsDescription": "Atribui um nome para a subnet para identificação."
+                "tagsDescription": "Atribui um nome à subnet para identificação."
             },
             "routeTables": {
-                "vpcIdDescription": "O ID do VPC ao qual a tabela de roteamento está associada.",
+                "vpcIdDescription": "O ID da VPC a qual a tabela de roteamento está associada.",
                 "routeDescription1": "Inclui uma rota para ",
-                "routeDescription2": " através do gateway de internet ",
+                "routeDescription2": " através do gateway de internet.",
                 "tagsDescription": "Atribui um nome para a tabela de roteamento para identificação."
             },
             "routeTableAssociations": {
@@ -107,7 +108,7 @@
                 "title": "Variáveis e Outputs",
                 "description": "O módulo utiliza várias variáveis de entrada para personalizar a implantação, como: ",
                 "description2": "e outras. Essas variáveis são definidas no arquivo",
-                "description3": "e permitem uma configuração flexível do VPC e de seus componentes. O módulo também fornece outputs para o ID do VPC, IDs de subnets e blocos CIDR no arquivo",
+                "description3": "e permitem uma configuração flexível da VPC e de seus componentes. O módulo também fornece outputs para o ID da VPC, IDs de subnets e blocos CIDR no arquivo",
                 "description4": "que podem ser usadas por outros módulos ou recursos dentro da infraestrutura."
             }
         },
@@ -130,7 +131,7 @@
             },
             "targetGroup": {
                 "name": "O nome do grupo de destino.",
-                "port": "A porta onde o ALB recebe tráfego, definida como ",
+                "port": "A porta para a qual o ALB encaminha o tráfego aos destinos, definida como ",
                 "protocol": "O protocolo para usar para rotear tráfego para os alvos.",
                 "targetType": "O tipo de alvo para registrar com o grupo de destino.",
                 "tagsDescription": "Atribui um nome para o grupo de destino para identificação.",
@@ -153,7 +154,7 @@
             "securityGroup": {
                 "name": "O nome do grupo de segurança.",
                 "description": "A descrição do grupo de segurança.",
-                "vpcId": "O ID do VPC onde o grupo de segurança está implantado.",
+                "vpcId": "O ID da VPC onde o grupo de segurança está implantado.",
                 "ingressDescription": "Permite HTTP (porta 80) e HTTPS (porta 443) de qualquer IP.",
                 "egressDescription": "Permite tráfego apenas para os blocos CIDR especificados, na porta "
             },
@@ -161,7 +162,7 @@
                 "title": "Variáveis e Outputs",
                 "description": "O módulo utiliza várias variáveis de entrada para personalizar a implantação, como: ",
                 "description2": "e outras. Essas variáveis são definidas no arquivo",
-                "description3": "e permitem uma configuração flexível do VPC e de seus componentes. O módulo também fornece outputs para o ID do grupo de segurança e o ARN do grupo de destino no arquivo ",
+                "description3": "e permitem uma configuração flexível da VPC e de seus componentes. O módulo também fornece outputs para o ID do grupo de segurança e o ARN do grupo de destino no arquivo ",
                 "description4": "que podem ser usadas por outros módulos ou recursos dentro da infraestrutura."
             }
         },
@@ -174,7 +175,7 @@
             "securityGroupDescription": "Estabelece um grupo de segurança para controlar o tráfego de entrada e saída para as instâncias.",
             "launchTemplate": {
                 "name": "O nome do modelo de lançamento.",
-                "imageId": "A ID da imagem AMI para usar.",
+                "imageId": "O ID da imagem AMI para usar.",
                 "instanceType": "O tipo de instância para usar.",
                 "keyName": "O nome da chave para SSH.",
                 "associatePublicIpAddress": "Se deve associar um IP público à instância, definido como ",
@@ -191,7 +192,7 @@
             },
             "securityGroup": {
                 "name": "O nome do grupo de segurança.",
-                "vpcId": "O ID do VPC onde o grupo de segurança está implantado.",
+                "vpcId": "O ID da VPC onde o grupo de segurança está implantado.",
                 "ingressDescription": "Permite HTTP na porta ",
                 "ingressDescription2": " do ALB.",
                 "ingressDescription3": "Permite tráfego do grupo de segurança da web.",
@@ -202,7 +203,7 @@
                 "title": "Variáveis e Outputs",
                 "description": "O módulo utiliza várias variáveis de entrada para personalizar a implantação, como: ",
                 "description2": "e outras. Essas variáveis são definidas no arquivo",
-                "description3": "e permitem uma configuração flexível do VPC e de seus componentes. O módulo também fornece outputs para o ID do grupo de segurança e o ARN do grupo de destino no arquivo ",
+                "description3": "e permitem uma configuração flexível da VPC e de seus componentes. O módulo também fornece outputs para o ID do grupo de segurança e o ARN do grupo de destino no arquivo ",
                 "description4": "que podem ser usadas por outros módulos ou recursos dentro da infraestrutura."
             }
         },
@@ -235,7 +236,7 @@
                 "title": "Variables and Outputs",
                 "description": "O módulo utiliza várias variáveis de entrada para personalizar a implantação, como: ",
                 "description2": "e outras. Essas variáveis são definidas no arquivo",
-                "description3": "e permitem uma configuração flexível do VPC e de seus componentes. Adicionalmente, o ",
+                "description3": "e permitem uma configuração flexível da VPC e de seus componentes. Adicionalmente, o ",
                 "description4": " e ",
                 "description5": " variáveis devem ser definidas como variáveis de ambiente e não colocadas direto no código, para fins de segurança."
             }
@@ -248,8 +249,8 @@
         "tests": {
             "title": "Tests",
             "description": "A garantia da integridade e correção do código de infraestrutura é crucial para o sucesso das implantações. O Terraform oferece vários comandos para testar e validar as configurações antes de aplicá-las ao ambiente. ",
-            "terraformFmt": "O comando ",
-            "terraformFmt2": " é usado para formatar consistentemente os arquivos de configuração do Terraform. Ele automaticamente atualiza os arquivos para seguir as convenções de estilo padrão do Terraform, tornando o código mais legível e mantido.",
+            "terraformFmt": "O comando ",   
+            "terraformFmt2": " é usado para formatar consistentemente os arquivos de configuração do Terraform. Ele automaticamente atualiza os arquivos para seguir as convenções de estilo padrão do Terraform, tornando o código mais legível e padronizado.",
             "terraformValidate": "O comando ",
             "terraformValidate2": " verifica a sintaxe e a consistência interna dos arquivos de configuração do Terraform. Ele garante que a configuração seja sintaticamente válida e que todos os argumentos necessários sejam fornecidos.",
             "terraformPlan": "O comando ",
@@ -257,7 +258,7 @@
         },
         "deployment": {
             "title": "Implantação",
-            "description": "Depois de testar e validar a configuração, você pode implantar a infraestrutura usando o comando ",
+            "description": "Depois de testar e validar a configuração, é possível implantar a infraestrutura usando o comando ",
             "description2": " , que executa as alterações definidas nos arquivos. Ele aplica as alterações planejadas à infraestrutura real, criando ou atualizando os recursos conforme especificado."
         }
     }

@@ -66,7 +66,7 @@ export default function BackendConfiguration() {
           backend.tfvars
         </code>{" "}.
       </p>
-      <CodeContainer fileName="backend/variables.tf">{backendVarsCode}</CodeContainer>
+      <CodeContainer fileName="backend/backend.tfvars">{backendVarsCode}</CodeContainer>
     </div>
   );
 }

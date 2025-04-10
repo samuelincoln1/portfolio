@@ -146,7 +146,7 @@ export default function Sidebar() {
        
       >
       
-          <a href="/" className="text-[#3799fe] flex items-center hover:underline hover:text-[#4fa7ff] py-6 inline-flex">
+          <a href="/" className="text-[#3799fe] flex items-center hover:underline hover:text-[#4fa7ff] py-6 mt-10 xl:mt-0 inline-flex">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -160,8 +160,8 @@ export default function Sidebar() {
                 strokeLinejoin="round"
                 d="M15 19l-7-7 7-7"
               />
-            </svg>
-            Go Back
+              </svg>
+              {t("iac.sidebar.goBack")}
           </a>
        
         <h2 className="text-2xl font-bold mb-4">Index</h2>

@@ -39,13 +39,13 @@ export default function CodeStructure() {
       </ul>
       <p>
         {t("iac.codeStructure.moduleFilesDescription1")}
-        <code className="text-[#EC585D]">main.tf</code>{" "}
+        <code className="text-[#EC585D]">{" "}main.tf</code>{" "}
         {t("iac.codeStructure.moduleFilesDescription2")}
         <code className="text-[#EC585D]">
-          variables.tf
+          {" "}variables.tf
         </code>{" "}
         {t("iac.codeStructure.moduleFilesDescription3")}
-        <code className="text-[#EC585D]">outputs.tf</code>{" "}
+        <code className="text-[#EC585D]">{" "}outputs.tf</code>{" "}
         {t("iac.codeStructure.moduleFilesDescription4")}
       </p>
       <Image

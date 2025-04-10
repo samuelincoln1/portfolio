@@ -1,6 +1,7 @@
 {
     "iac": {
         "sidebar": {
+            "goBack": "Go Back",
             "overview": "Overview",
             "architectureDiagram": "Architecture Diagram",
             "codeStructure": "Code Structure",
@@ -36,7 +37,7 @@
             "vpcModule1": "VPC Module: ",
             "vpcModule2": "This module is responsible for setting up the Virtual Private Cloud (VPC). It defines the CIDR block and configures both public and private subnets across different availability zones. In this configuration, DNS hostnames are disabled, while DNS support is enabled, ensuring internal DNS resolution within the VPC.",
             "albModule1": "ALB Module: ",
-            "albModule2": "The Application Load Balancer (ALB) module manages the load balancer configuration. It sets up the ALB with specified subnets, target group settings, and health check parameters to ensure traffic is distributed efficiently.",
+            "albModule2": "The Application Load Balancer (ALB) module manages the load balancer configuration. It sets up the ALB with specified subnets, target group settings and health check parameters to ensure traffic is distributed efficiently.",
             "asgModule1": "ASG Module: ",
             "asgModule2": "The Auto Scaling Group (ASG) module configures the auto-scaling of EC2 instances. It defines the launch template, instance type, and scaling policies to maintain the desired capacity and performance.",
             "rdsModule1": "RDS Module: ",
@@ -58,7 +59,7 @@
             "dynamodbTable": "DynamoDB Table: ",
             "dynamodbTableDescription": "The DynamoDB table used to lock the state file, ensuring that only one user can modify the state file at a time.",
             "encryption": "Encryption: ",
-            "encryptionDescription": "Ensures that the state file is stored securely",
+            "encryptionDescription": "Ensures that the state file is stored securely.",
             "processDescription1": "The process of creating the backend configuration involves creating the necessary resources using Terraform instead of manually setting them up in the AWS console. This approach ensures that all resources are managed as code, providing consistency and version control.",
             "processDescription2": "Once the resources are created, the backend is defined as \"s3\" to store the Terraform state file. After defining the backend, the ",
             "processDescription3": "command is used to migrate the state to S3. This command initializes the backend configuration, ensuring that the state is managed remotely and securely.",
@@ -96,7 +97,7 @@
             "routeTables": {
                 "vpcIdDescription": "The ID of the VPC to which the route table is associated.",
                 "routeDescription1": "Includes a route for ",
-                "routeDescription2": " through the internet gateway ",
+                "routeDescription2": " through the internet gateway.",
                 "tagsDescription": "Assigns a name tag to the route table for identification."
             },
             "routeTableAssociations": {
@@ -130,7 +131,7 @@
             },
             "targetGroup": {
                 "name": "The name of the target group.",
-                "port": "The port on which the ALB receives traffic, set to ",
+                "port": "The port on which the ALB forwards traffic to targets, set to ",
                 "protocol": "The protocol to use for routing traffic to the targets.",
                 "vpcId": "The ID of the VPC where the target group is deployed.",
                 "healthCheckConfiguration": "Health Check Configuration:",

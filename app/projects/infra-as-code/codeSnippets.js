@@ -182,7 +182,7 @@ export const albCode = `resource "aws_lb" "iac-project-alb" {
 
 export const albTargetGroupCode = `resource "aws_lb_target_group" "iac-project-alb-target-group" {
   name     = var.alb_target_group_name
-  port     = var.alb_target_group_port
+  port     = 8080
   protocol = var.alb_target_group_protocol
   vpc_id   = var.vpc_id
 
@@ -377,7 +377,7 @@ module "alb" {
   public_subnet_id_2                                = module.vpc.public_subnet_id_2
   alb_name                                          = "iac-project-alb"
   alb_target_group_name                             = "iac-project-alb-target-group"
-  alb_target_group_port                             = 8080
+  alb_target_group_port                             = 80
   alb_target_group_protocol                         = "HTTP"
   alb_target_group_health_check_path                = "/"
   alb_target_group_health_check_interval            = 30
