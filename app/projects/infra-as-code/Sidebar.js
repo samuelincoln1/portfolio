@@ -2,11 +2,12 @@
 
 import React, { useState, useEffect } from "react";
 import { useMenu } from '../../context/MenuContext';
-
+import { useTranslation } from "react-i18next";
 export default function Sidebar() {
   const { isMenuOpen } = useMenu();
   const [activeSection, setActiveSection] = useState("");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const { t } = useTranslation("iac");
 
   const handleLinkClick = (event, targetId) => {
     event.preventDefault();
@@ -86,16 +87,16 @@ export default function Sidebar() {
   }, [isSidebarOpen]);
 
   const sections = [
-    { id: "overview", label: "Overview" },
-    { id: "architecture-diagram", label: "Architecture Diagram" },
-    { id: "code-structure", label: "Code Structure" },
-    { id: "backend-configuration", label: "Backend Configuration" },
-    { id: "vpc-module", label: "VPC Module" },
-    { id: "alb-module", label: "ALB Module" },
-    { id: "asg-module", label: "ASG Module" },
-    { id: "rds-module", label: "RDS Module" },
-    { id: "main-file", label: "Main file" },
-    { id: "tests", label: "Tests" },
+    { id: "overview", label: t("iac.sidebar.overview") },
+    { id: "architecture-diagram", label: t("iac.sidebar.architectureDiagram") },
+    { id: "code-structure", label: t("iac.sidebar.codeStructure") },
+    { id: "backend-configuration", label: t("iac.sidebar.backendConfiguration") },
+    { id: "vpc-module", label: t("iac.sidebar.vpcModule") },
+    { id: "alb-module", label: t("iac.sidebar.albModule") },
+    { id: "asg-module", label: t("iac.sidebar.asgModule") },
+    { id: "rds-module", label: t("iac.sidebar.rdsModule") },
+    { id: "main-file", label: t("iac.sidebar.mainFile") },
+    { id: "tests", label: t("iac.sidebar.tests") },
   ];
 
   return (

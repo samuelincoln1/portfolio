@@ -1,0 +1,264 @@
+{
+    "iac": {
+        "sidebar": {
+            "overview": "Visão Geral",
+            "architectureDiagram": "Diagrama de Arquitetura",
+            "codeStructure": "Estrutura do Código",
+            "backendConfiguration": "Configuração do Backend",
+            "vpcModule": "Módulo VPC",
+            "albModule": "Módulo ALB",
+            "asgModule": "Módulo ASG",
+            "rdsModule": "Módulo RDS",
+            "mainFile": "Arquivo Main",
+            "tests": "Testes",
+            "deployment": "Implantação"
+        },
+        "overview": {
+            "title": "Infra as Code - Visão Geral",
+            "description": "Este projeto demonstra o uso do Terraform para gerenciar e provisionar infraestrutura na nuvem AWS. Foi projetado para implementar uma nuvem escalável e segura, utilizando serviços da AWS para criar um ambiente robusto adequado para hospedar aplicações web. O projeto inclui configurações para um Virtual Private Cloud (VPC), Application Load Balancer (ALB), Auto Scaling Group (ASG) e Relational Database Service (RDS). A infraestrutura é protegida usando grupos de segurança da AWS para gerenciar o tráfego de entrada e saída para cada recurso, garantindo que apenas tráfego autorizado seja permitido.",
+            "githubLink": "Repositório GitHub"
+        },
+        "architectureDiagram": {
+            "title": "Diagrama de Arquitetura",
+            "description": "O diagrama de arquitetura abaixo mostra a infraestrutura, que inclui:",
+            "vpc": "Um Virtual Private Cloud com subnets públicas e privadas em duas zonas de disponibilidade.",
+            "alb": "Um Application Load Balancer para distribuir o tráfego de entrada entre várias instâncias.",
+            "asg": "Um Auto Scaling Group para garantir que a aplicação seja escalável com base na demanda.",
+            "rds": "Uma instância de banco de dados MySQL gerenciada para armazenamento de dados persistentes.",
+            "accessDescription": "Os usuários acessam a aplicação via internet através do DNS do ALB público, que distribui eficientemente o tráfego entre as instâncias dentro do Auto Scaling Group. Este grupo é configurado para ajustar dinamicamente o número de instâncias com base na demanda. O RDS serve como a solução de armazenamento de dados da aplicação. Todas as instâncias EC2 residem em subnets privadas, garantindo que não sejam diretamente acessíveis pela internet, similar ao RDS.",
+            "figcaption": "Diagrama criado com Lucidchart: "
+        },
+        "codeStructure": {
+            "title": "Estrutura do Código",
+            "description": "Esta configuração do Terraform é organizada em duas partes principais: módulos e configuração de backend. Cada parte desempenha um papel crucial na gerenciamento e implantação de infraestrutura de forma eficiente.",
+            "modulesTitle": "Módulos",
+            "modulesDescription": "Os módulos são os blocos de construção desta configuração do Terraform. Eles encapsulam partes específicas de infraestrutura, tornando o código reutilizável e mais fácil de gerenciar. Neste projeto, temos vários módulos:",
+            "vpcModule1": "Módulo VPC: ",
+            "vpcModule2": "Este módulo é responsável por configurar o Virtual Private Cloud (VPC). Ele define o bloco CIDR e configura ambas as subnets públicas e privadas em diferentes zonas de disponibilidade. Nesta configuração, os hostnames de DNS estão desabilitados, enquanto o suporte a DNS está habilitado, garantindo a resolução de DNS interna na VPC.",
+            "albModule1": "Módulo ALB: ",
+            "albModule2": "O módulo do Application Load Balancer (ALB) gerencia a configuração do balanceador de carga. Ele configura o ALB com subnets especificadas, parâmetros de grupo de destino e parâmetros de verificação de saúde para garantir que o tráfego seja distribuído eficientemente.",
+            "asgModule1": "Módulo ASG: ",
+            "asgModule2": "O módulo do Auto Scaling Group (ASG) configura o escalonamento automático de instâncias EC2. Ele define o modelo de lançamento, tipo de instância e políticas de escalonamento para manter a capacidade e o desempenho desejados.",
+            "rdsModule1": "Módulo RDS: ",
+            "rdsModule2": "Este módulo lida com a configuração do Relational Database Service (RDS). Ele especifica o motor de banco de dados, versão, classe de instância e configurações de grupo de segurança para garantir um ambiente de banco de dados seguro e escalável.",
+            "moduleFilesDescription1": "Dentro de cada módulo, há um",
+            "moduleFilesDescription2": "arquivo que define os recursos, um",
+            "moduleFilesDescription3": "arquivo que define as variáveis e um",
+            "moduleFilesDescription4": "arquivo que define as saídas, quando necessário."
+        },
+        "backendConfiguration": {
+            "title": "Configuração de Backend",
+            "description": "A configuração de backend é crucial para gerenciar o estado da infraestrutura. Podemos armazenar o estado localmente ou remotamente, mas armazenar remotamente é mais seguro e mais fácil de gerenciar, especialmente quando trabalhando em um time. Neste projeto, o backend é configurado para usar o Amazon S3, que armazena o arquivo de estado do Terraform. Esta configuração inclui:",
+            "s3Bucket": "Bucket S3: ",
+            "s3BucketDescription": "O bucket onde o arquivo de estado do Terraform é armazenado.",
+            "key": "Chave: ",
+            "keyDescription": "O caminho dentro do bucket para o arquivo de estado do Terraform.",
+            "region": "Região: ",
+            "regionDescription": "A região onde o bucket está localizado.",
+            "dynamodbTable": "Tabela DynamoDB: ",
+            "dynamodbTableDescription": "A tabela DynamoDB usada para bloquear o estado do arquivo, garantindo que apenas um usuário possa modificar o arquivo de estado em um determinado momento.",
+            "encryption": "Criptografia: ",
+            "encryptionDescription": "Garante que o arquivo de estado seja armazenado de forma segura",
+            "processDescription1": "O processo de criação da configuração de backend envolve a criação dos recursos necessários usando Terraform em vez de configurá-los manualmente na console da AWS. Este método garante que todos os recursos sejam gerenciados como código, fornecendo consistência e controle de versão.",
+            "processDescription2": "Depois de criar os recursos, o backend é definido como \"s3\" para armazenar o arquivo de estado do Terraform. Após definir o backend, o comando ",
+            "processDescription3": "é usado para migrar o estado para o S3. Este comando inicializa a configuração de backend, garantindo que o estado seja gerenciado remotamente e de forma segura.",
+            "variablesDescription1": "As variáveis são definidas no arquivo ",
+            "variablesDescription2": "e inicializadas no arquivo "
+        },
+        "vpcModule": {
+            "title": "Módulo VPC",
+            "description": "Este módulo é projetado para criar um Virtual Private Cloud (VPC) na AWS, junto com recursos associados como subnets, gateways de internet e tabelas de roteamento. A arquitetura é estruturada para suportar duas subnets públicas e três subnets privadas em várias zonas de disponibilidade, fornecendo uma infraestrutura de rede robusta e escalável. As duas subnets públicas são usadas para hospedar o ALB e as três subnets privadas são usadas para hospedar o RDS e as instâncias EC2.",
+            "featuresTitle": "Funcionalidades",
+            "vpcDescription": "Cria um VPC com suporte a DNS e hostnames.",
+            "igwDescription": "Provisiona um gateway de internet para permitir o tráfego de entrada e saída.",
+            "subnetsDescription": "Configura subnets públicas e privadas em várias zonas de disponibilidade.",
+            "routeTablesDescription": "Configura tabelas de roteamento para gerenciar o tráfego de rede.",
+            "routeTableAssociationsDescription": "Associa subnets com as tabelas de roteamento apropriadas.",
+            "resourcesTitle": "Recursos",
+            "vpc": {
+                "cidrBlockDescription": "O bloco CIDR para o VPC.",
+                "enableDnsHostnamesDescription": "Se deve habilitar hostnames de DNS no VPC.",
+                "enableDnsSupportDescription": "Se deve habilitar suporte a DNS no VPC.",
+                "tagsDescription": "Atribui um nome para o VPC para identificação."
+            },
+            "igw": {
+                "vpcIdDescription": "O ID do VPC ao qual o gateway de internet está anexado.",
+                "tagsDescription": "Atribui um nome para o gateway de internet para identificação."
+            },
+            "subnets": {
+                "vpcIdDescription": "O ID do VPC ao qual a subnet está associada.",
+                "cidrBlockDescription": "O bloco CIDR para a subnet.",
+                "mapPublicIpOnLaunchDescription": "Habilita para atribuir um IP público às instâncias lançadas nesta subnet.",
+                "mapPublicIpOnLaunchDescription2": "Desabilita para atribuir um IP privado às instâncias lançadas nesta subnet.",
+                "availabilityZoneDescription": "A zona de disponibilidade para a subnet.",
+                "tagsDescription": "Atribui um nome para a subnet para identificação."
+            },
+            "routeTables": {
+                "vpcIdDescription": "O ID do VPC ao qual a tabela de roteamento está associada.",
+                "routeDescription1": "Inclui uma rota para ",
+                "routeDescription2": " através do gateway de internet ",
+                "tagsDescription": "Atribui um nome para a tabela de roteamento para identificação."
+            },
+            "routeTableAssociations": {
+                "publicSubnets": "Associadas à tabela de roteamento pública.",
+                "privateSubnets": "Associadas à tabela de roteamento privada."
+            },
+            "variablesAndOutputs": {
+                "title": "Variáveis e Outputs",
+                "description": "O módulo utiliza várias variáveis de entrada para personalizar a implantação, como: ",
+                "description2": "e outras. Essas variáveis são definidas no arquivo",
+                "description3": "e permitem uma configuração flexível do VPC e de seus componentes. O módulo também fornece outputs para o ID do VPC, IDs de subnets e blocos CIDR no arquivo",
+                "description4": "que podem ser usadas por outros módulos ou recursos dentro da infraestrutura."
+            }
+        },
+        "albModule": {
+            "title": "Módulo ALB",
+            "description": "O módulo do Application Load Balancer (ALB) é uma parte essencial da infraestrutura, projetado para gerenciar e distribuir o tráfego de entrada de aplicações através de vários alvos, como instâncias EC2, em uma ou várias zonas de disponibilidade. Este módulo garante alta disponibilidade, escalonamento automático e robustez de segurança para suas aplicações.",
+            "featuresTitle": "Funcionalidades",
+            "albDescription": "Configura um ALB para distribuir o tráfego de entrada HTTP e HTTPS.",
+            "targetGroupDescription": "Gerencia um grupo de destino para rotear solicitações para um ou mais alvos registrados.",
+            "listenerDescription": "Configura um ouvinte para verificar solicitações de conexão de clientes e encaminhar para o grupo de destino.",
+            "securityGroupDescription": "Estabelece um grupo de segurança para controlar o tráfego de entrada e saída para o ALB.",
+            "resourcesTitle": "Recursos",
+            "alb": {
+                "name": "O nome do ALB.",
+                "internal": "Especifica se o ALB é internet-facing ou interno, definido como ",
+                "loadBalancerType": "Tipo de balanceador de carga, definido como",
+                "securityGroups": "Lista de IDs de grupo de segurança associados ao ALB.",
+                "subnets": "Lista de IDs de subnets onde o ALB está implantado.",
+                "enableDeletionProtection": "Booleano para habilitar/desabilitar a proteção contra exclusão."
+            },
+            "targetGroup": {
+                "name": "O nome do grupo de destino.",
+                "port": "A porta onde o ALB recebe tráfego, definida como ",
+                "protocol": "O protocolo para usar para rotear tráfego para os alvos.",
+                "targetType": "O tipo de alvo para registrar com o grupo de destino.",
+                "tagsDescription": "Atribui um nome para o grupo de destino para identificação.",
+                "healthCheckConfiguration": "Configuração de Verificação de Saúde:",
+                "path": "O destino para a solicitação de verificação de saúde.",
+                "interval": "Tempo entre verificações de saúde.",
+                "timeout": "Tempo para aguardar uma resposta de verificação de saúde.",
+                "healthyThreshold": "Número de verificações de saúde consecutivas necessárias antes de considerar um alvo saudável.",
+                "unhealthyThreshold": "Número de verificações de saúde consecutivas necessárias antes de considerar um alvo saudável.",
+                "matcher": "Códigos HTTP para usar ao verificar uma resposta com sucesso."
+            },
+            "listener": {
+                "loadBalancerArn": "O ARN do balanceador de carga.",
+                "port": "A porta onde o ALB recebe tráfego, definida como ",
+                "protocol": "O protocolo para usar para rotear tráfego para os alvos, definido como ",
+                "defaultAction": "Ação padrão a ser tomada quando uma solicitação é recebida.",
+                "type": "O tipo de ação padrão, definido como ",
+                "targetGroupArn": "O ARN do grupo de destino para encaminhar o tráfego."
+            },
+            "securityGroup": {
+                "name": "O nome do grupo de segurança.",
+                "description": "A descrição do grupo de segurança.",
+                "vpcId": "O ID do VPC onde o grupo de segurança está implantado.",
+                "ingressDescription": "Permite HTTP (porta 80) e HTTPS (porta 443) de qualquer IP.",
+                "egressDescription": "Permite tráfego apenas para os blocos CIDR especificados, na porta "
+            },
+            "variablesAndOutputs": {
+                "title": "Variáveis e Outputs",
+                "description": "O módulo utiliza várias variáveis de entrada para personalizar a implantação, como: ",
+                "description2": "e outras. Essas variáveis são definidas no arquivo",
+                "description3": "e permitem uma configuração flexível do VPC e de seus componentes. O módulo também fornece outputs para o ID do grupo de segurança e o ARN do grupo de destino no arquivo ",
+                "description4": "que podem ser usadas por outros módulos ou recursos dentro da infraestrutura."
+            }
+        },
+        "asgModule": {
+            "title": "Módulo ASG",
+            "description": "O módulo do Auto Scaling Group (ASG) é projetado para gerenciar o escalonamento automático de instâncias EC2 com base na demanda. Este módulo garante que a aplicação permaneça disponível e possa lidar com níveis variados de tráfego ajustando dinamicamente o número de instâncias em resposta à carga.",
+            "featuresTitle": "Funcionalidades",
+            "launchTemplateDescription": "Configura um modelo de lançamento para definir a configuração da instância.",
+            "autoscalingGroupDescription": "Gerencia o escalonamento de instâncias para manter o desempenho desejado.",
+            "securityGroupDescription": "Estabelece um grupo de segurança para controlar o tráfego de entrada e saída para as instâncias.",
+            "launchTemplate": {
+                "name": "O nome do modelo de lançamento.",
+                "imageId": "A ID da imagem AMI para usar.",
+                "instanceType": "O tipo de instância para usar.",
+                "keyName": "O nome da chave para SSH.",
+                "associatePublicIpAddress": "Se deve associar um IP público à instância, definido como ",
+                "securityGroups": "Lista de IDs de grupo de segurança para associar às instâncias.",
+                "userData": "Script bash para inicializar a instância."
+            },
+            "autoscalingGroup": {
+                "name": "O nome do grupo de escalonamento automático.",
+                "maxSize": "Número máximo de instâncias.",
+                "minSize": "Número mínimo de instâncias.",
+                "desiredCapacity": "Número desejado de instâncias.",
+                "vpcZoneIdentifier": "Lista de IDs de subnets para associar ao grupo de escalonamento automático.",
+                "targetGroupArns": "Lista de ARNs dos grupos de destino a serem associados ao ASG."
+            },
+            "securityGroup": {
+                "name": "O nome do grupo de segurança.",
+                "vpcId": "O ID do VPC onde o grupo de segurança está implantado.",
+                "ingressDescription": "Permite HTTP na porta ",
+                "ingressDescription2": " do ALB.",
+                "ingressDescription3": "Permite tráfego do grupo de segurança da web.",
+                "egressDescription": "Permite saída para os blocos CIDR da VPC.",
+                "egressDescription2": "Permite saída para qualquer destino."
+            },
+            "variablesAndOutputs": {
+                "title": "Variáveis e Outputs",
+                "description": "O módulo utiliza várias variáveis de entrada para personalizar a implantação, como: ",
+                "description2": "e outras. Essas variáveis são definidas no arquivo",
+                "description3": "e permitem uma configuração flexível do VPC e de seus componentes. O módulo também fornece outputs para o ID do grupo de segurança e o ARN do grupo de destino no arquivo ",
+                "description4": "que podem ser usadas por outros módulos ou recursos dentro da infraestrutura."
+            }
+        },
+        "rdsModule": {
+            "title": "Módulo RDS",
+            "description": "O módulo do RDS (Relational Database Service) é projetado para provisionar e gerenciar uma instância de banco de dados relacional na AWS. Este módulo simplifica o processo de implantação de um banco de dados, manipulando a configuração do mecanismo de banco de dados, armazenamento, networking e configurações de segurança, garantindo uma solução de banco de dados robusta e escalável.",
+            "featuresTitle": "Funcionalidades",
+            "rdsInstanceDescription": "Provisiona uma instância de banco de dados com o mecanismo e versão especificados.",
+            "subnetGroupDescription": "Configura um grupo de subnets para a instância RDS para garantir alta disponibilidade.",
+            "securityGroupDescription": "Gerencia grupos de segurança para controlar o acesso ao banco de dados.",
+            "rdsInstance": {
+                "identifierPrefix": "Um prefixo único para o identificador da instância RDS.",
+                "engine": "O mecanismo de banco de dados a ser usado (exemplo: MySQL, PostgreSQL).",
+                "engineVersion": "A versão do mecanismo de banco de dados.",
+                "instanceClass": "A classe de instância para a instância RDS.",
+                "allocatedStorage": "A quantidade de armazenamento alocado para a instância RDS.",
+                "storageType": "O tipo de armazenamento a ser usado para a instância RDS.",
+                "username": "O nome de usuário mestre para o banco de dados.",
+                "password": "A senha mestre para o banco de dados.",
+                "vpc_security_group_ids": "Lista de IDs de grupos de segurança para associar à instância RDS.",
+                "db_subnet_group_name": "O nome do grupo de subnets para a instância RDS.",
+                "skip_final_snapshot": "Se deve pular a criação de um instantâneo final quando o banco de dados for deletado."
+            },
+            "dbSubnetGroup": {
+                "name": "O nome do grupo de subnets para o banco de dados.",
+                "subnetIds": "Lista de IDs de subnets para associar ao grupo de subnets do banco de dados.",
+                "tags": "Atribui um nome para o grupo de subnets."
+            },
+            "variablesAndOutputs": {
+                "title": "Variables and Outputs",
+                "description": "O módulo utiliza várias variáveis de entrada para personalizar a implantação, como: ",
+                "description2": "e outras. Essas variáveis são definidas no arquivo",
+                "description3": "e permitem uma configuração flexível do VPC e de seus componentes. Adicionalmente, o ",
+                "description4": " e ",
+                "description5": " variáveis devem ser definidas como variáveis de ambiente e não colocadas direto no código, para fins de segurança."
+            }
+        },
+        "mainFile": {
+            "title": "Main File",
+            "description 1": "O arquivo",
+            "description 2": " serve como a configuração central para implantar e gerenciar a infraestrutura na AWS usando Terraform. Ele coordena a configuração dos módulos e recursos previamente definidos, garantindo que todos os componentes sejam corretamente provisionados e interconectados para formar um ambiente de infraestrutura coeso."
+        },
+        "tests": {
+            "title": "Tests",
+            "description": "A garantia da integridade e correção do código de infraestrutura é crucial para o sucesso das implantações. O Terraform oferece vários comandos para testar e validar as configurações antes de aplicá-las ao ambiente. ",
+            "terraformFmt": "O comando ",
+            "terraformFmt2": " é usado para formatar consistentemente os arquivos de configuração do Terraform. Ele automaticamente atualiza os arquivos para seguir as convenções de estilo padrão do Terraform, tornando o código mais legível e mantido.",
+            "terraformValidate": "O comando ",
+            "terraformValidate2": " verifica a sintaxe e a consistência interna dos arquivos de configuração do Terraform. Ele garante que a configuração seja sintaticamente válida e que todos os argumentos necessários sejam fornecidos.",
+            "terraformPlan": "O comando ",
+            "terraformPlan2": " cria um plano de execução, mostrando o que o Terraform fará para atingir o estado desejado da infraestrutura. Este comando fornece um preview detalhado dos alterações que serão feitas, permitindo revisão e confirmação antes de aplicar."
+        },
+        "deployment": {
+            "title": "Implantação",
+            "description": "Depois de testar e validar a configuração, você pode implantar a infraestrutura usando o comando ",
+            "description2": " , que executa as alterações definidas nos arquivos. Ele aplica as alterações planejadas à infraestrutura real, criando ou atualizando os recursos conforme especificado."
+        }
+    }
+}

@@ -1,40 +1,33 @@
+"use client";
 import React from "react";
 import Image from "next/image";
+import { useTranslation } from "next-i18next";
+
 
 export default function ArchitectureDiagram() {
+  const { t } = useTranslation("iac");
   return (
     <div id="architecture-diagram" className="flex flex-col gap-4 lg:max-w-full">
       <h1 className="text-[22px] lg:text-[40px] font-bold text-white">
-        Architecture Diagram
+        {t("iac.architectureDiagram.title")}
       </h1>
-      <p>The architecture diagram below shows the infrastructure, which includes:</p>
+      <p>{t("iac.architectureDiagram.description")}</p>
       <ul className="list-disc pl-5">
         <li>
-          <strong>VPC:</strong> A Virtual Private Cloud with public
-          and private subnets across two availability zones.
+          <strong>VPC:</strong> {t("iac.architectureDiagram.vpc")}
         </li>
         <li>
-          <strong>ALB:</strong> An Application Load Balancer to
-          distribute incoming traffic across multiple instances.
+          <strong>ALB:</strong> {t("iac.architectureDiagram.alb")}
         </li>
         <li>
-          <strong>ASG:</strong> An Auto Scaling Group to ensure the
-          application scales based on demand.
+          <strong>ASG:</strong> {t("iac.architectureDiagram.asg")}
         </li>
         <li>
-          <strong>RDS:</strong> A managed MySQL database instance for
-          persistent data storage.
+          <strong>RDS:</strong> {t("iac.architectureDiagram.rds")}
         </li>
       </ul>
       <p className="mt-4">
-        Users access the application via the internet through the
-        public ALB DNS, which efficiently distributes traffic across
-        instances within the Auto Scaling Group. This group is
-        configured to dynamically adjust the number of instances based
-        on demand. The RDS serves as the application&apos;s data
-        storage solution. All EC2 instances reside in private subnets,
-        ensuring they are not directly accessible from the internet,
-        similar to the RDS.
+        {t("iac.architectureDiagram.accessDescription")}
       </p>
       <figure>
         <Image
@@ -46,7 +39,7 @@ export default function ArchitectureDiagram() {
         />
         <figcaption className="mt-2">
           <p>
-            Diagram created with Lucidchart:{" "}
+            {t("iac.architectureDiagram.figcaption")}
             <a
               href="https://www.lucidchart.com/pages/landing"
               target="_blank"

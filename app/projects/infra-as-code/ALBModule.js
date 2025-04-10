@@ -1,4 +1,6 @@
+"use client";
 import React from "react";
+import { useTranslation } from "next-i18next";
 import CodeContainer from "../../components/util/CodeContainer";
 import {
   albCode,
@@ -8,37 +10,31 @@ import {
 } from "./codeSnippets";
 
 export default function ALBModule() {
+  const { t } = useTranslation("iac");
+
   return (
     <div id="alb-module" className="flex flex-col gap-4 lg:max-w-full">
       <h1 className="text-[22px] lg:text-[40px] font-semibold text-white">
-        ALB Module
+        {t("iac.albModule.title")}
       </h1>
       <p>
-        The ALB (Application Load Balancer) module is a key component of the
-        infrastructure, designed to manage and distribute incoming application
-        traffic across multiple targets, such as EC2 instances, in a single or
-        multiple Availability Zones. This module ensures high availability,
-        automatic scaling, and robust security for your applications.
+        {t("iac.albModule.description")}
       </p>
       <h2 className="text-[22px] lg:text-[26px] font-semibold text-white">
-        Features
+        {t("iac.albModule.featuresTitle")}
       </h2>
       <ul className="list-disc pl-5">
         <li className="mb-2">
-          <strong>Application Load Balancer: </strong>Configures an ALB to
-          distribute incoming HTTP and HTTPS traffic.
+          <strong>Application Load Balancer: </strong>{t("iac.albModule.albDescription")}
         </li>
         <li className="mb-2">
-          <strong>Target Group: </strong>Manages a target group for routing
-          requests to one or more registered targets.
+          <strong>Target Group: </strong>{t("iac.albModule.targetGroupDescription")}
         </li>
         <li className="mb-2">
-          <strong>Listener:</strong>Sets up a listener to check for connection
-          requests from clients and forwards them to the target group
+          <strong>Listener: </strong>{t("iac.albModule.listenerDescription")}
         </li>
         <li className="mb-2">
-          <strong>Security Group: </strong>Establishes a security group to
-          control inbound and outbound traffic to the ALB.
+          <strong>Security Group: </strong>{t("iac.albModule.securityGroupDescription")}
         </li>
       </ul>
       <h2 className="text-[22px] lg:text-[26px] font-semibold text-white">
@@ -47,33 +43,29 @@ export default function ALBModule() {
       <p>1. Application Load Balancer (ALB)</p>
       <ul className="list-disc pl-5">
         <li className="mb-2">
-          <strong>Resource: </strong>{" "}
+          <strong>{t("iac.albModule.resourcesTitle")} </strong>{" "}
           <span className="text-[#6e5da9]">aws_lb</span>
           <ul className="list-disc pl-5 ml-5">
             <li>
-              <span className="text-[#6e5da9]">name</span>: The name of the ALB.
+              <span className="text-[#6e5da9]">name</span>: {t("iac.albModule.alb.name")}
             </li>
             <li>
-              <span className="text-[#6e5da9]">internal</span>: Specifies
-              whether the ALB is internet-facing or internal, set to code
+              <span className="text-[#6e5da9]">internal</span>: {t("iac.albModule.alb.internal")}
               <code className="text-[#EC585D]"> false</code>.
             </li>
             <li>
-              <span className="text-[#6e5da9]">load_balancer_type</span>: Type
-              of the load balancer, set to
+              <span className="text-[#6e5da9]">load_balancer_type</span>: {t("iac.albModule.alb.loadBalancerType")}
               <code className="text-[#526d4e]"> &quot;application&quot;</code>.
             </li>
             <li>
-              <span className="text-[#6e5da9]">security_groups</span>: List of
-              security group IDs associated with the ALB.
+              <span className="text-[#6e5da9]">security_groups</span>: {t("iac.albModule.alb.securityGroups")}
             </li>
             <li>
-              <span className="text-[#6e5da9]">subnets</span>: List of subnet
-              IDs where the ALB is deployed.
+              <span className="text-[#6e5da9]">subnets</span>: {t("iac.albModule.alb.subnets")}
             </li>
             <li>
               <span className="text-[#6e5da9]">enable_deletion_protection</span>
-              : Boolean to enable/disable deletion protection.
+              : {t("iac.albModule.alb.enableDeletionProtection")}
             </li>
           </ul>
         </li>
@@ -87,50 +79,38 @@ export default function ALBModule() {
         </li>
         <ul className="list-disc pl-5 ml-5">
           <li>
-            <span className="text-[#6e5da9]">name</span>: The name of the target
-            group.
+            <span className="text-[#6e5da9]">name</span>: {t("iac.albModule.targetGroup.name")}
           </li>
           <li>
-            <span className="text-[#6e5da9]">port</span>: The port on which the
-            ALB receives traffic, set to code
-            <code className="text-[##02A8EF]">80</code>.
+            <span className="text-[#6e5da9]">port</span>: {t("iac.albModule.targetGroup.port")}
+            <code className="text-[#02A8EF]">80</code>.
           </li>
           <li>
-            <span className="text-[#6e5da9]">protocol</span>: The protocol to
-            use for routing traffic to the targets.
+            <span className="text-[#6e5da9]">protocol</span>: {t("iac.albModule.targetGroup.protocol")}
           </li>
           <li>
-            <span className="text-[#6e5da9]">vpc_id</span>: The ID of the VPC
-            where the target group is deployed.
+            <span className="text-[#6e5da9]">vpc_id</span>: {t("iac.albModule.targetGroup.vpcId")}
           </li>
           <li>
-            <span className="text-[#6e5da9]">Health Check Configuration:</span>
+            <span className="text-[#6e5da9]">{t("iac.albModule.targetGroup.healthCheckConfiguration")}</span>
             <ul className="list-disc pl-5 ml-5">
               <li>
-                <span className="text-[#6e5da9]">path</span>: The destination
-                for the health check request.
+                <span className="text-[#6e5da9]">path</span>: {t("iac.albModule.targetGroup.path")}
               </li>
               <li>
-                <span className="text-[#6e5da9]">interval</span>: Time between
-                health checks.
+                <span className="text-[#6e5da9]">interval</span>: {t("iac.albModule.targetGroup.interval")}
               </li>
               <li>
-                <span className="text-[#6e5da9]">timeout</span>: Time to wait
-                for a health check response.
+                <span className="text-[#6e5da9]">timeout</span>: {t("iac.albModule.targetGroup.timeout")}
               </li>
               <li>
-                <span className="text-[#6e5da9]">healthy_threshold</span>:
-                Number of consecutive successful health checks required before
-                considering a target healthy.
+                <span className="text-[#6e5da9]">healthy_threshold</span>: {t("iac.albModule.targetGroup.healthyThreshold")}
               </li>
               <li>
-                <span className="text-[#6e5da9]">unhealthy_threshold</span>:
-                Number of consecutive failed health checks required before
-                considering a target unhealthy.
+                <span className="text-[#6e5da9]">unhealthy_threshold</span>: {t("iac.albModule.targetGroup.unhealthyThreshold")}
               </li>
               <li>
-                <span className="text-[#6e5da9]">matcher</span>: HTTP codes to
-                use when checking for a successful response.
+                <span className="text-[#6e5da9]">matcher</span>: {t("iac.albModule.targetGroup.matcher")}
               </li>
             </ul>
           </li>
@@ -144,31 +124,25 @@ export default function ALBModule() {
           <span className="text-[#6e5da9]">aws_lb_listener</span>
           <ul className="list-disc pl-5 ml-5">
             <li>
-              <span className="text-[#6e5da9]">load_balancer_arn</span>: ARN of
-              the load balancer.
+              <span className="text-[#6e5da9]">load_balancer_arn</span>: {t("iac.albModule.listener.loadBalancerArn")}
             </li>
             <li>
-              <span className="text-[#6e5da9]">port</span>: Port on which the
-              ALB receives traffic, set to code
+              <span className="text-[#6e5da9]">port</span>: {t("iac.albModule.listener.port")}
               <code className="text-[#02A8EF]"> 80</code>.
             </li>
             <li>
-              <span className="text-[#6e5da9]">protocol</span>: Protocol to use
-              for routing traffic to the targets, set to code
+              <span className="text-[#6e5da9]">protocol</span>: {t("iac.albModule.listener.protocol")}
               <code className="text-[#526d4e]"> &quot;HTTP&quot;</code>.
             </li>
             <li>
-              <span className="text-[#6e5da9]">default_action</span>: Default
-              action to take when a request is received.
+              <span className="text-[#6e5da9]">default_action</span>: {t("iac.albModule.listener.defaultAction")}
               <ul className="list-disc pl-5 ml-5">
                 <li>
-                  <span className="text-[#6e5da9]">type</span>: Type of the
-                  default action, set to
+                  <span className="text-[#6e5da9]">type</span>: {t("iac.albModule.listener.type")}
                   <code className="text-[#526d4e]"> &quot;forward&quot;</code>.
                 </li>
                 <li>
-                  <span className="text-[#6e5da9]">target_group_arn</span>: ARN
-                  of the target group to forward the traffic to.
+                  <span className="text-[#6e5da9]">target_group_arn</span>: {t("iac.albModule.listener.targetGroupArn")}
                 </li>
               </ul>
             </li>
@@ -183,24 +157,19 @@ export default function ALBModule() {
           <span className="text-[#6e5da9]">aws_security_group</span>
           <ul className="list-disc pl-5 ml-5">
             <li>
-              <span className="text-[#6e5da9]">name</span>: Name of the security
-              group.
+              <span className="text-[#6e5da9]">name</span>: {t("iac.albModule.securityGroup.name")}
             </li>
             <li>
-              <span className="text-[#6e5da9]">description</span>: Description
-              of the security group.
+              <span className="text-[#6e5da9]">description</span>: {t("iac.albModule.securityGroup.description")}
             </li>
             <li>
-              <span className="text-[#6e5da9]">vpc_id</span>: ID of the VPC
-              where the security group is deployed.
+              <span className="text-[#6e5da9]">vpc_id</span>: {t("iac.albModule.securityGroup.vpcId")}
             </li>
             <li>
-              <span className="text-[#6e5da9]">ingress</span>: Allows HTTP (port
-              80) and HTTPS (port 443) from any IP.
+              <span className="text-[#6e5da9]">ingress</span>: {t("iac.albModule.securityGroup.ingressDescription")}
             </li>
             <li>
-              <span className="text-[#6e5da9]">egress</span>: Allows traffic
-              only to specified CIDR blocks, in port code
+              <span className="text-[#6e5da9]">egress</span>: {t("iac.albModule.securityGroup.egressDescription")}
               <code className="text-[#02A8EF]"> 8080</code>.
             </li>
           </ul>
@@ -210,19 +179,15 @@ export default function ALBModule() {
         {albSecurityGroupCode}
       </CodeContainer>
       <h2 className="text-[22px] lg:text-[26px] font-semibold text-white">
-        Variables and Outputs
+        {t("iac.albModule.variablesAndOutputs.title")}
       </h2>
       <p>
-        The module uses several input variables to customize the deployment,
-        such as <span className="text-[#6e5da9]">alb_name</span>,{" "}
+        {t("iac.albModule.variablesAndOutputs.description")}
+        <span className="text-[#6e5da9]">alb_name</span>,{" "}
         <span className="text-[#6e5da9]">public_subnet_id</span>,{" "}
-        <span className="text-[#6e5da9]">alb_target_group_name</span>, and
-        others. These variables are defined in the{" "}
-        <code className="text-[#EC585D]">variables.tf</code> file and allow for
-        flexible configuration of the ALB and its components. The module also
-        provides outputs for the security group ID and target group ARN in the{" "}
-        <code className="text-[#EC585D]">outputs.tf</code> file, which can be
-        used by other modules or resources within the infrastructure.
+        <span className="text-[#6e5da9]">alb_target_group_name</span>, {t('iac.albModule.variablesAndOutputs.description2')} {" "}
+        <code className="text-[#EC585D]">{" "}variables.tf</code> {t('iac.albModule.variablesAndOutputs.description3')} {" "}
+        <code className="text-[#EC585D]">outputs.tf</code> {t('iac.albModule.variablesAndOutputs.description4')}
       </p>
     </div>
   );

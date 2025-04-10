@@ -1,0 +1,263 @@
+{
+    "iac": {
+        "sidebar": {
+            "overview": "Overview",
+            "architectureDiagram": "Architecture Diagram",
+            "codeStructure": "Code Structure",
+            "backendConfiguration": "Backend Configuration",
+            "vpcModule": "VPC Module",
+            "albModule": "ALB Module",
+            "asgModule": "ASG Module",
+            "rdsModule": "RDS Module",
+            "mainFile": "Main File",
+            "tests": "Tests",
+            "deployment": "Deployment"
+        },
+        "overview": {
+            "title": "Infra as Code - Overview",
+            "description": "This project demonstrates the use of Terraform to manage and provision cloud infrastructure on AWS. It was designed to implement a scalable and secure cloud, leveraging AWS services to create a robust environment suitable for hosting web applications. The project includes configurations for a Virtual Private Cloud (VPC), Application Load Balancer (ALB), Auto Scaling Group (ASG), and Relational Database Service (RDS). The infrastructure is secured using AWS Security Groups to manage inbound and outbound traffic for each resource, guaranteeing that only authorized traffic is allowed.",
+            "githubLink": "Github repository"
+        },
+        "architectureDiagram": {
+            "title": "Architecture Diagram",
+            "description": "The architecture diagram below shows the infrastructure, which includes:",
+            "vpc": "A Virtual Private Cloud with public and private subnets across two availability zones.",
+            "alb": "An Application Load Balancer to distribute incoming traffic across multiple instances.",
+            "asg": "An Auto Scaling Group to ensure the application scales based on demand.",
+            "rds": "A managed MySQL database instance for persistent data storage.",
+            "accessDescription": "Users access the application via the internet through the public ALB DNS, which efficiently distributes traffic across instances within the Auto Scaling Group. This group is configured to dynamically adjust the number of instances based on demand. The RDS serves as the application's data storage solution. All EC2 instances reside in private subnets, ensuring they are not directly accessible from the internet, similar to the RDS.",
+            "figcaption": "Diagram created with Lucidchart: "
+        },
+        "codeStructure": {
+            "title": "Code Structure",
+            "description": "This Terraform project is organized into two key components: modules and backend configuration. Each part plays a crucial role in managing and deploying infrastructure efficiently.",
+            "modulesTitle": "Modules",
+            "modulesDescription": "Modules are the building blocks of this Terraform configuration. They encapsulate specific pieces of infrastructure, making the code reusable and easier to manage. In this project, we have several modules:",
+            "vpcModule1": "VPC Module: ",
+            "vpcModule2": "This module is responsible for setting up the Virtual Private Cloud (VPC). It defines the CIDR block and configures both public and private subnets across different availability zones. In this configuration, DNS hostnames are disabled, while DNS support is enabled, ensuring internal DNS resolution within the VPC.",
+            "albModule1": "ALB Module: ",
+            "albModule2": "The Application Load Balancer (ALB) module manages the load balancer configuration. It sets up the ALB with specified subnets, target group settings, and health check parameters to ensure traffic is distributed efficiently.",
+            "asgModule1": "ASG Module: ",
+            "asgModule2": "The Auto Scaling Group (ASG) module configures the auto-scaling of EC2 instances. It defines the launch template, instance type, and scaling policies to maintain the desired capacity and performance.",
+            "rdsModule1": "RDS Module: ",
+            "rdsModule2": "This module handles the setup of the Relational Database Service (RDS). It specifies the database engine, version, instance class, and security group settings, ensuring a secure and scalable database environment.",
+            "moduleFilesDescription1": "Inside each module, there is a ",
+            "moduleFilesDescription2": "file that defines the resources, a ",
+            "moduleFilesDescription3": "file that defines the variables, and an ",
+            "moduleFilesDescription4": "file that defines the outputs, when needed."
+        },
+        "backendConfiguration": {
+            "title": "Backend Configuration",
+            "description": "The backend configuration is crucial for managing the state of the infrastructure. We can store the state locally or remotely, but doing it remotely is more secure and easier to manage, especially when working in a team. In this project, the backend is configured to use Amazon S3, which stores the Terraform state file. This setup includes:",
+            "s3Bucket": "S3 Bucket: ",
+            "s3BucketDescription": "The S3 bucket where the state file is stored.",
+            "key": "Key: ",
+            "keyDescription": "The path within the bucket for the state file.",
+            "region": "Region: ",
+            "regionDescription": "The region where the state file is stored.",
+            "dynamodbTable": "DynamoDB Table: ",
+            "dynamodbTableDescription": "The DynamoDB table used to lock the state file, ensuring that only one user can modify the state file at a time.",
+            "encryption": "Encryption: ",
+            "encryptionDescription": "Ensures that the state file is stored securely",
+            "processDescription1": "The process of creating the backend configuration involves creating the necessary resources using Terraform instead of manually setting them up in the AWS console. This approach ensures that all resources are managed as code, providing consistency and version control.",
+            "processDescription2": "Once the resources are created, the backend is defined as \"s3\" to store the Terraform state file. After defining the backend, the ",
+            "processDescription3": "command is used to migrate the state to S3. This command initializes the backend configuration, ensuring that the state is managed remotely and securely.",
+            "variablesDescription1": "The variables are defined in the ",
+            "variablesDescription2": "file and initialized in the "
+        },
+        "vpcModule": {
+            "title": "VPC Module",
+            "description": "This module is designed to create a Virtual Private Cloud (VPC) on AWS, along with associated resources such as subnets, internet gateways, and route tables. The architecture is structured to support two public and three private subnets across multiple availability zones, providing a robust and scalable network infrastructure. The two public subnets are used to host the ALB and the three private subnets are used to host the RDS and the EC2 instances.",
+            "featuresTitle": "Features",
+            "vpcDescription": "Creates a VPC with DNS and hostname support.",
+            "igwDescription": "Provisions an internet gateway to allow inbound and outbound traffic.",
+            "subnetsDescription": "Configures public and private subnets across multiple availability zones.",
+            "routeTablesDescription": "Configures route tables to manage network traffic.",
+            "routeTableAssociationsDescription": "Associates subnets with the appropriate route tables.",
+            "resourcesTitle": "Resources",
+            "vpc": {
+                "cidrBlockDescription": "The CIDR block for the VPC.",
+                "enableDnsHostnamesDescription": "Whether to enable DNS hostnames in the VPC.",
+                "enableDnsSupportDescription": "Whether to enable DNS support in the VPC.",
+                "tagsDescription": "Assigns a name tag to the VPC for identification."
+            },
+            "igw": {
+                "vpcIdDescription": "The ID of the VPC to which the internet gateway is attached.",
+                "tagsDescription": "Assigns a name tag to the internet gateway."
+            },
+            "subnets": {
+                "vpcIdDescription": "The ID of the VPC to which the subnet is associated.",
+                "cidrBlockDescription": "The CIDR block for the subnet.",
+                "mapPublicIpOnLaunchDescription": "Enable to assign a public IP to instances launched in this subnet.",
+                "mapPublicIpOnLaunchDescription2": "Disable to assign a private IP to instances launched in this subnet.",
+                "availabilityZoneDescription": "The availability zone for the subnet.",
+                "tagsDescription": "Assigns a name tag to the subnet for identification."
+            },
+            "routeTables": {
+                "vpcIdDescription": "The ID of the VPC to which the route table is associated.",
+                "routeDescription1": "Includes a route for ",
+                "routeDescription2": " through the internet gateway ",
+                "tagsDescription": "Assigns a name tag to the route table for identification."
+            },
+            "routeTableAssociations": {
+                "publicSubnets": "Associated with the public route table.",
+                "privateSubnets": "Associated with the private route table."
+            },
+            "variablesAndOutputs": {
+                "title": "Variables and Outputs",
+                "description": "The module uses several input variables to customize the deployment, such as: ",
+                "description2": "and others. These variables are defined in the ",
+                "description3": "file and allow for flexible configuration of the VPC and its components. The module also provides outputs for the VPC ID, subnet IDs, and CIDR blocks in the ",
+                "description4": "file, which can be used by other modules or resources within the infrastructure."
+            }
+        },
+        "albModule": {
+            "title": "ALB Module",
+            "description": " The ALB (Application Load Balancer) module is a key component of the infrastructure, designed to manage and distribute incoming application traffic across multiple targets, such as EC2 instances, in a single or multiple Availability Zones. This module ensures high availability, automatic scaling, and robust security for your applications.",
+            "featuresTitle": "Features",
+            "albDescription": "Configures an ALB to distribute incoming HTTP and HTTPS traffic.",
+            "targetGroupDescription": "Manages a target group for routing requests to one or more registered targets.",
+            "listenerDescription": "Sets up a listener to check for connection requests from clients and forwards them to the target group.",
+            "securityGroupDescription": "Establishes a security group to control inbound and outbound traffic to the ALB.",
+            "resourcesTitle": "Resources",
+            "alb": {
+                "name": "The name of the ALB.",
+                "internal": "Specifies whether the ALB is internet-facing or internal, set to ",
+                "loadBalancerType": "Type of the load balancer, set to ",
+                "securityGroups": "List of security group IDs associated with the ALB.",
+                "subnets": "List of subnet IDs where the ALB is deployed.",
+                "enableDeletionProtection": "Boolean to enable/disable deletion protection."
+            },
+            "targetGroup": {
+                "name": "The name of the target group.",
+                "port": "The port on which the ALB receives traffic, set to ",
+                "protocol": "The protocol to use for routing traffic to the targets.",
+                "vpcId": "The ID of the VPC where the target group is deployed.",
+                "healthCheckConfiguration": "Health Check Configuration:",
+                "path": "The destination for the health check request.",
+                "interval": "Time between health checks.",
+                "timeout": "Time to wait for a health check response.",
+                "healthyThreshold": "Number of consecutive successful health checks required before considering a target healthy.",
+                "unhealthyThreshold": "Number of consecutive failed health checks required before considering a target unhealthy.",
+                "matcher": "HTTP codes to use when checking for a successful response."
+            },
+            "listener": {
+                "loadBalancerArn": "The ARN of the load balancer.",
+                "port": "The port on which the ALB receives traffic, set to ",
+                "protocol": "The protocol to use for routing traffic to the targets, set to ",
+                "defaultAction": "The default action to take when a request is received.",
+                "type": "The type of the default action, set to ",
+                "targetGroupArn": "The ARN of the target group to forward the traffic to."
+            },
+            "securityGroup": {
+                "name": "The name of the security group.",
+                "description": "The description of the security group.",
+                "vpcId": "The ID of the VPC where the security group is deployed.",
+                "ingressDescription": " Allows HTTP (port 80) and HTTPS (port 443) from any IP.",
+                "egressDescription": "Allows traffic only to specified CIDR blocks, in port "
+            },
+            "variablesAndOutputs": {
+                "title": "Variables and Outputs",
+                "description": "The module uses several input variables to customize the deployment, such as: ",
+                "description2": "and others. These variables are defined in the ",
+                "description3": "file and allow for flexible configuration of the VPC and its components. The module also provides outputs for the security group ID and target group ARN in the ",
+                "description4": "file, which can be used by other modules or resources within the infrastructure."
+            }
+        },
+        "asgModule": {
+            "title": "ASG Module",
+            "description": "The ASG (Auto Scaling Group) module is designed to automatically manage the scaling of EC2 instances based on demand. This module ensures that the application remains available and can handle varying levels of traffic by dynamically adjusting the number of instances in response to load.",
+            "featuresTitle": "Features",
+            "launchTemplateDescription": "Configures a launch template to define the instance configuration.",
+            "autoscalingGroupDescription": "Manages the scaling of instances to maintain desired performance.",
+            "securityGroupDescription": "Establishes a security group to control inbound and outbound traffic for the instances.",
+            "launchTemplate": {
+                "name": "The name of the launch template.",
+                "imageId": " The ID of the AMI to use for the instances.",
+                "instanceType": "The type of instance to use.",
+                "keyName": "The name of the key for SSH access.",
+                "associatePublicIpAddress": "Whether to associate a public IP address with the instance, set to ",
+                "securityGroups": "List of security group IDs to associate with the instances.",
+                "userData": "Base64-encoded script to initialize the instance."
+            },
+            "autoscalingGroup": {
+                "name": "The name of the auto scaling group.",
+                "maxSize": "Maximum number of instances.",
+                "minSize": "Minimum number of instances.",
+                "desiredCapacity": "Desired number of instances.",
+                "vpcZoneIdentifier": "List of subnet IDs to associate with the auto scaling group.",
+                "targetGroupArns": "List of target group ARNs to associate with the ASG."
+            },
+            "securityGroup": {
+                "name": "The name of the security group.",
+                "vpcId": "The ID of the VPC where the security group is deployed.",
+                "ingressDescription": "Allows HTTP on port ",
+                "ingressDescription2": " from the ALB.",
+                "ingressDescription3": "Allows traffic from the web-server security group. ",
+                "egressDescription": "Allows egress to CIDR blocks within the VPC.",
+                "egressDescription2": "Allows outbound traffic to any destination."
+            },
+            "variablesAndOutputs": {
+                "title": "Variables and Outputs",
+                "description": "The module uses several input variables to customize the deployment, such as: ",
+                "description2": "and others. These variables are defined in the ",
+                "description3": "file and allow for flexible configuration of the VPC and its components. The module also provides outputs for the auto scaling group name and RDS security group ID in the ",
+                "description4": "file, which can be used by other modules or resources within the infrastructure."
+            }
+        },
+        "rdsModule": {
+            "title": "RDS Module",
+            "description": "The RDS (Relational Database Service) module is designed to provision and manage a relational database instance on AWS. This module simplifies the deployment of a database by handling the configuration of the database engine, storage, networking, and security settings, ensuring a robust and scalable database solution.",
+            "featuresTitle": "Features",
+            "rdsInstanceDescription": "Provisions a database instance with specified engine and version.",
+            "subnetGroupDescription": "Configures a subnet group for the RDS instance to ensure high availability.",
+            "securityGroupDescription": "Manages security groups to control access to the database.",
+            "rdsInstance": {
+                "identifierPrefix": "A unique prefix for the RDS instance identifier.",
+                "engine": "The database engine to use (e.g., MySQL, PostgreSQL).",
+                "engineVersion": "The version of the database engine.",
+                "instanceClass": "The instance class for the database engine.",
+                "allocatedStorage": "The amount of storage allocated to the database instance.",
+                "storageType": "The type of storage to use for the database instance.",
+                "username": "The master username for the database.",
+                "password": "The master password for the database.",
+                "vpc_security_group_ids": "List of security group IDs to associate with the RDS instance.",
+                "db_subnet_group_name": "The subnet group name for the RDS instance.",
+                "skip_final_snapshot": "Whether to skip the final snapshot when the database is deleted."
+            },
+            "dbSubnetGroup": {
+                "name": "The name of the DB subnet group.",
+                "subnetIds": "List of subnet IDs to associate with the DB subnet group.",
+                "tags": "Assigns a name tag to the subnet group for identification."
+            },
+            "variablesAndOutputs": {
+                "title": "Variables and Outputs",
+                "description": "The module uses several input variables to customize the deployment, such as: ",
+                "description2": "and others. These variables are defined in the ",
+                "description3": "file and allow for flexible configuration of the VPC and its components. Additionally, the ",
+                "description4": " and ",
+                "description5": " variables must be defined as environment variables and not hardcoded, for security reasons."
+            }
+        },
+        "mainFile": {
+            "title": "Main File",
+            "description 1": "The ",
+            "description 2": " file serves as the central configuration for deploying and managing the infrastructure on AWS using Terraform. It orchestrates the setup of the modules and resources previously defined, ensuring that all components are correctly provisioned and interconnected to form a cohesive infrastructure environment."
+        },
+        "tests": {
+            "title": "Tests",
+            "description": "Ensuring the integrity and correctness of the infrastructure code is crucial for successful deployments. Terraform provides several commands to help test and validate the configurations before applying them to your environment.",
+            "terraformFmt": "The ",
+            "terraformFmt2": " command is used to format the Terraform configuration files consistently. It automatically updates the files to follow the standard Terraform style conventions, making the code more readable and maintainable.",
+            "terraformValidate": "The ",
+            "terraformValidate2": " command checks the syntax and internal consistency of the Terraform configuration files. It ensures that the configuration is syntactically valid and that all required arguments are provided.",
+            "terraformPlan": "The ",
+            "terraformPlan2": " command creates an execution plan, showing what actions Terraform will take to achieve the desired state of the infrastructure. This command provides a detailed preview of the changes that will be made, allowing you to review and confirm them before applying."
+        },
+        "deployment": {
+            "title": "Deployment",
+            "description": "After testing and validating the configuration, you can deploy the infrastructure using the ",
+            "description2": " command. This command executes the changes defined in the Terraform files. It applies the planned changes to the actual infrastructure, creating or updating the resources as specified."
+        }
+    }
+}

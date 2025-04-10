@@ -1,5 +1,8 @@
+"use client";
+
 import React from "react";
 import CodeContainer from "../../components/util/CodeContainer";
+import { useTranslation } from "react-i18next";
 import {
   webServerLaunchTemplateCode,
   webServerAutoscalingGroupCode,
@@ -7,33 +10,27 @@ import {
 } from "./codeSnippets";
 
 export default function ASGModule() {
+  const { t } = useTranslation("iac");
   return (
     <div id="asg-module" className="flex flex-col gap-4 lg:max-w-full">
       <h1 className="text-[22px] lg:text-[40px] font-semibold text-white">
-        ASG Module
+        {t("iac.asgModule.title")}
       </h1>
       <p>
-        The ASG (Auto Scaling Group) module is designed to automatically manage
-        the scaling of EC2 instances based on demand. This module ensures that
-        the application remains available and can handle varying levels of
-        traffic by dynamically adjusting the number of instances in response to
-        load.
+        {t("iac.asgModule.description")}
       </p>
       <h2 className="text-[22px] lg:text-[26px] font-semibold text-white">
-        Features
+        {t("iac.asgModule.featuresTitle")}
       </h2>
       <ul className="list-disc pl-5">
         <li className="mb-2">
-          <strong>Lauching template: </strong>Configures a launch template to
-          define the instance configuration.
+          <strong>Lauching template: </strong>{t("iac.asgModule.launchTemplateDescription")}
         </li>
         <li className="mb-2">
-          <strong>Auto Scaling Group: </strong>Manages the scaling of instances
-          to maintain desired performance.
+          <strong>Auto Scaling Group: </strong>{t("iac.asgModule.autoscalingGroupDescription")}
         </li>
         <li className="mb-2">
-          <strong>Security Groups: </strong>Establishes security groups to
-          control inbound and outbound traffic for the instances.
+          <strong>Security Groups: </strong>{t("iac.asgModule.securityGroupDescription")}
         </li>
       </ul>
       <h2 className="text-[22px] lg:text-[26px] font-semibold text-white">
@@ -47,20 +44,16 @@ export default function ASGModule() {
         </li>
         <ul className="list-disc pl-5">
           <li>
-            <span className="text-[#6e5da9]">name</span>: The name of the launch
-            template.
+            <span className="text-[#6e5da9]">name</span>: {t("iac.asgModule.launchTemplate.name")}
           </li>
           <li>
-            <span className="text-[#6e5da9]">image_id</span>: The ID of the AMI
-            to use for the instances.
+            <span className="text-[#6e5da9]">image_id</span>: {t("iac.asgModule.launchTemplate.imageId")}
           </li>
           <li>
-            <span className="text-[#6e5da9]">instance_type</span>: The type of
-            instance to use.
+            <span className="text-[#6e5da9]">instance_type</span>: {t("iac.asgModule.launchTemplate.instanceType")}
           </li>
           <li>
-            <span className="text-[#6e5da9]">key_name</span>: The name of the
-            key for SSH access.
+            <span className="text-[#6e5da9]">key_name</span>: {t("iac.asgModule.launchTemplate.keyName")}
           </li>
           <li>
             <span className="text-[#6e5da9]">network_interface</span>:
@@ -69,19 +62,16 @@ export default function ASGModule() {
                 <span className="text-[#6e5da9]">
                   associate_public_ip_address
                 </span>
-                : Whether to associate a public IP address with the instance, set
-                to
+                : {t("iac.asgModule.launchTemplate.associatePublicIpAddress")}
                 <code className="text-[#EC585D]"> false</code>.
               </li>
               <li>
-                <span className="text-[#6e5da9]">security_groups</span>: List of
-                security group IDs to associate with the instance.
+                <span className="text-[#6e5da9]">security_groups</span>: {t("iac.asgModule.launchTemplate.securityGroups")}
               </li>
             </ul>
           </li>
           <li>
-            <span className="text-[#6e5da9]">user_data</span>: Base64-encoded
-            script to initialize the instance.
+            <span className="text-[#6e5da9]">user_data</span>: {t("iac.asgModule.launchTemplate.userData")}
           </li>
         </ul>
       </ul>
@@ -96,28 +86,22 @@ export default function ASGModule() {
         </li>
         <ul className="list-disc pl-5">
           <li>
-            <span className="text-[#6e5da9]">name</span>: The name of the auto
-            scaling group.
+            <span className="text-[#6e5da9]">name</span>: {t("iac.asgModule.autoscalingGroup.name")}
           </li>
           <li>
-            <span className="text-[#6e5da9]">max_size</span>: Maximum number of
-            instances.
+            <span className="text-[#6e5da9]">max_size</span>: {t("iac.asgModule.autoscalingGroup.maxSize")}
           </li>
           <li>
-            <span className="text-[#6e5da9]">min_size</span>: Minimum number of
-            instances.
+            <span className="text-[#6e5da9]">min_size</span>: {t("iac.asgModule.autoscalingGroup.minSize")}
           </li>
           <li>
-            <span className="text-[#6e5da9]">desired_capacity</span>: Desired
-            number of instances.
+            <span className="text-[#6e5da9]">desired_capacity</span>: {t("iac.asgModule.autoscalingGroup.desiredCapacity")}
           </li>
           <li>
-            <span className="text-[#6e5da9]">vpc_zone_identifier</span>: List of
-            subnet IDs to associate with the auto scaling group.
+            <span className="text-[#6e5da9]">vpc_zone_identifier</span>: {t("iac.asgModule.autoscalingGroup.vpcZoneIdentifier")}
           </li>
           <li>
-            <span className="text-[#6e5da9]">target_group_arns</span>: List of
-            target group ARNs for load balancing.
+            <span className="text-[#6e5da9]">target_group_arns</span>: {t("iac.asgModule.autoscalingGroup.targetGroupArns")}
           </li>
         </ul>
       </ul>
@@ -134,29 +118,26 @@ export default function ASGModule() {
               <span className="text-[#6e5da9]">aws_security_group</span>
               <ul className="list-disc pl-5 ml-5">
                 <li>
-                  <span className="text-[#6e5da9]">name</span>: The name of the
-                  security group.
+                  <span className="text-[#6e5da9]">name</span>: {t("iac.asgModule.securityGroup.name")}
                 </li>
 
                 <li>
-                  <span className="text-[#6e5da9]">vpc_id</span>: The ID of the
-                  VPC where the security group is deployed.
+                  <span className="text-[#6e5da9]">vpc_id</span>: {t("iac.asgModule.securityGroup.vpcId")}
                 </li>
                 <li>
-                  <span className="text-[#6e5da9]">ingress</span>: Allows HTTP
-                  on port code
-                  <code className="text-[#02A8EF]"> 8080</code> from the ALB.
+                  <span className="text-[#6e5da9]">ingress</span>: {t("iac.asgModule.securityGroup.ingressDescription")}
+                
+                  <code className="text-[#02A8EF]"> 8080</code> {t("iac.asgModule.securityGroup.ingressDescription2")}
                 </li>
                 <li>
-                  <span className="text-[#6e5da9]">egress</span>: Allows egress
-                  to RDS.
+                  <span className="text-[#6e5da9]">egress</span>: {t("iac.asgModule.securityGroup.egressDescription")}
                 </li>
               </ul>
             </li>
           </ul>
 
           <ul>
-            <li>
+            <li className="list-disc pl-5">
               <strong>RDS Security Group</strong>
             </li>
             <li>
@@ -164,20 +145,16 @@ export default function ASGModule() {
               <span className="text-[#6e5da9]">aws_security_group</span>
               <ul className="list-disc pl-5 ml-5">
                 <li>
-                  <span className="text-[#6e5da9]">name</span>: The name of the
-                  security group.
+                  <span className="text-[#6e5da9]">name</span>: {t("iac.asgModule.securityGroup.name")}
                 </li>
                 <li>
-                  <span className="text-[#6e5da9]">vpc_id</span>: The ID of the
-                  VPC where the security group is deployed.
+                  <span className="text-[#6e5da9]">vpc_id</span>: {t("iac.asgModule.securityGroup.vpcId")}
                 </li>
                 <li>
-                  <span className="text-[#6e5da9]">ingress</span>: Allows
-                  traffic from the web server security group.
+                  <span className="text-[#6e5da9]">ingress</span>: {t("iac.asgModule.securityGroup.ingressDescription3")}
                 </li>
                 <li>
-                  <span className="text-[#6e5da9]">egress</span>: Allows
-                  outbound traffic to any destination.
+                  <span className="text-[#6e5da9]">egress</span>: {t("iac.asgModule.securityGroup.egressDescription2")}
                 </li>
               </ul>
             </li>
@@ -188,19 +165,15 @@ export default function ASGModule() {
         {webServerSecurityGroupCode}
       </CodeContainer>
       <h2 className="text-[22px] lg:text-[26px] font-semibold text-white">
-        Variables and Outputs
+        {t("iac.asgModule.variablesAndOutputs.title")}
       </h2>
       <p>
-        The module uses several input variables to customize the deployment,
-        such as <span className="text-[#6e5da9]">launch_template_name</span>,{" "}
+        {t("iac.asgModule.variablesAndOutputs.description")}
+         <span className="text-[#6e5da9]">launch_template_name</span>,{" "}
         <span className="text-[#6e5da9]">image_id</span>,{" "}
-        <span className="text-[#6e5da9]">instance_type</span>, and others. These
-        variables are defined in the{" "}
-        <code className="text-[#EC585D]">variables.tf</code> file and allow for
-        flexible configuration of the ASG and its components. The module also
-        provides outputs for the auto scaling group name and RDS security group
-        ID in the <code className="text-[#EC585D]">outputs.tf</code> file, which
-        can be used by other modules or resources within the infrastructure.
+        <span className="text-[#6e5da9]">instance_type</span>, {t("iac.asgModule.variablesAndOutputs.description2")}
+        <code className="text-[#EC585D]">{" "}variables.tf</code> {t("iac.asgModule.variablesAndOutputs.description3")}
+        <code className="text-[#EC585D]">outputs.tf</code> {t("iac.asgModule.variablesAndOutputs.description4")}
       </p>
     </div>
   );

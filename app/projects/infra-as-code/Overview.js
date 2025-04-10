@@ -1,27 +1,21 @@
+"use client";
 import React from "react";
+import { useTranslation } from "next-i18next";
 
 export default function Overview() {
+  const { t } = useTranslation("iac");
+
   return (
     <div id="overview">
       <h1 className="text-[22px] lg:text-[40px] font-bold text-white">
-        Infra as Code - Overview
+        {t('iac.overview.title')}
       </h1>
       <div className="flex flex-col gap-4 ">
         <p>
-          This project demonstrates the use of Terraform to manage and
-          provision cloud infrastructure on AWS. It was designed to
-          showcase a scalable and secure cloud, leveraging AWS
-          services to create a robust environment suitable for hosting
-          web applications. The project includes configurations for a
-          Virtual Private Cloud (VPC), Application Load Balancer
-          (ALB), Auto Scaling Group (ASG), and Relational Database
-          Service (RDS). The infrastructure is also secured using AWS
-          Security Groups to manage inbound and outbound traffic for
-          each resource, guaranteeing that only authorized traffic is
-          allowed.
+          {t('iac.overview.description')}
         </p>
         <p>
-          Github repository:{" "}
+          {t('iac.overview.githubLink')}:{" "}
           <a
             href="https://github.com/samuelincoln1/infra-as-code"
             target="_blank"

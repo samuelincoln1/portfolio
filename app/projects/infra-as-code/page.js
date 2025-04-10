@@ -23,7 +23,7 @@ export default function AboutPage() {
           <Sidebar />
           <div className="xl:ml-64">
             <div
-              className="mx-auto relative flex flex-col max-w-[800px] w-full text-[#d5d7db]"
+              className="mx-auto relative flex flex-col max-w-[824px] w-full text-[#d5d7db]"
               style={{
                 fontFamily:
                   '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',

@@ -1,18 +1,17 @@
+"use client";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 export default function Deployment() {
+  const { t } = useTranslation("iac");
   return (
     <div id="deployment" className="flex flex-col gap-4 lg:max-w-full">
       <h1 className="text-[22px] lg:text-[40px] font-semibold text-white">
-        Deployment
+        {t("iac.deployment.title")}
       </h1>
       <p>
-        After testing and validating the configuration, you can deploy the
-        infrastructure using the{" "}
-        <code className="text-[#FFCF25]">terraform apply</code> command. This
-        command executes the changes defined in the Terraform configuration
-        files. It applies the planned changes to the actual infrastructure,
-        creating or updating the resources as specified.
+        {t("iac.deployment.description")} <code className="text-[#FFCF25]">terraform apply</code>
+        {t("iac.deployment.description2")}
       </p>
     </div>
   );

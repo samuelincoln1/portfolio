@@ -1,44 +1,41 @@
-// app/components/projects/infra-as-code/BackendConfiguration.js
+"use client";
 import React from "react";
 import CodeContainer from "../../components/util/CodeContainer";
 import { backendCode, backendVarsCode } from "./codeSnippets";
 import Image from "next/image";
+import { useTranslation } from "next-i18next";
 
 export default function BackendConfiguration() {
+  const { t } = useTranslation("iac");
   return (
     <div id="backend-configuration" className="flex flex-col gap-4 lg:max-w-full">
       <h1 className="text-[22px] lg:text-[40px] font-semibold text-white">
-        Backend Configuration
+        {t("iac.backendConfiguration.title")}
       </h1>
       <p>
-        The backend configuration is crucial for managing the state of
-        the infrastructure. We can store the state locally or
-        remotely, but doing it remotely is more secure and easier to
-        manage, especially when working in a team. In this project,
-        the backend is configured to use Amazon S3, which stores the
-        Terraform state file. This setup includes:
+        {t("iac.backendConfiguration.description")}
+        
       </p>
       <ul className="list-disc pl-5">
         <li className="mb-2">
-          <strong>S3 Bucket: </strong>The S3 bucket where the state
-          file is stored.
+          <strong>{t("iac.backendConfiguration.s3Bucket")}</strong>
+          {t("iac.backendConfiguration.s3BucketDescription")}
         </li>
         <li className="mb-2">
-          <strong>Key: </strong>The path within the bucket for the
-          state file.
+          <strong>{t("iac.backendConfiguration.key")}</strong>
+          {t("iac.backendConfiguration.keyDescription")}
         </li>
         <li className="mb-2">
-          <strong>Region: </strong>The AWS region where the bucket is
-          located.
+          <strong>{t("iac.backendConfiguration.region")}</strong>
+          {t("iac.backendConfiguration.regionDescription")}
         </li>
         <li className="mb-2">
-          <strong>DynamoDB Table: </strong> Used for state locking and
-          consistency, preventing concurrent operations that could
-          corrupt the state.
+          <strong>{t("iac.backendConfiguration.dynamodbTable")}</strong>
+          {t("iac.backendConfiguration.dynamodbTableDescription")}
         </li>
         <li className="mb-2">
-          <strong>Encryption: </strong>Ensures that the state file is
-          stored securely
+          <strong>{t("iac.backendConfiguration.encryption")}</strong>
+          {t("iac.backendConfiguration.encryptionDescription")}
         </li>
       </ul>
       <Image
@@ -49,34 +46,25 @@ export default function BackendConfiguration() {
         className="border-1 border-[#4f5157] rounded-lg shadow-lg"
       />
       <p>
-        The process of creating the backend configuration involves
-        creating the necessary resources using Terraform instead of
-        manually setting them up in the AWS console. This approach
-        ensures that all resources are managed as code, providing
-        consistency and version control.
+        {t("iac.backendConfiguration.processDescription1")}
       </p>
       <p>
-        Once the resources are created, the backend is defined as
-        &quot;s3&quot; to store the Terraform state file. After
-        defining the backend, the{" "}
+        {t("iac.backendConfiguration.processDescription2")}
         <code className="text-[#FFCF25]">
           terraform init
         </code>{" "}
-        command is used to migrate the state to S3. This command
-        initializes the backend configuration, ensuring that the state
-        is managed remotely and securely.
+        {t("iac.backendConfiguration.processDescription3")}
       </p>
       <CodeContainer fileName="backend/main.tf">{backendCode}</CodeContainer>
       <p>
-        The variables are defined in the{" "}
+        {t("iac.backendConfiguration.variablesDescription1")}
         <code className="text-[#EC585D]">
           variables.tf
         </code>{" "}
-        file. and initialized in the{" "}
+        {t("iac.backendConfiguration.variablesDescription2")}
         <code className="text-[#EC585D]">
           backend.tfvars
-        </code>{" "}
-        file.
+        </code>{" "}.
       </p>
       <CodeContainer fileName="backend/variables.tf">{backendVarsCode}</CodeContainer>
     </div>
