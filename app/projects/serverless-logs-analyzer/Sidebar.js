@@ -27,16 +27,16 @@ export default function Sidebar() {
   useEffect(() => {
     const handleScroll = () => {
       const sections = [
-        "overview",
-        "architecture-diagram",
-        "code-structure",
-        "backend-configuration",
-        "vpc-module",
-        "alb-module",
-        "asg-module",
-        "rds-module",
-        "main-file",
-        "tests",
+        // "overview",
+        // "architecture-diagram",
+        // "code-structure",
+        // "backend-configuration",
+        // "vpc-module",
+        // "alb-module",
+        // "asg-module",
+        // "rds-module",
+        // "main-file",
+        // "tests",
       ];
       let currentSection = "";
       for (let section of sections) {
@@ -89,16 +89,16 @@ export default function Sidebar() {
   }, [isSidebarOpen]);
 
   const sections = [
-    { id: "overview", label: t("iac.sidebar.overview") },
-    { id: "architecture-diagram", label: t("iac.sidebar.architectureDiagram") },
-    { id: "code-structure", label: t("iac.sidebar.codeStructure") },
-    { id: "backend-configuration", label: t("iac.sidebar.backendConfiguration") },
-    { id: "vpc-module", label: t("iac.sidebar.vpcModule") },
-    { id: "alb-module", label: t("iac.sidebar.albModule") },
-    { id: "asg-module", label: t("iac.sidebar.asgModule") },
-    { id: "rds-module", label: t("iac.sidebar.rdsModule") },
-    { id: "main-file", label: t("iac.sidebar.mainFile") },
-    { id: "tests", label: t("iac.sidebar.tests") },
+    // { id: "overview", label: t("iac.sidebar.overview") },
+    // { id: "architecture-diagram", label: t("iac.sidebar.architectureDiagram") },
+    // { id: "code-structure", label: t("iac.sidebar.codeStructure") },
+    // { id: "backend-configuration", label: t("iac.sidebar.backendConfiguration") },
+    // { id: "vpc-module", label: t("iac.sidebar.vpcModule") },
+    // { id: "alb-module", label: t("iac.sidebar.albModule") },
+    // { id: "asg-module", label: t("iac.sidebar.asgModule") },
+    // { id: "rds-module", label: t("iac.sidebar.rdsModule") },
+    // { id: "main-file", label: t("iac.sidebar.mainFile") },
+    // { id: "tests", label: t("iac.sidebar.tests") },
   ];
 
   return (
