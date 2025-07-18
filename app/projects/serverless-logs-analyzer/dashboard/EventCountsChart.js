@@ -26,6 +26,8 @@ const EventCountsChart = ({ data }) => {
   };
 
   const options = {
+    responsive: true,
+    maintainAspectRatio: false,
     scales: {
       y: {
         beginAtZero: true,
@@ -33,7 +35,11 @@ const EventCountsChart = ({ data }) => {
     },
   };
 
-  return <Bar data={chartData} options={options} />;
+  return (
+    <div style={{ height: '400px', width: '100%' }}>
+      <Bar data={chartData} options={options} />
+    </div>
+  );
 };
 
 export default EventCountsChart;
