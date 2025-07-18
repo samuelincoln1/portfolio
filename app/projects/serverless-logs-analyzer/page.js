@@ -7,6 +7,7 @@ import Overview from "./Overview";
 import ArchitectureDiagram from "./ArchitectureDiagram";
 import InfraCode from "./InfraCode";
 import S3Module from "./S3Module";
+import IamModule from "./IamModule";
 
 export default function ServerlessLogsAnalyzerPage() {
   return (
@@ -30,6 +31,7 @@ export default function ServerlessLogsAnalyzerPage() {
                   <ArchitectureDiagram />
                   <InfraCode />
                   <S3Module />
+                  <IamModule />
                   </div>
                 </div>
               </div>

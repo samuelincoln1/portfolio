@@ -66,45 +66,74 @@ resource "aws_s3_bucket_public_access_block" "serverless_log_analyzer_output_blo
   restrict_public_buckets = true
 }`;
 
+export const iamRoleCode = `resource "aws_iam_role" "lambda_exec_role" {
+    name = var.lambda_exec_role_name
 
+    assume_role_policy = jsonencode({
+        Version = "2012-10-17"
+        Statement = [
+            {
+                Action = "sts:AssumeRole"
+                Effect = "Allow"
+                Principal = {
+                    Service = "lambda.amazonaws.com"
+                }
+               
+            }
+        ]
+    })
+}`;
 
+export const iamPolicyCode = `resource "aws_iam_role_policy" "lambda_exec_policy" {
+    name = var.lambda_exec_policy_name
+    role = aws_iam_role.lambda_exec_role.id
 
-
-
-
-
-
-
-
-
-
-
-export const albCode = `resource "aws_lb" "iac-project-alb" {
-  name                       = var.alb_name
-  internal                   = false
-  load_balancer_type         = "application"
-  security_groups            = [aws_security_group.iac-project-alb-security-group.id]
-  subnets                    = [var.public_subnet_id, var.public_subnet_id_2]
-  enable_deletion_protection = false
+    policy = jsonencode({
+        Version = "2012-10-17"
+        Statement = [
+            { 
+                Action = [
+                    "s3:GetObject",
+                    "s3:ListBucket",
+                    "s3:PutObject",
+                    "s3:PutObjectAcl",
+                    "s3:DeleteObject"
+                ]
+                Effect = "Allow"
+                Resource = [
+                    var.s3_input_bucket_arn,
+                    var.s3_output_bucket_arn,
+                    "\${var.s3_input_bucket_arn}/*",
+                    "\${var.s3_output_bucket_arn}/*"
+                ]
+                
+            }, 
+            {
+                Action = [
+                    "logs:CreateLogGroup",
+                    "logs:CreateLogStream",
+                    "logs:PutLogEvents"
+                ]
+                Effect = "Allow"
+                Resource = "*"
+            }
+        ]
+    })
 }
 `;
 
-export const albTargetGroupCode = `resource "aws_lb_target_group" "iac-project-alb-target-group" {
-  name     = var.alb_target_group_name
-  port     = 8080
-  protocol = var.alb_target_group_protocol
-  vpc_id   = var.vpc_id
 
-  health_check {
-    path                = var.alb_target_group_health_check_path
-    interval            = var.alb_target_group_health_check_interval
-    timeout             = var.alb_target_group_health_check_timeout
-    healthy_threshold   = var.alb_target_group_health_check_healthy_threshold
-    unhealthy_threshold = var.alb_target_group_health_check_unhealthy_threshold
-    matcher             = var.alb_target_group_health_check_matcher
-  }
-}
-`;
+
+
+
+
+
+
+
+
+
+
+
 
 export const albListenerCode = `resource "aws_lb_listener" "http" {
   load_balancer_arn = aws_lb.iac-project-alb.arn

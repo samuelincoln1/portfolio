@@ -29,8 +29,9 @@ export default function Sidebar() {
       const sections = [
         "overview",
         "architecture-diagram",
-        // "code-structure",
-        // "backend-configuration",
+        "infra-code-structure",
+        "s3-module",
+        "iam-module",
         // "vpc-module",
         // "alb-module",
         // "asg-module",
@@ -91,8 +92,9 @@ export default function Sidebar() {
   const sections = [
     { id: "overview", label: "Overview" },
     { id: "architecture-diagram", label: "Architecture Diagram" },
-    // { id: "code-structure", label: t("iac.sidebar.codeStructure") },
-    // { id: "backend-configuration", label: t("iac.sidebar.backendConfiguration") },
+    { id: "infra-code-structure", label: "Infra Code Structure" },
+    { id: "s3-module", label: "S3 Module" },
+    { id: "iam-module", label: "IAM Module" },
     // { id: "vpc-module", label: t("iac.sidebar.vpcModule") },
     // { id: "alb-module", label: t("iac.sidebar.albModule") },
     // { id: "asg-module", label: t("iac.sidebar.asgModule") },

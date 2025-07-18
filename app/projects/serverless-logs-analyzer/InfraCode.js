@@ -6,7 +6,7 @@ import { useTranslation } from "next-i18next";
 export default function InfraCode() {
   const { t } = useTranslation("iac");
   return (
-    <div id="code-structure" className="flex flex-col gap-4 lg:max-w-full">
+    <div id="infra-code-structure" className="flex flex-col gap-4 lg:max-w-full">
       <h1 className="text-[22px] lg:text-[40px] font-bold text-white">
         Infra Code Structure
       </h1>

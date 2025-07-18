@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import { useTranslation } from "next-i18next";
 
 export default function Overview() {
@@ -33,6 +34,16 @@ export default function Overview() {
             https://github.com/samuelincoln1/infra-as-code
           </a>
         </p>
+                  <p>
+            To see the dashboard created with the processed logs, go to the dashboard page{" "}
+            <Link
+              href="/projects/serverless-logs-analyzer/dashboard"
+              className="underline text-blue-500 hover:text-blue-400"
+              target="_blank"
+            >
+              here
+            </Link>
+          </p>
       </div>
     </div>
   );

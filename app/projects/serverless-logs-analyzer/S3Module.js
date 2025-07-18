@@ -12,7 +12,7 @@ import {
 export default function S3Module() {
   // const { t } = useTranslation("iac");
   return (
-    <div id="vpc-module" className="flex flex-col gap-4 lg:max-w-full">
+    <div id="s3-module" className="flex flex-col gap-4 lg:max-w-full">
       <h1 className="text-[22px] lg:text-[40px] font-semibold text-white">
         S3 Module
       </h1>
@@ -106,51 +106,20 @@ export default function S3Module() {
           </span>
           <ul className="list-disc pl-5 ml-5">
             <li>
-              <span className="text-[#6e5da9]">vpc_id</span>:{" "}
-              {/* {t("iac.vpcModule.subnets.vpcIdDescription")} */}
+              <span className="text-[#6e5da9]">bucket:</span>{" "}
+              {/* {t("iac.vpcModule.subnets.vpcIdDescription")} */} The S3 bucket to enable encryption for.
             </li>
             <li>
-              <span className="text-[#6e5da9]">cidr_block</span>:{" "}
-              {/* {t("iac.vpcModule.subnets.cidrBlockDescription")} */}
+              <span className="text-[#6e5da9]">rule:</span>{" "}
+              {/* {t("iac.vpcModule.subnets.cidrBlockDescription")} */} Configuration block for encryption settings.
             </li>
             <li>
-              <span className="text-[#6e5da9]">map_public_ip_on_launch</span>:{" "}
-              {/* {t("iac.vpcModule.subnets.mapPublicIpOnLaunchDescription")} */}
+              <span className="text-[#6e5da9]">apply_server_side_encryption_by_default:</span>{" "}
+              {/* {t("iac.vpcModule.subnets.mapPublicIpOnLaunchDescription")} */} Configuration block for default encryption settings.
             </li>
             <li>
-              <span className="text-[#6e5da9]">availability_zone</span>:{" "}
-              {/* {t("iac.vpcModule.subnets.availabilityZoneDescription")} */}
-            </li>
-            <li>
-              <span className="text-[#6e5da9]">tags</span>:{" "}
-              {/* {t("iac.vpcModule.subnets.tagsDescription")} */}
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <ul className="list-disc pl-5">
-        <li className="mb-2">
-          Resource: <span className="text-[#6e5da9]">aws_subnet</span>
-          <ul className="list-disc pl-5 ml-5">
-            <li>
-              <span className="text-[#6e5da9]">vpc_id</span>:{" "}
-              {/* {t("iac.vpcModule.subnets.vpcIdDescription")} */}
-            </li>
-            <li>
-              <span className="text-[#6e5da9]">cidr_block</span>:{" "}
-              {/* {t("iac.vpcModule.subnets.cidrBlockDescription")} */}
-            </li>
-            <li>
-              <span className="text-[#6e5da9]">map_public_ip_on_launch</span>:{" "}
-              {/* {t("iac.vpcModule.subnets.mapPublicIpOnLaunchDescription2")} */}
-            </li>
-            <li>
-              <span className="text-[#6e5da9]">availability_zone</span>:{" "}
-              {/* {t("iac.vpcModule.subnets.availabilityZoneDescription")} */}
-            </li>
-            <li>
-              <span className="text-[#6e5da9]">tags</span>:{" "}
-              {/* {t("iac.vpcModule.subnets.tagsDescription")} */}
+              <span className="text-[#6e5da9]">sse_algorithm:</span>{" "}
+              {/* {t("iac.vpcModule.subnets.availabilityZoneDescription")} */} The encryption algorithm to use for the bucket.
             </li>
           </ul>
         </li>
@@ -166,36 +135,28 @@ export default function S3Module() {
         </li>
         <ul className="list-disc pl-5 ml-5">
           <li>
-            <span className="text-[#6e5da9]">vpc_id</span>:{" "}
-            {/* {t("iac.vpcModule.routeTables.vpcIdDescription")} */}
+            <span className="text-[#6e5da9]">bucket:</span>{" "}
+            {/* {t("iac.vpcModule.routeTables.vpcIdDescription")} */} The S3 bucket to enable public access blocking for.
           </li>
           <li>
-            <span className="text-[#6e5da9]">route</span>:{" "}
-            {/* {t("iac.vpcModule.routeTables.routeDescription1")} */}
-            <span className="text-[#6a7c80]">0.0.0.0/0</span>{" "}
-            {/* {t("iac.vpcModule.routeTables.routeDescription2")} */}
+            <span className="text-[#6e5da9]">block_public_acls:</span>{" "}
+            {/* {t("iac.vpcModule.routeTables.routeDescription1")} */} Whether to block public ACLs on the bucket.
           </li>
           <li>
-            <span className="text-[#6e5da9]">tags</span>:{" "}
-            {/* {t("iac.vpcModule.routeTables.tagsDescription")} */}
+            <span className="text-[#6e5da9]">block_public_policy:</span>{" "}
+            {/* {t("iac.vpcModule.routeTables.routeDescription2")} */} Whether to block public bucket policies on the bucket.
+          </li>
+          <li>
+            <span className="text-[#6e5da9]">ignore_public_acls:</span>{" "}
+            {/* {t("iac.vpcModule.routeTables.tagsDescription")} */} Whether to ignore public ACLs on the bucket.
+          </li>
+          <li>
+            <span className="text-[#6e5da9]">restrict_public_buckets:</span>{" "}
+            {/* {t("iac.vpcModule.routeTables.tagsDescription")} */} Whether to restrict public bucket policies on the bucket.
           </li>
         </ul>
       </ul>
-      <CodeContainer fileName="s3/main.tf">{s3PublicAccessBlockCode}</CodeContainer>
-      <h2 className="text-[22px] lg:text-[26px] font-semibold text-white">
-        {/* {t("iac.vpcModule.variablesAndOutputs.title")} */}aaaaa
-      </h2>
-      <p>
-        {/* {t("iac.vpcModule.variablesAndOutputs.description")} */} aaa
-        <span className="text-[#6e5da9]">cidr_block</span>,{" "}
-        <span className="text-[#6e5da9]">enable_dns_hostnames</span>,{" "}
-        <span className="text-[#6e5da9]">public_subnet_cidr_block_1</span>,{" "}
-        {/* {t("iac.vpcModule.variablesAndOutputs.description2")} */}
-        <code className="text-[#EC585D]"> variables.tf</code>{" "}
-        {/* {t("iac.vpcModule.variablesAndOutputs.description3")} */}
-        <code className="text-[#EC585D]">outputs.tf</code>{" "}
-        {/* {t("iac.vpcModule.variablesAndOutputs.description4")} */}
-      </p>
+      <CodeContainer fileName="s3/main.tf">{s3PublicAccessBlockCode}</CodeContainer>   
     </div>
   );
 }
