@@ -14,18 +14,18 @@ const AccountCountsChart = ({ data }) => {
       {
         data: accountData.map(([, value]) => value),
         backgroundColor: [
-          'rgba(255, 99, 132, 0.8)',
-          'rgba(54, 162, 235, 0.8)',
-          'rgba(255, 206, 86, 0.8)',
-          'rgba(75, 192, 192, 0.8)',
-          'rgba(153, 102, 255, 0.8)',
+          '#FF6B8A',
+          '#45B7D1',
+          '#FFEAA7',
+          '#4ECDC4',
+          '#DDA0DD',
         ],
         borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
+          '#FF5722',
+          '#2196F3',
+          '#FFC107',
+          '#26A69A',
+          '#9C27B0',
         ],
         borderWidth: 2,
       },
@@ -45,15 +45,24 @@ const AccountCountsChart = ({ data }) => {
         }
       },
       tooltip: {
-        backgroundColor: 'rgba(0, 0, 0, 0.8)',
-        titleColor: '#fff',
-        bodyColor: '#fff'
+        backgroundColor: 'rgba(13, 14, 18, 0.95)',
+        titleColor: '#ffffff',
+        bodyColor: '#ffffff',
+        borderColor: '#4f5157',
+        borderWidth: 1,
+        cornerRadius: 8
       }
     }
   };
 
   return (
-    <div style={{ height: '400px', width: '100%' }}>
+    <div style={{ 
+      height: '400px', 
+      width: '100%',
+      backgroundColor: '#0d0e12',
+      borderRadius: '8px',
+      padding: '16px'
+    }}>
       <Pie data={chartData} options={options} />
     </div>
   );

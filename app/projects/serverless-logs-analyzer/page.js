@@ -3,6 +3,10 @@ import Navbar from "../../components/util/ProjectsNavbar";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
 import { MenuProvider } from "../../context/MenuContext";
+import Overview from "./Overview";
+import ArchitectureDiagram from "./ArchitectureDiagram";
+import InfraCode from "./InfraCode";
+import S3Module from "./S3Module";
 
 export default function ServerlessLogsAnalyzerPage() {
   return (
@@ -22,7 +26,10 @@ export default function ServerlessLogsAnalyzerPage() {
               <div className="container mx-auto xl:px-4 px-8 relative mt-8 z-10 mb-[154px]">
                 <div className="flex flex-col">
                   <div className="flex flex-col gap-10 mt-[72px] ">
-                   
+                  <Overview />
+                  <ArchitectureDiagram />
+                  <InfraCode />
+                  <S3Module />
                   </div>
                 </div>
               </div>

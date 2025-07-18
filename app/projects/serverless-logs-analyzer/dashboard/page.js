@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Navbar from "../../../components/util/ProjectsNavbar";
 import Footer from "../Footer";
@@ -6,10 +7,12 @@ import EventCountsChart from "./EventCountsChart.js";
 import ResourceCountsChart from "./ResourceCountsChart.js";
 import AccountCountsChart from "./AccountCountsChart.js";
 import SourceIPCountsChart from "./SourceIPCountsChart.js";
+import { useTranslation } from "next-i18next";
 
 import insightsData from "../../../data/insights_cloudtrail.json";
 
 export default function DashboardPage() {
+  const { t } = useTranslation("dashboard");
   return (
     <MenuProvider>
       <div className="relative">
@@ -27,42 +30,39 @@ export default function DashboardPage() {
                 <div className="flex flex-col">
                   <div className="flex flex-col gap-10 mt-[72px] ">
                     <div>
-                      <h1 className="text-[40px] font-bold">Dashboard</h1>
+                      <h1 className="text-[40px] font-bold">Dashboard - 18/07/2025</h1>
                     </div>
-                    <div>
+                    <div className="border border-gray-700 rounded-lg p-6">
                       <h3 className="text-lg font-bold text-white mb-4">
-                        Eventos mais frequentes
+                        {t("dashboard.commonEventsTitle")}
                       </h3>
-                      <div className="bg-white rounded-lg p-4">
-                        <EventCountsChart data={insightsData} />
+
+                      <EventCountsChart data={insightsData} />
+                    </div>
+
+                    <div className="flex flex-row w-full gap-6">
+                      <div className="flex-1 border border-gray-700 rounded-lg p-6">
+                        <h3 className="text-lg font-bold text-white mb-4">
+                          {t("dashboard.sourceIPCountsTitle")}
+                        </h3>
+
+                        <SourceIPCountsChart data={insightsData} />
+                      </div>
+                      <div className="flex-1 border border-gray-700 rounded-lg p-6">
+                        <h3 className="text-lg font-bold text-white mb-4">
+                          {t("dashboard.resourceCountsTitle")}
+                        </h3>
+
+                        <ResourceCountsChart data={insightsData} />
                       </div>
                     </div>
 
-                    <div className="mt-5">
+                    <div className="border border-gray-700 rounded-lg p-6 max-w-md">
                       <h3 className="text-lg font-bold text-white mb-4">
-                        Principais IPs de origem
+                        {t("dashboard.accountCountsTitle")}
                       </h3>
-                      <div className="bg-white rounded-lg p-4">
-                        <SourceIPCountsChart data={insightsData} />
-                      </div>
-                    </div>
-                    <div className="flex flex-row w-full">
-                      <div className="flex-1 mr-6">
-                        <h3 className="text-lg font-bold text-white mb-4">
-                          Contagem de recursos por tipo
-                        </h3>
-                        
-                          <ResourceCountsChart data={insightsData} />
-                      
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-lg font-bold text-white mb-4">
-                          Contagem de contas por tipo
-                        </h3>
-                        <div className="bg-white rounded-lg p-4">
-                          <AccountCountsChart data={insightsData} />
-                        </div>
-                      </div>
+
+                      <AccountCountsChart data={insightsData} />
                     </div>
                   </div>
                 </div>

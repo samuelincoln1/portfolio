@@ -27,8 +27,8 @@ export default function Sidebar() {
   useEffect(() => {
     const handleScroll = () => {
       const sections = [
-        // "overview",
-        // "architecture-diagram",
+        "overview",
+        "architecture-diagram",
         // "code-structure",
         // "backend-configuration",
         // "vpc-module",
@@ -89,8 +89,8 @@ export default function Sidebar() {
   }, [isSidebarOpen]);
 
   const sections = [
-    // { id: "overview", label: t("iac.sidebar.overview") },
-    // { id: "architecture-diagram", label: t("iac.sidebar.architectureDiagram") },
+    { id: "overview", label: "Overview" },
+    { id: "architecture-diagram", label: "Architecture Diagram" },
     // { id: "code-structure", label: t("iac.sidebar.codeStructure") },
     // { id: "backend-configuration", label: t("iac.sidebar.backendConfiguration") },
     // { id: "vpc-module", label: t("iac.sidebar.vpcModule") },

@@ -14,24 +14,24 @@ const ResourceCountsChart = ({ data }) => {
       {
         data: resourceData.map(([, value]) => value),
         backgroundColor: [
-          'rgba(255, 99, 132, 0.9)',
-          'rgba(54, 162, 235, 0.9)',
-          'rgba(255, 206, 86, 0.9)',
-          'rgba(75, 192, 192, 0.9)',
-          'rgba(153, 102, 255, 0.9)',
-          'rgba(255, 159, 64, 0.9)',
-          'rgba(255, 99, 255, 0.9)',
-          'rgba(99, 255, 132, 0.9)',
+          '#FF6B8A', 
+          '#4ECDC4',
+          '#45B7D1',
+          '#96CEB4', 
+          '#FFEAA7', 
+          '#DDA0DD', 
+          '#98D8C8', 
+          '#F7DC6F',
         ],
         borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)',
-          'rgba(255, 99, 255, 1)',
-          'rgba(99, 255, 132, 1)',
+          '#FF5722', 
+          '#26A69A', 
+          '#2196F3', 
+          '#4CAF50', 
+          '#FFC107',
+          '#9C27B0',
+          '#009688', 
+          '#FF9800', 
         ],
         borderWidth: 2,
       },
@@ -54,10 +54,10 @@ const ResourceCountsChart = ({ data }) => {
         }
       },
       tooltip: {
-        backgroundColor: 'rgba(0, 0, 0, 0.9)',
+        backgroundColor: 'rgba(13, 14, 18, 0.95)',
         titleColor: '#ffffff',
         bodyColor: '#ffffff',
-        borderColor: '#333333',
+        borderColor: '#4f5157',
         borderWidth: 1,
         cornerRadius: 8,
         displayColors: true
@@ -69,7 +69,7 @@ const ResourceCountsChart = ({ data }) => {
     <div style={{ 
       height: '400px', 
       width: '100%',
-      backgroundColor: '#000000',
+      backgroundColor: '#0d0e12',
       borderRadius: '8px',
       padding: '16px'
     }}>

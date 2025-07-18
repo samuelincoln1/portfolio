@@ -1,0 +1,8 @@
+{
+    "dashboard": {
+        "commonEventsTitle": "Eventos mais frequentes",
+        "resourceCountsTitle": "Contagem de recursos por tipo",
+        "accountCountsTitle": "Contagem de contas por tipo",
+        "sourceIPCountsTitle": "Principais IPs de origem"
+    }
+} 

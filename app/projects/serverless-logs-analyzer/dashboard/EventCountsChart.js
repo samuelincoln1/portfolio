@@ -18,9 +18,9 @@ const EventCountsChart = ({ data }) => {
       {
         label: "Event Counts",
         data: sortedEventCounts.map(([, value]) => value),
-        backgroundColor: "rgba(228, 253, 253, 0.94)",
-        borderColor: "rgba(75, 192, 192, 1)",
-        borderWidth: 1,
+        backgroundColor: "#4ECDC4",
+        borderColor: "#26A69A",
+        borderWidth: 2,
       },
     ],
   };
@@ -31,12 +31,48 @@ const EventCountsChart = ({ data }) => {
     scales: {
       y: {
         beginAtZero: true,
+        grid: {
+          color: 'rgba(255, 255, 255, 0.1)'
+        },
+        ticks: {
+          color: '#d5d7db'
+        }
       },
+      x: {
+        grid: {
+          color: 'rgba(255, 255, 255, 0.1)'
+        },
+        ticks: {
+          color: '#d5d7db',
+          maxRotation: 45
+        }
+      }
     },
+    plugins: {
+      legend: {
+        labels: {
+          color: '#d5d7db'
+        }
+      },
+      tooltip: {
+        backgroundColor: 'rgba(13, 14, 18, 0.95)',
+        titleColor: '#ffffff',
+        bodyColor: '#ffffff',
+        borderColor: '#4f5157',
+        borderWidth: 1,
+        cornerRadius: 8
+      }
+    }
   };
 
   return (
-    <div style={{ height: '400px', width: '100%' }}>
+    <div style={{ 
+      height: '400px', 
+      width: '100%',
+      backgroundColor: '#0d0e12',
+      borderRadius: '8px',
+      padding: '16px'
+    }}>
       <Bar data={chartData} options={options} />
     </div>
   );

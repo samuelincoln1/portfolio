@@ -17,9 +17,9 @@ const SourceIPCountsChart = ({ data }) => {
       {
         label: "Requisições por IP",
         data: sortedIPCounts.map(([, value]) => value),
-        backgroundColor: "rgba(255, 159, 64, 0.8)",
-        borderColor: "rgba(255, 159, 64, 1)",
-        borderWidth: 1,
+        backgroundColor: "#FF6B8A",
+        borderColor: "#FF5722",
+        borderWidth: 2,
       },
     ],
   };
@@ -53,15 +53,24 @@ const SourceIPCountsChart = ({ data }) => {
         }
       },
       tooltip: {
-        backgroundColor: 'rgba(0, 0, 0, 0.8)',
-        titleColor: '#fff',
-        bodyColor: '#fff'
+        backgroundColor: 'rgba(13, 14, 18, 0.95)',
+        titleColor: '#ffffff',
+        bodyColor: '#ffffff',
+        borderColor: '#4f5157',
+        borderWidth: 1,
+        cornerRadius: 8
       }
     }
   };
 
   return (
-    <div style={{ height: '400px', width: '100%' }}>
+    <div style={{ 
+      height: '400px', 
+      width: '100%',
+      backgroundColor: '#0d0e12',
+      borderRadius: '8px',
+      padding: '16px'
+    }}>
       <Bar data={chartData} options={options} />
     </div>
   );

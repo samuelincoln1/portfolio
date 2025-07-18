@@ -7,15 +7,19 @@ import translationPT from '../public/locales/pt/common.json'
 import translationEN from '../public/locales/en/common.json'
 import translationPTIac from '../public/locales/pt/iac.json'
 import translationENIac from '../public/locales/en/iac.json'
+import translationPTDashboard from '../public/locales/pt/dashboard.json'
+import translationENDashboard from '../public/locales/en/dashboard.json'
 
 const resources = {
   pt: {
     common: translationPT,
-    iac: translationPTIac
+    iac: translationPTIac,
+    dashboard: translationPTDashboard
   },
   en: {
     common: translationEN,
-    iac: translationENIac
+    iac: translationENIac,
+    dashboard: translationENDashboard
   }
 }
 
@@ -28,7 +32,7 @@ i18n
     interpolation: {
       escapeValue: false,
     },
-    ns: ['common'],
+    ns: ['common', 'iac', 'dashboard'],
     defaultNS: 'common'
   })
 
