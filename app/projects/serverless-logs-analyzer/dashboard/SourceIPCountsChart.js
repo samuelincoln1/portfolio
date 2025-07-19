@@ -6,10 +6,11 @@ import { Chart as ChartJS, LinearScale, CategoryScale, BarElement, Tooltip, Lege
 ChartJS.register(LinearScale, CategoryScale, BarElement, Tooltip, Legend);
 
 const SourceIPCountsChart = ({ data }) => {
-  // Ordena os IPs por contagem e pega os 8 primeiros
+  // Ordena os IPs por contagem e pega os 8 primeiros para desktop, 5 para mobile
+  const maxItems = window.innerWidth < 640 ? 5 : 8;
   const sortedIPCounts = Object.entries(data.source_ip_counts)
     .sort(([, a], [, b]) => b - a)
-    .slice(0, 8);
+    .slice(0, maxItems);
 
   const chartData = {
     labels: sortedIPCounts.map(([key]) => key),
@@ -26,6 +27,7 @@ const SourceIPCountsChart = ({ data }) => {
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     scales: {
       y: {
         beginAtZero: true,
@@ -33,7 +35,10 @@ const SourceIPCountsChart = ({ data }) => {
           color: 'rgba(255, 255, 255, 0.1)'
         },
         ticks: {
-          color: '#d5d7db'
+          color: '#d5d7db',
+          font: {
+            size: window.innerWidth < 640 ? 10 : 12
+          }
         }
       },
       x: {
@@ -42,14 +47,20 @@ const SourceIPCountsChart = ({ data }) => {
         },
         ticks: {
           color: '#d5d7db',
-          maxRotation: 45
+          maxRotation: window.innerWidth < 640 ? 90 : 45,
+          font: {
+            size: window.innerWidth < 640 ? 8 : 11
+          }
         }
       }
     },
     plugins: {
       legend: {
         labels: {
-          color: '#d5d7db'
+          color: '#d5d7db',
+          font: {
+            size: window.innerWidth < 640 ? 10 : 12
+          }
         }
       },
       tooltip: {
@@ -65,11 +76,11 @@ const SourceIPCountsChart = ({ data }) => {
 
   return (
     <div style={{ 
-      height: '400px', 
+      height: window.innerWidth < 640 ? '300px' : window.innerWidth < 1024 ? '350px' : '400px', 
       width: '100%',
       backgroundColor: '#0d0e12',
       borderRadius: '8px',
-      padding: '16px'
+      padding: window.innerWidth < 640 ? '8px' : '16px'
     }}>
       <Bar data={chartData} options={options} />
     </div>

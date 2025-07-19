@@ -17,7 +17,7 @@ const customTheme = {
   },
 };
 
-const CodeContainer = ({ children, fileName }) => {
+const CodeContainer = ({ children, fileName, language = "hcl" }) => {
   const [copied, setCopied] = useState(false);
   const codeString = typeof children === "string" ? children : String(children);
 
@@ -117,7 +117,7 @@ const CodeContainer = ({ children, fileName }) => {
         </button>
       </div>
       <SyntaxHighlighter
-        language="hcl"
+        language={language}
         style={customTheme}
         className="code-container"
       >

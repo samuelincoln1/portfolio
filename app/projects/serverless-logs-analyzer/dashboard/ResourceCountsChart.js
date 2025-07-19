@@ -43,14 +43,16 @@ const ResourceCountsChart = ({ data }) => {
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: 'bottom',
+        position: window.innerWidth < 640 ? 'bottom' : 'bottom',
         labels: {
           color: '#ffffff',
           font: {
-            size: 12,
+            size: window.innerWidth < 640 ? 9 : 12,
             weight: 'bold'
           },
-          padding: 15
+          padding: window.innerWidth < 640 ? 8 : 15,
+          usePointStyle: window.innerWidth < 640 ? true : false,
+          boxWidth: window.innerWidth < 640 ? 8 : 12
         }
       },
       tooltip: {
@@ -67,11 +69,11 @@ const ResourceCountsChart = ({ data }) => {
 
   return (
     <div style={{ 
-      height: '400px', 
+      height: window.innerWidth < 640 ? '280px' : window.innerWidth < 1024 ? '350px' : '400px', 
       width: '100%',
       backgroundColor: '#0d0e12',
       borderRadius: '8px',
-      padding: '16px'
+      padding: window.innerWidth < 640 ? '8px' : '16px'
     }}>
       <Doughnut data={chartData} options={options} />
     </div>

@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { useMenu } from '../../context/MenuContext';
+import { useMenu } from "../../../context/MenuContext";
 import { useTranslation } from "react-i18next";
-import Link from 'next/link';
+import Link from "next/link";
 
 export default function Sidebar() {
   const { isMenuOpen } = useMenu();
@@ -15,7 +15,7 @@ export default function Sidebar() {
     event.preventDefault();
     const targetElement = document.getElementById(targetId);
     if (targetElement) {
-      const offsetPosition = targetElement.offsetTop - 76; 
+      const offsetPosition = targetElement.offsetTop - 76;
       window.scrollTo({
         top: offsetPosition,
         behavior: "smooth",
@@ -23,21 +23,10 @@ export default function Sidebar() {
     }
   };
 
-
   useEffect(() => {
     const handleScroll = () => {
       const sections = [
-        "overview",
-        "architecture-diagram",
-        "infra-code-structure",
-        "s3-module",
-        "iam-module",
-        "lambda-module",
-        "cloudtrail-module",
-        "eventbridge-module",
-        "main-file",
-        "lambda-aggregator-function",
-        "lambda-analyzer-function",
+        "dashboard",
         // "vpc-module",
         // "alb-module",
         // "asg-module",
@@ -60,7 +49,7 @@ export default function Sidebar() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); 
+    handleScroll();
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -79,7 +68,7 @@ export default function Sidebar() {
       const touch = e.touches[0];
       const deltaX = touch.clientX - startX;
 
-      if (deltaX < -90) { 
+      if (deltaX < -90) {
         setIsSidebarOpen(false);
       }
     };
@@ -96,18 +85,7 @@ export default function Sidebar() {
   }, [isSidebarOpen]);
 
   const sections = [
-    { id: "overview", label: "Overview" },
-    { id: "architecture-diagram", label: "Architecture Diagram" },
-    { id: "infra-code-structure", label: "Infra Code Structure" },
-    { id: "s3-module", label: "S3 Module" },
-    { id: "iam-module", label: "IAM Module" },
-    { id: "lambda-module", label: "Lambda Module" },
-    { id: "cloudtrail-module", label: "CloudTrail Module" },
-    { id: "eventbridge-module", label: "EventBridge Module" },
-    { id: "main-file", label: "Terraform Main File" },
-    { id: "lambda-aggregator-function", label: "Lambda Aggregator Function" },
-    { id: "lambda-analyzer-function", label: "Lambda Analyzer Function" },
-
+    { id: "dashboard", label: "Dashboard" },
     // { id: "vpc-module", label: t("iac.sidebar.vpcModule") },
     // { id: "alb-module", label: t("iac.sidebar.albModule") },
     // { id: "asg-module", label: t("iac.sidebar.asgModule") },
@@ -160,29 +138,27 @@ export default function Sidebar() {
         className={`fixed h-full z-100 xl:mt-[76px] ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300 ease-in-out xl:translate-x-0 xl:w-80 bg-[#0d0e12] border-r border-gray-700 text-white p-4`}
-       
       >
-      
-          <Link href="/" passHref>
-            <div className="text-[#3799fe] flex items-center hover:underline hover:text-[#4fa7ff] py-6 mt-10 xl:mt-0 inline-flex">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-5 h-5 mr-2"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-              {t("iac.sidebar.goBack")}
-            </div>
-          </Link>
-       
+        <Link href="/projects/serverless-logs-analyzer" passHref>
+          <div className="text-[#3799fe] flex items-center hover:underline hover:text-[#4fa7ff] py-6 mt-10 xl:mt-0 inline-flex">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-5 h-5 mr-2"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+            {t("iac.sidebar.goBack")}
+          </div>
+        </Link>
+
         <h2 className="text-2xl font-bold mb-4">Index</h2>
         <ul className="space-y-1">
           {sections.map((section) => (

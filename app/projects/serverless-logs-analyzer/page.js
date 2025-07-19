@@ -8,6 +8,13 @@ import ArchitectureDiagram from "./ArchitectureDiagram";
 import InfraCode from "./InfraCode";
 import S3Module from "./S3Module";
 import IamModule from "./IamModule";
+import LambdaModule from "./LambdaModule";
+import CloudTrailModule from "./CloudTrailModule";
+import EventBridgeModule from "./EventBridgeModule";
+import MainFile from "./MainFile";
+import LambdaAggregatorFunction from "./LambdaAggregatorFunction";
+import LambdaAnalyzerFunction from "./LambdaAnalyzerFunction";
+import Dashboard from "./Dashboard";
 
 export default function ServerlessLogsAnalyzerPage() {
   return (
@@ -32,6 +39,13 @@ export default function ServerlessLogsAnalyzerPage() {
                   <InfraCode />
                   <S3Module />
                   <IamModule />
+                  <LambdaModule />
+                  <CloudTrailModule />
+                  <EventBridgeModule />
+                  <MainFile />
+                  <LambdaAggregatorFunction />
+                  <LambdaAnalyzerFunction />
+                  <Dashboard />
                   </div>
                 </div>
               </div>

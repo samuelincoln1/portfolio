@@ -35,7 +35,10 @@ const EventCountsChart = ({ data }) => {
           color: 'rgba(255, 255, 255, 0.1)'
         },
         ticks: {
-          color: '#d5d7db'
+          color: '#d5d7db',
+          font: {
+            size: window.innerWidth < 640 ? 10 : 12
+          }
         }
       },
       x: {
@@ -44,14 +47,20 @@ const EventCountsChart = ({ data }) => {
         },
         ticks: {
           color: '#d5d7db',
-          maxRotation: 45
+          maxRotation: window.innerWidth < 640 ? 90 : 45,
+          font: {
+            size: window.innerWidth < 640 ? 9 : 11
+          }
         }
       }
     },
     plugins: {
       legend: {
         labels: {
-          color: '#d5d7db'
+          color: '#d5d7db',
+          font: {
+            size: window.innerWidth < 640 ? 10 : 12
+          }
         }
       },
       tooltip: {
@@ -67,11 +76,11 @@ const EventCountsChart = ({ data }) => {
 
   return (
     <div style={{ 
-      height: '400px', 
+      height: window.innerWidth < 640 ? '300px' : window.innerWidth < 1024 ? '350px' : '400px', 
       width: '100%',
       backgroundColor: '#0d0e12',
       borderRadius: '8px',
-      padding: '16px'
+      padding: window.innerWidth < 640 ? '8px' : '16px'
     }}>
       <Bar data={chartData} options={options} />
     </div>
