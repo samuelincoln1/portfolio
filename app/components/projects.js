@@ -19,10 +19,10 @@ const Projects = () => {
         t('projects.descriptionLambda'),
       projectUrl: "/projects/serverless-logs-analyzer",
       stack: [
+        "AWS CloudTrail",
         "AWS Lambda",
-        "Amazon CloudWatch",
-        "Amazon QuickSight",
-        "API Gateway",
+        "AWS EventBridge",
+        "Pyhton",
         "S3",
       ],
     },
