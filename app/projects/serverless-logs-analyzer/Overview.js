@@ -4,10 +4,11 @@ import Link from "next/link";
 import { useTranslation } from "next-i18next";
 
 export default function Overview() {
+  const { t } = useTranslation('analyzer')
   return (
     <div id="overview">
       <h1 className="text-[22px] lg:text-[40px] font-bold text-white">
-        Serverless Logs Analyzer - Overview
+        {t('analyzer.overview.title')}
       </h1>
       <div className="flex flex-col gap-4 ">
         <p>

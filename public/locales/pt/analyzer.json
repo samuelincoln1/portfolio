@@ -1,0 +1,21 @@
+{
+    "analyzer": {
+        "sidebar": {
+            "goBack": "Voltar",
+            "overview": "Visão Geral",
+            "architectureDiagram": "Diagrama de Arquitetura",
+            "infrastructureCode": "Código de Infraestrutura",
+            "s3Module": "Módulo S3",
+            "iamModule": "Módulo IAM",
+            "lambdaModule": "Módulo Lambda",
+            "cloudtrailModule": "Módulo CloudTrail",
+            "eventBridgeModule": "Módulo EventBridge",
+            "terraformMainFile": "Terraform - Arquivo Main",
+            "lambdaAggregatorFunction": "Função Lambda Aggregator",
+            "lambdaAnalyzerFunction": "Função Lambda Analyzer"
+        },
+        "overview": {
+            "title": "Serverless Logs Analyzer - Visão Geral"
+        }
+    }
+}
