@@ -8,8 +8,7 @@ export default function Index() {
     <div className="relative">
            <div className="bg-[url('/images/clouds.jpg')] bg-cover bg-center bg-no-repeat min-h-screen bg-sky-300">
         <div className="absolute inset-0 bg-black/45" id="home"></div>
-        <Navbar />
-        TESTING COMMIT!
+        <Navbar />!
         <Hero />
       </div>
       <Projects />
