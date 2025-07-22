@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import LanguageSwitcher from "./LanguageSwitcher.js";
+import LanguageSwitcher from "./LanguageSwitcher";
 import { useTranslation } from "next-i18next";
 
 export default function Navbar() {
