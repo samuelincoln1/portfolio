@@ -1,11 +1,29 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Doughnut } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const ResourceCountsChart = ({ data }) => {
+  const [windowWidth, setWindowWidth] = useState(1024); // valor padrão para SSR
+
+  useEffect(() => {
+    // Só executa no cliente
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    // Define o valor inicial
+    setWindowWidth(window.innerWidth);
+
+    // Adiciona listener de resize
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const resourceData = Object.entries(data.resource_counts);
 
   const chartData = {
@@ -43,16 +61,16 @@ const ResourceCountsChart = ({ data }) => {
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: window.innerWidth < 640 ? 'bottom' : 'bottom',
+        position: windowWidth < 640 ? 'bottom' : 'bottom',
         labels: {
           color: '#ffffff',
           font: {
-            size: window.innerWidth < 640 ? 9 : 12,
+            size: windowWidth < 640 ? 9 : 12,
             weight: 'bold'
           },
-          padding: window.innerWidth < 640 ? 8 : 15,
-          usePointStyle: window.innerWidth < 640 ? true : false,
-          boxWidth: window.innerWidth < 640 ? 8 : 12
+          padding: windowWidth < 640 ? 8 : 15,
+          usePointStyle: windowWidth < 640 ? true : false,
+          boxWidth: windowWidth < 640 ? 8 : 12
         }
       },
       tooltip: {
@@ -69,11 +87,11 @@ const ResourceCountsChart = ({ data }) => {
 
   return (
     <div style={{ 
-      height: window.innerWidth < 640 ? '280px' : window.innerWidth < 1024 ? '350px' : '400px', 
+      height: windowWidth < 640 ? '280px' : windowWidth < 1024 ? '350px' : '400px', 
       width: '100%',
       backgroundColor: '#0d0e12',
       borderRadius: '8px',
-      padding: window.innerWidth < 640 ? '8px' : '16px'
+      padding: windowWidth < 640 ? '8px' : '16px'
     }}>
       <Doughnut data={chartData} options={options} />
     </div>

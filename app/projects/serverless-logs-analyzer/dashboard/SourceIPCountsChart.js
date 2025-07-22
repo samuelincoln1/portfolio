@@ -1,13 +1,31 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS, LinearScale, CategoryScale, BarElement, Tooltip, Legend } from 'chart.js';
 
 ChartJS.register(LinearScale, CategoryScale, BarElement, Tooltip, Legend);
 
 const SourceIPCountsChart = ({ data }) => {
+  const [windowWidth, setWindowWidth] = useState(1024); // valor padrão para SSR
+
+  useEffect(() => {
+    // Só executa no cliente
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    // Define o valor inicial
+    setWindowWidth(window.innerWidth);
+
+    // Adiciona listener de resize
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   // Ordena os IPs por contagem e pega os 8 primeiros para desktop, 5 para mobile
-  const maxItems = window.innerWidth < 640 ? 5 : 8;
+  const maxItems = windowWidth < 640 ? 5 : 8;
   const sortedIPCounts = Object.entries(data.source_ip_counts)
     .sort(([, a], [, b]) => b - a)
     .slice(0, maxItems);
@@ -37,7 +55,7 @@ const SourceIPCountsChart = ({ data }) => {
         ticks: {
           color: '#d5d7db',
           font: {
-            size: window.innerWidth < 640 ? 10 : 12
+            size: windowWidth < 640 ? 10 : 12
           }
         }
       },
@@ -47,9 +65,9 @@ const SourceIPCountsChart = ({ data }) => {
         },
         ticks: {
           color: '#d5d7db',
-          maxRotation: window.innerWidth < 640 ? 90 : 45,
+          maxRotation: windowWidth < 640 ? 90 : 45,
           font: {
-            size: window.innerWidth < 640 ? 8 : 11
+            size: windowWidth < 640 ? 8 : 11
           }
         }
       }
@@ -59,7 +77,7 @@ const SourceIPCountsChart = ({ data }) => {
         labels: {
           color: '#d5d7db',
           font: {
-            size: window.innerWidth < 640 ? 10 : 12
+            size: windowWidth < 640 ? 10 : 12
           }
         }
       },
@@ -76,11 +94,11 @@ const SourceIPCountsChart = ({ data }) => {
 
   return (
     <div style={{ 
-      height: window.innerWidth < 640 ? '300px' : window.innerWidth < 1024 ? '350px' : '400px', 
+      height: windowWidth < 640 ? '300px' : windowWidth < 1024 ? '350px' : '400px', 
       width: '100%',
       backgroundColor: '#0d0e12',
       borderRadius: '8px',
-      padding: window.innerWidth < 640 ? '8px' : '16px'
+      padding: windowWidth < 640 ? '8px' : '16px'
     }}>
       <Bar data={chartData} options={options} />
     </div>

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS, LinearScale, CategoryScale, BarElement } from 'chart.js';
 
@@ -7,6 +7,24 @@ import { Chart as ChartJS, LinearScale, CategoryScale, BarElement } from 'chart.
 ChartJS.register(LinearScale, CategoryScale, BarElement);
 
 const EventCountsChart = ({ data }) => {
+  const [windowWidth, setWindowWidth] = useState(1024); // valor padrão para SSR
+
+  useEffect(() => {
+    // Só executa no cliente
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    // Define o valor inicial
+    setWindowWidth(window.innerWidth);
+
+    // Adiciona listener de resize
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   // Ordena os eventos por contagem e pega os 10 primeiros
   const sortedEventCounts = Object.entries(data.event_counts)
     .sort(([, a], [, b]) => b - a)
@@ -37,7 +55,7 @@ const EventCountsChart = ({ data }) => {
         ticks: {
           color: '#d5d7db',
           font: {
-            size: window.innerWidth < 640 ? 10 : 12
+            size: windowWidth < 640 ? 10 : 12
           }
         }
       },
@@ -47,9 +65,9 @@ const EventCountsChart = ({ data }) => {
         },
         ticks: {
           color: '#d5d7db',
-          maxRotation: window.innerWidth < 640 ? 90 : 45,
+          maxRotation: windowWidth < 640 ? 90 : 45,
           font: {
-            size: window.innerWidth < 640 ? 9 : 11
+            size: windowWidth < 640 ? 9 : 11
           }
         }
       }
@@ -59,7 +77,7 @@ const EventCountsChart = ({ data }) => {
         labels: {
           color: '#d5d7db',
           font: {
-            size: window.innerWidth < 640 ? 10 : 12
+            size: windowWidth < 640 ? 10 : 12
           }
         }
       },
@@ -76,11 +94,11 @@ const EventCountsChart = ({ data }) => {
 
   return (
     <div style={{ 
-      height: window.innerWidth < 640 ? '300px' : window.innerWidth < 1024 ? '350px' : '400px', 
+      height: windowWidth < 640 ? '300px' : windowWidth < 1024 ? '350px' : '400px', 
       width: '100%',
       backgroundColor: '#0d0e12',
       borderRadius: '8px',
-      padding: window.innerWidth < 640 ? '8px' : '16px'
+      padding: windowWidth < 640 ? '8px' : '16px'
     }}>
       <Bar data={chartData} options={options} />
     </div>
