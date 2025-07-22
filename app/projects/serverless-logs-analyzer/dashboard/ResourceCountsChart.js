@@ -6,21 +6,17 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const ResourceCountsChart = ({ data }) => {
-  const [windowWidth, setWindowWidth] = useState(1024); // valor padrão para SSR
+  const [windowWidth, setWindowWidth] = useState(1024); 
 
   useEffect(() => {
-    // Só executa no cliente
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
 
-    // Define o valor inicial
     setWindowWidth(window.innerWidth);
 
-    // Adiciona listener de resize
     window.addEventListener('resize', handleResize);
 
-    // Cleanup
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
