@@ -15,7 +15,39 @@
             "lambdaAnalyzerFunction": "Lambda Analyzer Function"
         },
         "overview": {
-            "title": "Serverless Logs Analyzer - Overview"
+            "title": "Serverless Logs Analyzer - Overview",
+            "description": "This project demonstrates the use of AWS to generate and analyze logs. It was designed to provide automated insights into AWS account activities through a serverless architecture that monitors, processes, and analyzes CloudTrail logs in real-time. The system automatically captures all AWS API calls and management events via CloudTrail, aggregates daily log files for efficient processing, and generates comprehensive statistical reports about resource usage patterns, security events, and operational activities. The solution uses Lambda functions, S3 storage, and EventBridge to create a cost-effective, scalable log analysis system that requires no infrastructure management while providing comprehensive visibility into AWS account activities.",
+            "githubLink": "Github repository",
+            "dashboardLink1": "To see the dashboard created with the processed logs, go to the dashboard page",
+            "dashboardLink2": "here"
+        },
+        "architectureDiagram": {
+            "title": "Architecture Diagram",
+            "description": "The architecture diagram below shows the infrastructure, which includes:",
+            "cloudtrail": "used to track all the actions performed in the AWS account.",
+            "eventbridge": "used to trigger the AWS Lambda function when a new log is created.",
+            "lambda": "used to analyze the logs and store the results in Amazon S3.",
+            "s3": "used to store the logs and the results.",
+            "figcaption": "Diagram created with Lucidchart: "
+        },
+        "infrastructureCode": {
+            "title": "Infrastructure Code",
+            "description": "The infrastructure is implemented through a modular architecture using Terraform, which provisions the following AWS components organized into 5 main modules.",
+            "modulesTitle": "Modules",
+            "s3Module1": "S3 Module: ",
+            "s3Module2": "This module is responsible for creating the storage infrastructure with two S3 buckets. It configures the input bucket to receive CloudTrail logs and the output bucket for processed insights. Both buckets are secured with versioning enabled, AES256 encryption, and complete public access blocking to ensure data protection and compliance.",
+            "iamModule1": "IAM Module: ",
+            "iamModule2": "The Identity and Access Management (IAM) module manages security permissions for the Lambda functions. It creates a dedicated execution role with precise permissions for S3 operations (read, write, delete) on both buckets and CloudWatch logging capabilities, following the principle of least privilege for enhanced security.",
+            "lambdaModule1": "Lambda Module: ",
+            "lambdaModule2": "This module handles the serverless compute functions that process the logs. It deploys two Python 3.11 Lambda functions - the Analyzer for processing aggregated logs and generating insights, and the Aggregator for consolidating daily log files. The module also configures S3 event triggers and proper permissions for seamless integration.",
+            "cloudtrailModule1": "CloudTrail Module: ",
+            "cloudtrailModule2": " The CloudTrail module sets up comprehensive AWS account auditing and logging. It configures a multi-region trail that captures management events, global service events, and S3 data events, automatically delivering all logs to the input S3 bucket with appropriate bucket policies for secure log storage.",
+            "eventBridgeModule1": "EventBridge Module: ",
+            "eventBridgeModule2": "This module manages the automated scheduling system for log processing. It creates a CloudWatch Event Rule with a cron expression to trigger the Lambda Aggregator function every 12 hours, ensuring regular log consolidation and processing without manual intervention.",
+            "moduleFilesDescription1": "Inside each module, there is a ",
+            "moduleFilesDescription2": "file that defines the resources, a ",
+            "moduleFilesDescription3": "file that defines the variables, and an ",
+            "moduleFilesDescription4": "file that defines the outputs, when needed."
         }
     }
 }

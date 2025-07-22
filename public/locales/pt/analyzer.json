@@ -15,7 +15,39 @@
             "lambdaAnalyzerFunction": "Função Lambda Analyzer"
         },
         "overview": {
-            "title": "Serverless Logs Analyzer - Visão Geral"
+            "title": "Serverless Logs Analyzer - Visão Geral",
+            "description": "Este projeto demonstra o uso da AWS para gerar e analisar logs. Foi projetado para fornecer insights automatizados sobre as atividades da conta AWS por meio de uma arquitetura serverless que monitora, processa e analisa logs do CloudTrail em tempo real. O sistema captura automaticamente todas as chamadas de API e eventos de gerenciamento via CloudTrail, agrega arquivos de log diários para processamento eficiente e gera relatórios estatísticos abrangentes sobre padrões de uso de recursos, eventos de segurança e atividades operacionais. A solução utiliza funções Lambda, armazenamento S3 e EventBridge para criar um sistema de análise de logs escalável e de baixo custo que não requer gerenciamento de infraestrutura, enquanto fornece alta visibilidade sobre as atividades da conta AWS.",
+            "githubLink": "Repositório Github",
+            "dashboardLink1": "Para ver o dashboard criado com os logs processados, acesse a página do dashboard",
+            "dashboardLink2": "aqui"
+        },
+        "architectureDiagram": {
+            "title": "Diagrama de Arquitetura",
+            "description": "O diagrama de arquitetura abaixo mostra a infraestrutura, que inclui:",
+            "cloudtrail": "usado para rastrear todas as ações realizadas na conta AWS.",
+            "eventbridge": "usado para disparar a função AWS Lambda quando um novo log é criado.",
+            "lambda": "usado para analisar os logs e armazenar os resultados no Amazon S3.",
+            "s3": "usado para armazenar os logs e os resultados.",
+            "figcaption": "Diagrama criado com Lucidchart: "
+        },
+        "infrastructureCode": {
+            "title": "Código de Infraestrutura",
+            "description": "A infraestrutura é implementada através de uma arquitetura modular usando Terraform, que provisiona os seguintes componentes AWS organizados em 5 módulos principais.",
+            "modulesTitle": "Módulos",
+            "s3Module1": "Módulo S3: ",
+            "s3Module2": "Este módulo é responsável por criar a infraestrutura de armazenamento com dois buckets S3. Ele configura o bucket de entrada para receber logs do CloudTrail e o bucket de saída para insights processados. Ambos os buckets são protegidos com versionamento ativado, criptografia AES256 e bloqueio completo de acesso público para garantir a proteção e conformidade dos dados.",
+            "iamModule1": "Módulo IAM: ",
+            "iamModule2": "O módulo de Gerenciamento de Identidade e Acesso (IAM) gerencia as permissões de segurança para as funções Lambda. Ele cria um papel de execução dedicado com permissões precisas para operações S3 (leitura, escrita, exclusão) em ambos os buckets e capacidades de log do CloudWatch, seguindo o princípio de privilégio mínimo para segurança aprimorada.",
+            "lambdaModule1": "Módulo Lambda: ",
+            "lambdaModule2": "Este módulo lida com as funções de computação sem servidor que processam os logs. Ele implementa duas funções Lambda Python 3.11 - o Analista para processar logs agregados e gerar insights, e o Agregador para consolidar arquivos de log diários. O módulo também configura gatilhos de eventos S3 e permissões apropriadas para integração sem problemas.",
+            "cloudtrailModule1": "Módulo CloudTrail: ",
+            "cloudtrailModule2": " O módulo CloudTrail configura um sistema abrangente de auditoria e registro de conta AWS. Ele configura uma trilha multi-região que captura eventos de gerenciamento, eventos de serviço global e eventos de dados S3, automaticamente entregando todos os logs para o bucket de entrada S3 com políticas de bucket apropriadas para armazenamento de log seguro.",
+            "eventBridgeModule1": "Módulo EventBridge: ",
+            "eventBridgeModule2": "Este módulo gerencia o sistema de agendamento automatizado para processamento de logs. Ele cria uma regra de evento do CloudWatch com uma expressão cron para disparar a função Lambda Agregador a cada 12 horas, garantindo a consolidação e processamento regulares de logs sem intervenção manual.",
+            "moduleFilesDescription1": "Dentro de cada módulo, existe um ",
+            "moduleFilesDescription2": "arquivo que define os recursos, um ",
+            "moduleFilesDescription3": "arquivo que define as variáveis, e um ",
+            "moduleFilesDescription4": "arquivo que define os outputs, quando necessário."
         }
     }
 }
