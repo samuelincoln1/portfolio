@@ -27,6 +27,21 @@ jobs:
       - name: install dependencies
         run: npm ci
         
+      - name: Debug - List project structure
+        run: |
+          echo "=== DEBUGGING PROJECT STRUCTURE ==="
+          echo "Root directory:"
+          ls -la
+          echo "App directory:"
+          ls -la app/
+          echo "Components directory:"
+          ls -la app/components/ || echo "Components directory not found!"
+          echo "Utils directory:"
+          ls -la app/components/util/ || echo "Utils directory not found!"
+          echo "Effects directory:"
+          ls -la app/components/effects/ || echo "Effects directory not found!"
+          echo "=== END DEBUGGING ==="
+        
       - name: build project
         run: npm run build
         
