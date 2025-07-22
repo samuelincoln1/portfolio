@@ -16,6 +16,148 @@
         },
         "overview": {
             "title": "Serverless Logs Analyzer - Overview"
+        },
+        "s3Module": {
+            "title": "S3 Module",
+            "description": "This module is designed to create the storage infrastructure with two S3 buckets, one for input logs and one for output insights. The input bucket receives CloudTrail logs automatically, while the output bucket stores the processed JSON and CSV reports. Both buckets are configured with versioning enabled for change tracking, AES256 server-side encryption for data protection, and complete public access blocking to ensure security compliance.",
+            "featuresTitle": "Features",
+            "s3DescriptionTitle": "S3 Buckets: ",
+            "s3Description": "Creates two S3 buckets - an input bucket for receiving CloudTrail logs and an output bucket for storing processed insights and reports.",
+            "versioningDescriptionTitle": "Versioning: ",
+            "versioningDescription": "Enables versioning on both buckets to maintain object history and provide rollback capabilities for data protection.",
+            "encryptionDescriptionTitle": "Encryption: ",
+            "encryptionDescription": "Configures AES256 encryption by default on all objects stored in both buckets to ensure data security at rest.",
+            "publicAccessBlockDescriptionTitle": "Public Access Blocking: ",
+            "publicAccessBlockDescription": "Implements comprehensive public access restrictions on both buckets, blocking all forms of public access including ACLs and bucket policies to prevent unauthorized access.",
+            "resourcesTitle ": "Resources",
+            "buckets": {
+                "bucketDescription": "The unique name identifier for the S3 bucket within AWS.",
+                "forceDestroyDescription": "Whether to allow deletion of the bucket even when it contains objects.",
+                "tagsDescription": "Assigns a name tag to the bucket for identification and resource management purposes.   "
+            },
+            "versioning": {
+                "bucket": "The S3 bucket to enable versioning for.",
+                "versoningConfiguration": "Configuration block for versioning settings."
+            },
+            "encryption": {
+                "bucket": "The S3 bucket to enable encryption for.",
+                "rule": "Configuration block for encryption settings.",
+                "applyServerSideEncryptionByDefault": "Configuration block for encryption settings.",
+                "sseAlgorithm": "The server-side encryption algorithm to use."
+            },
+            "publicAccessBlock": {
+                "bucket": "The S3 bucket to enable public access block for.",
+                "blockPublicAcls": "Whether to block public ACLs for this bucket.",
+                "blockPublicPolicy": "Whether to block public bucket policies for this bucket.",
+                "ignorePublicAcls": "Whether to ignore public ACLs for this bucket.",
+                "restrictPublicBuckets": "Whether to restrict public bucket policies for this bucket."
+            }
+        },
+        "iamModule": {
+            "title": "IAM Module",
+            "description": "This module is designed to create the security and access management infrastructure for the Lambda functions. It establishes a dedicated IAM role with precisely scoped permissions following the principle of least privilege. The role allows Lambda functions to interact with S3 buckets for log processing and CloudWatch for logging, while restricting access to only the necessary resources and actions required for the log analysis workflow.",
+            "featuresTitle": "Features",
+            "iamRoleTitle": "IAM role: ",
+            "iamRoleDescription": "Creates a dedicated execution role specifically for Lambda functions with a trust policy that allows only the Lambda service to assume the role",
+            "iamPolicyTitle": "IAM policy: ",
+            "iamPolicyDescription": "Attaches a policy to the role that grants the necessary permissions for the Lambda function to access the S3 bucket and CloudWatch logs.",
+            "iamRole": {
+                "name": "The name of the IAM role.",
+                "assumeRolePolicy": "The policy that allows the Lambda service to assume the role. It defines which services are allowed to assume the role, in this case, only the Lambda service."
+            },
+            "iamPolicy": {
+                "name": "The name of the IAM policy.",
+                "role": "The IAM role to attach the policy to.",
+                "policy": "The policy to attach to the IAM role. It grants the necessary permissions for the Lambda function to access the S3 bucket and CloudWatch logs."
+            }
+        },
+        "lambdaModule": {
+            "title": "Lambda Module",
+            "description": "This module is designed to create the serverless compute infrastructure for log processing and analysis. It establishes two specialized Lambda functions that handle different aspects of the log analysis workflow - one for aggregating daily logs and another for processing aggregated logs to generate insights. The module also configures the necessary triggers, permissions, and integrations to enable automatic execution based on S3 events and scheduled intervals.",
+            "featuresTitle": "Features",
+            "lambdaAggregatorFunctionTitle": "Lambda Aggregator Function: ",
+            "lambdaAggregatorFunctionDescription": "Deploys a Python 3.11 Lambda function that consolidates multiple daily log files into single aggregated files, designed to be triggered by EventBridge scheduling.",
+            "lambdaAnalyzerFunctionTitle": "Lambda Analyzer Function: ",
+            "lambdaAnalyzerFunctionDescription": " Creates a Python 3.11 Lambda function that processes aggregated CloudTrail logs and generates statistical insights, triggered automatically by S3 ObjectCreated events.",
+            "lambdaPermissionsTitle": "Lambda Permissions: ",
+            "lambdaPermissionsDescription": "Establishes proper permissions allowing S3 service to invoke the Lambda functions while maintaining security boundaries.",
+            "s3EventTriggerTitle": "S3 Event Triggers: ",
+            "eventBridgeTriggerDescription": " Configures S3 bucket notifications to automatically invoke the analyzer function whenever new log files are uploaded to the input bucket.",
+            "lambdaFunctions": {
+                "functionName": "The name of the Lambda function.",
+                "role": "The role that the Lambda function assumes when it executes, providing necessary permissions.",
+                "handler": "The entry point for the Lambda function, specifying the file and function name to execute.",
+                "runtime": "The runtime environment for the Lambda function.",
+                "filename": "The path to the deployment package (ZIP file) containing the Lambda function code.",
+                "sourceCodeHash": " The hash of the source code for the Lambda function.",
+                "timeout": "The maximum execution time in seconds for the Lambda function.",
+                "environment": "The environment variables for the Lambda function.",
+                "tags": "The tags of the Lambda function."
+            },
+            "lambdaPermissions": {
+                "statement_id": "The unique identifier for the permission.",
+                "action": "he action to allow the Lambda function to perform.",
+                "principal": "The service or entity that is allowed to invoke the Lambda function.",
+                "function_name": "The name of the Lambda function that is allowed to be invoked by the principal.",
+                "source_arn": "The ARN of the resource that is allowed to invoke the Lambda function."
+            },
+            "s3EventTrigger": {
+                "bucket": "The S3 bucket to configure the notification for.",
+                "action": " The action to allow the Lambda function to perform.",
+                "depends_on": "Ensures that the Lambda function exists before the S3 bucket notification is configured.",
+                "lambda_function": "The Lambda function to be triggered when the event occurs and the event type that triggers the Lambda function."
+            }
+        },
+        "cloudtrailModule": {
+            "title": "CloudTrail Module",
+            "description": "This module is designed to create comprehensive AWS account auditing and logging infrastructure. It establishes a multi-region CloudTrail that captures all management events, global service events, and S3 data events across the entire AWS account. The module automatically delivers all captured logs to the designated S3 input bucket and configures the necessary bucket policies to enable secure log storage while maintaining proper access controls for the CloudTrail service.",
+            "featuresTitle": "Features",
+            "cloudtrailTrailConfigurationTitle": "CloudTrail Configuration: ",
+            "cloudtrailTraiConfigurationlDescription": "Creates a multi-region trail that monitors AWS account activities across all regions, including global services like IAM, Route53, and CloudFront to provide complete visibility. The CloudTrail also captures all management plane operations such as resource creation, deletion, and configuration changes for comprehensive account auditing.",
+            "s3IntegrationTitle": "S3 Integration: ",
+            "s3IntegrationDescription": "Automatically delivers all captured logs to the input S3 bucket, and establishes secure S3 bucket policies that grant CloudTrail service the minimum necessary permissions to write logs and read bucket ACLs while maintaining security boundaries.",
+            "cloudtrailConfiguration": {
+                "name": "The name of the CloudTrail.",
+                "s3BucketName": "The name of the S3 bucket to store the CloudTrail logs.",
+                "isMultiRegionTrail": "Whether the trail captures events from all AWS regions or just where it's created.",
+                "includeGlobalServiceEvents": "Whether to include events from global AWS services like IAM and STS.",
+                "enableLogging": "Whether to enable logging.",
+                "eventSelector": "Configuration block that defines which types of events the trail should capture.",
+                "dependsOn": "Ensures the CloudTrail is created only after the specified dependencies are established."
+            },
+            "s3BucketPolicy": {
+                "bucket": "The S3 bucket to configure the policy for.",
+                "policy": "The JSON-encoded policy document that defines the permissions and access controls for the bucket, specifying who can perform what actions on the bucket and its objects."
+            }
+        },
+        "eventBridgeModule": {
+            "title": "EventBridge Module",
+            "description": "This module is designed to create automated scheduling infrastructure for periodic log processing tasks. It establishes a CloudWatch Event Rule with cron-based scheduling that automatically triggers the Lambda Aggregator function every 12 hours to consolidate daily CloudTrail logs. The module configures the necessary event targets, permissions, and payload delivery to enable seamless integration between the scheduling service and the serverless compute functions..",
+            "featuresTitle": "Features",
+            "cloudwatchEventRuleTitle": "CloudWatch Event Rule: ",
+            "cloudwatchEventRuleDescription": "Creates an EventBridge rule that automatically triggers the Lambda analyzer function whenever new log files are uploaded to the input S3 bucket.",
+            "lambdaTargetTitle": "Lambda Target Configuration: ",
+            "lambdaTargetDescription": "Establishes the Lambda Aggregator function as the target for the scheduled events, with proper payload configuration including account ID for contextual processing.",
+            "eventBridgePermissionsTitle": "EventBridge Permissions: ",
+            "eventBridgePermissionsDescription": "Configures Lambda permissions to allow the EventBridge service to invoke the aggregator function while maintaining security boundaries and preventing unauthorized access.",
+            "cloudwatchEventRule": {
+                "name": "The unique name identifier for the EventBridge rule within the AWS account.",
+                "description": "The description of the EventBridge rule.",
+                "scheduleExpression": "The cron or rate expression that defines when the rule should trigger, supporting both cron syntax and rate-based scheduling formats."
+            },
+            "lambdaTarget": {
+                "rule": "The name of the EventBridge rule to which the target is attached.",
+                "targetId": "The unique identifier for the target within the EventBridge rule.",
+                "arn": "The Amazon Resource Name (ARN) of the Lambda function to be invoked by the EventBridge rule.",
+                "input": " The JSON-encoded payload to be passed to the Lambda function."
+            },
+            "eventBridgePermissions": {
+                "statement_id": "The unique identifier for the permission.",
+                "action": "The AWS Lambda action that is being allowed, in this case 'lambda:InvokeFunction' to permit function execution.",
+                "function_name": "The name of the Lambda function that is allowed to be invoked by the EventBridge service.",
+                "principal": " The service or entity that is allowed to invoke the Lambda function, in this case 'events.amazonaws.com' for EventBridge.",  
+                "source_arn": "The Amazon Resource Name (ARN) of the EventBridge rule that is allowed to invoke the Lambda function."
+            }
         }
     }
 }
