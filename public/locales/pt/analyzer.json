@@ -190,6 +190,139 @@
                 "principal": "O serviço ou entidade que pode invocar a função Lambda, neste caso 'events.amazonaws.com' para o EventBridge.",
                 "source_arn": "O ARN da regra do EventBridge que está autorizada a invocar a função Lambda."
             }
+        },
+        "terraformMainFile": {
+            "title": "Terraform - Arquivo Main",
+            "description1": "O ",
+            "description2": " arquivo serve como a configuração central para implantar e gerenciar a infraestrutura na AWS usando Terraform. Ele orquestra a configuração dos módulos e recursos previamente definidos, garantindo que todos os componentes sejam corretamente provisionados e interconectados para formar um ambiente de infraestrutura coeso."
+        },
+        "lambdaAggregatorFunction": {
+            "title": "Função Lambda Aggregator",
+            "description": "A função Lambda Aggregator é uma função serverless Python 3.11 projetada para consolidar vários arquivos de log diários em um único arquivo agregado. Esta função é acionada pelo EventBridge a cada 12 horas e realiza operações de consolidação, compressão e limpeza de logs para otimizar o armazenamento e preparar os dados para análise.",
+            "purposeTitle": "Objetivo ",
+            "purposes": {
+                "consolidateTitle": "Consolidar ",
+                "consolidateDescription": "vários arquivos de log diários em um único arquivo agregado.",
+                "reduceTitle": "Reduzir ",
+                "reduceDescription": "o número de arquivos individuais para processamento eficiente.",
+                "cleanupTitle": "Limpar ",
+                "cleanupDescription": "os arquivos de log originais para otimizar os custos de armazenamento.",
+                "prepareTitle": "Preparar ",
+                "prepareDescription": "os dados para análise pela função analisadora."
+            },
+            "fullCode": "Código Completo",
+            "functionWorkflow": "Fluxo de Trabalho da Função",
+            "triggerAndInitialization": {
+                "title": "1. Gatilho e Inicialização",
+                "description": "A função é acionada pelo EventBridge a cada 12 horas e o bucket de destino é definido."
+            },
+            "dynamicPath": {
+                "title": "2. Construção de Caminho Dinâmico",
+                "description": "Calcula a data atual e cria um prefixo dinâmico para os arquivos de log, no formato AWSLogs/[AccountID]/CloudTrail/us-east-1/YYYY/MM/DD/"
+            },
+            "fileDiscovery": {
+                "title": "3. Descoberta e Filtro de Arquivos",
+                "description": "Lista todos os objetos na pasta do dia atual, filtra para arquivos .json.gz apenas e exclui arquivos já agregados para evitar processamento repetido."
+            },
+            "dataAggregation": {
+                "title": "4. Agregação de Dados",
+                "description": "Faz o download de cada arquivo de log individual, descomprime o conteúdo gzip em memória, extrai o array Records de cada arquivo e consolida todos os registros em um único array."
+            },
+            "outputFile": {
+                "title": "5. Criação de Arquivo de Saída",
+                "description": "Gera um nome de arquivo baseado em timestamp, comprime os dados agregados usando gzip e envia o arquivo consolidado para o S3 no formato YYYY-MM-DD-HH:MM-aggregated.json.gz."
+            },
+            "cleanup": {
+                "title": "6. Operações de Limpeza",
+                "description": "Exclui os arquivos de log originais enquanto preserva o novo arquivo agregado, otimizando os custos de armazenamento e organização."
+            },
+            "results": {
+                "title": "7. Resultados",
+                "description1": "A função é concluída com sucesso, consolidando os logs e otimizando o armazenamento.",
+                "description2": "Antes da agregação, os arquivos são os seguintes:",
+                "description3": "Após a agregação, os arquivos são os seguintes:"
+            }
+        },
+        "lambdaAnalyzerFunction": {
+            "title": "Função Lambda Analyzer",
+            "description": "A função Lambda Analyzer é uma função serverless Python 3.11 projetada para processar arquivos de log agregados do CloudTrail e gerar insights estatísticos abrangentes sobre as atividades da conta AWS. Esta função é acionada automaticamente por eventos S3 ObjectCreated quando arquivos de log agregados são carregados e produz relatórios detalhados em formatos JSON e CSV para análise adicional.",
+            "purposeTitle": "Objetivo ",
+            "purposes": {
+                "processTitle": "Processar ",
+                "processDescription": "arquivos de log agregados do CloudTrail para extrair insights significativos.",
+                "analyzeTitle": "Analisar ",
+                "analyzeDescription": "atividades da conta AWS e padrões de uso.",
+                "generateTitle": "Gerar ",
+                "generateDescription": "relatórios estatísticos sobre eventos, recursos, regiões e atividades de usuário.",
+                "exportTitle": "Exportar ",
+                "exportDescription": "resultados em vários formatos (JSON e CSV) para integração com painéis."
+            },
+            "handlerCode": "Código Handler",
+            "analyzerCode": "Código Analyzer",
+            "exportCode": "Código Export",
+            "functionWorkflow": "Fluxo de Trabalho da Função",
+            "trigger": {
+                "title": "1. Gatilho e Processamento de Eventos S3",
+                "description": "A função é acionada automaticamente por eventos S3 ObjectCreated quando novos arquivos são carregados no bucket de entrada. Extrai o nome do bucket e a chave do objeto do payload do evento S3."
+            },
+            "fileDownload": {
+                "title": "2. Download e Configuração de Caminho",
+                "description": "Faz o download do arquivo acionado do S3 para o diretório /tmp da Lambda para processamento local e extrai o nome de arquivo base para uso futuro."
+            },
+            "fileDecompression": {
+                "title": "3. Descompressão de Arquivo",
+                "description": "Descomprime o arquivo de log gzip para extrair o conteúdo JSON, criando um arquivo JSON legível no armazenamento temporário da Lambda."
+            },
+            "fileValidation": {
+                "title": "4. Validação e Processamento de Arquivo Agregado",
+                "description": "Valida se o arquivo é um arquivo de log agregado antes do processamento. Se válido, chama o módulo analisador para processar os logs e define os caminhos de saída para os arquivos de insights."
+            },
+            "dataAnalysis": {
+                "title": "5. Análise de Dados e Geração de Insights",
+                "description": "Processa o arquivo de log JSON para extrair e contar várias métricas, incluindo nomes de eventos, tipos de recursos, regiões, IPs de origem, tipos de eventos, categorias de eventos e tipos de identidade de usuário."
+            },
+            "dataExport": {
+                "title": "6. Exportação e Conversão de Formato",
+                "description": "Exporta os insights gerados para ambos os formatos JSON (estrutura de dados completa) e CSV (apenas contagens de eventos) para diferentes casos de uso e integrações."
+            },
+            "output": {
+                "title": "7. Upload para S3",
+                "description": "Carrega os insights gerados para o bucket S3 de saída nos caminhos especificados, completando o processo de análise."
+            },
+            "results": {
+                "title": "8. Resultados",
+                "description": "Os arquivos de saída são estruturados da seguinte forma:"
+            }
+        },
+        "dashboard": {
+            "title": "Dashboard",
+            "description1": "O Dashboard é uma interface de visualização interativa que transforma os dados de atividade da conta AWS processados pela função Lambda Analyzer em gráficos e métricas intuitivos. Este dashboard fornece aos stakeholders insights em tempo real sobre padrões de uso da AWS, eventos de segurança e tendências operacionais por meio de representações visuais de frequência de eventos, distribuição regional, atividades de usuário, utilização de recursos e análise de IPs de origem.",
+            "description2": "Para ver o dashboard criado com os logs processados, ",
+            "description3": "vá para a página do dashboard."
+        },
+        "dashboardPage": {
+            "title": "Dashboard - 18/07/2025",
+            "description1": "Este dashboard visualiza dados reais do CloudTrail de uma conta AWS em uso, mostrando ",
+            "description2": " capturados durante o período de análise. Os dados revelam que a conta opera principalmente na região ",
+            "description3": " com atividade dominada por ",
+
+
+            "description5": "As operações mais frequentes incluem",
+            "description6": "e ",
+            "description7": "indicando atividades de monitoramento e segurança.",
+            "description8": "geraram a maioria das atividades, seguidas por ",
+            "description9": "com a maioria do tráfego originando de um endereço IP específico",
+            "description10": "A utilização de recursos mostra interações com",
+            "description11": "e",
+            "description12": "fornecendo insights sobre gerenciamento de armazenamento e operações de identidade em todo o ambiente AWS.",
+            "commonEventsTitle": "Eventos Comuns",
+            "sourceIPsTitle": "Contagem de IPs de Origem",
+            "resourceCountsTitle": "Contagem de Recursos",
+            "activityCountsTitle": "Contagem de Atividades",
+            "totalEvents": "eventos totais",
+            "events": "eventos",
+            "calls": "chamadas",
+            "operations": "operações"
         }
     }
 }

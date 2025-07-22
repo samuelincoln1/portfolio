@@ -4,29 +4,24 @@ import Link from "next/link";
 import { useTranslation } from "next-i18next";
 
 export default function Dashboard() {
+  const { t } = useTranslation("analyzer");
   return (
     <div id="dashboard">
       <h1 className="text-[22px] lg:text-[40px] font-bold text-white">
-        Dashboard
+        {t("analyzer.dashboard.title")}
       </h1>
       <div className="flex flex-col gap-4 ">
         <p>
-          The Dashboard is an interactive visualization interface that transforms
-          the processed AWS account activity data from the Lambda Analyzer into
-          intuitive charts and metrics. This dashboard provides stakeholders with
-          real-time insights into AWS usage patterns, security events, and
-          operational trends through visual representations of event frequencies,
-          regional distribution, user activities, resource utilization, and
-          source IP analysis.
+          {t("analyzer.dashboard.description1")}
         </p>
         <p>
-          To see the dashboard created with the processed logs,{" "}
+          {t("analyzer.dashboard.description2")}
           <Link
             href="/projects/serverless-logs-analyzer/dashboard"
             className="underline text-blue-500 hover:text-blue-400"
             target="_blank"
           >
-            go to the dashboard page.
+            {t("analyzer.dashboard.description3")}
           </Link>
         </p>
       </div>

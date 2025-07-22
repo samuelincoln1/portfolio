@@ -187,9 +187,141 @@
                 "statement_id": "The unique identifier for the permission.",
                 "action": "The AWS Lambda action that is being allowed, in this case 'lambda:InvokeFunction' to permit function execution.",
                 "function_name": "The name of the Lambda function that is allowed to be invoked by the EventBridge service.",
-                "principal": " The service or entity that is allowed to invoke the Lambda function, in this case 'events.amazonaws.com' for EventBridge.",  
+                "principal": " The service or entity that is allowed to invoke the Lambda function, in this case 'events.amazonaws.com' for EventBridge.",
                 "source_arn": "The Amazon Resource Name (ARN) of the EventBridge rule that is allowed to invoke the Lambda function."
             }
+        },
+        "terraformMainFile": {
+            "title": "Terraform Main File",
+            "description1": "The ",
+            "description2": " file serves as the central configuration for deploying and managing the infrastructure on AWS using Terraform. It orchestrates the setup of the modules and resources previously defined, ensuring that all components are correctly provisioned and interconnected to form a cohesive infrastructure environment."
+        },
+        "lambdaAggregatorFunction": {
+            "title": "Lambda Aggregator Function",
+            "description": "The Lambda Aggregator is a Python 3.11 serverless function designed to consolidate multiple CloudTrail log files from a single day into one aggregated file. This function is triggered by EventBridge every 12 hours and performs log consolidation, compression, and cleanup operations to optimize storage and prepare data for analysis.",
+            "purposeTitle": "Purpose ",
+            "purposes": {
+                "consolidateTitle": "Consolidate ",
+                "consolidateDescription": "multiple daily CloudTrail log files into a single aggregated file.",
+                "reduceTitle": "Reduce ",
+                "reduceDescription": "the number of individual files for efficient processing.",
+                "cleanupTitle": "Cleanup ",
+                "cleanupDescription": "original log files to optimize storage costs.",
+                "prepareTitle": "Prepare ",
+                "prepareDescription": "data for analysis by the analyzer function."
+            },
+            "fullCode": "Full Code",
+            "functionWorkflow": "Function Workflow",
+            "triggerAndInitialization": {
+                "title": "1. Trigger and Initialization",
+                "description": "The function is triggered by EventBridge every 12 hours and the target bucket is defined."
+            },
+            "dynamicPath": {
+                "title": "2. Dynamic Path Construction",
+                "description": "Calculates the current date and creates a dynamic prefix for the log files, in the format of AWSLogs/[AccountID]/CloudTrail/us-east-1/YYYY/MM/DD/"
+            },
+            "fileDiscovery": {
+                "title": "3. File Discovery and Filtering",
+                "description": "Lists all objects in the current day's folder, filters for .json.gz files only, and excludes already aggregated files to prevent reprocessing."
+            },
+            "dataAggregation": {
+                "title": "4. Data Aggregation",
+                "description": "Downloads each individual log file, decompresses gzip content in memory, extracts Records array from each file, and consolidates all records into a single array."
+            },
+            "outputFile": {
+                "title": "5. Output File Creation",
+                "description": "Generates a timestamp-based filename, compresses aggregated data using gzip, and uploads the consolidated file to S3 in the format YYYY-MM-DD-HH:MM-aggregated.json.gz."
+            },
+            "cleanup": {
+                "title": "6. Cleanup Operations",
+                "description": "Deletes original individual log files while preserving the new aggregated file, optimizing storage costs and organization."
+            },
+            "results": {
+                "title": "7. Results",
+                "description1": "The function completes successfully, consolidating logs and optimizing storage.",
+                "description2": "Before the aggregation, the files are as follows:",
+                "description3": "After the aggregation, the files are as follows:"
+            }
+        },
+        "lambdaAnalyzerFunction": {
+            "title": "Lambda Analyzer Function",
+            "description": "The Lambda Analyzer is a Python 3.11 serverless function designed to process aggregated CloudTrail log files and generate comprehensive statistical insights about AWS account activities. This function is triggered automatically by S3 ObjectCreated events when aggregated log files are uploaded, and it produces detailed reports in both JSON and CSV formats for further analysis.",
+            "purposeTitle": "Purpose ",
+            "purposes": {
+                "processTitle": "Process ",
+                "processDescription": "aggregated CloudTrail log files to extract meaningful insights.",
+                "analyzeTitle": "Analyze ",
+                "analyzeDescription": "AWS account activities and usage patterns.",
+                "generateTitle": "Generate ",
+                "generateDescription": "statistical reports on events, resources, regions, and user activities.",
+                "exportTitle": "Export ",
+                "exportDescription": "results in multiple formats (JSON and CSV) for dashboard integration."
+            },
+            "handlerCode": "Handler Code",
+            "analyzerCode": "Analyzer Code",
+            "exportCode": "Export Code",
+            "functionWorkflow": "Function Workflow",
+            "trigger": {
+                "title": "1. Trigger and S3 Event Processing",
+                "description": "The function is triggered automatically by S3 ObjectCreated events when new files are uploaded to the input bucket. It extracts bucket name and object key from the S3 event payload."
+            },
+            "fileDownload": {
+                "title": "2. File Download and Path Setup",
+                "description": "Downloads the triggered file from S3 to the Lambda's /tmp directory for local processing, and extracts the base filename for future use."
+            },
+            "fileDecompression": {
+                "title": "3. File Decompression",
+                "description": "Decompresses the gzipped log file to extract the JSON content, creating a readable JSON file in the Lambda's temporary storage."
+            },
+            "fileValidation": {
+                "title": "4. Aggregated File Validation and Processing",
+                "description": "Validates that the file is an aggregated log file before processing. If valid, calls the analyzer module to process the logs and defines output paths for the insights files."
+            },
+            "dataAnalysis": {
+                "title": "5. Data Analysis and Insights Generation",
+                "description": "Processes the JSON log file to extract and count various metrics including event names, resource types, regions, source IPs, event types, event categories, and user identity types."
+            },
+            "dataExport": {
+                "title": "6. Data Export and Format Conversion",
+                "description": "Exports the generated insights to both JSON (complete data structure) and CSV (event counts only) formats for different use cases and integrations."
+            },
+            "output": {
+                "title": "7. Output Upload to S3",
+                "description": "Uploads the generated insights to the output S3 bucket in the specified paths, completing the analysis process."
+            },
+            "results": {
+                "title": "8. Results",
+                "description": "The output files are structured as follows:"
+            }
+        },
+        "dashboard": {
+            "title": "Dashboard",
+            "description1": "The Dashboard is an interactive visualization interface that transforms the processed AWS account activity data from the Lambda Analyzer into intuitive charts and metrics. This dashboard provides stakeholders with real-time insights into AWS usage patterns, security events, and operational trends through visual representations of event frequencies, regional distribution, user activities, resource utilization, and source IP analysis.",
+            "description2": "To see the dashboard created with the processed logs, ",
+            "description3": "go to the dashboard page."
+            
+        },
+        "dashboardPage": {
+            "title": "Dashboard - 18/07/2025",
+            "description1": "This dashboard visualizes real AWS CloudTrail data from a live AWS account, showing ",
+            "description2": " captured during the analysis period. The data reveals that the account primarily operates in the",
+            "description3": "region with activity dominated by ",
+            "description5": "The most frequent operations include",
+            "description6": "and ",
+            "description7": "indicating active monitoring and security operations.",
+            "description8": "generated the majority of activities, followed by ",
+            "description9": "with most traffic originating from a specific IP address",
+            "description10": "The resource usage shows heavy operations with",
+            "description11": "and",
+            "description12": "providing insights into storage management and identity operations across the AWS environment.",
+            "commonEventsTitle": "Common Events",
+            "sourceIPsTitle": "Source IP Counts",
+            "resourceCountsTitle": "Resource Counts",
+            "activityCountsTitle": "Activity Counts",
+            "totalEvents": "total events",
+            "events": "events",
+            "calls": "calls",
+            "operations": "operations"
         }
     }
 }
