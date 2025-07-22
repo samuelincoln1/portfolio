@@ -12,7 +12,7 @@ export default function Hero() {
           Samuel Lincoln
         </h1>
         <p className="text-white text-sm md:text-lg md:max-w-[800px] max-w-[300px]">
-          {t("hero.description")}  TESTING COMMIT!
+          {t("hero.description")}
         </p>
         <div className="flex flex-col md:flex-row md:gap-4">
           <button className="bg-[#d5d7db] text-black px-4 py-2 rounded-md mt-4 hover:bg-white transition-colors md:text-xl text-sm">
