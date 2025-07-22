@@ -1,8 +1,8 @@
 "use client";
-import Hero from "./components/Hero";
-import Projects from "./components/Projects";
-import Navbar from "./components/util/Navbar";
-import ParticlesBackground from "./components/effects/ParticlesBackground";
+import Hero from "./components/Hero.js";
+import Projects from "./components/Projects.js";
+import Navbar from "./components/util/Navbar.js";
+import ParticlesBackground from "./components/effects/ParticlesBackground.js";
 export default function Index() {
   return (
     <div className="relative">

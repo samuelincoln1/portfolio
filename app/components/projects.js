@@ -1,5 +1,5 @@
 'use client'
-import ProjectCard from "./ProjectCard";
+import ProjectCard from "./ProjectCard.js";
 import { useTranslation } from 'next-i18next'
 const Projects = () => {
   const { t } = useTranslation('common')
