@@ -15,7 +15,7 @@ export default function Overview() {
         <p>
           {t("analyzer.overview.githubLink")}:{" "}
           <a
-            href="https://github.com/samuelincoln1/infra-as-code"
+            href="https://github.com/samuelincoln1/serverless-logs-analyzer"
             target="_blank"
             className="underline text-blue-500 hover:text-blue-400"
           >
