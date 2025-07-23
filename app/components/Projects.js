@@ -28,11 +28,11 @@ const Projects = () => {
     },
     {
       imageUrl: "/images/cicd.png",
-      title: "CodeFlow",
+      title: "Portfolio Website - CodeFlow",
       description:
         t('projects.descriptionCodeFlow'),
       projectUrl: "/projects/codeflow",
-      stack: ["AWS CodePipeline", "GitHub Actions"],
+      stack: ["S3", "CloudFront", "GitHub Actions", "Next.js", "React", "Tailwind CSS"],
     },
   ];
 

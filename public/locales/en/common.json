@@ -15,7 +15,7 @@
     "subtitle": "A well-designed cloud scales, reduces costs, and improves reliability. Good architecture practices and automation make the difference.",
     "descriptionTerraform":"Implementation of a complete and automated infrastructure on AWS using Terraform for provisioning, which includes VPC, ALB, EC2, Auto Scaling, database, and security configurations. The Terraform state is stored in S3 and DynamoDB, allowing versioning, encryption, concurrency locking, and high availability of the backend. The project ensures a scalable, secure, and easily reproducible environment, integrating infrastructure as code (IaC) and automation for greater efficiency.",
     "descriptionLambda": "Serverless application for real-time analysis using AWS CloudTrail, Lambda, S3, and EventBridge. Automatically aggregates and processes CloudTrail logs to generate comprehensive insights into AWS account activities, security events, and resource utilization patterns through real-time data processing and multi-format reporting.",
-    "descriptionCodeFlow": "Automated CI/CD pipeline using AWS CodePipeline and GitHub Actions to integrate, test, and deploy applications efficiently. The project ensures continuous deliveries, automated builds, and secure deployments in AWS.",
+    "descriptionCodeFlow": "Complete CI/CD implementation using GitHub Actions to automate the deployment of this portfolio website to AWS S3 and CloudFront. The pipeline handles dependency management, build optimization, secure credential management, and cache invalidation. Features atomic deployments, enterprise security with IAM policies, and zero-downtime global content delivery.",
     "copyright": "Copyright ©2025 All rights reserved"
   },
   "about": {
