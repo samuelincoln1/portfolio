@@ -34,7 +34,7 @@ export default function Resume() {
 
   return (
     <>
-      <div className="bg-gradient-to-b from-black to-purple-950 py-16 relative">
+      <div id="resume" className="bg-gradient-to-b from-black to-purple-950 py-16 relative">
         <div className="container mx-auto px-4 relative md:mt-[135px] mt-8 z-10">
           <h2 className="text-[24px] md:text-[35px] font-bold text-white ">
             {t("resume.title")}

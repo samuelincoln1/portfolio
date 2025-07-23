@@ -26,7 +26,7 @@ export default function AboutHero() {
               </p>
             </div>
           </div>
-          <div className="self-center md:self-start mt-8 md:mt-0 hidden xl:block">
+          {/* <div className="self-center md:self-start mt-8 md:mt-0 hidden xl:block">
             <Image
               src="/images/profile.jpg"
               alt="Samuel Gomes"
@@ -34,8 +34,34 @@ export default function AboutHero() {
               height={500}
               className="rounded-full object-cover"
             />
-          </div>
+          </div> */}
         </div>
+      </div>
+     
+      <div className="absolute left-1/2 -translate-x-1/2 bottom-8 z-20">
+        <button
+          onClick={() => {
+            const el = document.getElementById("resume");
+            if (el) {
+              el.scrollIntoView({ behavior: "smooth" });
+            }
+          }}
+          aria-label="Scroll down"
+          className="p-2 hover:bg-black/80 transition mb-0 lg:mb-10"
+        >
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="white"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </button>
       </div>
     </>
   );

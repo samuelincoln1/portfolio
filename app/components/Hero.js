@@ -22,6 +22,31 @@ export default function Hero() {
             <a href="/curriculo-pt.pdf">{t("hero.downloadPt")}</a>
           </button>
         </div>
+        <div className="absolute left-1/2 -translate-x-1/2 bottom-8 z-20">
+        <button
+          onClick={() => {
+            const el = document.getElementById("projects");
+            if (el) {
+              el.scrollIntoView({ behavior: "smooth" });
+            }
+          }}
+          aria-label="Scroll down"
+          className="p-2 hover:bg-black/80 transition mb-0 lg:mb-4"
+        >
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="white"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </button>
+      </div>
       </div>
     </div>
   );
