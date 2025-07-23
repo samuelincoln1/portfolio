@@ -92,7 +92,7 @@
             "uptime": "99.9% uptime",
             "uptimeDescription": "through AWS infrastructure, global performance via CloudFront edge locations, and ",
             "zeroDowntime": "zero-downtime",
-            "zeroDowntimeDescription": "deployments through the automated CI/CD pipeline. Every code change triggers an immediate, secure deployment process that maintains strict security standards through encrypted secrets management and least-privilege IAM policies, while delivering milliseconds response times worldwide. This portfolio not only showcases technical projects but serves as a living demonstration of modern cloud architecture, automated deployment strategies, and professional software development practices."
+            "zeroDowntimeDescription": "deployments through the automated CI/CD pipeline. Every code change triggers an immediate, secure deployment process that maintains strict security standards through encrypted secrets management and least-privilege IAM policies, while delivering sub-second response times worldwide. This portfolio not only showcases technical projects but serves as a living demonstration of modern cloud architecture, automated deployment strategies, and professional software development practices."
         }
 
     }
