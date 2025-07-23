@@ -11,19 +11,23 @@ import translationPTDashboard from '../public/locales/pt/dashboard.json'
 import translationENDashboard from '../public/locales/en/dashboard.json'
 import translationENAnalyzer from '../public/locales/en/analyzer.json'
 import translationPTAnalyzer from '../public/locales/pt/analyzer.json'
+import translationENCodeFlow from '../public/locales/en/codeflow.json'
+import translationPTCodeFlow from '../public/locales/pt/codeflow.json'
 
 const resources = {
   pt: {
     common: translationPT,
     iac: translationPTIac,
     dashboard: translationPTDashboard,
-    analyzer: translationPTAnalyzer
+    analyzer: translationPTAnalyzer,
+    codeflow: translationPTCodeFlow
   },
   en: {
     common: translationEN,
     iac: translationENIac,
     dashboard: translationENDashboard,
-    analyzer: translationENAnalyzer
+    analyzer: translationENAnalyzer,
+    codeflow: translationENCodeFlow
   }
 }
 
@@ -36,7 +40,7 @@ i18n
     interpolation: {
       escapeValue: false,
     },
-    ns: ['common', 'iac', 'dashboard', 'analyzer'],
+    ns: ['common', 'iac', 'dashboard', 'analyzer', 'codeflow'],
     defaultNS: 'common'
   })
 

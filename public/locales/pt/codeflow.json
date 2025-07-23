@@ -1,0 +1,98 @@
+{
+    "codeflow": {
+        "sidebar": {
+            "goBack": "Voltar",
+            "portfolioWebsite": "Portfolio Website",
+            "overview": "Visão Geral",
+            "ciCdPipelineArchitecture": "Arquitetura do Pipeline CI/CD",
+            "security": "Segurança",
+            "githubActions": "Github Actions"
+        },
+        "portfolioWebsite": {
+            "title": "Portfolio Website",
+            "description1": "Este website foi implementado usando o pipeline de CI/CD descrito neste projeto. Construído com",
+            "description2": "e",
+            "description3": "o site apresenta projetos técnicos através de documentação interativa, exemplos de código e diagramas visuais. A aplicação usa",
+            "description4": "para estilização responsiva e aproveita a geração de sites estáticos para performance otimizada e SEO.",
+            "description5": "O portfólio demonstra práticas modernas de desenvolvimento web com componentes client-side, hooks customizados e arquitetura modular. Características principais incluem renderização de diagramas Mermaid, blocos de código com syntax highlighting e design responsivo em todos os dispositivos. O site é hospedado no",
+            "description6": "com",
+            "description7": "para entrega global de conteúdo, tornando-o o candidato perfeito para demonstrar o pipeline de deployment automatizado que constrói, otimiza e implanta cada mudança de código automaticamente através do ",
+            "repository": "Repositório"
+        },
+        "overview": {
+            "title": "Visão Geral",
+            "description1": "Este projeto transforma um processo de implantação manual em um workflow GitHub Actions totalmente automatizado que constrói, testa e implanta no AWS S3 + CloudFront em cada push de código. O que torna esta implementação particularmente interessante é que ele serve tanto como uma solução funcional quanto uma demonstração das melhores práticas de DevOps.",
+            "description2": "O Desafio: ",
+            "description3": "Configurar um pipeline CI/CD robusto que gerencia dependências, otimiza builds, garante segurança das credenciais AWS e automatiza implantações, garantindo entrega confiável e invalidacão de cache adequada em toda a distribuição CloudFront.",
+            "description4": "Resultado:",
+            "description5": "Esta página que você está lendo foi implantada automaticamente através do pipeline, demonstrando o sistema em ação."
+        },
+        "architectureDiagram": {
+            "title": "Arquitetura do Pipeline CI/CD",
+            "description1": "O pipeline CodeFlow implementa um workflow de implantação automatizado que dispara em cada push para a branch principal. A arquitetura segue práticas modernas de DevOps com separação clara de responsabilidades e boas práticas de segurança.",
+            "githubActionsDescription": "Orquestra o pipeline inteiro com gerenciamento de credenciais seguro e execução de jobs em paralelo.",
+            "nodeJsBuildDescription": "Gerencia a instalação de dependências, caching e geração de exportação estática do Next.js.",
+            "awsS3Description": "Atua como plataforma de hospedagem com operações de sincronização otimizadas e limpeza automática de arquivos antigos.",
+            "cloudFrontDescription": "Fornece entrega global de conteúdo com estratégias inteligentes de invalidacão de cache.",
+            "pipelineFlowDiagram": "Diagrama de Fluxo do Pipeline",
+            "pipelineFlowDiagramDescription": "Diagrama gerado usando Mermaid.",
+            "keyBenefits": "Benefícios Principais",
+            "zeroDowntime": "Zero Downtime:",
+            "zeroDowntimeDescription": "S3 sync garante implantações atômicas",
+            "globalPerformance": "Performance Global:",
+            "globalPerformanceDescription": "Localizações de edge do CloudFront em todo o mundo",
+            "securityFirst": "Segurança Primeiro:",
+            "securityFirstDescription": "Nenhuma credencial no código, credenciais criptografadas",
+            "costEffective": "Custo Eficiente:",
+            "costEffectiveDescription": "Modelo pay-per-use com utilização eficiente de recursos",
+            "scalable": "Escalável:",
+            "scalableDescription": "Gerencia picos de tráfego automaticamente"  
+        },
+        "security": {
+            "title": "Segurança",
+            "description1": "A segurança é um aspecto fundamental da implementação do CI/CD, especialmente em relação à gestão de credenciais, controle de acesso e práticas de implantação seguras. O pipeline garante que informações sensíveis nunca apareçam no código ou logs, mantendo a transparência operacional.",
+            "githubSecretsManagement": "Gerenciamento de Segredos do Github",
+            "githubSecretsManagementDescription": "O pipeline usa segredos do Github Actions para armazenar as credenciais da AWS de forma segura. Estes segredos só estão disponíveis para o pipeline e nunca são expostos no código ou logs. O workflow utiliza a funcionalidade de segredos criptografados do Github para armazenar e acessar as credenciais da AWS. Todos os dados sensíveis são criptografados e só são descriptografados durante a execução do workflow, garantindo que as credenciais permanecem protegidas durante todo o processo de CI/CD.",
+            "requiredSecrets": "Segredos Necessários:",
+            "awsAccessKeyIdDescription": "Chave de acesso IAM com permissões mínimas necessárias",
+            "awsSecretAccessKeyDescription": "Chave secreta correspondente para autenticação",
+            "awsRegionDescription": "Região de implantação alvo para consistência de recursos",
+            "s3BucketNameDescription": "Bucket de destino para hospedagem de arquivos estáticos",
+            "cloudFrontDistributionIdDescription": "Identificador da distribuição para invalidacão de cache",
+            "iamSecurityModel": "Modelo de Segurança IAM",
+            "iamSecurityModelDescription": "A implementação segue o princípio de privilégio mínimo ao criar um usuário IAM dedicado especificamente para operações de CI/CD. Este usuário tem apenas as permissões mínimas necessárias para uma implantação bem-sucedida.",
+            "s3Permissions": "Permissões do S3:",
+            "listBucketDescription": "Enumera o conteúdo do bucket para operações de sincronização",
+            "getObjectDescription": "Lê arquivos existentes para comparação",
+            "putObjectDescription": "Carrega novos arquivos para o bucket",
+            "deleteObjectDescription": "Apaga arquivos do bucket",
+            "s3PutObjectAclDescription": "Define permissões de arquivos apropriadas",
+            "cloudFrontPermissions": "Permissões do CloudFront:",
+            "cloudFrontCreateInvalidationDescription": "Limpa o conteúdo em cache para atualizações imediatas."
+        },
+        "githubActions": {
+            "title": "Workflow Github Actions",
+            "description1": "GitHub Actions fornece uma plataforma poderosa de CI/CD que automatiza todo o pipeline de implantação diretamente no ecossistema do GitHub. Esta implementação aproveita a arquitetura orientada a eventos do Actions para disparar implantações automatizadas em cada push de código, garantindo entrega rápida e consistente de atualizações do portfólio sem intervenção manual.",
+            "configuration": "Configuração",
+            "configurationDescription1": "O workflow de implantação é definido em ",
+            "configurationDescription2": "e configurado para disparar em pushes para a branch principal e eventos de pull request. Esta abordagem garante que ambas as implantações de produção e builds de preview sejam tratadas automaticamente, fornecendo feedback imediato sobre alterações de código.",
+            "workflowSteps": "Workflow Steps",
+            "workflowStepsDescription1": "O workflow consiste nos seguintes passos:",
+            "checkoutCodeDescription": "Recupera o conteúdo mais recente do repositório",
+            "setupNodeJsDescription": "Configura o ambiente Node.js 18 com caching integrado do npm",
+            "installDependenciesDescription": "Realiza instalação limpa de dependências",
+            "buildProjectDescription": "Gera exportação estática otimizada para produção",
+            "configureAwsCredentialsDescription": "Autentica com AWS usando segredos do GitHub",
+            "deployToAwsS3Description": "Carrega a saída do build para o S3 com estratégia de implantação atômica",
+            "deployToCloudFrontDescription": "Limpa o cache do CDN para atualizações imediatas"
+        },
+        "results": {
+            "title": "Resultados",
+            "description1": "O resultado desta implementação é este próprio website de portfólio que você está visualizando - uma aplicação web altamente disponível, automaticamente implantada, que demonstra as melhores práticas de DevOps. O site atinge ",
+            "uptime": "99.9% de uptime",
+            "uptimeDescription": "através da infraestrutura da AWS, desempenho global via localizações de edge do CloudFront e implantações com ",
+            "zeroDowntime": "zero-downtime",
+            "zeroDowntimeDescription": " através do pipeline CI/CD automatizado. Cada alteração de código aciona um processo de implantação imediato e seguro que mantém padrões de segurança rigorosos através do gerenciamento de segredos criptografados e políticas de privilégio mínimo do IAM, enquanto entrega tempos de resposta de milissegundos em todo o mundo. Este portfólio não apenas destaca projetos técnicos, mas serve como uma demonstração viva de arquitetura de nuvem moderna, estratégias de implantação automatizada e práticas de desenvolvimento de software profissionais."
+        }
+    }
+}

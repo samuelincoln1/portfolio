@@ -2,14 +2,14 @@
 
 import React, { useState, useEffect } from "react";
 import { useMenu } from "../../context/MenuContext";
-// import { useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import Link from "next/link";
 
 export default function Sidebar() {
   const { isMenuOpen } = useMenu();
   const [activeSection, setActiveSection] = useState("");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    // const { t } = useTranslation("iac");
+    const { t } = useTranslation("codeflow");
 
   const handleLinkClick = (event, targetId) => {
     event.preventDefault();
@@ -83,11 +83,11 @@ export default function Sidebar() {
   }, [isSidebarOpen]);
 
   const sections = [
-    { id: "portfolio-website", label: "Portfolio Website" },
-    { id: "overview", label: "Overview" },
-    { id: "ci/cd-pipeline-architecture", label: "CI/CD Pipeline Architecture" },
-    { id: "security", label: "Security" },
-    { id: "github-actions", label: "Github Actions" },
+    { id: "portfolio-website", label: t("codeflow.sidebar.portfolioWebsite") },
+    { id: "overview", label: t("codeflow.sidebar.overview") },
+    { id: "ci/cd-pipeline-architecture", label: t("codeflow.sidebar.ciCdPipelineArchitecture") },
+    { id: "security", label: t("codeflow.sidebar.security") },
+    { id: "github-actions", label: t("codeflow.sidebar.githubActions") },
   ];
 
   return (
