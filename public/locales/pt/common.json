@@ -15,7 +15,7 @@
     "subtitle": "Uma nuvem bem projetada escala, reduz custos e melhora a confiabilidade. Boas práticas de arquitetura e automação fazem a diferença.",
     "descriptionTerraform": "Implementação de uma infraestrutura completa e automatizada na AWS usando Terraform para provisionamento, que inclui VPC, ALB, EC2, Auto Scaling, banco de dados e configurações de segurança. O estado do Terraform é armazenado em S3 e DynamoDB, permitindo versionamento, criptografia, bloqueio de concorrência e alta disponibilidade do backend. O projeto garante um ambiente escalável, seguro e facilmente reproduzível, integrando infraestrutura como código (IaC) e automação para maior eficiência.",
     "descriptionLambda": "Aplicação serverless para análise de métricas e logs em tempo real, utilizando AWS Lambda, CloudWatch e QuickSight. Automatiza a coleta, processamento e visualização de dados, permitindo insights rápidos e eficientes sobre eventos e performance da infraestrutura.",
-    "descriptionCodeFlow": "Pipeline de CI/CD automatizado utilizando GitHub Actions para integrar, testar e implantar aplicações de forma eficiente. O projeto garante entregas contínuas, automação de builds e deploys seguros na AWS.",
+    "descriptionCodeFlow": "Implementação completa de CI/CD utilizando GitHub Actions para automatizar a implantação deste website de portfólio na AWS S3 e CloudFront. O pipeline automatizado gerencia o controle de dependências, otimização do processo de build, gerenciamento seguro de credenciais e invalidação de cache. Inclui deployments atômicos, segurança de nível empresarial com políticas IAM e distribuição global de conteúdo sem interrupções.",
     "copyright": "Copyright ©2025 Todos os direitos reservados"
   },
   "about": {
