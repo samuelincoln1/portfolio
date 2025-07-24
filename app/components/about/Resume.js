@@ -13,6 +13,7 @@ export default function Resume() {
     t("resume.technicalSkills.security"),
     t("resume.technicalSkills.databases"),
     t("resume.technicalSkills.terraform"),
+    t("resume.technicalSkills.docker"),
     t("resume.technicalSkills.cicd"),
     t("resume.technicalSkills.linux"),
     t("resume.technicalSkills.python"),

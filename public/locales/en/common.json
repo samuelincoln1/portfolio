@@ -33,6 +33,7 @@
       "security": "Cloud Security",
       "databases": "Databases",
       "terraform": "Terraform",
+      "docker": "Docker",
       "cicd": "CI/CD",
       "linux": "Linux",
       "python": "Python",
