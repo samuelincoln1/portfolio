@@ -40,7 +40,7 @@ function Footer() {
             LinkedIn
           </a>
           <a
-            href="/curriculo-en.pdf"
+            href="/samuel-lincoln-resume-en.pdf"
             download
             className="flex items-center gap-2 hover:underline hidden md:inline-flex"
           >
@@ -56,7 +56,7 @@ function Footer() {
             Download CV EN
           </a>
           <a
-            href="/curriculo.pdf"
+            href="/samuel-lincoln-resume-pt.pdf"
             download
             className="flex items-center gap-2 hover:underline hidden md:inline-flex"
           >

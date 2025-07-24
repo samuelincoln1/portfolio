@@ -16,10 +16,10 @@ export default function Hero() {
         </p>
         <div className="flex flex-col md:flex-row md:gap-4">
           <button className="bg-[#d5d7db] text-black px-4 py-2 rounded-md mt-4 hover:bg-white transition-colors md:text-xl text-sm">
-            <a href="/curriculo-en.pdf">{t("hero.downloadEn")}</a>
+            <a target="_blank" href="/samuel-lincoln-resume-en.pdf">{t("hero.downloadEn")}</a>
           </button>
           <button className="bg-[#d5d7db] text-black px-4 py-2 rounded-md mt-4 hover:bg-white transition-colors md:text-xl text-sm">
-            <a href="/curriculo-pt.pdf">{t("hero.downloadPt")}</a>
+            <a target="_blank" href="/samuel-lincoln-resume-pt.pdf">{t("hero.downloadPt")}</a>
           </button>
         </div>
         <div className="absolute left-1/2 -translate-x-1/2 bottom-8 z-20">

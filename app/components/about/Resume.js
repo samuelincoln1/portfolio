@@ -170,7 +170,7 @@ export default function Resume() {
                   </a>
 
                   <a
-                    href="/curriculo-en.pdf"
+                    href="/samuel-lincoln-resume-en.pdf"
                     download
                     className="flex items-center gap-2 text-[14px] md:text-[20px] hover:underline text-white"
                   >
@@ -186,7 +186,7 @@ export default function Resume() {
                     {t("resume.downloadResumeEN")}
                   </a>
                   <a
-                    href="/curriculo.pdf"
+                    href="/samuel-lincoln-resume-pt.pdf"
                     download
                     className="flex items-center gap-2 text-[14px] md:text-[20px] hover:underline text-white"
                   >
