@@ -2,9 +2,10 @@
 import { useEffect, useState } from "react";
 import Hero from "./components/Hero";
 import Projects from "./components/Projects";
+import Articles from "./components/Articles";
 import Navbar from "./components/util/Navbar";
 import ParticlesBackground from "./components/effects/ParticlesBackground";
-
+import Footer from "./components/Footer";
 export default function Index() {
   const [bgLoaded, setBgLoaded] = useState(false);
 
@@ -29,7 +30,12 @@ export default function Index() {
         <Navbar />
         <Hero />
       </div>
-      <Projects />
+      {/* ENVOLVA Projects e Articles juntos no gradiente */}
+      <div className="md:px-30 px-6 relative flex flex-col bg-gradient-to-b from-black to-purple-950 gap-10">
+        <Projects />
+        <Articles />
+        <Footer />
+      </div>
       <ParticlesBackground />
     </div>
   );
