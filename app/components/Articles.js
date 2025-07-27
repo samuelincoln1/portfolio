@@ -10,7 +10,7 @@ import './Articles.css';
 
 const articles = [
   {
-    title: "How to structure the transition of a legacy application to the cloud",
+    title: "Transitioning legacy applications to the cloud",
     image: "/images/On-premise-to-Cloud.png",
   },
   {
