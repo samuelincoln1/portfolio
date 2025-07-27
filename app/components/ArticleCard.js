@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const ArticleCard = ({ image, title }) => {
+const ArticleCard = ({ image, title, link }) => {
   return (
     <div className="flex flex-col gap-6 py-10 ">
       <div className="w-full md:w-[500px] h-[300px] relative">
@@ -15,7 +15,7 @@ const ArticleCard = ({ image, title }) => {
       </div>
       <div className="flex flex-col">
         <div className="text-[20px] md:text-[28px] font-bold text-white z-50 max-w-[400px]">  
-          <Link href="/" className=" hover:underline">
+          <Link href={link} className=" hover:underline">
             {title}
           </Link>
         </div>

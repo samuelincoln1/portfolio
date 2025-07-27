@@ -21,7 +21,8 @@
   },
   "articles": {
     "title": "Artigos",
-    "transitioning": "Transicionando aplicações legadas para a nuvem"
+    "transitioning": "Transicionando aplicações legadas para a nuvem",
+    "microservices": "Aproveitando Microserviços e Arquiteturas Serverless na AWS"
   },
   "about": {
     "title": "Sobre Mim",

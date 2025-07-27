@@ -15,14 +15,17 @@ export default function Articles() {
     {
       title: t("articles.transitioning"),
       image: "/images/On-premise-to-Cloud.png",
+      link: "/articles/transitioning-legacy-applications-to-the-cloud",
     },
     {
-      title: "Applying microservices and serverless architecture in AWS",
+      title: t("articles.microservices"),
       image: "/images/serverless.png",
+      link: "/articles/leveraging-microservices-and-serverless-architectures-on-aws",
     },
     {
       title: "Implementing CI/CD pipelines with modern tools",
       image: "/images/cicd2.png",
+      link: "/articles/implementing-ci-cd-pipelines-with-modern-tools",
     },
   ];
   return (
@@ -66,7 +69,11 @@ export default function Articles() {
         >
           {articles.map((article, idx) => (
             <SwiperSlide key={idx}>
-              <ArticleCard image={article.image} title={article.title} />
+              <ArticleCard
+                image={article.image}
+                title={article.title}
+                link={article.link}
+              />
             </SwiperSlide>
           ))}
         </Swiper>

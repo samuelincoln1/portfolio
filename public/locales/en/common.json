@@ -21,7 +21,8 @@
   },
   "articles": {
     "title": "Articles",
-    "transitioning": "Transitioning legacy applications to the cloud"
+    "transitioning": "Transitioning legacy applications to the cloud",
+    "microservices": "Leveraging Microservices and Serverless Architectures on AWS"
   },
   "about": {
     "title": "About Me",
