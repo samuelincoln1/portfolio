@@ -11,24 +11,17 @@ import './Articles.css';
 const articles = [
   {
     title: "How to structure the transition of a legacy application to the cloud",
-    image: null,
+    image: "/images/On-premise-to-Cloud.png",
   },
   {
-    title: "Best practices for microservices architecture",
-    image: null,
+    title: "Applying microservices and serverless architecture in AWS",
+    image: "/images/serverless.png",
   },
   {
     title: "Implementing CI/CD pipelines with modern tools",
-    image: null,
+    image: "/images/cicd2.png",
   },
-  {
-    title: "Database optimization strategies for high-performance applications",
-    image: null,
-  },
-  {
-    title: "Security considerations for cloud-native applications",
-    image: null,
-  },
+ 
 ];
 
 export default function Articles() {
@@ -81,7 +74,6 @@ export default function Articles() {
           ))}
         </Swiper>
 
-        {/* Custom Navigation Buttons */}
         <div className="swiper-button-prev-custom absolute right-20 -top-16 z-10 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center cursor-pointer hover:bg-white/20 transition-all duration-300 group">
           <svg className="w-6 h-6 text-white group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />

@@ -7,7 +7,7 @@ const ArticleCard = ({ image, title }) => {
     <div className="flex flex-col gap-6 py-10 ">
       <div className="w-full md:w-[500px] h-[300px] relative">
         <Image
-          src={"/images/On-premise-to-Cloud.png"}
+          src={image}
           alt={title}
           fill
           className="object-cover rounded-lg z-10"
