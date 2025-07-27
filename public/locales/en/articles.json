@@ -2,7 +2,7 @@
     "articles": {
         "trasitioning": {
             "title": "Transitioning legacy applications to the cloud",
-            "author": "Samuel Lincoln - July 27, 2025",
+            "author": "Samuel Lincoln - July 26, 2025",
             "description1": "When transitioning legacy applications to the cloud, there are several critical factors to consider beyond just moving the code and data. It’s essential to plan carefully to ensure scalability, security, and business continuity throughout the process.",
             "description2": "A successful modernization typically involves multiple phases: ",
             "assessmentPlanning": "assessment and planning",
