@@ -2,7 +2,8 @@
   "nav": {
     "home": "Home",
     "about": "About",
-    "projects": "Projects"
+    "projects": "Projects",
+    "articles": "Articles"
   },
   "hero": {
     "title": "Cloud Engineer",
@@ -17,6 +18,10 @@
     "descriptionLambda": "Serverless application for real-time analysis using AWS CloudTrail, Lambda, S3, and EventBridge. Automatically aggregates and processes CloudTrail logs to generate comprehensive insights into AWS account activities, security events, and resource utilization patterns through real-time data processing and multi-format reporting.",
     "descriptionCodeFlow": "Complete CI/CD implementation using GitHub Actions to automate the deployment of this portfolio website to AWS S3 and CloudFront. The pipeline handles dependency management, build optimization, secure credential management, and cache invalidation. Features atomic deployments, enterprise security with IAM policies, and zero-downtime global content delivery.",
     "copyright": "Copyright ©2025 All rights reserved"
+  },
+  "articles": {
+    "title": "Articles",
+    "transitioning": "Transitioning legacy applications to the cloud"
   },
   "about": {
     "title": "About Me",

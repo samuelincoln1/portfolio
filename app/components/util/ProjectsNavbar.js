@@ -12,6 +12,7 @@ export default function Navbar() {
   const links = [
     { href: "/", label: "Home" },
     { href: "/#projects", label: t("nav.projects") },
+    { href: "/#articles", label: t("nav.articles") },
     { href: "/about", label: t("nav.about") },
   ];
 

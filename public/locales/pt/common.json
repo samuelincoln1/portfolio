@@ -2,7 +2,8 @@
   "nav": {
     "home": "Home",
     "about": "Sobre",
-    "projects": "Projetos"
+    "projects": "Projetos",
+    "articles": "Artigos"
   },
   "hero": {
     "title": "Engenheiro de nuvem",
@@ -17,6 +18,10 @@
     "descriptionLambda": "Aplicação serverless para análise de métricas e logs em tempo real, utilizando AWS Lambda, CloudWatch e QuickSight. Automatiza a coleta, processamento e visualização de dados, permitindo insights rápidos e eficientes sobre eventos e performance da infraestrutura.",
     "descriptionCodeFlow": "Implementação completa de CI/CD utilizando GitHub Actions para automatizar a implantação deste website de portfólio na AWS S3 e CloudFront. O pipeline automatizado gerencia o controle de dependências, otimização do processo de build, gerenciamento seguro de credenciais e invalidação de cache. Inclui deployments atômicos, segurança de nível empresarial com políticas IAM e distribuição global de conteúdo sem interrupções.",
     "copyright": "Copyright ©2025 Todos os direitos reservados"
+  },
+  "articles": {
+    "title": "Artigos",
+    "transitioning": "Transicionando aplicações legadas para a nuvem"
   },
   "about": {
     "title": "Sobre Mim",

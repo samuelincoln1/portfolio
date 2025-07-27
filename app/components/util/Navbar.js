@@ -12,6 +12,7 @@ export default function Navbar() {
   const links = [
     { href: "/", label: "Home" },
     { href: "#projects", label: t("nav.projects") },
+    { href: "#articles", label: t("nav.articles") },
     { href: "/about", label: t("nav.about") },
   ];
 
@@ -19,19 +20,21 @@ export default function Navbar() {
     const element = document.querySelector(target);
     if (!element) return;
 
-    const targetPosition = element.getBoundingClientRect().top + window.pageYOffset;
+    const targetPosition =
+      element.getBoundingClientRect().top + window.pageYOffset;
     const startPosition = window.pageYOffset;
     const distance = targetPosition - startPosition;
-    const duration = 400; 
+    const duration = 400;
     let start = null;
 
     const step = (timestamp) => {
       if (!start) start = timestamp;
       const progress = timestamp - start;
       const progressRatio = Math.min(progress / duration, 1);
-      const easeInOutQuad = progressRatio < 0.5
-        ? 2 * progressRatio * progressRatio
-        : -1 + (4 - 2 * progressRatio) * progressRatio;
+      const easeInOutQuad =
+        progressRatio < 0.5
+          ? 2 * progressRatio * progressRatio
+          : -1 + (4 - 2 * progressRatio) * progressRatio;
       window.scrollTo(0, startPosition + distance * easeInOutQuad - 30);
       if (progress < duration) {
         window.requestAnimationFrame(step);
@@ -50,7 +53,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="py-6 px-5 z-50 fixed top-0 right-0 left-0 w-full md:bg-[#0d0e12] z-[100]"> 
+    <nav className="py-6 px-5 z-50 fixed top-0 right-0 left-0 w-full md:bg-[#0d0e12] z-[100]">
       <button
         className={`md:hidden absolute right-4 top-4 z-[101] text-white`}
         onClick={() => setIsMenuOpen(!isMenuOpen)}
