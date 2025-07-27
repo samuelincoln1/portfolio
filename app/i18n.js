@@ -13,6 +13,8 @@ import translationENAnalyzer from '../public/locales/en/analyzer.json'
 import translationPTAnalyzer from '../public/locales/pt/analyzer.json'
 import translationENCodeFlow from '../public/locales/en/codeflow.json'
 import translationPTCodeFlow from '../public/locales/pt/codeflow.json'
+import translationENArticles from '../public/locales/en/articles.json'
+import translationPTArticles from '../public/locales/pt/articles.json'
 
 const resources = {
   pt: {
@@ -20,14 +22,16 @@ const resources = {
     iac: translationPTIac,
     dashboard: translationPTDashboard,
     analyzer: translationPTAnalyzer,
-    codeflow: translationPTCodeFlow
+    codeflow: translationPTCodeFlow,
+    articles: translationPTArticles
   },
   en: {
     common: translationEN,
     iac: translationENIac,
     dashboard: translationENDashboard,
     analyzer: translationENAnalyzer,
-    codeflow: translationENCodeFlow
+    codeflow: translationENCodeFlow,
+    articles: translationENArticles
   }
 }
 
@@ -35,12 +39,12 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: 'en', // idioma padrão
+    lng: 'en',
     fallbackLng: 'en',
     interpolation: {
       escapeValue: false,
     },
-    ns: ['common', 'iac', 'dashboard', 'analyzer', 'codeflow'],
+    ns: ['common', 'iac', 'dashboard', 'analyzer', 'codeflow', 'articles'],
     defaultNS: 'common'
   })
 

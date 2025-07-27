@@ -1,0 +1,27 @@
+{
+    "articles": {
+        "trasitioning": {
+            "title": "Transicionando aplicações legadas para a nuvem",
+            "author": "Samuel Lincoln - 27 de Julho de 2025",
+            "description1": "Ao fazer a transição de aplicações legadas para a nuvem, existem vários fatores críticos a considerar além de apenas mover o código e os dados. É essencial planejar cuidadosamente para garantir escalabilidade, segurança e continuidade de negócio durante todo o processo.",
+            "description2": "Uma modernização bem-sucedida normalmente envolve múltiplas fases: ",
+            "assessmentPlanning": "avaliação e planejamento",
+            "implementation": "implementação",
+            "validationOptimization": "validação e otimização",
+            "description3": " onde você analisa o estado atual, define objetivos e projeta o ambiente de destino com escalabilidade e manutenibilidade em mente; ",
+            "description4": " onde a migração e refatoração acontecem; e finalmente, ",
+            "description5": " onde você protege, testa e ajusta a solução para atender aos requisitos de performance e conformidade.",
+            "description6": "Neste artigo, vou discorrer sobre esses passos-chave e compartilhar estratégias práticas para ajudar a tornar a transição suave e eficaz — preservando a confiabilidade e segurança das quais os negócios dependem.",
+            "assessmentPlanningTitle": "Avaliação e Planejamento",
+            "assessmentPlanningDescription1": "O primeiro passo é realizar uma avaliação completa da aplicação existente. Isso inclui analisar a arquitetura, identificar dependências e gargalos, e revisar lacunas de segurança e processos críticos para o negócio. É importante mapear todas as funcionalidades, integrações e fluxos de dados sensíveis, assim como documentar riscos potenciais e definir os requisitos de negócio essenciais que devem ser preservados durante a migração.",
+            "assessmentPlanningDescription2": "Em seguida, é essencial definir a estratégia de modernização em si: se a aplicação será parcialmente refatorada, completamente reescrita, ou simplesmente realocada com mudanças mínimas. Com base nessa decisão, você pode projetar a arquitetura de destino — por exemplo, migrar para containerização, adotar microsserviços, ou implementar componentes serverless — sempre visando escalabilidade, manutenibilidade e alinhamento com os objetivos de negócio.",
+            "assessmentPlanningDescription3": "O terceiro passo foca na segurança. Migrar de on-premises para a nuvem requer estratégias claramente definidas para gerenciar segredos e credenciais, implementar criptografia de dados em trânsito e em repouso, e configurar mecanismos robustos de autenticação e autorização. Essas medidas são essenciais para proteger informações sensíveis e garantir conformidade com padrões da indústria e requisitos de negócio.",
+            "implementationTitle": "Implementação",
+            "implementationDescription1": "Com a estratégia e arquitetura definidas, o próximo passo é implementar a infraestrutura. Isso deve ser feito usando ferramentas de Infraestrutura como Código como o Terraform, que tornam as implantações repetíveis e auditáveis. Dependendo da complexidade e requisitos da aplicação, também pode ser necessário usar ferramentas de orquestração como Kubernetes ou aproveitar serviços gerenciados na nuvem para simplificar a escalabilidade e manutenção.",
+            "implementationDescription2": "O passo seguinte é criar um pipeline automatizado para simplificar os processos de build, teste, verificação de segurança e implantação. Usando ferramentas como GitHub Actions, você pode implementar um fluxo de trabalho CI/CD robusto que garante que novas mudanças sejam consistentemente testadas e implantadas com segurança em produção, reduzindo esforço manual e o risco de erro humano.",
+            "validationOptimizationTitle": "Validação e Otimização",
+            "validationOptimizationDescription1": "Uma vez que a infraestrutura esteja instalada e a aplicação esteja rodando na nuvem, o passo final é validação e otimização contínua. Isso inclui configurar ferramentas de monitoramento, logging e auditoria para rastrear performance, padrões de uso e potenciais problemas de segurança. Esses insights ajudam a identificar gargalos ou vulnerabilidades cedo, permitindo melhorias contínuas para garantir que o sistema permaneça confiável, seguro e eficiente ao longo do tempo.",
+            "validationOptimizationDescription2": "Por último, é importante produzir documentação técnica abrangente cobrindo a arquitetura, processos e decisões-chave tomadas durante a migração. Em paralelo, a equipe deve estar preparada e treinada para manter e evoluir a solução modernizada, garantindo que estejam preparados para lidar com futuras atualizações e manter o sistema alinhado com as necessidades do negócio."
+        }
+    }
+}
