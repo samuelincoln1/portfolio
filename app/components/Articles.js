@@ -23,7 +23,7 @@ export default function Articles() {
       link: "/articles/leveraging-microservices-and-serverless-architectures-on-aws",
     },
     {
-      title: "Implementing CI/CD pipelines with modern tools",
+      title: t("articles.cicd"),
       image: "/images/cicd2.png",
       link: "/articles/implementing-ci-cd-pipelines-with-modern-tools",
     },

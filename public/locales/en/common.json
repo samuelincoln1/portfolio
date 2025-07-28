@@ -22,7 +22,8 @@
   "articles": {
     "title": "Articles",
     "transitioning": "Transitioning legacy applications to the cloud",
-    "microservices": "Leveraging Microservices and Serverless Architectures on AWS"
+    "microservices": "Leveraging Microservices and Serverless Architectures on AWS",
+    "cicd": "Implementing CI/CD Pipelines with Modern Tools"
   },
   "about": {
     "title": "About Me",

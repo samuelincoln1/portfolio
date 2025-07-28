@@ -22,7 +22,8 @@
   "articles": {
     "title": "Artigos",
     "transitioning": "Transicionando aplicações legadas para a nuvem",
-    "microservices": "Explorando Microserviços e Arquiteturas Serverless na AWS"
+    "microservices": "Explorando Microserviços e Arquiteturas Serverless na AWS",
+    "cicd": "Implementando Pipelines CI/CD com Ferramentas Modernas"
   },
   "about": {
     "title": "Sobre Mim",

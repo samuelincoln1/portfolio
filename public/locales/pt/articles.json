@@ -33,7 +33,17 @@
             "description5": "Para garantir monitoramento contínuo e detectar problemas rapidamente, é importante implementar logging centralizado e observabilidade em todos os serviços. Na AWS, isso pode ser feito usando CloudWatch para coletar e agregar logs, junto com ferramentas como Grafana para visualizar métricas-chave em tempo real. Além disso, usar AWS X-Ray para coletar traces distribuídos ajuda a identificar gargalos de performance e entender como as requisições fluem através de diferentes microserviços e componentes serverless. Esta visibilidade de ponta a ponta é crítica para manter confiabilidade e otimizar o sistema ao longo do tempo.",
             "description6": "Conclusão",
             "description7": "Este design mantém cada serviço independente e altamente escalável, permitindo que o sistema lide com mudanças na demanda com elasticidade. Ao combinar microserviços e componentes serverless, e implementar logging e tracing centralizados, a arquitetura mantém forte observabilidade e resiliência — garantindo que a aplicação permaneça robusta e pronta para se adaptar às futuras necessidades do negócio."
-
+        },
+        "cicd": {
+            "title": "Implementando Pipelines CI/CD com Ferramentas Modernas",
+            "author": "Samuel Lincoln - 27 de Julho de 2025",
+            "description1": "Em projetos na nuvem, é essencial projetar uma pipeline DevOps que permita implantações frequentes e confiáveis sem comprometer segurança ou estabilidade. Uma pipeline bem estruturada suporta automação, garante rastreabilidade das alterações e fornece mecanismos para rollback rápido quando necessário. Esta abordagem não apenas ajuda as equipes a entregar atualizações rapidamente, mas também mantém a resiliência e conformidade necessárias em ambientes de nuvem modernos.",
+            "description2": "Integração Contínua",
+            "description3": "Para suportar integração contínua e implantação, pipelines específicos devem ser construídos para cada servidor ou função, executando múltiplos testes de integração e unitários, bem como análise estática de código e verificação de segurança. Ferramentas como Jenkins, GitLab CI/CD, ou GitHub Actions podem automatizar esses fluxos de trabalho. Para gerenciar dependências, construir artefatos e implantar alterações sem tempo de inatividade, tecnologias como Docker, Terraform, Ansible e Kubernetes ajudam a garantir automação, consistência e alta disponibilidade ao longo do processo.",
+            "description4": "Manutenção da Rastreabilidade e Lançamentos Controlados",
+            "description5": "Para garantir rastreabilidade, é importante manter mensagens de commit consistentes e adotar estratégias de ramificação (branches) e marcação (tags) padronizadas ao longo do projeto. Além disso, técnicas de implantação como blue/green deployments e canary releases podem ser usadas para introduzir alterações gradualmente, permitindo que as equipes identifiquem e resolvam problemas potenciais antes de afetar a base de usuários inteira.",
+            "description6": "Estratégias de Rollback e Monitoramento",
+            "description7": "Para habilitar rollbacks seguros, as implantações devem ser imutáveis, garantindo que o último build conhecido permaneça disponível para restauração imediata em caso de falhas. Além disso, integrar logging e monitoramento centralizado ajuda a rastrear a saúde da aplicação em tempo real e facilita a identificação rápida das causas raízes quando problemas ocorrem."
         }
     }
 }
