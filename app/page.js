@@ -30,7 +30,6 @@ export default function Index() {
         <Navbar />
         <Hero />
       </div>
-      {/* ENVOLVA Projects e Articles juntos no gradiente */}
       <div className="md:px-30 px-6 relative flex flex-col bg-gradient-to-b from-black to-purple-950 gap-10">
         <Projects />
         <Articles />
