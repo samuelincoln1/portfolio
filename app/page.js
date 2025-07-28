@@ -35,7 +35,6 @@ export default function Index() {
         img.src = src;
         img.onload = () => {
           loadedCount++;
-          setLoadingProgress((loadedCount / imagesToPreload.length) * 100);
           resolve();
         };
         img.onerror = () => {
