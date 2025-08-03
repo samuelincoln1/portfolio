@@ -14,10 +14,10 @@ const ProjectCard = ({ imageUrl, title, description, projectUrl, stack }) => {
       </div>
       
       <div className="flex flex-col">
-        <div className="text-[22px] md:text-[38px] font-bold text-white z-50">
+        <div className="text-[22px] md:text-[38px] font-bold text-white z-50 underline">
           <Link 
             href={projectUrl}
-            className="hover:underline"
+            className="hover:text-gray-200"
           >
             {title}
           </Link>
