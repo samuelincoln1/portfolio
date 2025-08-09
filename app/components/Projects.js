@@ -22,7 +22,7 @@ const Projects = () => {
         "AWS CloudTrail",
         "AWS Lambda",
         "AWS EventBridge",
-        "Pyhton",
+        "Python",
         "S3",
       ],
     },
