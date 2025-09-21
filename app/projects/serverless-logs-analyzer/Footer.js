@@ -23,7 +23,7 @@ function Footer() {
             GitHub
           </a>
           <a
-            href="https://www.linkedin.com/in/samuel-gomes-213429209/"
+            href="https://www.linkedin.com/in/samuel-lincoln-213429209/"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 hover:underline text-center md:text-left"

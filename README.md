@@ -66,7 +66,7 @@ The site is in production on AWS, using a modern and scalable architecture:
 
 ## 📫 Contact
 
-- LinkedIn: [Samuel Lincoln](https://www.linkedin.com/in/samuel-gomes-213429209/)
+- LinkedIn: [Samuel Lincoln](https://www.linkedin.com/in/samuel-lincoln-213429209/)
 - GitHub: [@samuelincoln1](https://github.com/samuelincoln1)
 - Email: [samuelincoln1@gmail.com](mailto:samuelincoln1@gmail.com)
 

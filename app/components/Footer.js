@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="flex flex-col items-center justify-center py-8 gap-2 ">
       <div className="flex flex-row gap-7 items-center">
         <a
-          href="https://www.linkedin.com/in/samuel-gomes-213429209/"
+          href="https://www.linkedin.com/in/samuel-lincoln-213429209/"
           target="_blank"
           rel="noopener noreferrer"
           className="z-100"

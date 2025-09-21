@@ -153,7 +153,7 @@ export default function Resume() {
                   </a>
 
                   <a
-                    href="https://www.linkedin.com/in/samuel-gomes-213429209/"
+                    href="https://www.linkedin.com/in/samuel-lincoln-213429209/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-[14px] md:text-[20px] hover:underline text-white"
