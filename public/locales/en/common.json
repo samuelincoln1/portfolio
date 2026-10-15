@@ -6,10 +6,9 @@
     "articles": "Articles"
   },
   "hero": {
-    "title": "Cloud Engineer",
-    "description": "I'm a cloud engineer with background in software engineering, passionate about creating scalable and efficient solutions, currently looking for opportunities in Cloud Engineering, DevOps or SRE. I work with AWS, infrastructure as code, and automation to optimize applications and reduce costs. My focus is on building and maintaining secure, resilient environments prepared for high performance and continuous operation. Here you can find some of my projects, my resume and more about me.",
-    "downloadPt": "View Resume (pt-br)",
-    "downloadEn": "View Resume (en-us)"
+    "title": "Cloud & DevOps Engineer",
+    "description": "I'm a Cloud & DevOps Engineer at <company>Senior Sistemas</company>, responsible for the AWS infrastructure behind the Senior ATS by JobConvo. My day-to-day involves cloud cost optimization, CI/CD pipelines, architecture and decision-making, security, observability and production incident response, always aiming for more stable, efficient and scalable environments. Here you can find some of my projects, articles, my resume and a bit more about me.",
+    "viewResume": "View Resume"
   },
   "projects": {
     "title": "Projects",
@@ -17,7 +16,7 @@
     "descriptionTerraform":"Implementation of a complete and automated infrastructure on AWS using Terraform for provisioning, which includes VPC, ALB, EC2, Auto Scaling, database, and security configurations. The Terraform state is stored in S3 and DynamoDB, allowing versioning, encryption, concurrency locking, and high availability of the backend. The project ensures a scalable, secure, and easily reproducible environment, integrating infrastructure as code (IaC) and automation for greater efficiency.",
     "descriptionLambda": "Serverless application for real-time analysis using AWS CloudTrail, Lambda, S3, and EventBridge. Automatically aggregates and processes CloudTrail logs to generate comprehensive insights into AWS account activities, security events, and resource utilization patterns through real-time data processing and multi-format reporting.",
     "descriptionCodeFlow": "Complete CI/CD implementation using GitHub Actions to automate the deployment of this portfolio website to AWS S3 and CloudFront. The pipeline handles dependency management, build optimization, secure credential management, and cache invalidation. Features atomic deployments, enterprise security with IAM policies, and zero-downtime global content delivery.",
-    "copyright": "Copyright ©2025 All rights reserved"
+    "copyright": "Copyright ©2026 All rights reserved"
   },
   "articles": {
     "title": "Articles",
@@ -27,9 +26,70 @@
   },
   "about": {
     "title": "About Me",
-    "description": "I'm a cloud engineer with background in software engineering, passionate about creating scalable and efficient solutions. I work with AWS, infrastructure as code, and automation to optimize applications and reduce costs. My focus is on building secure, resilient environments prepared for high performance and continuous operation.",
+    "description": "I'm a Cloud & DevOps Engineer with a background in infrastructure support and software engineering. At Senior Sistemas, I lead the AWS infrastructure of the Senior ATS by JobConvo, across production and staging. My day-to-day involves containers with Docker and ECS, databases on RDS and Aurora, queues with SQS, caching with Redis, CI/CD pipelines on GitHub, IAM and security, monitoring with CloudWatch and automation in Python. I also drive cost optimization and architecture evolution initiatives together with the development teams.",
     "description2": "I am always willing to learn and believe that, regardless of the technology, it is possible to master any tool or concept with dedication and practice. For me, adaptability and continuous learning are essential in the technology field.",
     "description3": "Beyond technology, I'm fascinated by traveling and exploring off-the-beaten-path places, I love cats and I love reading. By the way, The Name of the Wind is my favorite book."
+  },
+  "experience": {
+    "title": "Experience",
+    "current": "Current",
+    "seeFull": "See full experience",
+    "companies": [
+      {
+        "name": "Senior Sistemas",
+        "period": "Oct 2025 – present",
+        "location": "Belo Horizonte, Brazil · Remote",
+        "roles": [
+          {
+            "title": "Cloud & DevOps Engineer II",
+            "period": "May 2026 – present",
+            "current": true,
+            "highlights": [
+              "Drive AWS cost optimization initiatives, improving architecture efficiency and resource utilization.",
+              "Lead critical incident response in production, performing root cause analysis (RCA) and putting preventive measures in place to avoid recurrence.",
+              "Support decisions on cloud architecture, scalability and continuous evolution of the production infrastructure.",
+              "Work with development teams to improve observability, operational processes and continuous delivery."
+            ],
+            "stack": ["AWS", "ECS", "RDS / Aurora", "SQS", "SES", "Redis", "IAM", "WAF", "CI/CD", "CloudWatch", "Grafana", "Python", "SQL"]
+          },
+          {
+            "title": "Cloud & DevOps Engineer I",
+            "period": "Oct 2025 – Apr 2026",
+            "highlights": [
+              "Built and maintained CI/CD pipelines, making deploys faster, more reliable and automated.",
+              "Implemented cloud security best practices, strengthening access management and infrastructure resilience.",
+              "Worked with development teams to improve deploy processes and operational stability.",
+              "Improved performance, scalability and maintainability of production architectures."
+            ],
+            "stack": ["AWS", "Docker", "CI/CD", "IAM", "Python"]
+          }
+        ]
+      },
+      {
+        "name": "ENX Services",
+        "period": "May 2021 – Jul 2025",
+        "roles": [
+          {
+            "title": "Software Engineer",
+            "period": "May 2024 – Jul 2025",
+            "highlights": [
+              "Built web applications with TypeScript, React/Next.js and Node.js.",
+              "Maintained and evolved systems in Java, Python and PHP."
+            ],
+            "stack": ["TypeScript", "React", "Next.js", "Node.js", "Java", "Python", "PHP"]
+          },
+          {
+            "title": "Infrastructure Support Analyst",
+            "period": "May 2021 – May 2024",
+            "highlights": [
+              "Tier 1/Tier 2 technical support for Linux and Windows environments.",
+              "Log analysis, troubleshooting and incident handling."
+            ],
+            "stack": ["Linux", "Windows"]
+          }
+        ]
+      }
+    ]
   },
   "resume": {
     "title": "Skills",
@@ -50,8 +110,8 @@
     },
     "coursesAndCertifications": {
       "title": "Courses and Certifications",
-      "description": "Currently, I am a student of Software Engineering at PUC Minas, with a graduation date in 2026. My education provides a solid foundation in system architecture, software development, and engineering practices focused on cloud computing.",
-      "description2": "I am also certified as AWS Certified Solutions Architect – Associate (SAA-C03), a certification that validates my knowledge in scalable, secure, and high-performance architecture in AWS.",
+      "description": "Software Engineering - PUC Minas",
+      "description2": "I am certified as AWS Certified Solutions Architect – Associate (SAA-C03), a certification that validates my knowledge in scalable, secure, and high-performance architecture in AWS.",
       "description3": "I am always seeking improvement and my goal is to continue expanding my expertise, obtaining new certifications, and improving my ability to design efficient, secure, and scalable solutions in the cloud."
     },
     "languages": {
@@ -63,7 +123,7 @@
     },
     "downloadResumePT": "Download resume (pt-br)",
     "downloadResumeEN": "Download resume (en-us)",
-    "copyright": "Copyright ©2025 All rights reserved"
+    "copyright": "Copyright ©2026 All rights reserved"
   }
 }
 

@@ -1,0 +1,88 @@
+{
+  "lang": "en",
+  "name": "Samuel Lincoln",
+  "title": "Cloud & DevOps Engineer | AWS Certified",
+  "portfolio": { "label": "Cloud Portfolio:", "url": "https://samuellincoln.com" },
+  "contacts": {
+    "email": "samuelincoln1@gmail.com",
+    "linkedin": "linkedin.com/in/samuel-lincoln-213429209",
+    "github": "github.com/samuelincoln1",
+    "location": "Belo Horizonte, Brazil"
+  },
+  "summary": {
+    "title": "Summary",
+    "text": "AWS-certified Cloud & DevOps Engineer, currently at Senior Sistemas. I work with cost optimization, architecture and decision-making, CI/CD pipelines, security, observability and production incident response, with a background in infrastructure support and software engineering."
+  },
+  "experience": {
+    "title": "Professional Experience",
+    "items": [
+      {
+        "role": "Cloud & DevOps Engineer II - Senior Sistemas",
+        "period": "05/26 - present",
+        "bullets": [
+          "Lead AWS cost optimization: in 2026, cloud costs were 52% below budget and 35% lower than in the same period of 2025.",
+          "Built an observability dashboard for the background job queues, key to finding the report generation bottleneck; after the fix, generation time dropped by up to 93%.",
+          "Lead critical incident response in production, with root cause analysis (RCA) and preventive measures.",
+          "Support cloud architecture decisions and work with development teams on observability and continuous delivery."
+        ]
+      },
+      {
+        "role": "Cloud & DevOps Engineer I - Senior Sistemas",
+        "period": "10/25 - 04/26",
+        "bullets": [
+          "Led the application's stabilization after a critical production incident, tuning the ECS deploy strategy, health checks and application workers, which eliminated slowdowns and container crashes during deploys.",
+          "Started the AWS cost reduction effort, cutting the monthly cloud cost by 40% in the first three months.",
+          "Migrated repositories from Bitbucket to GitHub and rebuilt the CI/CD pipelines with GitHub Actions.",
+          "Implemented cloud security best practices, focusing on access management and resilience."
+        ]
+      },
+      {
+        "role": "Software Engineer - ENX Services",
+        "period": "05/24 - 07/25",
+        "bullets": [
+          "Developed and maintained scalable web applications using TypeScript, JavaScript, React.js, Next.js, Node, Tailwind CSS, Java, Python and PHP.",
+          "Collaborated with cross-functional teams to analyze requirements and improve system performance.",
+          "Participated in code reviews, documentation and adoption of best practices for version control and CI."
+        ]
+      },
+      {
+        "role": "Infrastructure Support Analyst - ENX Services",
+        "period": "05/21 - 05/24",
+        "bullets": [
+          "Administration and monitoring of servers (Linux/Windows), including environment configuration and resource management.",
+          "Log analysis and incident diagnosis for efficient problem resolution.",
+          "Level 1/2 technical support, assisting clients via chat, ticket and email."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills",
+    "items": [
+      { "label": "Cloud (AWS)", "value": "ECS, RDS/Aurora, SQS, SES, Redis, IAM, WAF, CloudWatch, S3, CloudFront, Lambda, EventBridge" },
+      { "label": "Infra & DevOps", "value": "Terraform, Docker, CI/CD (GitHub Actions), Grafana, Linux, Git" },
+      { "label": "Programming", "value": "Python, SQL, JavaScript, TypeScript, Node, React, Java" }
+    ]
+  },
+  "education": {
+    "title": "Education and Certifications",
+    "items": [
+      { "text": "Bachelor of Software Engineering - PUC Minas", "period": "2022 - 2026" },
+      { "text": "AWS Certified Solutions Architect Associate (SAA-C03) - Amazon Web Services", "period": "2025" },
+      { "text": "Full Stack Development Bootcamp", "period": "2022" }
+    ]
+  },
+  "projects": {
+    "title": "Cloud Projects",
+    "items": [
+      { "name": "Infra as code (Terraform + AWS):", "text": "Automated modular deployment (VPC, ALB, ASG, RDS Multi-AZ), reducing provisioning time by 85%." },
+      { "name": "Serverless Log Analyzer:", "text": "CloudTrail monitoring with AWS Lambda + EventBridge, processing thousands of events per day with real-time reporting." },
+      { "name": "CodeFlow:", "text": "GitHub Actions pipeline with automated deployment to S3 + CloudFront, performing cache invalidation in seconds with zero downtime." },
+      { "name": "Portfolio Website:", "text": "Multilingual responsive app (Next.js/React), hosted on AWS S3 + CloudFront with optimized SEO." }
+    ]
+  },
+  "languages": {
+    "title": "Languages",
+    "items": ["Portuguese - Native", "English - Advanced"]
+  }
+}

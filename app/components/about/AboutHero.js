@@ -41,7 +41,7 @@ export default function AboutHero() {
       <div className="absolute left-1/2 -translate-x-1/2 bottom-8 z-20">
         <button
           onClick={() => {
-            const el = document.getElementById("resume");
+            const el = document.getElementById("experience");
             if (el) {
               el.scrollIntoView({ behavior: "smooth" });
             }

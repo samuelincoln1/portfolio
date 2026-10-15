@@ -1,0 +1,88 @@
+{
+  "lang": "pt-BR",
+  "name": "Samuel Lincoln",
+  "title": "Cloud & DevOps Engineer | AWS Certified",
+  "portfolio": { "label": "Portfólio Cloud:", "url": "https://samuellincoln.com" },
+  "contacts": {
+    "email": "samuelincoln1@gmail.com",
+    "linkedin": "linkedin.com/in/samuel-lincoln-213429209",
+    "github": "github.com/samuelincoln1",
+    "location": "Belo Horizonte, Brasil"
+  },
+  "summary": {
+    "title": "Resumo",
+    "text": "Engenheiro de Cloud & DevOps certificado pela AWS, atualmente na Senior Sistemas. Atuo com otimização de custos, arquitetura e tomada de decisões, pipelines de CI/CD, segurança, observabilidade e resposta a incidentes em produção, com background em suporte de infraestrutura e engenharia de software."
+  },
+  "experience": {
+    "title": "Experiência Profissional",
+    "items": [
+      {
+        "role": "Cloud & DevOps Engineer II - Senior Sistemas",
+        "period": "05/26 - atual",
+        "bullets": [
+          "Lidero a otimização de custos da AWS: em 2026, custo 52% abaixo do orçado e 35% menor que em igual período de 2025.",
+          "Desenvolvi um painel de observabilidade das filas de processamento, essencial para encontrar o gargalo na geração de relatórios; após a correção, o tempo de geração caiu até 93%.",
+          "Lidero a resposta a incidentes críticos em produção, com análise de causa raiz (RCA) e medidas preventivas.",
+          "Apoio decisões de arquitetura cloud e colaboro com os times de desenvolvimento em observabilidade e entrega contínua."
+        ]
+      },
+      {
+        "role": "Cloud & DevOps Engineer I - Senior Sistemas",
+        "period": "10/25 - 04/26",
+        "bullets": [
+          "Conduzi a estabilização da aplicação após um incidente crítico em produção, ajustando a estratégia de deploy no ECS, os health checks e os workers da aplicação, o que eliminou a lentidão e as quedas de containers durante deploys.",
+          "Iniciei a frente de redução de custos da AWS, com queda de 40% no custo mensal de cloud nos três primeiros meses.",
+          "Migrei os repositórios do Bitbucket para o GitHub e recriei as pipelines de CI/CD com GitHub Actions.",
+          "Implementei boas práticas de segurança em nuvem, com foco em gestão de acessos e resiliência."
+        ]
+      },
+      {
+        "role": "Engenheiro de Software - ENX Services",
+        "period": "05/24 - 07/25",
+        "bullets": [
+          "Desenvolvi e mantive aplicações web escaláveis utilizando TypeScript, JavaScript, React.js, Next.js, Node, Tailwind CSS, Java, Python e PHP.",
+          "Colaborei com equipes multifuncionais para analisar requisitos e melhorar a performance do sistema.",
+          "Participei de revisões de código, documentação técnica e adotei as melhores práticas para controle de versionamento e CI."
+        ]
+      },
+      {
+        "role": "Analista de Suporte de Infraestrutura - ENX Services",
+        "period": "05/21 - 05/24",
+        "bullets": [
+          "Administração e monitoramento de servidores (Linux/Windows), incluindo configuração de ambientes e gerenciamento de recursos.",
+          "Análise de logs e diagnóstico de incidentes para resolução ágil de problemas.",
+          "Atendimento técnico de Nível 1/2, prestando suporte a clientes via chat, ticket e e-mail."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Habilidades",
+    "items": [
+      { "label": "Cloud (AWS)", "value": "ECS, RDS/Aurora, SQS, SES, Redis, IAM, WAF, CloudWatch, S3, CloudFront, Lambda, EventBridge" },
+      { "label": "Infra & DevOps", "value": "Terraform, Docker, CI/CD (GitHub Actions), Grafana, Linux, Git" },
+      { "label": "Programação", "value": "Python, SQL, JavaScript, TypeScript, Node, React, Java" }
+    ]
+  },
+  "education": {
+    "title": "Educação e Certificados",
+    "items": [
+      { "text": "Bacharelado em Engenharia de Software - PUC Minas", "period": "2022 - 2026" },
+      { "text": "Certificado AWS Solutions Architect Associate (SAA-C03) - Amazon Web Services", "period": "2025" },
+      { "text": "Bootcamp de desenvolvimento Full Stack", "period": "2022" }
+    ]
+  },
+  "projects": {
+    "title": "Portfólio Cloud",
+    "items": [
+      { "name": "Infra as code (Terraform + AWS):", "text": "Implantação modular automatizada (VPC, ALB, ASG, RDS Multi-AZ), reduzindo 85% do tempo de provisionamento." },
+      { "name": "Serverless Log Analyzer:", "text": "Monitoramento de CloudTrail com AWS Lambda + EventBridge, processando milhares de eventos/dia com relatórios em tempo real." },
+      { "name": "CodeFlow:", "text": "Pipeline GitHub Actions com deploy automatizado em S3 + CloudFront, invalidando cache em segundos sem downtime." },
+      { "name": "Portfolio Website:", "text": "App responsivo multilíngue (Next.js/React), hospedado em AWS S3 + CloudFront com SEO otimizado." }
+    ]
+  },
+  "languages": {
+    "title": "Idiomas",
+    "items": ["Português - Nativo", "Inglês - Avançado"]
+  }
+}

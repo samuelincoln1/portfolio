@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Hero from "./components/Hero";
+import ExperienceSummary from "./components/ExperienceSummary";
 import Projects from "./components/Projects";
 import Articles from "./components/Articles";
 import Navbar from "./components/util/Navbar";
@@ -66,6 +67,7 @@ export default function Index() {
         <Hero />
       </div>
       <div className="md:px-30 px-6 relative flex flex-col bg-gradient-to-b from-black to-purple-950 gap-10">
+        <ExperienceSummary />
         <Projects />
         <Articles />
         <Footer />

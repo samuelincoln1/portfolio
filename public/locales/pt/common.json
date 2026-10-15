@@ -6,10 +6,9 @@
     "articles": "Artigos"
   },
   "hero": {
-    "title": "Engenheiro de nuvem",
-    "description": "Sou um engenheiro de nuvem com experiência em engenharia de software, apaixonado por criar soluções escaláveis e eficientes, atualmente em busca de oportunidades em Engenharia de Cloud, DevOps ou SRE. Trabalho com AWS, infraestrutura como código e automação para otimizar aplicações e reduzir custos. Meu foco é construir e manter ambientes seguros, resilientes e preparados para alto desempenho e operação contínua. Aqui você pode encontrar alguns de meus projetos, meu currículo e mais sobre mim.",
-    "downloadPt": "Ver currículo (pt-br)",
-    "downloadEn": "Ver currículo (en-us)"
+    "title": "Engenheiro de Cloud & DevOps",
+    "description": "Sou engenheiro de Cloud & DevOps na <company>Senior Sistemas</company>, responsável pela infraestrutura AWS do Senior ATS by JobConvo. No dia a dia, trabalho com otimização de custos, pipelines de CI/CD, arquitetura e tomada de decisões, segurança, observabilidade e resposta a incidentes em produção, sempre buscando ambientes mais estáveis, eficientes e escaláveis. Aqui você encontra alguns dos meus projetos, artigos, meu currículo e um pouco mais sobre mim.",
+    "viewResume": "Ver currículo"
   },
   "projects": {
     "title": "Projetos",
@@ -17,7 +16,7 @@
     "descriptionTerraform": "Implementação de uma infraestrutura completa e automatizada na AWS usando Terraform para provisionamento, que inclui VPC, ALB, EC2, Auto Scaling, banco de dados e configurações de segurança. O estado do Terraform é armazenado em S3 e DynamoDB, permitindo versionamento, criptografia, bloqueio de concorrência e alta disponibilidade do backend. O projeto garante um ambiente escalável, seguro e facilmente reproduzível, integrando infraestrutura como código (IaC) e automação para maior eficiência.",
     "descriptionLambda": "Aplicação serverless para análise de métricas e logs em tempo real, utilizando AWS Lambda, CloudWatch e QuickSight. Automatiza a coleta, processamento e visualização de dados, permitindo insights rápidos e eficientes sobre eventos e performance da infraestrutura.",
     "descriptionCodeFlow": "Implementação completa de CI/CD utilizando GitHub Actions para automatizar a implantação deste website de portfólio na AWS S3 e CloudFront. O pipeline automatizado gerencia o controle de dependências, otimização do processo de build, gerenciamento seguro de credenciais e invalidação de cache. Inclui deployments atômicos, segurança de nível empresarial com políticas IAM e distribuição global de conteúdo sem interrupções.",
-    "copyright": "Copyright ©2025 Todos os direitos reservados"
+    "copyright": "Copyright ©2026 Todos os direitos reservados"
   },
   "articles": {
     "title": "Artigos",
@@ -27,9 +26,70 @@
   },
   "about": {
     "title": "Sobre Mim",
-    "description": "Sou um engenheiro de cloud com background em engenharia de software, especializado em AWS, automação e infraestrutura como código. Gosto de transformar desafios complexos em soluções eficientes, utilizando boas práticas para garantir performance, segurança e confiabilidade.",
+    "description": "Sou engenheiro de Cloud & DevOps, com background em suporte de infraestrutura e engenharia de software. Na Senior Sistemas, atuo à frente da infraestrutura AWS do Senior ATS by JobConvo, em produção e homologação. Meu dia a dia envolve containers com Docker e ECS, bancos de dados no RDS e Aurora, filas com SQS, cache com Redis, pipelines de CI/CD no GitHub, IAM e segurança, monitoramento com CloudWatch e automações em Python. Também conduzo iniciativas de otimização de custos e de evolução da arquitetura, junto com os times de desenvolvimento.",
     "description2": "Estou sempre disposto a aprender e acredito que, independentemente da tecnologia, é possível dominar qualquer ferramenta ou conceito com dedicação e prática. Para mim, a capacidade de adaptação e o aprendizado contínuo são essenciais na área de tecnologia.",
     "description3": "Além da tecnologia, sou fascinado por viagens e por explorar lugares menos conhecidos, amo gatos e adoro ler. Por falar nisso, O Nome do Vento é meu livro favorito."
+  },
+  "experience": {
+    "title": "Experiência",
+    "current": "Atual",
+    "seeFull": "Ver experiência completa",
+    "companies": [
+      {
+        "name": "Senior Sistemas",
+        "period": "Out 2025 – atual",
+        "location": "Belo Horizonte, MG · Remoto",
+        "roles": [
+          {
+            "title": "Cloud & DevOps Engineer II",
+            "period": "Mai 2026 – atual",
+            "current": true,
+            "highlights": [
+              "Conduzo iniciativas de otimização de custos na AWS, melhorando a eficiência da arquitetura e a utilização de recursos.",
+              "Lidero a resposta a incidentes críticos em produção, com análise de causa raiz (RCA) e medidas preventivas para evitar recorrências.",
+              "Apoio decisões de arquitetura cloud, escalabilidade e evolução contínua da infraestrutura de produção.",
+              "Colaboro com os times de desenvolvimento para melhorar observabilidade, processos operacionais e entrega contínua."
+            ],
+            "stack": ["AWS", "ECS", "RDS / Aurora", "SQS", "SES", "Redis", "IAM", "WAF", "CI/CD", "CloudWatch", "Grafana", "Python", "SQL"]
+          },
+          {
+            "title": "Cloud & DevOps Engineer I",
+            "period": "Out 2025 – Abr 2026",
+            "highlights": [
+              "Desenvolvi e mantive pipelines de CI/CD, tornando os deploys mais rápidos, confiáveis e automatizados.",
+              "Implementei boas práticas de segurança em nuvem, fortalecendo o gerenciamento de acessos e a resiliência da infraestrutura.",
+              "Colaborei com os times de desenvolvimento para aprimorar processos de deploy e a estabilidade operacional.",
+              "Melhorei o desempenho, a escalabilidade e a manutenção das arquiteturas em produção."
+            ],
+            "stack": ["AWS", "Docker", "CI/CD", "IAM", "Python"]
+          }
+        ]
+      },
+      {
+        "name": "ENX Services",
+        "period": "Mai 2021 – Jul 2025",
+        "roles": [
+          {
+            "title": "Engenheiro de Software",
+            "period": "Mai 2024 – Jul 2025",
+            "highlights": [
+              "Desenvolvimento de aplicações web com TypeScript, React/Next.js e Node.js.",
+              "Manutenção e evolução de sistemas em Java, Python e PHP."
+            ],
+            "stack": ["TypeScript", "React", "Next.js", "Node.js", "Java", "Python", "PHP"]
+          },
+          {
+            "title": "Analista de Suporte de Infraestrutura",
+            "period": "Mai 2021 – Mai 2024",
+            "highlights": [
+              "Suporte técnico N1/N2 em ambientes Linux e Windows.",
+              "Análise de logs, troubleshooting e tratamento de incidentes."
+            ],
+            "stack": ["Linux", "Windows"]
+          }
+        ]
+      }
+    ]
   },
   "resume": {
     "title": "Competências",
@@ -50,8 +110,8 @@
     },
     "coursesAndCertifications": {
       "title": "Cursos e Certificações",
-      "description": "Atualmente, sou estudante de Engenharia de Software na PUC Minas, com previsão de conclusão em 2026. Minha formação me proporciona uma base sólida em arquitetura de sistemas, desenvolvimento de software e práticas de engenharia voltadas para a nuvem.",
-      "description2": "Também sou certificado como AWS Certified Solutions Architect – Associate (SAA-C03), certificação que valida meu conhecimento em design de arquiteturas escaláveis, seguras e de alto desempenho na AWS.",
+      "description": "Engenharia de Software - PUC Minas",
+      "description2": "Sou certificado como AWS Certified Solutions Architect – Associate (SAA-C03), certificação que valida meu conhecimento em design de arquiteturas escaláveis, seguras e de alto desempenho na AWS.",
       "description3": "Estou sempre em busca de aprimoramento e meu objetivo é continuar expandindo minha expertise, obtendo novas certificações e aprimorando minha capacidade de projetar soluções eficientes, seguras e escaláveis na nuvem."
     },
     "languages": {
@@ -63,6 +123,6 @@
     },
     "downloadResumePT": "Baixar currículo (pt-br)",
     "downloadResumeEN": "Baixar currículo (en-us)",
-    "copyright": "Copyright ©2025 Todos os direitos reservados"
+    "copyright": "Copyright ©2026 Todos os direitos reservados"
   }
 }

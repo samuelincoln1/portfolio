@@ -39,7 +39,7 @@ const Projects = () => {
   return (
     <div id="projects" >
       <div className="flex flex-col gap-8 py-6 md:pt-8 md:pb-4 px-4 md:px-0" id="projects">
-        <p className="text-center text-white text-sm md:text-xl max-w-[300px] md:mt-30 md:mb-10 mt-20 md:max-w-[1500px] mx-auto ">
+        <p className="text-center text-white text-sm md:text-xl max-w-[300px] md:mt-16 md:mb-10 mt-12 md:max-w-[1500px] mx-auto ">
           <em>{t('projects.subtitle')}</em>
         </p>
         <div>

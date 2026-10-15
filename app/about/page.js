@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import AboutNavbar from "../components/util/AboutNavbar";
 import AboutHero from "../components/about/AboutHero";
+import Experience from "../components/about/Experience";
 import Resume from "../components/about/Resume";
 import ParticlesBackground2 from "../components/effects/ParticlesBackground2";
 
@@ -29,6 +30,7 @@ export default function AboutPage() {
         <AboutNavbar />
         <AboutHero />
       </div>
+      <Experience />
       <Resume />
       <ParticlesBackground2 />
     </div>
