@@ -13,7 +13,7 @@
 ### 🌐 Access the Portfolio
 **[samuellincoln.com](https://samuellincoln.com)**
 
-This is my professional portfolio as a Cloud Engineer, highlighting my experience with AWS, infrastructure as code and cloud development. The website was developed with Next.js and React, and its infrastructure was fully automated using modern DevOps practices.
+This is my professional portfolio as a Cloud & DevOps Engineer, highlighting my experience with AWS, infrastructure as code and cloud development. The website was developed with Next.js and React, and its infrastructure was fully automated using modern DevOps practices.
 
 ### ☁️ Cloud Infrastructure
 
@@ -49,9 +49,10 @@ This is my professional portfolio as a Cloud Engineer, highlighting my experienc
 
 ## 📱 Sections
 
-- **Home**: Initial presentation
-- **About**: Detailed experience with AWS and cloud architectures
+- **Home**: Introduction and a summary of my professional experience
+- **About**: Background, full professional experience and skills
 - **Projects**: Portfolio of cloud and DevOps implementations
+- **Articles**: Technical articles about cloud and DevOps
 - **Resume**: Available for download in PT-BR and EN-US
 
 ## 🌐 Deploy
@@ -72,4 +73,4 @@ The site is in production on AWS, using a modern and scalable architecture:
 
 ## 📝 License
 
-Copyright © 2025 Samuel Lincoln. All rights reserved.
+Copyright © 2026 Samuel Lincoln. All rights reserved.
