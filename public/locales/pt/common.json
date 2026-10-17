@@ -15,8 +15,9 @@
     "subtitle": "Uma nuvem bem projetada escala, reduz custos e melhora a confiabilidade. Boas práticas de arquitetura e automação fazem a diferença.",
     "descriptionTerraform": "Implementação de uma infraestrutura completa e automatizada na AWS usando Terraform para provisionamento, que inclui VPC, ALB, EC2, Auto Scaling, banco de dados e configurações de segurança. O estado do Terraform é armazenado em S3 e DynamoDB, permitindo versionamento, criptografia, bloqueio de concorrência e alta disponibilidade do backend. O projeto garante um ambiente escalável, seguro e facilmente reproduzível, integrando infraestrutura como código (IaC) e automação para maior eficiência.",
     "descriptionLambda": "Aplicação serverless para análise de métricas e logs em tempo real, utilizando AWS Lambda, CloudWatch e QuickSight. Automatiza a coleta, processamento e visualização de dados, permitindo insights rápidos e eficientes sobre eventos e performance da infraestrutura.",
+    "descriptionDjangoPlatform": "Infraestrutura AWS em padrão de produção para uma aplicação Django em containers, provisionada com Terraform. O ECS Fargate roda em subnets privadas sem acesso à internet, usando VPC endpoints, com banco RDS PostgreSQL Multi-AZ, e o CloudFront com AWS WAF como único ponto de entrada. Um CodePipeline testa cada commit dentro da imagem Docker, executa as migrações do banco uma única vez e faz deploys sem downtime com rollback automático. Os segredos nunca chegam ao state do Terraform, e uma análise de custos embasa as decisões de arquitetura.",
     "descriptionCodeFlow": "Implementação completa de CI/CD utilizando GitHub Actions para automatizar a implantação deste website de portfólio na AWS S3 e CloudFront. O pipeline automatizado gerencia o controle de dependências, otimização do processo de build, gerenciamento seguro de credenciais e invalidação de cache. Inclui deployments atômicos, segurança de nível empresarial com políticas IAM e distribuição global de conteúdo sem interrupções.",
-    "copyright": "Copyright ©2026 Todos os direitos reservados"
+    "copyright": "Copyright ©2027 Todos os direitos reservados"
   },
   "articles": {
     "title": "Artigos",
@@ -31,7 +32,7 @@
     "description3": "Além da tecnologia, sou fascinado por viagens e por explorar lugares menos conhecidos, amo gatos e adoro ler. Por falar nisso, O Nome do Vento é meu livro favorito."
   },
   "experience": {
-    "title": "Experiência",
+    "title": "Experiência profissional",
     "current": "Atual",
     "seeFull": "Ver experiência completa",
     "companies": [
@@ -123,6 +124,6 @@
     },
     "downloadResumePT": "Baixar currículo (pt-br)",
     "downloadResumeEN": "Baixar currículo (en-us)",
-    "copyright": "Copyright ©2026 Todos os direitos reservados"
+    "copyright": "Copyright ©2027 Todos os direitos reservados"
   }
 }

@@ -17,7 +17,7 @@ const ProjectCard = ({ imageUrl, title, description, projectUrl, stack }) => {
         <div className="text-[22px] md:text-[38px] font-bold text-white z-50 underline">
           <Link 
             href={projectUrl}
-            className="hover:text-gray-200"
+            className="transition-colors hover:text-purple-500"
           >
             {title}
           </Link>

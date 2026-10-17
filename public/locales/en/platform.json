@@ -1,0 +1,834 @@
+{
+  "platform": {
+    "sidebar": {
+      "goBack": "Go Back",
+      "overview": "Overview",
+      "architectureDiagram": "Architecture Diagram",
+      "codeStructure": "Code Structure",
+      "backendConfiguration": "Backend Configuration",
+      "vpcModule": "VPC Module",
+      "albModule": "ALB Module",
+      "cdnModule": "CDN Module",
+      "wafModule": "WAF Module",
+      "ecsModule": "ECS Module",
+      "rdsModule": "RDS Module",
+      "supportingModules": "Supporting Modules",
+      "mainFile": "Main File",
+      "cicdPipeline": "CI/CD Pipeline",
+      "application": "Application",
+      "tests": "Tests",
+      "deployment": "Deployment",
+      "cost": "Cost Analysis"
+    },
+    "common": {
+      "resource": "Resource:",
+      "features": "Features",
+      "resources": "Resources",
+      "variablesAndOutputs": "Variables and Outputs"
+    },
+    "overview": {
+      "title": "AWS Django Platform - Overview",
+      "description": "This project provisions, with Terraform, the complete AWS infrastructure for a containerized Django application, together with the pipeline that delivers it. The application runs on ECS Fargate in private subnets without internet access, stores its data in a Multi-AZ RDS PostgreSQL database and is published exclusively through CloudFront, protected by AWS WAF. Every commit to the main branch goes through a CodePipeline that tests the Docker image, runs the database migrations and performs a zero-downtime rolling deployment with automatic rollback.",
+      "description2": "The application itself is intentionally simple (a CRUD of items), because the focus is on the infrastructure and the release process: network isolation, least-privilege access, secrets that never reach the Terraform state, immutable deployments and a cost analysis that supports the main architectural decisions.",
+      "highlightsTitle": "Highlights",
+      "highlights": [
+        {
+          "name": "Single entry point",
+          "description": "CloudFront and WAF in front of the whole application; the load balancer only accepts traffic coming from CloudFront."
+        },
+        {
+          "name": "No internet access for the workloads",
+          "description": "private subnets without NAT gateways, with AWS services reached through VPC endpoints."
+        },
+        {
+          "name": "Safe releases",
+          "description": "immutable images, migrations executed once before the rollout and automatic rollback through the ECS deployment circuit breaker."
+        },
+        {
+          "name": "Secrets out of the state",
+          "description": "ephemeral variables and write-only arguments keep passwords out of the Terraform state file."
+        }
+      ],
+      "githubLink": "Github repository"
+    },
+    "architectureDiagram": {
+      "title": "Architecture Diagram",
+      "description": "The infrastructure is distributed across two availability zones and organized in layers, each one reachable only from the layer in front of it:",
+      "items": [
+        {
+          "name": "CloudFront + WAF",
+          "description": "the only public entry point. Serves static files from S3 and forwards every other request to the load balancer, after inspection by the WAF rules."
+        },
+        {
+          "name": "ALB",
+          "description": "Application Load Balancer in the public subnets, accepting HTTPS connections only from CloudFront."
+        },
+        {
+          "name": "ECS Fargate",
+          "description": "Django containers in private subnets, scaling from 2 to 6 tasks based on CPU usage."
+        },
+        {
+          "name": "RDS",
+          "description": "PostgreSQL in Multi-AZ mode, with a synchronous standby in the second availability zone."
+        },
+        {
+          "name": "VPC Endpoints",
+          "description": "private access from the containers to ECR, CloudWatch Logs, Secrets Manager and S3."
+        }
+      ],
+      "accessDescription": "A user request reaches CloudFront, passes through the WAF and, if it is not a static file, is forwarded over HTTPS to the ALB with a secret header that proves its origin. The ALB distributes it among the healthy ECS tasks, which query the database in the isolated subnets. The containers have no route to the internet: images, logs, secrets and static files travel through VPC endpoints, without leaving the AWS network."
+    },
+    "codeStructure": {
+      "title": "Code Structure",
+      "description": "The repository brings together the application, the infrastructure and the delivery process, so a single commit can change any of them:",
+      "folders": [
+        {
+          "name": "app/",
+          "description": "Django application, Dockerfile and automated tests."
+        },
+        {
+          "name": "ci/",
+          "description": "build specifications and the deploy script executed by CodeBuild."
+        },
+        {
+          "name": "infra/",
+          "description": "Terraform code: the root configuration, the bootstrap of the remote state and the modules."
+        },
+        {
+          "name": "docs/",
+          "description": "architecture diagram and cost analysis."
+        }
+      ],
+      "modulesTitle": "Modules",
+      "modulesDescription": "The infrastructure is split into ten modules, each one responsible for a part of the architecture:",
+      "modules": [
+        {
+          "name": "VPC Module: ",
+          "description": "subnets in each availability zone, route tables and VPC endpoints."
+        },
+        {
+          "name": "ALB Module: ",
+          "description": "load balancer, target group and the rules that restrict access to CloudFront."
+        },
+        {
+          "name": "CDN Module: ",
+          "description": "CloudFront distribution, Origin Access Control and the optional DNS record."
+        },
+        {
+          "name": "WAF Module: ",
+          "description": "web ACL with managed rules, rate limiting and geographic blocking."
+        },
+        {
+          "name": "S3 Module: ",
+          "description": "private bucket for the static files."
+        },
+        {
+          "name": "ECR Module: ",
+          "description": "image repository and its lifecycle policy."
+        },
+        {
+          "name": "ECS Module: ",
+          "description": "cluster, task definition, service, autoscaling and IAM roles."
+        },
+        {
+          "name": "RDS Module: ",
+          "description": "PostgreSQL instance, parameter group and monitoring."
+        },
+        {
+          "name": "Secrets Module: ",
+          "description": "Secrets Manager secrets used by the application."
+        },
+        {
+          "name": "Pipeline Module: ",
+          "description": "CodePipeline, CodeBuild projects and their IAM roles."
+        }
+      ],
+      "moduleFilesDescription": "Inside each module, there is a `main.tf` file that defines the resources, a `variables.tf` file that defines the variables, and an `outputs.tf` file that exposes the values used by the other modules."
+    },
+    "backendConfiguration": {
+      "title": "Backend Configuration",
+      "description": "The Terraform state is stored remotely in an S3 bucket, with versioning and encryption. Unlike the Infra as Code project, this one does not need a DynamoDB table for locking: since Terraform 1.10, the S3 backend supports native locking through a lock file stored in the same bucket (`use_lockfile`). The configuration includes:",
+      "items": [
+        {
+          "name": "Bootstrap: ",
+          "description": "the state bucket is created by a separate configuration (`infra/bootstrap`), applied only once with local state."
+        },
+        {
+          "name": "Partial configuration: ",
+          "description": "the `backend \"s3\"` block is empty in the code; bucket, key and region come from a `backend.hcl` file during `terraform init`, so the same code can be reused in other accounts or environments."
+        },
+        {
+          "name": "Providers: ",
+          "description": "a second AWS provider fixed in us-east-1 is declared, because CloudFront-scoped resources, such as the WAF web ACL, only exist in that region."
+        },
+        {
+          "name": "Default tags: ",
+          "description": "Project, Environment and ManagedBy tags are applied automatically to every resource."
+        }
+      ],
+      "bootstrapDescription": "The state bucket, created by the bootstrap configuration:",
+      "versionsDescription": "The providers and the partial backend configuration of the main stack:",
+      "backendHclDescription": "The backend values, provided with `terraform init -backend-config=backend.hcl`:"
+    },
+    "vpcModule": {
+      "title": "VPC Module",
+      "description": "The VPC module builds the network where everything runs. Its most important decision is that the private subnets have no route to the internet: there is no NAT gateway. The containers only need to talk to a few AWS services, so they reach them through VPC endpoints, which keeps all traffic inside the AWS network and closes the path a compromised container could use to download tools or exfiltrate data. Subnets are created in blocks for each availability zone, with their CIDRs calculated from the VPC range.",
+      "features": [
+        {
+          "name": "VPC: ",
+          "description": "DNS support and hostnames enabled, required by the private DNS of the interface endpoints."
+        },
+        {
+          "name": "Subnets: ",
+          "description": "public (ALB), app (ECS) and database (RDS) subnets in each availability zone."
+        },
+        {
+          "name": "Route Tables: ",
+          "description": "a public route table with a route to the internet gateway and a private one without any default route."
+        },
+        {
+          "name": "VPC Endpoints: ",
+          "description": "a gateway endpoint for S3 and interface endpoints for ECR, CloudWatch Logs and Secrets Manager."
+        }
+      ],
+      "resources": [
+        {
+          "title": "Locals, VPC and Internet Gateway",
+          "resource": "aws_vpc / aws_internet_gateway",
+          "attributes": [
+            {
+              "name": "cidrsubnet()",
+              "description": "calculates one /24 per subnet and availability zone, in blocks: public, app and database (10.0.1-2, 10.0.3-4 and 10.0.5-6 with two AZs)."
+            },
+            {
+              "name": "enable_dns_hostnames / enable_dns_support",
+              "description": "enabled so the interface endpoints can resolve the AWS service names to private IPs."
+            }
+          ]
+        },
+        {
+          "title": "Subnets",
+          "resource": "aws_subnet",
+          "attributes": [
+            {
+              "name": "count",
+              "description": "one subnet of each tier per availability zone in the `availability_zones` list."
+            },
+            {
+              "name": "cidr_block",
+              "description": "taken from the CIDR lists calculated in the locals."
+            },
+            {
+              "name": "tags",
+              "description": "name and tier (public, app or db) for identification."
+            }
+          ]
+        },
+        {
+          "title": "Route Tables",
+          "resource": "aws_route_table / aws_route_table_association",
+          "attributes": [
+            {
+              "name": "public",
+              "description": "routes `0.0.0.0/0` to the internet gateway and is used only by the ALB subnets."
+            },
+            {
+              "name": "private",
+              "description": "has no default route, so the app and database subnets cannot reach the internet."
+            }
+          ]
+        },
+        {
+          "title": "S3 Gateway Endpoint",
+          "resource": "aws_vpc_endpoint",
+          "attributes": [
+            {
+              "name": "vpc_endpoint_type",
+              "description": "`Gateway`, a free endpoint added as a route in the private route table."
+            },
+            {
+              "name": "policy",
+              "description": "allows only the AWS bucket where ECR stores image layers and the application's static files bucket."
+            }
+          ]
+        },
+        {
+          "title": "Interface Endpoints",
+          "resource": "aws_vpc_endpoint / aws_security_group",
+          "attributes": [
+            {
+              "name": "for_each",
+              "description": "one endpoint for each service Fargate needs: `ecr.api`, `ecr.dkr`, `logs` and `secretsmanager`."
+            },
+            {
+              "name": "private_dns_enabled",
+              "description": "the standard service names resolve to the endpoint's private IPs, so the application needs no changes."
+            },
+            {
+              "name": "security_group_ids",
+              "description": "accepts HTTPS only from the app subnets."
+            }
+          ]
+        }
+      ],
+      "variablesAndOutputs": "The module receives the VPC CIDR, the list of availability zones, the region and the static files bucket name. It outputs the subnet IDs and CIDRs of each tier, the endpoints security group and the S3 prefix list, used by the ALB, ECS and RDS modules."
+    },
+    "albModule": {
+      "title": "ALB Module",
+      "description": "The Application Load Balancer distributes the requests among the ECS tasks and checks their health. Since an ALB always has a public DNS name, it would be possible to call it directly and bypass CloudFront and the WAF. To prevent this, the module combines two layers: at the network level, the security group only accepts the IP ranges used by CloudFront; at the application level, the listener only forwards requests that contain a secret header added by CloudFront, returning 403 to everything else.",
+      "features": [
+        {
+          "name": "Security Group: ",
+          "description": "HTTPS ingress only from the AWS-managed CloudFront prefix list, and egress only to the application port in the app subnets."
+        },
+        {
+          "name": "Application Load Balancer: ",
+          "description": "internet-facing ALB in the public subnets, dropping invalid HTTP headers."
+        },
+        {
+          "name": "Target Group: ",
+          "description": "IP targets, required by Fargate, with health checks on `/healthz/`."
+        },
+        {
+          "name": "Listener and Rule: ",
+          "description": "HTTPS listener with a TLS 1.3 policy, a default 403 response and a rule that forwards requests carrying the secret header."
+        }
+      ],
+      "resources": [
+        {
+          "title": "Security Group",
+          "resource": "aws_security_group",
+          "attributes": [
+            {
+              "name": "prefix_list_ids",
+              "description": "`com.amazonaws.global.cloudfront.origin-facing`, the list of CloudFront IPs, kept up to date by AWS."
+            },
+            {
+              "name": "ingress",
+              "description": "only port 443: the prefix list counts as about 55 rules against the security group quota, and the HTTP to HTTPS redirect is done by CloudFront."
+            },
+            {
+              "name": "egress",
+              "description": "only the application port (8000) to the app subnets."
+            }
+          ]
+        },
+        {
+          "title": "Load Balancer and Target Group",
+          "resource": "aws_lb / aws_lb_target_group",
+          "attributes": [
+            {
+              "name": "drop_invalid_header_fields",
+              "description": "discards requests with malformed headers."
+            },
+            {
+              "name": "target_type",
+              "description": "`ip`, because each Fargate task has its own network interface."
+            },
+            {
+              "name": "deregistration_delay",
+              "description": "30 seconds to finish in-flight requests when a task is replaced."
+            },
+            {
+              "name": "health_check",
+              "description": "`/healthz/` every 30 seconds; 2 successes mark a target as healthy and 3 failures as unhealthy."
+            }
+          ]
+        },
+        {
+          "title": "Listener and Listener Rule",
+          "resource": "aws_lb_listener / aws_lb_listener_rule",
+          "attributes": [
+            {
+              "name": "ssl_policy",
+              "description": "`ELBSecurityPolicy-TLS13-1-2-2021-06`, accepting only TLS 1.2 and 1.3."
+            },
+            {
+              "name": "default_action",
+              "description": "fixed `403` response for any request that did not come from CloudFront."
+            },
+            {
+              "name": "condition",
+              "description": "forwards to the target group only when the `X-Origin-Verify` header has the expected value."
+            }
+          ]
+        }
+      ],
+      "originSecretDescription": "The secret value is generated in the root configuration with the random provider and passed both to the ALB and to the CloudFront distribution:",
+      "variablesAndOutputs": "The module receives the VPC, the public subnets, the app subnet CIDRs, the certificate ARN and the secret header value, marked as sensitive. It outputs the ALB DNS name, used as the CloudFront origin, its security group and the target group ARN."
+    },
+    "cdnModule": {
+      "title": "CDN Module",
+      "description": "The CDN module creates the CloudFront distribution, the only public address of the application. It has two origins: the S3 bucket, which serves the static files, and the ALB, which receives everything else. Static files are cached at the edge, while application requests are never cached and are forwarded with all headers, cookies and query strings. As the static files are served under the application's own domain, CORS is not needed, and the bucket stays private, readable only by this distribution.",
+      "features": [
+        {
+          "name": "Two origins: ",
+          "description": "the ALB (default behavior) and the static files bucket (`/static/*`)."
+        },
+        {
+          "name": "Managed policies: ",
+          "description": "AWS-managed cache and origin request policies, with caching disabled for the application and optimized for static files."
+        },
+        {
+          "name": "Origin Access Control: ",
+          "description": "CloudFront signs its requests to S3, and the bucket policy only accepts requests from this distribution."
+        },
+        {
+          "name": "Custom domain: ",
+          "description": "ACM certificate, TLS 1.2 minimum, HTTP/2 and HTTP/3, and optional alias records in Route 53."
+        }
+      ],
+      "resources": [
+        {
+          "title": "Policies and Origin Access Control",
+          "resource": "aws_cloudfront_cache_policy / aws_cloudfront_origin_access_control",
+          "attributes": [
+            {
+              "name": "Managed-CachingDisabled",
+              "description": "used by the application, whose responses are dynamic."
+            },
+            {
+              "name": "Managed-AllViewer",
+              "description": "forwards the Host header to the ALB, so CloudFront validates the ALB certificate against the application domain."
+            },
+            {
+              "name": "signing_behavior",
+              "description": "`always`, every request to S3 is signed with SigV4."
+            }
+          ]
+        },
+        {
+          "title": "Distribution",
+          "resource": "aws_cloudfront_distribution",
+          "attributes": [
+            {
+              "name": "web_acl_id",
+              "description": "associates the WAF web ACL, so every request is inspected."
+            },
+            {
+              "name": "custom_header",
+              "description": "adds the `X-Origin-Verify` secret to the requests sent to the ALB."
+            },
+            {
+              "name": "origin_protocol_policy",
+              "description": "`https-only`, traffic between CloudFront and the ALB is also encrypted."
+            },
+            {
+              "name": "ordered_cache_behavior",
+              "description": "`/static/*` goes to S3 with caching; the default behavior goes to the ALB without caching."
+            },
+            {
+              "name": "viewer_protocol_policy",
+              "description": "redirects HTTP to HTTPS."
+            }
+          ]
+        },
+        {
+          "title": "Bucket Policy and DNS",
+          "resource": "aws_s3_bucket_policy / aws_route53_record",
+          "attributes": [
+            {
+              "name": "Condition",
+              "description": "allows `s3:GetObject` only when `AWS:SourceArn` is this distribution."
+            },
+            {
+              "name": "for_each",
+              "description": "creates A and AAAA alias records only when a hosted zone ID is provided."
+            }
+          ]
+        }
+      ],
+      "variablesAndOutputs": "The module receives the domain, the certificate, the web ACL ARN, the ALB DNS name, the secret header value and the static bucket attributes. It outputs the distribution ARN and its domain name, used to configure DNS when Route 53 is not managed by the project."
+    },
+    "wafModule": {
+      "title": "WAF Module",
+      "description": "AWS WAF inspects every request before it reaches the application. Since the web ACL is associated with CloudFront, it must have the CLOUDFRONT scope and be created in us-east-1, which is why the module receives the provider configured for that region. The rules combine AWS-managed rule groups, updated by AWS as new threats appear, with custom rules for rate limiting and geographic blocking.",
+      "features": [
+        {
+          "name": "Common Rule Set: ",
+          "description": "protection against common exploits, such as cross-site scripting and path traversal (OWASP Top 10)."
+        },
+        {
+          "name": "Known Bad Inputs: ",
+          "description": "blocks request patterns known to exploit vulnerabilities, such as Log4j."
+        },
+        {
+          "name": "SQLi Rule Set: ",
+          "description": "detects SQL injection attempts in query strings, bodies and headers."
+        },
+        {
+          "name": "Rate limiting: ",
+          "description": "blocks IPs that exceed 2000 requests in a 5-minute window."
+        },
+        {
+          "name": "Geo blocking: ",
+          "description": "blocks a configurable list of countries; an empty list disables the rule."
+        }
+      ],
+      "resources": [
+        {
+          "title": "Web ACL",
+          "resource": "aws_wafv2_web_acl",
+          "attributes": [
+            {
+              "name": "scope",
+              "description": "`CLOUDFRONT`, required for the association with a distribution."
+            },
+            {
+              "name": "default_action",
+              "description": "allows the requests that do not match any blocking rule."
+            },
+            {
+              "name": "override_action",
+              "description": "`none`, keeping the actions defined by each managed rule group."
+            },
+            {
+              "name": "dynamic \"rule\"",
+              "description": "creates the geo blocking rule only when the country list is not empty."
+            },
+            {
+              "name": "visibility_config",
+              "description": "publishes metrics and request samples of each rule to CloudWatch."
+            }
+          ]
+        }
+      ],
+      "variablesAndOutputs": "The module receives the name prefix, the rate limit and the list of blocked countries, and outputs the web ACL ARN used by the CDN module."
+    },
+    "ecsModule": {
+      "title": "ECS Module",
+      "description": "The ECS module runs the application. Fargate removes the need to manage servers: each task has its own network interface in the private subnets, its own IAM role, and receives its secrets from Secrets Manager at startup. The task definition is shared by two owners: Terraform defines everything except the image (CPU, memory, variables, roles), and the pipeline registers a new revision with the image of each commit. For this reason, the service ignores changes to the task definition and to the number of tasks, which are controlled by the pipeline and by autoscaling.",
+      "features": [
+        {
+          "name": "Cluster: ",
+          "description": "ECS cluster with Container Insights and a log group with 30-day retention."
+        },
+        {
+          "name": "IAM Roles: ",
+          "description": "an execution role, used by the ECS agent to pull the image and read secrets, and a task role, used by the application to write static files to S3."
+        },
+        {
+          "name": "Security Group: ",
+          "description": "accepts traffic only from the ALB and allows outbound traffic only to the VPC endpoints, S3 and the database subnets."
+        },
+        {
+          "name": "Task Definition: ",
+          "description": "container with environment variables, secrets, log configuration and a health check."
+        },
+        {
+          "name": "Service: ",
+          "description": "rolling deployments that keep 100% of the capacity, with an automatic rollback circuit breaker."
+        },
+        {
+          "name": "Autoscaling: ",
+          "description": "target tracking that keeps the average CPU at 70%, between 2 and 6 tasks."
+        }
+      ],
+      "resources": [
+        {
+          "title": "Cluster and Logs",
+          "resource": "aws_ecs_cluster / aws_cloudwatch_log_group",
+          "attributes": [
+            {
+              "name": "containerInsights",
+              "description": "collects CPU, memory and network metrics per service and task."
+            },
+            {
+              "name": "retention_in_days",
+              "description": "keeps the application logs for 30 days."
+            }
+          ]
+        },
+        {
+          "title": "IAM Roles",
+          "resource": "aws_iam_role / aws_iam_role_policy",
+          "attributes": [
+            {
+              "name": "execution",
+              "description": "AWS-managed policy to pull images and write logs, plus `secretsmanager:GetSecretValue` restricted to the two application secrets."
+            },
+            {
+              "name": "task",
+              "description": "read, write and delete permissions only on the static files bucket."
+            }
+          ]
+        },
+        {
+          "title": "Security Group",
+          "resource": "aws_security_group",
+          "attributes": [
+            {
+              "name": "ingress",
+              "description": "application port only from the ALB security group."
+            },
+            {
+              "name": "egress",
+              "description": "HTTPS to the endpoints security group and to the S3 prefix list, and PostgreSQL to the database subnets. DNS needs no rule, since traffic to the VPC resolver is not filtered by security groups."
+            }
+          ]
+        },
+        {
+          "title": "Task Definition",
+          "resource": "aws_ecs_task_definition",
+          "attributes": [
+            {
+              "name": "network_mode",
+              "description": "`awsvpc`, required by Fargate."
+            },
+            {
+              "name": "environment / secrets",
+              "description": "plain variables and values injected from Secrets Manager, generated from maps with for expressions."
+            },
+            {
+              "name": "logConfiguration",
+              "description": "`awslogs` driver, sending stdout to CloudWatch Logs."
+            },
+            {
+              "name": "healthCheck",
+              "description": "calls `/healthz/` inside the container every 30 seconds."
+            }
+          ]
+        },
+        {
+          "title": "Service",
+          "resource": "aws_ecs_service",
+          "attributes": [
+            {
+              "name": "deployment_minimum_healthy_percent",
+              "description": "`100`, new tasks are started before the old ones are stopped."
+            },
+            {
+              "name": "deployment_circuit_breaker",
+              "description": "rolls the service back to the previous revision if the new tasks do not become healthy."
+            },
+            {
+              "name": "assign_public_ip",
+              "description": "`false`, the tasks only have private IPs."
+            },
+            {
+              "name": "ignore_changes",
+              "description": "`desired_count` belongs to autoscaling and `task_definition` to the pipeline."
+            }
+          ]
+        },
+        {
+          "title": "Autoscaling",
+          "resource": "aws_appautoscaling_target / aws_appautoscaling_policy",
+          "attributes": [
+            {
+              "name": "min_capacity / max_capacity",
+              "description": "between 2 and 6 tasks."
+            },
+            {
+              "name": "target_value",
+              "description": "70% average CPU of the service."
+            },
+            {
+              "name": "scale_out_cooldown / scale_in_cooldown",
+              "description": "1 minute to add tasks and 5 minutes to remove them, avoiding oscillation."
+            }
+          ]
+        }
+      ],
+      "variablesAndOutputs": "The module receives the network information, the target group, the initial image, CPU and memory, the capacity limits, environment variables and secrets. It outputs the cluster and service names, the task definition family, the container name, the tasks security group and the IAM roles, used by the RDS and pipeline modules."
+    },
+    "rdsModule": {
+      "title": "RDS Module",
+      "description": "The RDS module provisions the PostgreSQL database. It runs in Multi-AZ mode: AWS keeps a synchronous standby in the second availability zone and performs an automatic failover in case of failure. The database is only reachable from the ECS tasks' security group, and the master password is sent through a write-only argument, so it is never recorded in the Terraform state.",
+      "features": [
+        {
+          "name": "Security Group: ",
+          "description": "PostgreSQL access only from the application security group."
+        },
+        {
+          "name": "Parameter Group: ",
+          "description": "enables pg_stat_statements and logs slow queries, schema changes and connections."
+        },
+        {
+          "name": "Instance: ",
+          "description": "PostgreSQL 17 with encrypted gp3 storage, storage autoscaling, Multi-AZ, backups and monitoring."
+        }
+      ],
+      "resources": [
+        {
+          "title": "Security Group and Subnet Group",
+          "resource": "aws_security_group / aws_db_subnet_group",
+          "attributes": [
+            {
+              "name": "security_groups",
+              "description": "the ingress source is the ECS tasks security group instead of a CIDR block."
+            },
+            {
+              "name": "subnet_ids",
+              "description": "the isolated database subnets, one in each availability zone."
+            }
+          ]
+        },
+        {
+          "title": "Parameter Group",
+          "resource": "aws_db_parameter_group",
+          "attributes": [
+            {
+              "name": "family",
+              "description": "derived from the engine version, e.g. `postgres17`."
+            },
+            {
+              "name": "log_statement",
+              "description": "`ddl`, records schema changes without logging every query."
+            },
+            {
+              "name": "log_min_duration_statement",
+              "description": "logs queries slower than 1 second."
+            }
+          ]
+        },
+        {
+          "title": "Instance",
+          "resource": "aws_db_instance",
+          "attributes": [
+            {
+              "name": "password_wo / password_wo_version",
+              "description": "write-only password: sent to AWS but not stored in the state. Changing the version applies a new password."
+            },
+            {
+              "name": "multi_az",
+              "description": "synchronous standby with automatic failover."
+            },
+            {
+              "name": "storage_encrypted / max_allocated_storage",
+              "description": "encrypted storage that grows automatically from 20 GB up to 100 GB."
+            },
+            {
+              "name": "performance_insights_enabled / monitoring_interval",
+              "description": "query performance analysis and OS metrics every 60 seconds."
+            },
+            {
+              "name": "deletion_protection / final_snapshot_identifier",
+              "description": "protection against accidental deletion and a final snapshot when the instance is removed."
+            }
+          ]
+        }
+      ],
+      "variablesAndOutputs": "The module receives the network, the allowed security groups, the credentials and the instance settings. It outputs the database address, port and name, which become environment variables of the containers."
+    },
+    "supportingModules": {
+      "title": "Supporting Modules",
+      "description": "Three smaller modules complete the infrastructure, providing the storage for static files, the image registry and the secrets used by the application.",
+      "features": [
+        {
+          "name": "S3 Module: ",
+          "description": "private, encrypted and versioned bucket for static files, with ownership enforced by the bucket owner and old versions expiring after 7 days."
+        },
+        {
+          "name": "ECR Module: ",
+          "description": "image repository with immutable tags, vulnerability scanning on push and a lifecycle policy that keeps the last 20 images."
+        },
+        {
+          "name": "Secrets Module: ",
+          "description": "Secrets Manager secrets for the Django SECRET_KEY and the database credentials, written with write-only arguments."
+        }
+      ],
+      "s3Description": "Static files bucket:",
+      "ecrDescription": "Image repository. Immutable tags guarantee that each task definition revision always points to the same image, which makes rollbacks reliable:",
+      "secretsDescription": "Database credentials secret. The values come from ephemeral variables and are only sent again when `secrets_version` changes:"
+    },
+    "mainFile": {
+      "title": "Main File",
+      "description": "The `main.tf` file connects all the modules. It defines the naming prefix and the tags, generates the CloudFront secret header and passes the outputs of each module to the others, such as the tasks security group to the RDS module and the database address to the ECS module. Terraform resolves the dependencies between the modules automatically from these references."
+    },
+    "cicdPipeline": {
+      "title": "CI/CD Pipeline",
+      "description": "Every commit to the main branch triggers a release in AWS CodePipeline, with three stages. The main idea is that the tested image is the same image that is deployed, and that the database is migrated only once, before the new version receives traffic. The pipeline runs in QUEUED mode, so a release is never interrupted halfway through its migrations.",
+      "stages": [
+        {
+          "name": "Source: ",
+          "description": "downloads the code through an AWS CodeConnections connection with GitHub (Bitbucket and GitLab are also supported)."
+        },
+        {
+          "name": "Build: ",
+          "description": "builds the Docker image, runs the tests and Django's deployment checks inside it, and pushes it to ECR tagged with the commit hash and the build number."
+        },
+        {
+          "name": "Deploy: ",
+          "description": "registers a new task definition revision with the image, runs migrations and collectstatic as a one-off ECS task, updates the service and waits until the rollout completes or fails."
+        }
+      ],
+      "pipelineDescription": "The pipeline. The image URI produced by the Build stage is passed to the Deploy stage as a pipeline variable:",
+      "buildspecDescription": "The Build stage. The image is pushed in the build phase because CodeBuild also runs the post_build phase when the build fails:",
+      "deployDescription": "The deploy script. It creates the new revision from the latest one, which includes the Terraform configuration, runs the migrations before updating the service and checks the rollout state of that specific revision, since the circuit breaker may roll it back:",
+      "iamDescription": "Each CodeBuild project has its own role. The deploy role can only run tasks of this task definition family in this cluster, update this service and pass the two ECS roles:"
+    },
+    "application": {
+      "title": "Application",
+      "description": "The Django application was adapted to run behind CloudFront and the ALB, in containers that can be replaced at any time. All configuration comes from environment variables, and the image does not run migrations at startup.",
+      "features": [
+        {
+          "name": "Dockerfile: ",
+          "description": "slim Python image, non-root user and Gunicorn as the server."
+        },
+        {
+          "name": "Health check: ",
+          "description": "a middleware answers `/healthz/` before the host validation and the HTTPS redirect, since health checks use the task IP and plain HTTP."
+        },
+        {
+          "name": "Static files: ",
+          "description": "uploaded to S3 with a content hash in the file name, so a release never serves stale files from the CloudFront cache."
+        },
+        {
+          "name": "Security: ",
+          "description": "HTTPS redirect, HSTS, secure cookies and CSRF protection on the API, enabled when DEBUG is off."
+        }
+      ],
+      "dockerfileDescription": "Dockerfile:",
+      "middlewareDescription": "Health check middleware. It only checks that the process is alive: checking the database here would make the ALB remove every task during an RDS failover.",
+      "staticDescription": "Static files configuration:",
+      "securityDescription": "Production security settings:"
+    },
+    "tests": {
+      "title": "Tests",
+      "description": "The project is validated at two levels: the Terraform code, before it is applied, and the application, inside the image that will be deployed.",
+      "terraformFmt": "The `terraform fmt -check` command verifies that all the files follow the standard Terraform style.",
+      "terraformValidate": "The `terraform validate` command checks the syntax and the internal consistency of the configuration, including the rules for ephemeral variables and write-only arguments.",
+      "terraformPlan": "The `terraform plan` command shows the actions Terraform will perform before anything is changed in the account.",
+      "djangoTestsTitle": "Application tests",
+      "djangoTests": "The Django test suite covers the API, input validation, health checks and CSRF protection. It runs in the pipeline inside the built image, together with `manage.py check --deploy`, which validates the production security settings. Example:"
+    },
+    "deployment": {
+      "title": "Deployment",
+      "description": "The infrastructure is created in three steps. First, the bootstrap configuration creates the state bucket. Then, the backend and the variables are configured, with the secrets provided as environment variables. Finally, `terraform init` and `terraform apply` create the infrastructure.",
+      "description2": "After the apply, the connection with GitHub must be approved once in the AWS console, and the first execution of the pipeline builds and deploys the application. From then on, each commit to the main branch is released automatically."
+    },
+    "cost": {
+      "title": "Cost Analysis",
+      "description": "The estimated cost of the infrastructure running 24/7 in us-east-1 is about $208 per month with 2 tasks and $352 with 6 tasks. Fargate is the largest item, followed by the VPC endpoints and RDS. For this reason, the environment is not kept running.",
+      "items": [
+        {
+          "name": "ECS Fargate: ",
+          "description": "$72 to $216 per month (2 to 6 tasks with 1 vCPU and 2 GB)."
+        },
+        {
+          "name": "VPC Endpoints: ",
+          "description": "$58 per month (4 interface endpoints in 2 availability zones)."
+        },
+        {
+          "name": "RDS PostgreSQL: ",
+          "description": "$31 per month (db.t3.micro Multi-AZ)."
+        },
+        {
+          "name": "ALB: ",
+          "description": "$22 per month."
+        },
+        {
+          "name": "WAF: ",
+          "description": "$11 per month."
+        },
+        {
+          "name": "Others: ",
+          "description": "CloudWatch, CI/CD, Secrets Manager, ECR and S3, about $13 per month. CloudFront stays within the free tier."
+        }
+      ],
+      "natTitle": "VPC Endpoints vs NAT Gateways",
+      "natDescription": "Two NAT gateways would cost about $66 per month, close to the $58 of the endpoints. The decision was based mainly on security, since without NAT the containers cannot reach the internet, and on data processing, which costs $0.045/GB through NAT and $0.01/GB through endpoints. The full analysis, including cost reduction options such as Fargate Spot and Savings Plans, is available in the repository:"
+    }
+  }
+}

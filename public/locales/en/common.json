@@ -15,8 +15,9 @@
     "subtitle": "A well-designed cloud scales, reduces costs, and improves reliability. Good architecture practices and automation make the difference.",
     "descriptionTerraform":"Implementation of a complete and automated infrastructure on AWS using Terraform for provisioning, which includes VPC, ALB, EC2, Auto Scaling, database, and security configurations. The Terraform state is stored in S3 and DynamoDB, allowing versioning, encryption, concurrency locking, and high availability of the backend. The project ensures a scalable, secure, and easily reproducible environment, integrating infrastructure as code (IaC) and automation for greater efficiency.",
     "descriptionLambda": "Serverless application for real-time analysis using AWS CloudTrail, Lambda, S3, and EventBridge. Automatically aggregates and processes CloudTrail logs to generate comprehensive insights into AWS account activities, security events, and resource utilization patterns through real-time data processing and multi-format reporting.",
+    "descriptionDjangoPlatform": "Production-style AWS infrastructure for a containerized Django application, provisioned with Terraform. ECS Fargate runs in private subnets without internet access, using VPC endpoints, with a Multi-AZ RDS PostgreSQL database, and CloudFront with AWS WAF as the only entry point. A CodePipeline tests every commit inside the Docker image, runs database migrations once and performs zero-downtime deployments with automatic rollback. Secrets never reach the Terraform state, and a cost analysis supports the architectural decisions.",
     "descriptionCodeFlow": "Complete CI/CD implementation using GitHub Actions to automate the deployment of this portfolio website to AWS S3 and CloudFront. The pipeline handles dependency management, build optimization, secure credential management, and cache invalidation. Features atomic deployments, enterprise security with IAM policies, and zero-downtime global content delivery.",
-    "copyright": "Copyright ©2026 All rights reserved"
+    "copyright": "Copyright ©2027 All rights reserved"
   },
   "articles": {
     "title": "Articles",
@@ -31,7 +32,7 @@
     "description3": "Beyond technology, I'm fascinated by traveling and exploring off-the-beaten-path places, I love cats and I love reading. By the way, The Name of the Wind is my favorite book."
   },
   "experience": {
-    "title": "Experience",
+    "title": "Work Experience",
     "current": "Current",
     "seeFull": "See full experience",
     "companies": [
@@ -123,7 +124,7 @@
     },
     "downloadResumePT": "Download resume (pt-br)",
     "downloadResumeEN": "Download resume (en-us)",
-    "copyright": "Copyright ©2026 All rights reserved"
+    "copyright": "Copyright ©2027 All rights reserved"
   }
 }
 

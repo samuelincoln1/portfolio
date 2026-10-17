@@ -73,7 +73,7 @@ function Footer() {
           </a>
         </div>
         <p className="text-sm mt-6 md:mt-0 w-full md:w-auto ml-auto text-center ">
-          &copy; {new Date().getFullYear()} Samuel Gomes. All rights reserved.
+          &copy; 2027 Samuel Gomes. All rights reserved.
         </p>
       </div>
     </footer>

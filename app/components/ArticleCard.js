@@ -15,7 +15,7 @@ const ArticleCard = ({ image, title, link }) => {
       </div>
       <div className="flex flex-col">
         <div className="text-[20px] md:text-[28px] font-bold text-white z-50 max-w-[400px] underline">  
-          <Link href={link} className=" hover:text-gray-200">
+          <Link href={link} className="transition-colors hover:text-purple-500">
             {title}
           </Link>
         </div>

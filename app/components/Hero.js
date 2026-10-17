@@ -39,7 +39,7 @@ export default function Hero() {
         <div className="absolute left-1/2 -translate-x-1/2 bottom-8 z-20">
         <button
           onClick={() => {
-            const el = document.getElementById("experience-summary");
+            const el = document.getElementById("projects");
             if (el) {
               el.scrollIntoView({ behavior: "smooth" });
             }

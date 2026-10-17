@@ -73,4 +73,4 @@ The site is in production on AWS, using a modern and scalable architecture:
 
 ## 📝 License
 
-Copyright © 2026 Samuel Lincoln. All rights reserved.
+Copyright © 2027 Samuel Lincoln. All rights reserved.

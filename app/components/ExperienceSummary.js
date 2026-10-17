@@ -14,7 +14,7 @@ export default function ExperienceSummary() {
     : [];
 
   return (
-    <div id="experience-summary" className="relative z-10 px-4 md:px-0 mt-20 md:mt-30 scroll-mt-24">
+    <div id="experience-summary" className="relative z-10 px-4 md:px-0 mt-6 md:mt-10 scroll-mt-24">
       <h2 className="text-white md:text-[48px] text-[36px] font-bold">
         {t("experience.title")}
       </h2>
@@ -44,7 +44,7 @@ export default function ExperienceSummary() {
             href="/about#experience"
             className="group inline-flex items-center gap-2 text-[16px] md:text-[18px] text-white transition-colors hover:text-purple-500"
           >
-            {t("experience.seeFull")}
+            <span className="underline underline-offset-4">{t("experience.seeFull")}</span>
             <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
           </Link>
         </div>

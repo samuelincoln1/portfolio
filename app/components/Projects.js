@@ -5,6 +5,14 @@ const Projects = () => {
   const { t } = useTranslation('common')
   const projects = [
     {
+      imageUrl: "/images/aws-django-platform.png",
+      title: "AWS Django Platform",
+      description:
+        t('projects.descriptionDjangoPlatform'),
+      projectUrl: "/projects/aws-django-platform",
+      stack: ["Terraform", "ECS Fargate", "RDS", "CloudFront", "WAF", "CodePipeline", "Docker", "Django"],
+    },
+    {
       imageUrl: "/images/terraform.jpg",
       title: "Infra as Code",
       description:
