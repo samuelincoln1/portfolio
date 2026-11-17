@@ -175,7 +175,7 @@ export default function Content() {
         {/* Cover */}
         <div className="mx-auto mt-10 md:mt-14 max-w-[1000px] overflow-hidden rounded-2xl border border-[#24272e]">
           <Image
-            src="/images/ai-post-mortem.jpg"
+            src="/images/ai-post-mortem-cover.jpg"
             alt=""
             width={1600}
             height={893}

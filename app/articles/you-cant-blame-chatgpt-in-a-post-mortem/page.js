@@ -27,14 +27,14 @@ export const metadata = {
     title,
     description,
     url: "/articles/you-cant-blame-chatgpt-in-a-post-mortem",
-    images: [{ url: "/images/ai-post-mortem.jpg", width: 1600, height: 893 }],
+    images: [{ url: "/images/ai-post-mortem-cover.jpg", width: 1600, height: 893 }],
     authors: ["Samuel Lincoln"],
   },
   twitter: {
     card: "summary_large_image",
     title,
     description,
-    images: ["/images/ai-post-mortem.jpg"],
+    images: ["/images/ai-post-mortem-cover.jpg"],
   },
 };
 

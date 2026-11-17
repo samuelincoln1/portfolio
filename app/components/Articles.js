@@ -14,7 +14,7 @@ export default function Articles() {
   const articles = [
     {
       title: t("articles.aiPostMortem"),
-      image: "/images/ai-post-mortem.jpg",
+      image: "/images/ai-post-mortem-cover.jpg",
       link: "/articles/you-cant-blame-chatgpt-in-a-post-mortem",
     },
     {
