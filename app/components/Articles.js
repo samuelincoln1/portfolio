@@ -13,6 +13,11 @@ export default function Articles() {
   const { t } = useTranslation("common");
   const articles = [
     {
+      title: t("articles.aiPostMortem"),
+      image: "/images/ai-post-mortem.jpg",
+      link: "/articles/you-cant-blame-chatgpt-in-a-post-mortem",
+    },
+    {
       title: t("articles.transitioning"),
       image: "/images/On-premise-to-Cloud.png",
       link: "/articles/transitioning-legacy-applications-to-the-cloud",

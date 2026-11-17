@@ -23,7 +23,8 @@
     "title": "Artigos",
     "transitioning": "Transicionando aplicações legadas para a nuvem",
     "microservices": "Explorando Microserviços e Arquiteturas Serverless na AWS",
-    "cicd": "Implementando Pipelines CI/CD com Ferramentas Modernas"
+    "cicd": "Implementando Pipelines CI/CD com Ferramentas Modernas",
+    "aiPostMortem": "Você não pode culpar o ChatGPT num post-mortem"
   },
   "about": {
     "title": "Sobre Mim",

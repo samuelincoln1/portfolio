@@ -20,7 +20,7 @@ export default function Index() {
       "/images/On-premise-to-Cloud.png",
       "/images/serverless.png",
       "/images/cicd2.png",
-      "/images/profile.jpg",
+      "/images/eu.jpeg",
       "/images/transition.png",
       "/images/mono.png",
       "/images/cicdarticle.png",

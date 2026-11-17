@@ -28,7 +28,7 @@ export default function AboutHero() {
           </div>
           {/* <div className="self-center md:self-start mt-8 md:mt-0 hidden xl:block">
             <Image
-              src="/images/profile.jpg"
+              src="/images/eu.jpeg"
               alt="Samuel Gomes"
               width={500}
               height={500}

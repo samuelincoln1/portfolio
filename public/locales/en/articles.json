@@ -44,6 +44,47 @@
             "description5": "To ensure traceability, it is important to maintain consistent commit messages and adopt standardized branching and tagging strategies throughout the project. Additionally, deployment techniques like blue/green deployments and canary releases can be used to gradually introduce changes, allowing teams to identify and resolve potential issues before they affect the entire user base.",
             "description6": "Rollback Strategies and Monitoring",
             "description7": "To enable safe rollbacks, deployments should be made immutable, ensuring that the last known stable build remains readily available for immediate restoration in case of failures. Additionally, integrating centralized logging and monitoring helps track application health in real time and facilitates rapid identification of root causes when issues arise."
+        },
+        "aiPostMortem": {
+            "tag": "AI · Infrastructure · Opinion",
+            "title": "You can't blame ChatGPT in a post-mortem",
+            "subtitle": "The role of artificial intelligence in infrastructure engineering and why technical knowledge still matters.",
+            "author": "Samuel Lincoln",
+            "date": "November 16, 2026",
+            "readingTime": "6 min read",
+            "back": "Back to articles",
+            "paragraphs": [
+                "Artificial intelligence is already part of every stage of software development: it writes code, generates tests, reviews pull requests and even helps operate systems in production. Used the right way, it saves hours of work. But when the project involves critical infrastructure, the margin for error is much smaller.",
+                "Poorly written code usually charges a gradual price: slower response times, growing complexity, piling technical debt. It's bad, but usually contained. A mistake in infrastructure is a different story. A wrong permission, a badly written policy or a command run without review can take down an entire service at once, with direct impact on customers and on revenue.",
+                "AI models may be able to design and implement architectures and servers, but they can't be held accountable when something goes wrong. In practice, the responsibility for a bad decision or a model hallucination falls on whoever accepted it, not on OpenAI, Anthropic, Google or any of the others. That's why behind any AI there has to be a competent professional who understands what is being done.",
+                "Because AI makes everything easier and faster, it's not unusual to see good professionals giving in to the temptation of accepting suggestions and implementations without properly reviewing them. After all, AI is usually right. Usually. But what happens when the unexpected occurs? When the model doesn't grasp the full context of the application and touches something it shouldn't? When it makes a serious mistake? At that point, someone who doesn't understand what was done can turn a medium-severity incident into a catastrophe.",
+                "I use AI a lot in my day-to-day work, and it saves me hours. Today it helps me build observability dashboards, read and extract information from large volumes of logs, analyze errors and write post-mortems. During an incident, for example, I need to cross-reference logs from applications, databases and queues to understand what happened and in what order. Doing that “the old-fashioned way” would take hours, sometimes days, of manual reading and correlation. Now, with an agent organizing and summarizing that data, I reach my first hypotheses within a few hours and spend my time on what really matters: deciding which one makes sense and what to do about it.",
+                "That division is where the real gain lies. AI is very good at processing volume: reading thousands of log lines, finding patterns, putting together the first version of a dashboard or an incident timeline. But it doesn't know what's normal in my environment, which services are critical or what changed last week. That context is mine, and it's what separates a plausible hypothesis from the actual root cause.",
+                "AI also helps me think about architecture. I describe the problem and it brings ideas, alternatives and paths I might not have considered at first. When I need to run something on AWS, it gives me the exact commands, and I no longer have to open the documentation at every step. It's also good for weighing a decision: asking for the pros and cons of an idea helps me see risks and costs before I start. But I'm the one who decides. I read every command it suggests before running it, check what it does, which resource it touches and what happens if it goes wrong, and review everything carefully. My rule is simple: AI can read, but it can't change anything. It queries logs, metrics and configurations freely, and that's what makes an agent so useful during an incident. But anything that changes the environment, like applying a policy, modifying a resource or running a deploy, goes through me first, because a single dangerous or poorly thought-out command is all it takes to become a problem in production.",
+                "Over the past year running a production infrastructure, I've found mistakes in the suggestions of the most advanced models many times. In some cases the idea was good, but it didn't fit the application's context and would have caused problems if implemented the way the model designed it. In others, it hallucinated: it stated something I noticed was wrong and, when I questioned it, corrected itself.",
+                "But notice what happened: the model only corrected itself because I questioned it, and I only questioned it because I knew the answer was wrong. The problem is that it would have given in just the same if I had been the one who was wrong. Most models tend to agree with whoever they're talking to: if you challenge an answer, even with flawed arguments, the model will usually reconsider what it said and give in, whether you're right or not. That makes it very easy to “bend” the AI until it agrees with your point of view.",
+                "And that's the risk: you keep pushing until the model validates an idea you already wanted approved, and that validation starts to look like a second technical opinion, when it's really just your own confirmation bias coming back at you. It gets worse when it turns into an argument. “The AI agreed with me” gets used to defend a proposal in a technical discussion, and a weak idea takes on the air of a validated one. An AI that gave in to your insistence hasn't confirmed that you're right. And if the decision goes wrong, “the AI agreed with me” won't make it into the post-mortem as the root cause.",
+                "At the end of the day, nothing replaces technical knowledge gained through study and experience. AI is an incredibly powerful tool, it's here to stay and it's changing the way we build software, but I believe it's crucial that we keep the habit of studying and understanding what we do, even when AI could do it for us. That knowledge is what lets me notice when a suggestion doesn't apply to my context, when the model has hallucinated and when I'm just trying to get it to agree with me. Without it, I wouldn't even know the answer was wrong.",
+                "At the end of 2021, the general public had no idea what an LLM was. ChatGPT didn't exist yet, and GPT-3, available only through an API, was far behind today's models. Today they work with contexts of millions of tokens, design systems, and write, review and test code at a level that impresses even experienced professionals. By 2031, models will be better and will probably make fewer mistakes. Even so, when something goes wrong in production, someone will have to explain what happened, why it was done and how to fix it. That person will be a valuable professional, and I want to keep being one who understands what they're doing."
+            ],
+            "quote1": "The responsibility for a bad decision or a model hallucination falls on whoever accepted it.",
+            "quote2": "An AI that gave in to your insistence hasn't confirmed that you're right.",
+            "split": {
+                "aiTitle": "What AI does well",
+                "aiItems": [
+                    "Reading thousands of log lines",
+                    "Finding patterns",
+                    "Putting together the first version of a dashboard or an incident timeline"
+                ],
+                "meTitle": "The context that's mine",
+                "meItems": [
+                    "What's noise and what's signal in my alerts",
+                    "The business impact of each service",
+                    "What isn't documented anywhere"
+                ],
+                "caption": "That context is what separates a plausible hypothesis from the actual root cause."
+            },
+            "bio": "Cloud & DevOps Engineer."
         }
     }
 }
